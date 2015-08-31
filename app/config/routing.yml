@@ -1,3 +1,8 @@
+jyg_revestimientos:
+    resource: "@JYGRevestimientosBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
