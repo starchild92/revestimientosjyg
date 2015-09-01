@@ -2,11 +2,16 @@
 <html>
 <head>
 	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>{% block title %}Revestimientos J&G - Barquisimeto{% endblock %}</title>
-	<link rel="stylesheet" type="text/css" href="{{ asset('bundles/jygrevestimientos/css/bootstrap.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('bundles/jygrevestimientos/css/navbar-fixed-top.css') }}">
-	{% block stylesheets %}{% endblock %}
-	<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+	
+	{% block stylesheets %}
+		<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+		<link rel="stylesheet" type="text/css" href="{{ asset('bundles/jygrevestimientos/css/bootstrap.css') }}">
+		<link rel="stylesheet" type="text/css" href="{{ asset('bundles/jygrevestimientos/css/navbar-fixed-top.css') }}">
+	{% endblock %}
+	
 </head>
 <body>
 	<nav class="navbar navbar-default navbar-fixed-top">
@@ -47,20 +52,20 @@
 			</div><!--/.nav-collapse -->
 		</div>
 	</nav>
-
-	{% block body %}{% endblock %}
-	
 	<div class="container">
-		<!-- FOOTER -->
-		<footer>
-			<p class="pull-right"><a href="#">Back to top</a></p>
-			<p>&copy; 2014 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
-		</footer>
-
+		{#Aqui dentro es donde se colocará el bloque correspondiente a cada acción.#}
+	    {% block content %}
+		
+			
+		{% endblock %}
 	</div><!-- /.container -->
-
-	<script src="{{ asset('bundles/jygrevestimientos/js/jquery.min.js') }}"></script>
+	<!-- FOOTER -->
+	<footer>
+		<p class="pull-right"><a href="#">Back to top</a></p>
+		<p>&copy; 2014 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+	</footer>
+	{% block javascripts %}	<script src="{{ asset('bundles/jygrevestimientos/js/jquery.min.js') }}"></script>
 	<script src="{{ asset('bundles/jygrevestimientos/js/bootstrap.min.js') }}"></script>
-	{% block javascripts %}{% endblock %}
+	{% endblock %}
 </body>
 </html>
