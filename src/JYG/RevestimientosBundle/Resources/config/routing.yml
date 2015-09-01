@@ -1,11 +1,3 @@
-jyg_revestimientos_bitacora:
-    resource: "@JYGRevestimientosBundle/Resources/config/routing/bitacora.yml"
-    prefix:   /bitacora
-
-jyg_revestimientos_material:
-    resource: "@JYGRevestimientosBundle/Resources/config/routing/material.yml"
-    prefix:   /material
-
 JYGRevestimientosBundle_inicio:
     pattern:  /
     defaults: { _controller: JYGRevestimientosBundle:Page:index }
