@@ -199,3 +199,11 @@ fd04af,127.0.0.1,GET,http://localhost:8000/app_dev.php/vision,1441120297,,200
 ec1b76,127.0.0.1,GET,http://localhost:8000/app_dev.php/vision,1441120309,,200
 7fd28d,127.0.0.1,GET,http://localhost:8000/app_dev.php/galeria,1441120312,,200
 786731,127.0.0.1,GET,http://localhost:8000/app_dev.php/productos,1441120314,,200
+e974a3,127.0.0.1,GET,http://localhost:8000/app_dev.php/,1441140061,,200
+f07d0b,127.0.0.1,GET,http://localhost:8000/app_dev.php/productos,1441140086,,200
+3af8d8,127.0.0.1,GET,http://localhost:8000/app_dev.php/productos,1441140094,,200
+0a965a,127.0.0.1,GET,http://localhost:8000/app_dev.php/galeria,1441140105,,200
+b28183,127.0.0.1,GET,http://localhost:8000/app_dev.php/vision,1441140109,,200
+0dcc47,127.0.0.1,GET,http://localhost:8000/app_dev.php/material,1441140122,d63293,200
+d63293,127.0.0.1,GET,http://localhost:8000/app_dev.php/material,1441140122,,404
+e10023,127.0.0.1,GET,http://localhost:8000/app_dev.php/,1441140462,,200
