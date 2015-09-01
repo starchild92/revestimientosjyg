@@ -1,0 +1,41 @@
+JYGRevestimientosBundle_inicio:
+    pattern:  /
+    defaults: { _controller: JYGRevestimientosBundle:Page:index }
+    requirements:
+        _method:  GET
+
+JYGRevestimientosBundle_productos:
+    pattern:  /productos
+    defaults: { _controller: JYGRevestimientosBundle:Page:productos }
+    requirements:
+        _method:  GET
+
+JYGRevestimientosBundle_galeria:
+    pattern:  /galeria
+    defaults: { _controller: JYGRevestimientosBundle:Page:galeria }
+    requirements:
+        _method:  GET
+
+JYGRevestimientosBundle_contacto:
+    pattern:  /contacto
+    defaults: { _controller: JYGRevestimientosBundle:Page:contacto }
+    requirements:
+        _method:  GET
+
+JYGRevestimientosBundle_ayuda:
+    pattern:  /ayuda
+    defaults: { _controller: JYGRevestimientosBundle:Page:ayuda }
+    requirements:
+        _method:  GET
+
+JYGRevestimientosBundle_mision:
+    pattern:  /mision
+    defaults: { _controller: JYGRevestimientosBundle:Page:mision }
+    requirements:
+        _method:  GET
+
+JYGRevestimientosBundle_vision:
+    pattern:  /vision
+    defaults: { _controller: JYGRevestimientosBundle:Page:vision }
+    requirements:
+        _method:  GET

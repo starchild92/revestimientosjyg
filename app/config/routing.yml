@@ -6,3 +6,7 @@ jyg_revestimientos:
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
+
+JYGRevestimientosBundle:
+    resource: "@JYGRevestimientosBundle/Resources/config/routing.yml"
+    prefix:   /
