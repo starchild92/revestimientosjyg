@@ -37,7 +37,7 @@ class Venta
     private $numero;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Cliente", inversedBy="rif")
+     * @ORM\ManyToOne(targetEntity="Cliente", inversedBy="identificador")
      * @ORM\JoinColumn(name="cliente_id", referencedColumnName="id", onDelete="CASCADE")
      */
     private $comprador;
@@ -99,29 +99,6 @@ class Venta
     }
 
     /**
-     * Set cliente
-     *
-     * @param string $cliente
-     * @return Venta
-     */
-    public function setCliente($cliente)
-    {
-        $this->cliente = $cliente;
-
-        return $this;
-    }
-
-    /**
-     * Get cliente
-     *
-     * @return string 
-     */
-    public function getCliente()
-    {
-        return $this->cliente;
-    }
-
-    /**
      * Set comprador
      *
      * @param \JYG\RevestimientosBundle\Entity\Cliente $comprador
@@ -142,5 +119,9 @@ class Venta
     public function getComprador()
     {
         return $this->comprador;
+    }
+
+    public function __toString() {
+        return $this->comprador->getNombre();
     }
 }

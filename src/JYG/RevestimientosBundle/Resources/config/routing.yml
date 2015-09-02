@@ -1,3 +1,23 @@
+jyg_revestimientos_venta:
+    resource: "@JYGRevestimientosBundle/Resources/config/routing/venta.yml"
+    prefix:   /venta
+
+jyg_revestimientos_cliente:
+    resource: "@JYGRevestimientosBundle/Resources/config/routing/cliente.yml"
+    prefix:   /cliente
+
+jyg_revestimientos_cliente:
+    resource: "@JYGRevestimientosBundle/Resources/config/routing/cliente.yml"
+    prefix:   /cliente
+
+JYGRevestimientosBundle_cliente:
+    resource: "@JYGRevestimientosBundle/Resources/config/routing/cliente.yml"
+    prefix:   /cliente
+
+jyg_revestimientos_venta:
+    resource: "@JYGRevestimientosBundle/Resources/config/routing/venta.yml"
+    prefix:   /venta
+
 jyg_revestimientos_item:
     resource: "@JYGRevestimientosBundle/Resources/config/routing/item.yml"
     prefix:   /item

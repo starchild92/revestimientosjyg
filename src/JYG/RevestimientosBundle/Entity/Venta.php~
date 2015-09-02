@@ -37,7 +37,7 @@ class Venta
     private $numero;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Cliente", inversedBy="rif")
+     * @ORM\ManyToOne(targetEntity="Cliente", inversedBy="identificador")
      * @ORM\JoinColumn(name="cliente_id", referencedColumnName="id", onDelete="CASCADE")
      */
     private $comprador;
@@ -99,71 +99,29 @@ class Venta
     }
 
     /**
-     * Set cliente
+     * Set comprador
      *
-     * @param string $cliente
+     * @param \JYG\RevestimientosBundle\Entity\Cliente $comprador
      * @return Venta
      */
-    public function setCliente($cliente)
+    public function setComprador(\JYG\RevestimientosBundle\Entity\Cliente $comprador = null)
     {
-        $this->cliente = $cliente;
+        $this->comprador = $comprador;
 
         return $this;
     }
 
     /**
-     * Get cliente
+     * Get comprador
      *
-     * @return string 
+     * @return \JYG\RevestimientosBundle\Entity\Cliente 
      */
-    public function getCliente()
+    public function getComprador()
     {
-        return $this->cliente;
+        return $this->comprador;
     }
 
-    /**
-     * Add items
-     *
-     * @param \JYG\RevestimientosBundle\Entity\Item $items
-     * @return Venta
-     */
-    public function addItem(\JYG\RevestimientosBundle\Entity\Item $items)
-    {
-        $this->items[] = $items;
-
-        return $this;
-    }
-
-    /**
-     * Remove items
-     *
-     * @param \JYG\RevestimientosBundle\Entity\Item $items
-     */
-    public function removeItem(\JYG\RevestimientosBundle\Entity\Item $items)
-    {
-        $this->items->removeElement($items);
-    }
-
-    /**
-     * Get items
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getItems()
-    {
-        return $this->items;
-    }
-
-    /**
-     * Set items
-     *
-     * @param string $items
-     * @return Venta
-     */
-    public function setItems($items)
-    {
-        $this->items = $items;
-
-        return $this;
+    public function __toString() {
+        return $this->comprador->getNombre();
     }
 }

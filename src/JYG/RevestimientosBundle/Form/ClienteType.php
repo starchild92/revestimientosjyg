@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class VentaType extends AbstractType
+class ClienteType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -15,9 +15,10 @@ class VentaType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('fecha')
-            ->add('numero')
-            ->add('comprador')
+            ->add('rif')
+            ->add('nombre')
+            ->add('direccion')
+            ->add('telefono')
         ;
     }
     
@@ -27,7 +28,7 @@ class VentaType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'JYG\RevestimientosBundle\Entity\Venta'
+            'data_class' => 'JYG\RevestimientosBundle\Entity\Cliente'
         ));
     }
 
@@ -36,6 +37,6 @@ class VentaType extends AbstractType
      */
     public function getName()
     {
-        return 'jyg_revestimientosbundle_venta';
+        return 'jyg_revestimientosbundle_cliente';
     }
 }

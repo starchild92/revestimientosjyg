@@ -23,10 +23,14 @@ class Cliente
     private $id;
 
     /**
+     * @ORM\OneToMany(targetEntity="Venta", mappedBy="comprador",cascade={"persist","remove"})
+     */
+    private $identificador;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="rif", type="string", length=255)
-     * @ORM\OneToMany(targetEntity="Venta", mappedBy="comprador",cascade={"persist","remove"})
      */
     private $rif;
 
@@ -38,9 +42,9 @@ class Cliente
     private $nombre;
 
     /**
-     * @var string
+     * @var text
      *
-     * @ORM\Column(name="direccion", type="string", length=255)
+     * @ORM\Column(name="direccion", type="text", length=255)
      */
     private $direccion;
 
@@ -152,5 +156,49 @@ class Cliente
     public function getTelefono()
     {
         return $this->telefono;
+    }
+
+    public function __toString() {
+        return $this->nombre;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->identificador = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add identificador
+     *
+     * @param \JYG\RevestimientosBundle\Entity\Venta $identificador
+     * @return Cliente
+     */
+    public function addIdentificador(\JYG\RevestimientosBundle\Entity\Venta $identificador)
+    {
+        $this->identificador[] = $identificador;
+
+        return $this;
+    }
+
+    /**
+     * Remove identificador
+     *
+     * @param \JYG\RevestimientosBundle\Entity\Venta $identificador
+     */
+    public function removeIdentificador(\JYG\RevestimientosBundle\Entity\Venta $identificador)
+    {
+        $this->identificador->removeElement($identificador);
+    }
+
+    /**
+     * Get identificador
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getIdentificador()
+    {
+        return $this->identificador;
     }
 }

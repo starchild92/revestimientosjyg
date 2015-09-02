@@ -175,6 +175,66 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::indexAction',  '_route' => 'homepage',);
         }
 
+        if (0 === strpos($pathinfo, '/cliente')) {
+            // cliente
+            if (rtrim($pathinfo, '/') === '/cliente') {
+                if (substr($pathinfo, -1) !== '/') {
+                    return $this->redirect($pathinfo.'/', 'cliente');
+                }
+
+                return array (  '_controller' => 'JYG\\RevestimientosBundle\\Controller\\ClienteController::indexAction',  '_route' => 'cliente',);
+            }
+
+            // cliente_show
+            if (preg_match('#^/cliente/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'cliente_show')), array (  '_controller' => 'JYG\\RevestimientosBundle\\Controller\\ClienteController::showAction',));
+            }
+
+            // cliente_new
+            if ($pathinfo === '/cliente/new') {
+                return array (  '_controller' => 'JYG\\RevestimientosBundle\\Controller\\ClienteController::newAction',  '_route' => 'cliente_new',);
+            }
+
+            // cliente_create
+            if ($pathinfo === '/cliente/create') {
+                if ($this->context->getMethod() != 'POST') {
+                    $allow[] = 'POST';
+                    goto not_cliente_create;
+                }
+
+                return array (  '_controller' => 'JYG\\RevestimientosBundle\\Controller\\ClienteController::createAction',  '_route' => 'cliente_create',);
+            }
+            not_cliente_create:
+
+            // cliente_edit
+            if (preg_match('#^/cliente/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'cliente_edit')), array (  '_controller' => 'JYG\\RevestimientosBundle\\Controller\\ClienteController::editAction',));
+            }
+
+            // cliente_update
+            if (preg_match('#^/cliente/(?P<id>[^/]++)/update$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('POST', 'PUT'))) {
+                    $allow = array_merge($allow, array('POST', 'PUT'));
+                    goto not_cliente_update;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'cliente_update')), array (  '_controller' => 'JYG\\RevestimientosBundle\\Controller\\ClienteController::updateAction',));
+            }
+            not_cliente_update:
+
+            // cliente_delete
+            if (preg_match('#^/cliente/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('POST', 'DELETE'))) {
+                    $allow = array_merge($allow, array('POST', 'DELETE'));
+                    goto not_cliente_delete;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'cliente_delete')), array (  '_controller' => 'JYG\\RevestimientosBundle\\Controller\\ClienteController::deleteAction',));
+            }
+            not_cliente_delete:
+
+        }
+
         if (0 === strpos($pathinfo, '/item')) {
             // item
             if (rtrim($pathinfo, '/') === '/item') {

@@ -1,7 +1,7 @@
 {% extends 'JYGRevestimientosBundle::base.html.twig' %}
 
 {% block body -%}
-    <h1>Venta</h1>
+    <h1>Cliente</h1>
 
     <table class="record_properties">
         <tbody>
@@ -10,24 +10,32 @@
                 <td>{{ entity.id }}</td>
             </tr>
             <tr>
-                <th>Fecha</th>
-                <td>{{ entity.fecha|date('Y-m-d H:i:s') }}</td>
+                <th>Rif</th>
+                <td>{{ entity.rif }}</td>
             </tr>
             <tr>
-                <th>Numero</th>
-                <td>{{ entity.numero }}</td>
+                <th>Nombre</th>
+                <td>{{ entity.nombre }}</td>
+            </tr>
+            <tr>
+                <th>Direccion</th>
+                <td>{{ entity.direccion }}</td>
+            </tr>
+            <tr>
+                <th>Telefono</th>
+                <td>{{ entity.telefono }}</td>
             </tr>
         </tbody>
     </table>
 
         <ul class="record_actions">
     <li>
-        <a href="{{ path('venta') }}">
+        <a href="{{ path('cliente') }}">
             Back to the list
         </a>
     </li>
     <li>
-        <a href="{{ path('venta_edit', { 'id': entity.id }) }}">
+        <a href="{{ path('cliente_edit', { 'id': entity.id }) }}">
             Edit
         </a>
     </li>
