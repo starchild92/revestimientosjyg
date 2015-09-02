@@ -68,7 +68,7 @@ JYGRevestimientosBundle_contacto:
     pattern:  /contacto
     defaults: { _controller: JYGRevestimientosBundle:Page:contacto }
     requirements:
-        _method:  GET
+        _method:  GET|POST
 
 JYGRevestimientosBundle_ayuda:
     pattern:  /ayuda
