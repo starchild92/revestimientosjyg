@@ -19,8 +19,8 @@ class __TwigTemplate_676b3d1ed19a71228f621a380e9bce8faa71497af620d3512158a32835f
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_0bb61dacd1daab851233edb79e320692d8353a418d9d7153f8941efdd9147415 = $this->env->getExtension("native_profiler");
-        $__internal_0bb61dacd1daab851233edb79e320692d8353a418d9d7153f8941efdd9147415->enter($__internal_0bb61dacd1daab851233edb79e320692d8353a418d9d7153f8941efdd9147415_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "JYGRevestimientosBundle::base.html.twig"));
+        $__internal_6ca75801cd7d6a298d7089e34ba45040b3f90a536841fa140b5404746ab3d625 = $this->env->getExtension("native_profiler");
+        $__internal_6ca75801cd7d6a298d7089e34ba45040b3f90a536841fa140b5404746ab3d625->enter($__internal_6ca75801cd7d6a298d7089e34ba45040b3f90a536841fa140b5404746ab3d625_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "JYGRevestimientosBundle::base.html.twig"));
 
         // line 1
         echo "<!DOCTYPE html>
@@ -35,14 +35,10 @@ class __TwigTemplate_676b3d1ed19a71228f621a380e9bce8faa71497af620d3512158a32835f
         // line 6
         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("bundles/jygrevestimientos/css/bootstrap.css"), "html", null, true);
         echo "\">
-\t<link rel=\"stylesheet\" type=\"text/css\" href=\"";
-        // line 7
-        echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("bundles/jygrevestimientos/css/navbar-fixed-top.css"), "html", null, true);
-        echo "\">
 \t";
-        // line 8
+        // line 7
         $this->displayBlock('stylesheets', $context, $blocks);
-        // line 9
+        // line 8
         echo "\t<link rel=\"icon\" type=\"image/x-icon\" href=\"";
         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("favicon.ico"), "html", null, true);
         echo "\" />
@@ -58,42 +54,56 @@ class __TwigTemplate_676b3d1ed19a71228f621a380e9bce8faa71497af620d3512158a32835f
 \t\t\t\t\t<span class=\"icon-bar\"></span>
 \t\t\t\t</button>
 \t\t\t\t<a class=\"navbar-brand\" href=\"";
-        // line 21
+        // line 20
         echo $this->env->getExtension('routing')->getPath("JYGRevestimientosBundle_inicio");
         echo "\">Revestimientos J&G</a>
 \t\t\t</div>
 \t\t\t<div id=\"navbar\" class=\"navbar-collapse collapse\">
-\t\t\t\t<ul class=\"nav navbar-nav\">
-\t\t\t\t\t<li class=\"active\"><a href=\"";
-        // line 25
+\t\t\t\t<ul class=\"nav navbar-nav navbar-right\">
+\t\t\t\t\t<li class=\"";
+        // line 24
+        echo (((strtr($this->getAttribute($this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "request", array()), "attributes", array()), "get", array(0 => "_route"), "method"), array("jyg_revestimientos_page_" => "")) == "index")) ? ("active") : (""));
+        echo "\"><a href=\"";
         echo $this->env->getExtension('routing')->getPath("JYGRevestimientosBundle_inicio");
         echo "\">Inicio</a></li>
-\t\t\t\t\t<li><a href=\"";
-        // line 26
+\t\t\t\t\t<li class=\"";
+        // line 25
+        echo (((strtr($this->getAttribute($this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "request", array()), "attributes", array()), "get", array(0 => "_route"), "method"), array("jyg_revestimientos_page_" => "")) == "productos")) ? ("active") : (""));
+        echo "\"><a href=\"";
         echo $this->env->getExtension('routing')->getPath("JYGRevestimientosBundle_productos");
         echo "\">Productos</a></li>
-\t\t\t\t\t<li><a href=\"";
-        // line 27
+\t\t\t\t\t<li class=\"";
+        // line 26
+        echo (((strtr($this->getAttribute($this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "request", array()), "attributes", array()), "get", array(0 => "_route"), "method"), array("jyg_revestimientos_page_" => "")) == "galeria")) ? ("active") : (""));
+        echo "\"><a href=\"";
         echo $this->env->getExtension('routing')->getPath("JYGRevestimientosBundle_galeria");
         echo "\">Galería</a></li>
-\t\t\t\t\t<li><a href=\"";
-        // line 28
+\t\t\t\t\t<li class=\"";
+        // line 27
+        echo (((strtr($this->getAttribute($this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "request", array()), "attributes", array()), "get", array(0 => "_route"), "method"), array("jyg_revestimientos_page_" => "")) == "vision")) ? ("active") : (""));
+        echo "\"><a href=\"";
         echo $this->env->getExtension('routing')->getPath("JYGRevestimientosBundle_vision");
         echo "\">Visión</a></li>
-\t\t\t\t\t<li><a href=\"";
-        // line 29
+\t\t\t\t\t<li class=\"";
+        // line 28
+        echo (((strtr($this->getAttribute($this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "request", array()), "attributes", array()), "get", array(0 => "_route"), "method"), array("jyg_revestimientos_page_" => "")) == "mision")) ? ("active") : (""));
+        echo "\"><a href=\"";
         echo $this->env->getExtension('routing')->getPath("JYGRevestimientosBundle_mision");
         echo "\">Misión</a></li>
-\t\t\t\t\t<li><a href=\"";
-        // line 30
+\t\t\t\t\t<li class=\"";
+        // line 29
+        echo (((strtr($this->getAttribute($this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "request", array()), "attributes", array()), "get", array(0 => "_route"), "method"), array("jyg_revestimientos_page_" => "")) == "contacto")) ? ("active") : (""));
+        echo "\"><a href=\"";
         echo $this->env->getExtension('routing')->getPath("JYGRevestimientosBundle_contacto");
         echo "\">Contacto</a></li>
-\t\t\t\t\t<li><a href=\"";
-        // line 31
+\t\t\t\t\t<li class=\"";
+        // line 30
+        echo (((strtr($this->getAttribute($this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "request", array()), "attributes", array()), "get", array(0 => "_route"), "method"), array("jyg_revestimientos_page_" => "")) == "ayuda")) ? ("active") : (""));
+        echo "\"><a href=\"";
         echo $this->env->getExtension('routing')->getPath("JYGRevestimientosBundle_ayuda");
         echo "\">Ayuda</a></li>
 \t\t\t\t</ul>
-\t\t\t\t<ul class=\"nav navbar-nav pull-right\">
+\t\t\t\t<!--<ul class=\"nav navbar-nav pull-right\">
 \t\t\t\t\t<li class=\"dropdown\">
 \t\t\t\t\t\t<a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">Dropdown <span class=\"caret\"></span></a>
 \t\t\t\t\t\t<ul class=\"dropdown-menu dropdown-menu-right\">
@@ -106,15 +116,15 @@ class __TwigTemplate_676b3d1ed19a71228f621a380e9bce8faa71497af620d3512158a32835f
 \t\t\t\t\t\t\t<li><a href=\"#\">One more separated link</a></li>
 \t\t\t\t\t\t</ul>
 \t\t\t\t\t</li>
-\t\t\t\t</ul>
+\t\t\t\t</ul> -->
 \t\t\t</div><!--/.nav-collapse -->
 \t\t</div>
 \t</nav>
-\t<div class=\"container\">
+\t<div class=\"container navSpace\">
 \t\t";
-        // line 51
+        // line 50
         $this->displayBlock('body', $context, $blocks);
-        // line 52
+        // line 51
         echo "\t</div>
 \t<div class=\"container\">
 \t\t<!-- FOOTER -->
@@ -126,67 +136,67 @@ class __TwigTemplate_676b3d1ed19a71228f621a380e9bce8faa71497af620d3512158a32835f
 \t</div><!-- /.container -->
 
 \t<script src=\"";
-        // line 62
+        // line 61
         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("bundles/jygrevestimientos/js/jquery.min.js"), "html", null, true);
         echo "\"></script>
 \t<script src=\"";
-        // line 63
+        // line 62
         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("bundles/jygrevestimientos/js/bootstrap.min.js"), "html", null, true);
         echo "\"></script>
 \t";
-        // line 64
+        // line 63
         $this->displayBlock('javascripts', $context, $blocks);
-        // line 65
+        // line 64
         echo "</body>
 </html>
 ";
         
-        $__internal_0bb61dacd1daab851233edb79e320692d8353a418d9d7153f8941efdd9147415->leave($__internal_0bb61dacd1daab851233edb79e320692d8353a418d9d7153f8941efdd9147415_prof);
+        $__internal_6ca75801cd7d6a298d7089e34ba45040b3f90a536841fa140b5404746ab3d625->leave($__internal_6ca75801cd7d6a298d7089e34ba45040b3f90a536841fa140b5404746ab3d625_prof);
 
     }
 
     // line 5
     public function block_title($context, array $blocks = array())
     {
-        $__internal_b43868d1daea5441e4aebde579eb9ca4555dbc29bf5566919d6b255c7d3d8d98 = $this->env->getExtension("native_profiler");
-        $__internal_b43868d1daea5441e4aebde579eb9ca4555dbc29bf5566919d6b255c7d3d8d98->enter($__internal_b43868d1daea5441e4aebde579eb9ca4555dbc29bf5566919d6b255c7d3d8d98_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
+        $__internal_f0f95b3c1e4af2a5ee8e5f7caefdc615aeccdf80068b207b0ff920fe101589bb = $this->env->getExtension("native_profiler");
+        $__internal_f0f95b3c1e4af2a5ee8e5f7caefdc615aeccdf80068b207b0ff920fe101589bb->enter($__internal_f0f95b3c1e4af2a5ee8e5f7caefdc615aeccdf80068b207b0ff920fe101589bb_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
 
         echo "Revestimientos J&G - Barquisimeto";
         
-        $__internal_b43868d1daea5441e4aebde579eb9ca4555dbc29bf5566919d6b255c7d3d8d98->leave($__internal_b43868d1daea5441e4aebde579eb9ca4555dbc29bf5566919d6b255c7d3d8d98_prof);
+        $__internal_f0f95b3c1e4af2a5ee8e5f7caefdc615aeccdf80068b207b0ff920fe101589bb->leave($__internal_f0f95b3c1e4af2a5ee8e5f7caefdc615aeccdf80068b207b0ff920fe101589bb_prof);
 
     }
 
-    // line 8
+    // line 7
     public function block_stylesheets($context, array $blocks = array())
     {
-        $__internal_692b5320a7b4afea1fb2c1c9a205213aabdd9e4e0415f317ec724c655fed6139 = $this->env->getExtension("native_profiler");
-        $__internal_692b5320a7b4afea1fb2c1c9a205213aabdd9e4e0415f317ec724c655fed6139->enter($__internal_692b5320a7b4afea1fb2c1c9a205213aabdd9e4e0415f317ec724c655fed6139_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "stylesheets"));
+        $__internal_0c0dfebbbb6fc4ebd972407d58296c135e3901b1fc169ab5b1f982dbb959e5fd = $this->env->getExtension("native_profiler");
+        $__internal_0c0dfebbbb6fc4ebd972407d58296c135e3901b1fc169ab5b1f982dbb959e5fd->enter($__internal_0c0dfebbbb6fc4ebd972407d58296c135e3901b1fc169ab5b1f982dbb959e5fd_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "stylesheets"));
 
         
-        $__internal_692b5320a7b4afea1fb2c1c9a205213aabdd9e4e0415f317ec724c655fed6139->leave($__internal_692b5320a7b4afea1fb2c1c9a205213aabdd9e4e0415f317ec724c655fed6139_prof);
+        $__internal_0c0dfebbbb6fc4ebd972407d58296c135e3901b1fc169ab5b1f982dbb959e5fd->leave($__internal_0c0dfebbbb6fc4ebd972407d58296c135e3901b1fc169ab5b1f982dbb959e5fd_prof);
 
     }
 
-    // line 51
+    // line 50
     public function block_body($context, array $blocks = array())
     {
-        $__internal_5f902dd0f7d57b3d28084d2e99bb9f39ccb0a06ced7289e81cd9d4c4377d7e21 = $this->env->getExtension("native_profiler");
-        $__internal_5f902dd0f7d57b3d28084d2e99bb9f39ccb0a06ced7289e81cd9d4c4377d7e21->enter($__internal_5f902dd0f7d57b3d28084d2e99bb9f39ccb0a06ced7289e81cd9d4c4377d7e21_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_1536cda60864a57360ae53663151cda448a325d10b8af836b63d2e0aa22ad4ae = $this->env->getExtension("native_profiler");
+        $__internal_1536cda60864a57360ae53663151cda448a325d10b8af836b63d2e0aa22ad4ae->enter($__internal_1536cda60864a57360ae53663151cda448a325d10b8af836b63d2e0aa22ad4ae_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         
-        $__internal_5f902dd0f7d57b3d28084d2e99bb9f39ccb0a06ced7289e81cd9d4c4377d7e21->leave($__internal_5f902dd0f7d57b3d28084d2e99bb9f39ccb0a06ced7289e81cd9d4c4377d7e21_prof);
+        $__internal_1536cda60864a57360ae53663151cda448a325d10b8af836b63d2e0aa22ad4ae->leave($__internal_1536cda60864a57360ae53663151cda448a325d10b8af836b63d2e0aa22ad4ae_prof);
 
     }
 
-    // line 64
+    // line 63
     public function block_javascripts($context, array $blocks = array())
     {
-        $__internal_374b162bb50294a9f86519e5eb5392b04805d216b930c8f0800617b59abe23f8 = $this->env->getExtension("native_profiler");
-        $__internal_374b162bb50294a9f86519e5eb5392b04805d216b930c8f0800617b59abe23f8->enter($__internal_374b162bb50294a9f86519e5eb5392b04805d216b930c8f0800617b59abe23f8_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
+        $__internal_98c473ee8206417db169cc343482fc01a78fcb6b2d7006b7a36f98cdc9f2b9a1 = $this->env->getExtension("native_profiler");
+        $__internal_98c473ee8206417db169cc343482fc01a78fcb6b2d7006b7a36f98cdc9f2b9a1->enter($__internal_98c473ee8206417db169cc343482fc01a78fcb6b2d7006b7a36f98cdc9f2b9a1_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
 
         
-        $__internal_374b162bb50294a9f86519e5eb5392b04805d216b930c8f0800617b59abe23f8->leave($__internal_374b162bb50294a9f86519e5eb5392b04805d216b930c8f0800617b59abe23f8_prof);
+        $__internal_98c473ee8206417db169cc343482fc01a78fcb6b2d7006b7a36f98cdc9f2b9a1->leave($__internal_98c473ee8206417db169cc343482fc01a78fcb6b2d7006b7a36f98cdc9f2b9a1_prof);
 
     }
 
@@ -202,6 +212,6 @@ class __TwigTemplate_676b3d1ed19a71228f621a380e9bce8faa71497af620d3512158a32835f
 
     public function getDebugInfo()
     {
-        return array (  183 => 64,  172 => 51,  161 => 8,  149 => 5,  140 => 65,  138 => 64,  134 => 63,  130 => 62,  118 => 52,  116 => 51,  93 => 31,  89 => 30,  85 => 29,  81 => 28,  77 => 27,  73 => 26,  69 => 25,  62 => 21,  46 => 9,  44 => 8,  40 => 7,  36 => 6,  32 => 5,  26 => 1,);
+        return array (  193 => 63,  182 => 50,  171 => 7,  159 => 5,  150 => 64,  148 => 63,  144 => 62,  140 => 61,  128 => 51,  126 => 50,  101 => 30,  95 => 29,  89 => 28,  83 => 27,  77 => 26,  71 => 25,  65 => 24,  58 => 20,  42 => 8,  40 => 7,  36 => 6,  32 => 5,  26 => 1,);
     }
 }

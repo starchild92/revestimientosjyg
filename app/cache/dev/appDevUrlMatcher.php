@@ -175,7 +175,6 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::indexAction',  '_route' => 'homepage',);
         }
 
-<<<<<<< HEAD
         if (0 === strpos($pathinfo, '/cliente')) {
             // cliente
             if (rtrim($pathinfo, '/') === '/cliente') {
@@ -233,7 +232,9 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'cliente_delete')), array (  '_controller' => 'JYG\\RevestimientosBundle\\Controller\\ClienteController::deleteAction',));
             }
             not_cliente_delete:
-=======
+
+        }
+
         if (0 === strpos($pathinfo, '/material')) {
             // material
             if (rtrim($pathinfo, '/') === '/material') {
@@ -351,7 +352,6 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'deposito_delete')), array (  '_controller' => 'JYG\\RevestimientosBundle\\Controller\\DepositoController::deleteAction',));
             }
             not_deposito_delete:
->>>>>>> 0d0ead52bb1352b193e5beee6d867bce38b40134
 
         }
 

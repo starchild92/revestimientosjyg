@@ -8,6 +8,13 @@
   font-family: "Lato";
   src: url('{{ asset('bundles/jygrevestimientos/fonts/Lato-Regular.ttf') }}') format('truetype');
 }
+
+/*!
+* Espacio para el container en el twig base y la navbar
+*/
+.navSpace{
+  margin-top: 50px;
+}
 html {
   font-family: sans-serif;
   -webkit-text-size-adjust: 100%;
