@@ -25,16 +25,9 @@ class Venta
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fecha", type="date")
+     * @ORM\Column(name="fecha", type="datetime")
      */
     private $fecha;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="numero", type="integer")
-     */
-    private $numero;
 
     /**
      * @ORM\ManyToOne(targetEntity="Cliente", inversedBy="identificador")
@@ -76,29 +69,6 @@ class Venta
     }
 
     /**
-     * Set numero
-     *
-     * @param integer $numero
-     * @return Venta
-     */
-    public function setNumero($numero)
-    {
-        $this->numero = $numero;
-
-        return $this;
-    }
-
-    /**
-     * Get numero
-     *
-     * @return integer 
-     */
-    public function getNumero()
-    {
-        return $this->numero;
-    }
-
-    /**
      * Set comprador
      *
      * @param \JYG\RevestimientosBundle\Entity\Cliente $comprador
@@ -121,7 +91,13 @@ class Venta
         return $this->comprador;
     }
 
-    public function __toString() {
+    public function __toString()
+    {
         return $this->comprador->getNombre();
+    }
+
+    public function __construct()
+    {
+        $this->fecha = new \DateTime();
     }
 }
