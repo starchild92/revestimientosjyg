@@ -34,7 +34,6 @@ class Deposito
      */
     private $material;
 
-
     /**
      * Get id
      *
@@ -66,5 +65,28 @@ class Deposito
     public function getNombrealmacen()
     {
         return $this->nombrealmacen;
+    }
+
+    /**
+     * Set material
+     *
+     * @param \JYG\RevestimientosBundle\Entity\Material $material
+     * @return Deposito
+     */
+    public function setMaterial(\JYG\RevestimientosBundle\Entity\Material $material = null)
+    {
+        $this->material = $material;
+    
+        return $this;
+    }
+
+    /**
+     * Get material
+     *
+     * @return \JYG\RevestimientosBundle\Entity\Material 
+     */
+    public function getMaterial()
+    {
+        return $this->material;
     }
 }

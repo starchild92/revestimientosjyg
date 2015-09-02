@@ -26,6 +26,7 @@ class Cliente
      * @var string
      *
      * @ORM\Column(name="rif", type="string", length=255)
+     * @ORM\OneToMany(targetEntity="Venta", mappedBy="comprador",cascade={"persist","remove"})
      */
     private $rif;
 

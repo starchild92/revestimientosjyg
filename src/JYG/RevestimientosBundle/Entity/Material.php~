@@ -216,4 +216,44 @@ class Material
     {
         return $this->tipo;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->almacenes = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add almacenes
+     *
+     * @param \JYG\RevestimientosBundle\Entity\Deposito $almacenes
+     * @return Material
+     */
+    public function addAlmacene(\JYG\RevestimientosBundle\Entity\Deposito $almacenes)
+    {
+        $this->almacenes[] = $almacenes;
+    
+        return $this;
+    }
+
+    /**
+     * Remove almacenes
+     *
+     * @param \JYG\RevestimientosBundle\Entity\Deposito $almacenes
+     */
+    public function removeAlmacene(\JYG\RevestimientosBundle\Entity\Deposito $almacenes)
+    {
+        $this->almacenes->removeElement($almacenes);
+    }
+
+    /**
+     * Get almacenes
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAlmacenes()
+    {
+        return $this->almacenes;
+    }
 }

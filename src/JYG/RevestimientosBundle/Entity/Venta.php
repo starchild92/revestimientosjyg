@@ -3,7 +3,6 @@
 namespace JYG\RevestimientosBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Venta
@@ -38,11 +37,10 @@ class Venta
     private $numero;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="cliente", type="string")
+     * @ORM\ManyToOne(targetEntity="Cliente", inversedBy="rif")
+     * @ORM\JoinColumn(name="cliente_id", referencedColumnName="id", onDelete="CASCADE")
      */
-    private $cliente;
+    private $comprador;
 
     /**
      * Get id
@@ -124,48 +122,25 @@ class Venta
     }
 
     /**
-     * Add items
+     * Set comprador
      *
-     * @param \JYG\RevestimientosBundle\Entity\Item $items
+     * @param \JYG\RevestimientosBundle\Entity\Cliente $comprador
      * @return Venta
      */
-    public function addItem(\JYG\RevestimientosBundle\Entity\Item $items)
+    public function setComprador(\JYG\RevestimientosBundle\Entity\Cliente $comprador = null)
     {
-        $this->items[] = $items;
+        $this->comprador = $comprador;
 
         return $this;
     }
 
     /**
-     * Remove items
+     * Get comprador
      *
-     * @param \JYG\RevestimientosBundle\Entity\Item $items
+     * @return \JYG\RevestimientosBundle\Entity\Cliente 
      */
-    public function removeItem(\JYG\RevestimientosBundle\Entity\Item $items)
+    public function getComprador()
     {
-        $this->items->removeElement($items);
-    }
-
-    /**
-     * Get items
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getItems()
-    {
-        return $this->items;
-    }
-
-    /**
-     * Set items
-     *
-     * @param string $items
-     * @return Venta
-     */
-    public function setItems($items)
-    {
-        $this->items = $items;
-
-        return $this;
+        return $this->comprador;
     }
 }
