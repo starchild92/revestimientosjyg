@@ -1,0 +1,34 @@
+{% extends 'JYGRevestimientosBundle::base.html.twig' %}
+
+{% block body -%}
+    <h1>Bitacora</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Login</th>
+                <td>{{ entity.login }}</td>
+            </tr>
+            <tr>
+                <th>Operacion</th>
+                <td>{{ entity.operacion }}</td>
+            </tr>
+            <tr>
+                <th>Fecha</th>
+                <td>{{ entity.fecha|date('Y-m-d H:i:s') }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('bitacora') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+{% endblock %}

@@ -1,0 +1,30 @@
+venta:
+    path:     /
+    defaults: { _controller: "JYGRevestimientosBundle:Venta:index" }
+
+venta_show:
+    path:     /{id}/show
+    defaults: { _controller: "JYGRevestimientosBundle:Venta:show" }
+
+venta_new:
+    path:     /new
+    defaults: { _controller: "JYGRevestimientosBundle:Venta:new" }
+
+venta_create:
+    path:     /create
+    defaults: { _controller: "JYGRevestimientosBundle:Venta:create" }
+    methods:  POST
+
+venta_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "JYGRevestimientosBundle:Venta:edit" }
+
+venta_update:
+    path:     /{id}/update
+    defaults: { _controller: "JYGRevestimientosBundle:Venta:update" }
+    methods:  [POST, PUT]
+
+venta_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "JYGRevestimientosBundle:Venta:delete" }
+    methods:  [POST, DELETE]
