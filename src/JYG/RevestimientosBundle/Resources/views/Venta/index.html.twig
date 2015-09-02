@@ -1,4 +1,4 @@
-{% extends '::base.html.twig' %}
+{% extends 'JYGRevestimientosBundle::base.html.twig' %}
 
 {% block body -%}
     <h1>Venta list</h1>
@@ -8,7 +8,7 @@
             <tr>
                 <th>Id</th>
                 <th>Fecha</th>
-                <th>Numero</th>
+                <th>Comprador</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -17,7 +17,7 @@
             <tr>
                 <td><a href="{{ path('venta_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
                 <td>{% if entity.fecha %}{{ entity.fecha|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{{ entity.numero }}</td>
+                <td>{{ entity.comprador }}</td>
                 <td>
                 <ul>
                     <li>

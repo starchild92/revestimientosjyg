@@ -34,6 +34,8 @@ class Deposito
      */
     private $material;
 
+<<<<<<< HEAD
+=======
     /**
      * @var float
      *
@@ -41,6 +43,7 @@ class Deposito
      */
     private $cantmaterialdisponible;
 
+>>>>>>> 0d0ead52bb1352b193e5beee6d867bce38b40134
     /**
      * Get id
      *

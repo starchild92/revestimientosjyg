@@ -262,6 +262,8 @@ class Material
     {
         return $this->almacenes;
     }
+<<<<<<< HEAD
+=======
 
     /**
      * Set venta
@@ -285,4 +287,5 @@ class Material
     {
         return $this->venta;
     }
+>>>>>>> 0d0ead52bb1352b193e5beee6d867bce38b40134
 }

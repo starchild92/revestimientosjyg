@@ -3,7 +3,6 @@
 namespace JYG\RevestimientosBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Venta
@@ -26,23 +25,15 @@ class Venta
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fecha", type="date")
+     * @ORM\Column(name="fecha", type="datetime")
      */
     private $fecha;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="numero", type="integer")
+     * @ORM\ManyToOne(targetEntity="Cliente", inversedBy="identificador")
+     * @ORM\JoinColumn(name="cliente_id", referencedColumnName="id", onDelete="CASCADE")
      */
-    private $numero;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="cliente", type="string")
-     */
-    private $cliente;
+    private $comprador;
 
     /**
      * @ORM\OneToMany(targetEntity="Material", mappedBy="venta")
@@ -90,44 +81,17 @@ class Venta
     }
 
     /**
-     * Set numero
+     * Set comprador
      *
-     * @param integer $numero
+<<<<<<< HEAD
+     * @param \JYG\RevestimientosBundle\Entity\Cliente $comprador
      * @return Venta
      */
-    public function setNumero($numero)
+    public function setComprador(\JYG\RevestimientosBundle\Entity\Cliente $comprador = null)
     {
-        $this->numero = $numero;
+        $this->comprador = $comprador;
 
-        return $this;
-    }
-
-    /**
-     * Get numero
-     *
-     * @return integer 
-     */
-    public function getNumero()
-    {
-        return $this->numero;
-    }
-
-    /**
-     * Set cliente
-     *
-     * @param string $cliente
-     * @return Venta
-     */
-    public function setCliente($cliente)
-    {
-        $this->cliente = $cliente;
-
-        return $this;
-    }
-
-    /**
-     * Get cliente
-     *
+=======
      * @return string 
      */
     public function getCliente()
@@ -153,10 +117,30 @@ class Venta
     {
         $this->materiales[] = $materiales;
     
+>>>>>>> 0d0ead52bb1352b193e5beee6d867bce38b40134
         return $this;
     }
 
     /**
+<<<<<<< HEAD
+     * Get comprador
+     *
+     * @return \JYG\RevestimientosBundle\Entity\Cliente 
+     */
+    public function getComprador()
+    {
+        return $this->comprador;
+    }
+
+    public function __toString()
+    {
+        return $this->comprador->getNombre();
+    }
+
+    public function __construct()
+    {
+        $this->fecha = new \DateTime();
+=======
      * Remove materiales
      *
      * @param \JYG\RevestimientosBundle\Entity\Material $materiales
@@ -187,6 +171,7 @@ class Venta
         $this->cantmatvendido = $cantmatvendido;
     
         return $this;
+>>>>>>> 0d0ead52bb1352b193e5beee6d867bce38b40134
     }
 
     /**

@@ -1,0 +1,30 @@
+cliente:
+    path:     /
+    defaults: { _controller: "JYGRevestimientosBundle:Cliente:index" }
+
+cliente_show:
+    path:     /{id}/show
+    defaults: { _controller: "JYGRevestimientosBundle:Cliente:show" }
+
+cliente_new:
+    path:     /new
+    defaults: { _controller: "JYGRevestimientosBundle:Cliente:new" }
+
+cliente_create:
+    path:     /create
+    defaults: { _controller: "JYGRevestimientosBundle:Cliente:create" }
+    methods:  POST
+
+cliente_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "JYGRevestimientosBundle:Cliente:edit" }
+
+cliente_update:
+    path:     /{id}/update
+    defaults: { _controller: "JYGRevestimientosBundle:Cliente:update" }
+    methods:  [POST, PUT]
+
+cliente_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "JYGRevestimientosBundle:Cliente:delete" }
+    methods:  [POST, DELETE]

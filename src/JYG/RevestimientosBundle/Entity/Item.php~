@@ -39,8 +39,6 @@ class Item
      * @var string
      *
      * @ORM\Column(name="codigo", type="string", length=255)
-     * @ORM\ManyToOne(targetEntity="Venta", inversedBy="items")
-     * @ORM\JoinColumn(name="venta_id", referencedColumnName="id")
      */
     private $codigo;
 

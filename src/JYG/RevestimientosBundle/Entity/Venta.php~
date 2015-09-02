@@ -3,7 +3,6 @@
 namespace JYG\RevestimientosBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Venta
@@ -38,6 +37,12 @@ class Venta
     private $numero;
 
     /**
+<<<<<<< HEAD
+     * @ORM\ManyToOne(targetEntity="Cliente", inversedBy="identificador")
+     * @ORM\JoinColumn(name="cliente_id", referencedColumnName="id", onDelete="CASCADE")
+     */
+    private $comprador;
+=======
      * @var string
      *
      * @ORM\Column(name="cliente", type="string")
@@ -55,6 +60,7 @@ class Venta
      * @ORM\Column(name="cantmatvendido", type="float")
      */
     private $cantmatvendido;
+>>>>>>> 0d0ead52bb1352b193e5beee6d867bce38b40134
 
     /**
      * Get id
@@ -113,28 +119,32 @@ class Venta
     }
 
     /**
-     * Set cliente
+     * Set comprador
      *
-     * @param string $cliente
+     * @param \JYG\RevestimientosBundle\Entity\Cliente $comprador
      * @return Venta
      */
-    public function setCliente($cliente)
+    public function setComprador(\JYG\RevestimientosBundle\Entity\Cliente $comprador = null)
     {
-        $this->cliente = $cliente;
+        $this->comprador = $comprador;
 
         return $this;
     }
 
     /**
-     * Get cliente
+     * Get comprador
      *
-     * @return string 
+     * @return \JYG\RevestimientosBundle\Entity\Cliente 
      */
-    public function getCliente()
+    public function getComprador()
     {
-        return $this->cliente;
+        return $this->comprador;
     }
 
+<<<<<<< HEAD
+    public function __toString() {
+        return $this->comprador->getNombre();
+=======
     /**
      * Constructor
      */
@@ -174,5 +184,6 @@ class Venta
     public function getMateriales()
     {
         return $this->materiales;
+>>>>>>> 0d0ead52bb1352b193e5beee6d867bce38b40134
     }
 }
