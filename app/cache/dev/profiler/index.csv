@@ -305,3 +305,20 @@ b2aec5,127.0.0.1,GET,http://revestimientos/app_dev.php/contacto,1441227536,,200
 =======
 >>>>>>> 0d0ead52bb1352b193e5beee6d867bce38b40134
 >>>>>>> 46573412be1fb4c82778e0e6c2a661b1674abd1c
+379e2f,127.0.0.1,GET,http://revestimientos/app_dev.php/,1441232363,06a051,200
+06a051,127.0.0.1,GET,http://revestimientos/app_dev.php/,1441232364,,500
+04ae9d,127.0.0.1,GET,http://revestimientos/app_dev.php/cliente,1441232540,,301
+8ae2be,127.0.0.1,GET,http://revestimientos/app_dev.php/cliente/,1441232544,1b1ba1,200
+1b1ba1,127.0.0.1,GET,http://revestimientos/app_dev.php/cliente/,1441232544,,500
+6585ae,127.0.0.1,GET,http://revestimientos/app_dev.php/cliente/,1441232839,87249c,200
+87249c,127.0.0.1,GET,http://revestimientos/app_dev.php/cliente/,1441232840,,500
+755dd4,127.0.0.1,GET,http://revestimientos/app_dev.php/cliente/,1441232903,6229ec,200
+6229ec,127.0.0.1,GET,http://revestimientos/app_dev.php/cliente/,1441232903,,500
+384987,127.0.0.1,GET,http://revestimientos/app_dev.php/cliente/,1441232967,,200
+a28db9,127.0.0.1,GET,http://revestimientos/app_dev.php/cliente/new,1441232983,,200
+db6b07,127.0.0.1,GET,http://revestimientos/app_dev.php/,1441232991,,200
+5bd96a,127.0.0.1,GET,http://revestimientos/app_dev.php/material,1441233003,,301
+f59288,127.0.0.1,GET,http://revestimientos/app_dev.php/material/,1441233006,,200
+b8fbab,127.0.0.1,GET,http://revestimientos/app_dev.php/material/new,1441233014,9f16b6,200
+9f16b6,127.0.0.1,GET,http://revestimientos/app_dev.php/material/new,1441233014,,500
+c1ea7f,127.0.0.1,GET,http://revestimientos/app_dev.php/material/new,1441233067,,200

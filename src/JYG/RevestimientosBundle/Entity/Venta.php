@@ -83,28 +83,18 @@ class Venta
     /**
      * Set comprador
      *
-<<<<<<< HEAD
      * @param \JYG\RevestimientosBundle\Entity\Cliente $comprador
      * @return Venta
      */
     public function setComprador(\JYG\RevestimientosBundle\Entity\Cliente $comprador = null)
     {
         $this->comprador = $comprador;
-
-=======
-     * @return string 
-     */
-    public function getCliente()
-    {
-        return $this->cliente;
     }
 
-    /**
-     * Constructor
-     */
     public function __construct()
     {
         $this->materiales = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->fecha = new \DateTime();
     }
 
     /**
@@ -116,13 +106,10 @@ class Venta
     public function addMateriale(\JYG\RevestimientosBundle\Entity\Material $materiales)
     {
         $this->materiales[] = $materiales;
-    
->>>>>>> 0d0ead52bb1352b193e5beee6d867bce38b40134
         return $this;
     }
 
     /**
-<<<<<<< HEAD
      * Get comprador
      *
      * @return \JYG\RevestimientosBundle\Entity\Cliente 
@@ -137,10 +124,9 @@ class Venta
         return $this->comprador->getNombre();
     }
 
-    public function __construct()
-    {
-        $this->fecha = new \DateTime();
-=======
+    
+
+    /**
      * Remove materiales
      *
      * @param \JYG\RevestimientosBundle\Entity\Material $materiales
@@ -171,7 +157,6 @@ class Venta
         $this->cantmatvendido = $cantmatvendido;
     
         return $this;
->>>>>>> 0d0ead52bb1352b193e5beee6d867bce38b40134
     }
 
     /**
