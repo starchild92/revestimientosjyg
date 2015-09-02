@@ -35,6 +35,13 @@ class Deposito
     private $material;
 
     /**
+     * @var float
+     *
+     * @ORM\Column(name="cantmaterialdisponible", type="float")
+     */
+    private $cantmaterialdisponible;
+
+    /**
      * Get id
      *
      * @return integer 
@@ -88,5 +95,28 @@ class Deposito
     public function getMaterial()
     {
         return $this->material;
+    }
+
+    /**
+     * Set cantmaterialdisponible
+     *
+     * @param float $cantmaterialdisponible
+     * @return Deposito
+     */
+    public function setCantmaterialdisponible($cantmaterialdisponible)
+    {
+        $this->cantmaterialdisponible = $cantmaterialdisponible;
+    
+        return $this;
+    }
+
+    /**
+     * Get cantmaterialdisponible
+     *
+     * @return float 
+     */
+    public function getCantmaterialdisponible()
+    {
+        return $this->cantmaterialdisponible;
     }
 }
