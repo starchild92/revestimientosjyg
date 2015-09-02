@@ -41,23 +41,13 @@ class Venta
      * @var string
      *
      * @ORM\Column(name="cliente", type="string")
-     * @ORM\ManyToOne(targetEntity="Cliente")
-     * @ORM\JoinColumn(name="cliente_id", referencedColumnName="id")
      */
     private $cliente;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="items", type="string")
-     * @ORM\OneToMany(targetEntity="Item", mappedBy="codigo")
+     * @ORM\OneToMany(targetEntity="Material", mappedBy="venta",cascade={"persist","remove"})
      */
-    protected $items;
-
-    public function __construct()
-    {
-        $this->items = new ArrayCollection();
-    }
+    private $materiales;   
 
     /**
      * Get id
@@ -169,5 +159,18 @@ class Venta
     public function getItems()
     {
         return $this->items;
+    }
+
+    /**
+     * Set items
+     *
+     * @param string $items
+     * @return Venta
+     */
+    public function setItems($items)
+    {
+        $this->items = $items;
+
+        return $this;
     }
 }

@@ -68,6 +68,12 @@ class Material
      */
     private $almacenes;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Venta", inversedBy="materiales")
+     * @ORM\JoinColumn(name="venta_id", referencedColumnName="id", onDelete="CASCADE")
+     */
+    private $venta;
+
 
     /**
      * Get id
@@ -255,5 +261,28 @@ class Material
     public function getAlmacenes()
     {
         return $this->almacenes;
+    }
+
+    /**
+     * Set venta
+     *
+     * @param \JYG\RevestimientosBundle\Entity\Venta $venta
+     * @return Material
+     */
+    public function setVenta(\JYG\RevestimientosBundle\Entity\Venta $venta = null)
+    {
+        $this->venta = $venta;
+    
+        return $this;
+    }
+
+    /**
+     * Get venta
+     *
+     * @return \JYG\RevestimientosBundle\Entity\Venta 
+     */
+    public function getVenta()
+    {
+        return $this->venta;
     }
 }

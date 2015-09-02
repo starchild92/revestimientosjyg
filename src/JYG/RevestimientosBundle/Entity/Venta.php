@@ -45,6 +45,11 @@ class Venta
     private $cliente;
 
     /**
+     * @ORM\OneToMany(targetEntity="Material", mappedBy="venta",cascade={"persist","remove"})
+     */
+    private $materiales;   
+
+    /**
      * Get id
      *
      * @return integer 
@@ -167,5 +172,45 @@ class Venta
         $this->items = $items;
 
         return $this;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->materiales = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add materiales
+     *
+     * @param \JYG\RevestimientosBundle\Entity\Material $materiales
+     * @return Venta
+     */
+    public function addMateriale(\JYG\RevestimientosBundle\Entity\Material $materiales)
+    {
+        $this->materiales[] = $materiales;
+    
+        return $this;
+    }
+
+    /**
+     * Remove materiales
+     *
+     * @param \JYG\RevestimientosBundle\Entity\Material $materiales
+     */
+    public function removeMateriale(\JYG\RevestimientosBundle\Entity\Material $materiales)
+    {
+        $this->materiales->removeElement($materiales);
+    }
+
+    /**
+     * Get materiales
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getMateriales()
+    {
+        return $this->materiales;
     }
 }
