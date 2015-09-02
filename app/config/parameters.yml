@@ -5,8 +5,10 @@ parameters:
     database_name: revestimientosjyg
     database_user: laboratorio
     database_password: 123456
-    mailer_transport: smtp
-    mailer_host: 127.0.0.1
-    mailer_user: null
-    mailer_password: null
+    mailer_transport: "gmail"
+    mailer_encryption: "ssl"
+    mailer_auth_mode: "login"
+    mailer_host: "smtp.gmail.com"
+    mailer_user: "edy992.6"
+    mailer_password: "119212541412"
     secret: 527c5d63a870b91224e7b31971e3fb9b514e7237
