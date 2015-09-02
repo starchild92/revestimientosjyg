@@ -1,0 +1,70 @@
+<?php
+
+namespace JYG\RevestimientosBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Deposito
+ *
+ * @ORM\Table()
+ * @ORM\Entity(repositoryClass="JYG\RevestimientosBundle\Entity\DepositoRepository")
+ */
+class Deposito
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nombrealmacen", type="string", length=255)
+     */
+    private $nombrealmacen;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Material", inversedBy="almacenes")
+     * @ORM\JoinColumn(name="material_id", referencedColumnName="id", onDelete="CASCADE")
+     */
+    private $material;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set nombrealmacen
+     *
+     * @param string $nombrealmacen
+     * @return Deposito
+     */
+    public function setNombrealmacen($nombrealmacen)
+    {
+        $this->nombrealmacen = $nombrealmacen;
+    
+        return $this;
+    }
+
+    /**
+     * Get nombrealmacen
+     *
+     * @return string 
+     */
+    public function getNombrealmacen()
+    {
+        return $this->nombrealmacen;
+    }
+}
