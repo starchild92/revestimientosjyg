@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ad6150,127.0.0.1,GET,http://localhost:8000/app_dev.php/,1441164342,,200
 6ec7b4,127.0.0.1,GET,http://localhost:8000/app_dev.php/ayuda,1441164357,,200
 34919e,127.0.0.1,GET,http://localhost:8000/app_dev.php/contacto,1441164364,,200
@@ -217,3 +218,24 @@ c1d373,127.0.0.1,GET,http://localhost:8000/app_dev.php/venta/4/show,1441214446,,
 eb76d7,127.0.0.1,GET,http://localhost:8000/app_dev.php/venta/,1441214450,,200
 28dd61,127.0.0.1,GET,http://localhost:8000/app_dev.php/venta/,1441214561,,200
 25a05b,127.0.0.1,GET,http://localhost:8000/app_dev.php/,1441214569,,200
+=======
+5ef3a0,127.0.0.1,GET,http://revestimientos/app_dev.php/deposito,1441212800,,301
+8c87ab,127.0.0.1,GET,http://revestimientos/app_dev.php/deposito/,1441212804,,200
+370186,127.0.0.1,GET,http://revestimientos/app_dev.php/deposito/new,1441212833,,200
+767611,127.0.0.1,GET,http://revestimientos/app_dev.php/deposito/,1441212843,,200
+e63243,127.0.0.1,GET,http://revestimientos/app_dev.php/material,1441212930,,301
+676421,127.0.0.1,GET,http://revestimientos/app_dev.php/material/,1441212932,,200
+1bb89b,127.0.0.1,GET,http://revestimientos/app_dev.php/material/new,1441212938,,200
+7a065d,127.0.0.1,GET,http://revestimientos/app_dev.php/material/,1441212952,,200
+de520d,127.0.0.1,GET,http://revestimientos/app_dev.php/venta,1441212974,,301
+fd01ad,127.0.0.1,GET,http://revestimientos/app_dev.php/venta/,1441212975,,200
+7c3a66,127.0.0.1,GET,http://revestimientos/app_dev.php/venta/new,1441212982,1eba20,200
+1eba20,127.0.0.1,GET,http://revestimientos/app_dev.php/venta/new,1441212982,,500
+346785,127.0.0.1,GET,http://revestimientos/app_dev.php/material,1441214251,,301
+0d6a9e,127.0.0.1,GET,http://revestimientos/app_dev.php/material/,1441214257,,200
+42604a,127.0.0.1,GET,http://revestimientos/app_dev.php/material/new,1441214274,,200
+a15573,127.0.0.1,GET,http://revestimientos/app_dev.php/material/,1441214280,,200
+22ca16,127.0.0.1,GET,http://revestimientos/app_dev.php/,1441214285,,200
+ecdfba,127.0.0.1,GET,http://revestimientos/app_dev.php/contacto,1441214288,,200
+7c3014,127.0.0.1,GET,http://revestimientos/app_dev.php/,1441214438,,200
+>>>>>>> 0d0ead52bb1352b193e5beee6d867bce38b40134

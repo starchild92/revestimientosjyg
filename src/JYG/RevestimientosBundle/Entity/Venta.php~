@@ -37,10 +37,30 @@ class Venta
     private $numero;
 
     /**
+<<<<<<< HEAD
      * @ORM\ManyToOne(targetEntity="Cliente", inversedBy="identificador")
      * @ORM\JoinColumn(name="cliente_id", referencedColumnName="id", onDelete="CASCADE")
      */
     private $comprador;
+=======
+     * @var string
+     *
+     * @ORM\Column(name="cliente", type="string")
+     */
+    private $cliente;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Material", mappedBy="venta")
+     */
+    private $materiales;   
+
+    /**
+     * @var \float
+     *
+     * @ORM\Column(name="cantmatvendido", type="float")
+     */
+    private $cantmatvendido;
+>>>>>>> 0d0ead52bb1352b193e5beee6d867bce38b40134
 
     /**
      * Get id
@@ -121,7 +141,49 @@ class Venta
         return $this->comprador;
     }
 
+<<<<<<< HEAD
     public function __toString() {
         return $this->comprador->getNombre();
+=======
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->materiales = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add materiales
+     *
+     * @param \JYG\RevestimientosBundle\Entity\Material $materiales
+     * @return Venta
+     */
+    public function addMateriale(\JYG\RevestimientosBundle\Entity\Material $materiales)
+    {
+        $this->materiales[] = $materiales;
+    
+        return $this;
+    }
+
+    /**
+     * Remove materiales
+     *
+     * @param \JYG\RevestimientosBundle\Entity\Material $materiales
+     */
+    public function removeMateriale(\JYG\RevestimientosBundle\Entity\Material $materiales)
+    {
+        $this->materiales->removeElement($materiales);
+    }
+
+    /**
+     * Get materiales
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getMateriales()
+    {
+        return $this->materiales;
+>>>>>>> 0d0ead52bb1352b193e5beee6d867bce38b40134
     }
 }

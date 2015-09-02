@@ -36,6 +36,18 @@ class Venta
     private $comprador;
 
     /**
+     * @ORM\OneToMany(targetEntity="Material", mappedBy="venta")
+     */
+    private $materiales;   
+
+    /**
+     * @var \float
+     *
+     * @ORM\Column(name="cantmatvendido", type="float")
+     */
+    private $cantmatvendido;
+
+    /**
      * Get id
      *
      * @return integer 
@@ -71,6 +83,7 @@ class Venta
     /**
      * Set comprador
      *
+<<<<<<< HEAD
      * @param \JYG\RevestimientosBundle\Entity\Cliente $comprador
      * @return Venta
      */
@@ -78,10 +91,38 @@ class Venta
     {
         $this->comprador = $comprador;
 
+=======
+     * @return string 
+     */
+    public function getCliente()
+    {
+        return $this->cliente;
+    }
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->materiales = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add materiales
+     *
+     * @param \JYG\RevestimientosBundle\Entity\Material $materiales
+     * @return Venta
+     */
+    public function addMateriale(\JYG\RevestimientosBundle\Entity\Material $materiales)
+    {
+        $this->materiales[] = $materiales;
+    
+>>>>>>> 0d0ead52bb1352b193e5beee6d867bce38b40134
         return $this;
     }
 
     /**
+<<<<<<< HEAD
      * Get comprador
      *
      * @return \JYG\RevestimientosBundle\Entity\Cliente 
@@ -99,5 +140,47 @@ class Venta
     public function __construct()
     {
         $this->fecha = new \DateTime();
+=======
+     * Remove materiales
+     *
+     * @param \JYG\RevestimientosBundle\Entity\Material $materiales
+     */
+    public function removeMateriale(\JYG\RevestimientosBundle\Entity\Material $materiales)
+    {
+        $this->materiales->removeElement($materiales);
+    }
+
+    /**
+     * Get materiales
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getMateriales()
+    {
+        return $this->materiales;
+    }
+
+    /**
+     * Set cantmatvendido
+     *
+     * @param float $cantmatvendido
+     * @return Venta
+     */
+    public function setCantmatvendido($cantmatvendido)
+    {
+        $this->cantmatvendido = $cantmatvendido;
+    
+        return $this;
+>>>>>>> 0d0ead52bb1352b193e5beee6d867bce38b40134
+    }
+
+    /**
+     * Get cantmatvendido
+     *
+     * @return float 
+     */
+    public function getCantmatvendido()
+    {
+        return $this->cantmatvendido;
     }
 }
