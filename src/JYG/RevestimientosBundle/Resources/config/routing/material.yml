@@ -1,0 +1,30 @@
+material:
+    path:     /
+    defaults: { _controller: "JYGRevestimientosBundle:Material:index" }
+
+material_show:
+    path:     /{id}/show
+    defaults: { _controller: "JYGRevestimientosBundle:Material:show" }
+
+material_new:
+    path:     /new
+    defaults: { _controller: "JYGRevestimientosBundle:Material:new" }
+
+material_create:
+    path:     /create
+    defaults: { _controller: "JYGRevestimientosBundle:Material:create" }
+    methods:  POST
+
+material_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "JYGRevestimientosBundle:Material:edit" }
+
+material_update:
+    path:     /{id}/update
+    defaults: { _controller: "JYGRevestimientosBundle:Material:update" }
+    methods:  [POST, PUT]
+
+material_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "JYGRevestimientosBundle:Material:delete" }
+    methods:  [POST, DELETE]

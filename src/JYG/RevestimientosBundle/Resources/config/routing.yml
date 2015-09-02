@@ -1,3 +1,11 @@
+jyg_revestimientos_material:
+    resource: "@JYGRevestimientosBundle/Resources/config/routing/material.yml"
+    prefix:   /material
+
+jyg_revestimientos_deposito:
+    resource: "@JYGRevestimientosBundle/Resources/config/routing/deposito.yml"
+    prefix:   /deposito
+
 jyg_revestimientos_item:
     resource: "@JYGRevestimientosBundle/Resources/config/routing/item.yml"
     prefix:   /item

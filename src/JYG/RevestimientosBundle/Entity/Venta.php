@@ -45,9 +45,16 @@ class Venta
     private $cliente;
 
     /**
-     * @ORM\OneToMany(targetEntity="Material", mappedBy="venta",cascade={"persist","remove"})
+     * @ORM\OneToMany(targetEntity="Material", mappedBy="venta")
      */
     private $materiales;   
+
+    /**
+     * @var \float
+     *
+     * @ORM\Column(name="cantmatvendido", type="float")
+     */
+    private $cantmatvendido;
 
     /**
      * Get id
@@ -129,51 +136,6 @@ class Venta
     }
 
     /**
-     * Add items
-     *
-     * @param \JYG\RevestimientosBundle\Entity\Item $items
-     * @return Venta
-     */
-    public function addItem(\JYG\RevestimientosBundle\Entity\Item $items)
-    {
-        $this->items[] = $items;
-
-        return $this;
-    }
-
-    /**
-     * Remove items
-     *
-     * @param \JYG\RevestimientosBundle\Entity\Item $items
-     */
-    public function removeItem(\JYG\RevestimientosBundle\Entity\Item $items)
-    {
-        $this->items->removeElement($items);
-    }
-
-    /**
-     * Get items
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getItems()
-    {
-        return $this->items;
-    }
-
-    /**
-     * Set items
-     *
-     * @param string $items
-     * @return Venta
-     */
-    public function setItems($items)
-    {
-        $this->items = $items;
-
-        return $this;
-    }
-    /**
      * Constructor
      */
     public function __construct()
@@ -212,5 +174,28 @@ class Venta
     public function getMateriales()
     {
         return $this->materiales;
+    }
+
+    /**
+     * Set cantmatvendido
+     *
+     * @param float $cantmatvendido
+     * @return Venta
+     */
+    public function setCantmatvendido($cantmatvendido)
+    {
+        $this->cantmatvendido = $cantmatvendido;
+    
+        return $this;
+    }
+
+    /**
+     * Get cantmatvendido
+     *
+     * @return float 
+     */
+    public function getCantmatvendido()
+    {
+        return $this->cantmatvendido;
     }
 }

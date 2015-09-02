@@ -175,6 +175,126 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::indexAction',  '_route' => 'homepage',);
         }
 
+        if (0 === strpos($pathinfo, '/material')) {
+            // material
+            if (rtrim($pathinfo, '/') === '/material') {
+                if (substr($pathinfo, -1) !== '/') {
+                    return $this->redirect($pathinfo.'/', 'material');
+                }
+
+                return array (  '_controller' => 'JYG\\RevestimientosBundle\\Controller\\MaterialController::indexAction',  '_route' => 'material',);
+            }
+
+            // material_show
+            if (preg_match('#^/material/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'material_show')), array (  '_controller' => 'JYG\\RevestimientosBundle\\Controller\\MaterialController::showAction',));
+            }
+
+            // material_new
+            if ($pathinfo === '/material/new') {
+                return array (  '_controller' => 'JYG\\RevestimientosBundle\\Controller\\MaterialController::newAction',  '_route' => 'material_new',);
+            }
+
+            // material_create
+            if ($pathinfo === '/material/create') {
+                if ($this->context->getMethod() != 'POST') {
+                    $allow[] = 'POST';
+                    goto not_material_create;
+                }
+
+                return array (  '_controller' => 'JYG\\RevestimientosBundle\\Controller\\MaterialController::createAction',  '_route' => 'material_create',);
+            }
+            not_material_create:
+
+            // material_edit
+            if (preg_match('#^/material/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'material_edit')), array (  '_controller' => 'JYG\\RevestimientosBundle\\Controller\\MaterialController::editAction',));
+            }
+
+            // material_update
+            if (preg_match('#^/material/(?P<id>[^/]++)/update$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('POST', 'PUT'))) {
+                    $allow = array_merge($allow, array('POST', 'PUT'));
+                    goto not_material_update;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'material_update')), array (  '_controller' => 'JYG\\RevestimientosBundle\\Controller\\MaterialController::updateAction',));
+            }
+            not_material_update:
+
+            // material_delete
+            if (preg_match('#^/material/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('POST', 'DELETE'))) {
+                    $allow = array_merge($allow, array('POST', 'DELETE'));
+                    goto not_material_delete;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'material_delete')), array (  '_controller' => 'JYG\\RevestimientosBundle\\Controller\\MaterialController::deleteAction',));
+            }
+            not_material_delete:
+
+        }
+
+        if (0 === strpos($pathinfo, '/deposito')) {
+            // deposito
+            if (rtrim($pathinfo, '/') === '/deposito') {
+                if (substr($pathinfo, -1) !== '/') {
+                    return $this->redirect($pathinfo.'/', 'deposito');
+                }
+
+                return array (  '_controller' => 'JYG\\RevestimientosBundle\\Controller\\DepositoController::indexAction',  '_route' => 'deposito',);
+            }
+
+            // deposito_show
+            if (preg_match('#^/deposito/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'deposito_show')), array (  '_controller' => 'JYG\\RevestimientosBundle\\Controller\\DepositoController::showAction',));
+            }
+
+            // deposito_new
+            if ($pathinfo === '/deposito/new') {
+                return array (  '_controller' => 'JYG\\RevestimientosBundle\\Controller\\DepositoController::newAction',  '_route' => 'deposito_new',);
+            }
+
+            // deposito_create
+            if ($pathinfo === '/deposito/create') {
+                if ($this->context->getMethod() != 'POST') {
+                    $allow[] = 'POST';
+                    goto not_deposito_create;
+                }
+
+                return array (  '_controller' => 'JYG\\RevestimientosBundle\\Controller\\DepositoController::createAction',  '_route' => 'deposito_create',);
+            }
+            not_deposito_create:
+
+            // deposito_edit
+            if (preg_match('#^/deposito/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'deposito_edit')), array (  '_controller' => 'JYG\\RevestimientosBundle\\Controller\\DepositoController::editAction',));
+            }
+
+            // deposito_update
+            if (preg_match('#^/deposito/(?P<id>[^/]++)/update$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('POST', 'PUT'))) {
+                    $allow = array_merge($allow, array('POST', 'PUT'));
+                    goto not_deposito_update;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'deposito_update')), array (  '_controller' => 'JYG\\RevestimientosBundle\\Controller\\DepositoController::updateAction',));
+            }
+            not_deposito_update:
+
+            // deposito_delete
+            if (preg_match('#^/deposito/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('POST', 'DELETE'))) {
+                    $allow = array_merge($allow, array('POST', 'DELETE'));
+                    goto not_deposito_delete;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'deposito_delete')), array (  '_controller' => 'JYG\\RevestimientosBundle\\Controller\\DepositoController::deleteAction',));
+            }
+            not_deposito_delete:
+
+        }
+
         if (0 === strpos($pathinfo, '/item')) {
             // item
             if (rtrim($pathinfo, '/') === '/item') {

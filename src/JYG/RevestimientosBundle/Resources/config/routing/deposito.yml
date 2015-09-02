@@ -1,0 +1,30 @@
+deposito:
+    path:     /
+    defaults: { _controller: "JYGRevestimientosBundle:Deposito:index" }
+
+deposito_show:
+    path:     /{id}/show
+    defaults: { _controller: "JYGRevestimientosBundle:Deposito:show" }
+
+deposito_new:
+    path:     /new
+    defaults: { _controller: "JYGRevestimientosBundle:Deposito:new" }
+
+deposito_create:
+    path:     /create
+    defaults: { _controller: "JYGRevestimientosBundle:Deposito:create" }
+    methods:  POST
+
+deposito_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "JYGRevestimientosBundle:Deposito:edit" }
+
+deposito_update:
+    path:     /{id}/update
+    defaults: { _controller: "JYGRevestimientosBundle:Deposito:update" }
+    methods:  [POST, PUT]
+
+deposito_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "JYGRevestimientosBundle:Deposito:delete" }
+    methods:  [POST, DELETE]

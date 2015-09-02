@@ -45,9 +45,16 @@ class Venta
     private $cliente;
 
     /**
-     * @ORM\OneToMany(targetEntity="Material", mappedBy="venta",cascade={"persist","remove"})
+     * @ORM\OneToMany(targetEntity="Material", mappedBy="venta")
      */
     private $materiales;   
+
+    /**
+     * @var \float
+     *
+     * @ORM\Column(name="cantmatvendido", type="float")
+     */
+    private $cantmatvendido;
 
     /**
      * Get id
@@ -129,48 +136,43 @@ class Venta
     }
 
     /**
-     * Add items
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->materiales = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add materiales
      *
-     * @param \JYG\RevestimientosBundle\Entity\Item $items
+     * @param \JYG\RevestimientosBundle\Entity\Material $materiales
      * @return Venta
      */
-    public function addItem(\JYG\RevestimientosBundle\Entity\Item $items)
+    public function addMateriale(\JYG\RevestimientosBundle\Entity\Material $materiales)
     {
-        $this->items[] = $items;
-
+        $this->materiales[] = $materiales;
+    
         return $this;
     }
 
     /**
-     * Remove items
+     * Remove materiales
      *
-     * @param \JYG\RevestimientosBundle\Entity\Item $items
+     * @param \JYG\RevestimientosBundle\Entity\Material $materiales
      */
-    public function removeItem(\JYG\RevestimientosBundle\Entity\Item $items)
+    public function removeMateriale(\JYG\RevestimientosBundle\Entity\Material $materiales)
     {
-        $this->items->removeElement($items);
+        $this->materiales->removeElement($materiales);
     }
 
     /**
-     * Get items
+     * Get materiales
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getItems()
+    public function getMateriales()
     {
-        return $this->items;
-    }
-
-    /**
-     * Set items
-     *
-     * @param string $items
-     * @return Venta
-     */
-    public function setItems($items)
-    {
-        $this->items = $items;
-
-        return $this;
+        return $this->materiales;
     }
 }

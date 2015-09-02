@@ -70,7 +70,7 @@ class Material
 
     /**
      * @ORM\ManyToOne(targetEntity="Venta", inversedBy="materiales")
-     * @ORM\JoinColumn(name="venta_id", referencedColumnName="id", onDelete="CASCADE")
+     * @ORM\JoinColumn(name="venta_id", referencedColumnName="id")
      */
     private $venta;
 
