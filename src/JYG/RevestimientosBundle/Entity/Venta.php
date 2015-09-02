@@ -91,9 +91,6 @@ class Venta
         $this->comprador = $comprador;
     }
 
-    /**
-     * Constructor
-     */
     public function __construct()
     {
         $this->materiales = new \Doctrine\Common\Collections\ArrayCollection();
@@ -109,6 +106,10 @@ class Venta
     public function addMateriale(\JYG\RevestimientosBundle\Entity\Material $materiales)
     {
         $this->materiales[] = $materiales;
+<<<<<<< HEAD
+=======
+        return $this;
+>>>>>>> b730b3676bd61a0c5f7269e4cdb064855d4d4414
     }
 
     /**
@@ -126,7 +127,13 @@ class Venta
         return $this->comprador->getNombre();
     }
 
+<<<<<<< HEAD
      /**
+=======
+    
+
+    /**
+>>>>>>> b730b3676bd61a0c5f7269e4cdb064855d4d4414
      * Remove materiales
      *
      * @param \JYG\RevestimientosBundle\Entity\Material $materiales

@@ -5,25 +5,22 @@
     <parameter key="kernel.environment">dev</parameter>
     <parameter key="kernel.debug">true</parameter>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <parameter key="kernel.name">ap_</parameter>
     <parameter key="kernel.cache_dir">C:/wamp/www/revestimientosjyg/app/cache/dev</parameter>
     <parameter key="kernel.logs_dir">C:\wamp\www\revestimientosjyg\app\logs</parameter>
 =======
 <<<<<<< HEAD
+=======
+>>>>>>> b730b3676bd61a0c5f7269e4cdb064855d4d4414
     <parameter key="kernel.name">app</parameter>
     <parameter key="kernel.cache_dir">C:\xampp\htdocs\revestimientosjyg\app\cache\dev</parameter>
-=======
-<<<<<<< HEAD
-    <parameter key="kernel.name">app</parameter>
-    <parameter key="kernel.cache_dir">C:\wamp\www\revestimientosjyg\app\cache\dev</parameter>
-    <parameter key="kernel.logs_dir">C:\wamp\www\revestimientosjyg\app\logs</parameter>
-=======
-    <parameter key="kernel.name">ap_</parameter>
-    <parameter key="kernel.cache_dir">C:/xampp/htdocs/revestimientosjyg/app/cache/dev</parameter>
->>>>>>> 46573412be1fb4c82778e0e6c2a661b1674abd1c
     <parameter key="kernel.logs_dir">C:\xampp\htdocs\revestimientosjyg\app\logs</parameter>
+<<<<<<< HEAD
 >>>>>>> 0d0ead52bb1352b193e5beee6d867bce38b40134
 >>>>>>> 53e097eb132c967e34a26f2ca2cfc1305ef9015b
+=======
+>>>>>>> b730b3676bd61a0c5f7269e4cdb064855d4d4414
     <parameter key="kernel.bundles" type="collection">
       <parameter key="FrameworkBundle">Symfony\Bundle\FrameworkBundle\FrameworkBundle</parameter>
       <parameter key="SecurityBundle">Symfony\Bundle\SecurityBundle\SecurityBundle</parameter>
@@ -124,6 +121,7 @@
       <parameter key="gc_probability">1</parameter>
     </parameter>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <parameter key="session.save_path">C:/wamp/www/revestimientosjyg/app/cache/dev/sessions</parameter>
 =======
 <<<<<<< HEAD
@@ -136,6 +134,9 @@
 >>>>>>> 0d0ead52bb1352b193e5beee6d867bce38b40134
 >>>>>>> 46573412be1fb4c82778e0e6c2a661b1674abd1c
 >>>>>>> 53e097eb132c967e34a26f2ca2cfc1305ef9015b
+=======
+    <parameter key="session.save_path">C:\xampp\htdocs\revestimientosjyg\app\cache\dev/sessions</parameter>
+>>>>>>> b730b3676bd61a0c5f7269e4cdb064855d4d4414
     <parameter key="session.metadata.update_threshold">0</parameter>
     <parameter key="security.secure_random.class">Symfony\Component\Security\Core\Util\SecureRandom</parameter>
     <parameter key="form.resolved_type_factory.class">Symfony\Component\Form\ResolvedFormTypeFactory</parameter>
@@ -193,6 +194,7 @@
     <parameter key="profiler_listener.only_exceptions">false</parameter>
     <parameter key="profiler_listener.only_master_requests">false</parameter>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <parameter key="profiler.storage.dsn">file:C:/wamp/www/revestimientosjyg/app/cache/dev/profiler</parameter>
 =======
 <<<<<<< HEAD
@@ -205,6 +207,9 @@
 >>>>>>> 0d0ead52bb1352b193e5beee6d867bce38b40134
 >>>>>>> 46573412be1fb4c82778e0e6c2a661b1674abd1c
 >>>>>>> 53e097eb132c967e34a26f2ca2cfc1305ef9015b
+=======
+    <parameter key="profiler.storage.dsn">file:C:\xampp\htdocs\revestimientosjyg\app\cache\dev/profiler</parameter>
+>>>>>>> b730b3676bd61a0c5f7269e4cdb064855d4d4414
     <parameter key="profiler.storage.username"></parameter>
     <parameter key="profiler.storage.password"></parameter>
     <parameter key="profiler.storage.lifetime">86400</parameter>
@@ -229,6 +234,7 @@
     <parameter key="router.request_context.scheme">http</parameter>
     <parameter key="router.request_context.base_url"></parameter>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <parameter key="router.resource">C:/wamp/www/revestimientosjyg/app/cache/dev/assetic/routing.yml</parameter>
 =======
 <<<<<<< HEAD
@@ -241,6 +247,9 @@
 >>>>>>> 0d0ead52bb1352b193e5beee6d867bce38b40134
 >>>>>>> 46573412be1fb4c82778e0e6c2a661b1674abd1c
 >>>>>>> 53e097eb132c967e34a26f2ca2cfc1305ef9015b
+=======
+    <parameter key="router.resource">C:\xampp\htdocs\revestimientosjyg\app\cache\dev/assetic/routing.yml</parameter>
+>>>>>>> b730b3676bd61a0c5f7269e4cdb064855d4d4414
     <parameter key="router.cache_class_prefix">appDev</parameter>
     <parameter key="request_listener.http_port">80</parameter>
     <parameter key="request_listener.https_port">443</parameter>
@@ -251,6 +260,7 @@
     <parameter key="debug.stopwatch.class">Symfony\Component\Stopwatch\Stopwatch</parameter>
     <parameter key="debug.error_handler.throw_at">-1</parameter>
     <parameter key="debug.event_dispatcher.class">Symfony\Component\HttpKernel\Debug\TraceableEventDispatcher</parameter>
+<<<<<<< HEAD
 <<<<<<< HEAD
     <parameter key="debug.container.dump">C:/wamp/www/revestimientosjyg/app/cache/dev/appDevDebugProjectContainer.xml</parameter>
 =======
@@ -264,6 +274,9 @@
 >>>>>>> 0d0ead52bb1352b193e5beee6d867bce38b40134
 >>>>>>> 46573412be1fb4c82778e0e6c2a661b1674abd1c
 >>>>>>> 53e097eb132c967e34a26f2ca2cfc1305ef9015b
+=======
+    <parameter key="debug.container.dump">C:\xampp\htdocs\revestimientosjyg\app\cache\dev/appDevDebugProjectContainer.xml</parameter>
+>>>>>>> b730b3676bd61a0c5f7269e4cdb064855d4d4414
     <parameter key="debug.controller_resolver.class">Symfony\Component\HttpKernel\Controller\TraceableControllerResolver</parameter>
     <parameter key="security.context.class">Symfony\Component\Security\Core\SecurityContext</parameter>
     <parameter key="security.user_checker.class">Symfony\Component\Security\Core\User\UserChecker</parameter>
@@ -445,6 +458,7 @@
     <parameter key="swiftmailer.mailer.default.transport.smtp.timeout">30</parameter>
     <parameter key="swiftmailer.mailer.default.transport.smtp.source_ip">null</parameter>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <parameter key="swiftmailer.spool.default.memory.path">C:/wamp/www/revestimientosjyg/app/cache/dev/swiftmailer/spool/default</parameter>
 =======
 <<<<<<< HEAD
@@ -457,6 +471,9 @@
 >>>>>>> 0d0ead52bb1352b193e5beee6d867bce38b40134
 >>>>>>> 46573412be1fb4c82778e0e6c2a661b1674abd1c
 >>>>>>> 53e097eb132c967e34a26f2ca2cfc1305ef9015b
+=======
+    <parameter key="swiftmailer.spool.default.memory.path">C:\xampp\htdocs\revestimientosjyg\app\cache\dev/swiftmailer/spool/default</parameter>
+>>>>>>> b730b3676bd61a0c5f7269e4cdb064855d4d4414
     <parameter key="swiftmailer.mailer.default.spool.enabled">true</parameter>
     <parameter key="swiftmailer.mailer.default.plugin.impersonate">null</parameter>
     <parameter key="swiftmailer.mailer.default.single_address">null</parameter>
@@ -482,6 +499,7 @@
     <parameter key="assetic.value_supplier.class">Symfony\Bundle\AsseticBundle\DefaultValueSupplier</parameter>
     <parameter key="assetic.node.paths" type="collection"/>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <parameter key="assetic.cache_dir">C:/wamp/www/revestimientosjyg/app/cache/dev/assetic</parameter>
 =======
 <<<<<<< HEAD
@@ -494,6 +512,9 @@
 >>>>>>> 0d0ead52bb1352b193e5beee6d867bce38b40134
 >>>>>>> 46573412be1fb4c82778e0e6c2a661b1674abd1c
 >>>>>>> 53e097eb132c967e34a26f2ca2cfc1305ef9015b
+=======
+    <parameter key="assetic.cache_dir">C:\xampp\htdocs\revestimientosjyg\app\cache\dev/assetic</parameter>
+>>>>>>> b730b3676bd61a0c5f7269e4cdb064855d4d4414
     <parameter key="assetic.bundles" type="collection"/>
     <parameter key="assetic.twig_extension.class">Symfony\Bundle\AsseticBundle\Twig\AsseticExtension</parameter>
     <parameter key="assetic.twig_formula_loader.class">Assetic\Extension\Twig\TwigFormulaLoader</parameter>
@@ -616,6 +637,7 @@
     <parameter key="doctrine.orm.second_level_cache.regions_configuration.class">Doctrine\ORM\Cache\RegionsConfiguration</parameter>
     <parameter key="doctrine.orm.auto_generate_proxy_classes">true</parameter>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <parameter key="doctrine.orm.proxy_dir">C:/wamp/www/revestimientosjyg/app/cache/dev/doctrine/orm/Proxies</parameter>
 =======
 <<<<<<< HEAD
@@ -628,6 +650,9 @@
 >>>>>>> 0d0ead52bb1352b193e5beee6d867bce38b40134
 >>>>>>> 46573412be1fb4c82778e0e6c2a661b1674abd1c
 >>>>>>> 53e097eb132c967e34a26f2ca2cfc1305ef9015b
+=======
+    <parameter key="doctrine.orm.proxy_dir">C:\xampp\htdocs\revestimientosjyg\app\cache\dev/doctrine/orm/Proxies</parameter>
+>>>>>>> b730b3676bd61a0c5f7269e4cdb064855d4d4414
     <parameter key="doctrine.orm.proxy_namespace">Proxies</parameter>
     <parameter key="sensio_framework_extra.view.guesser.class">Sensio\Bundle\FrameworkExtraBundle\Templating\TemplateGuesser</parameter>
     <parameter key="sensio_framework_extra.controller.listener.class">Sensio\Bundle\FrameworkExtraBundle\EventListener\ControllerListener</parameter>
@@ -906,6 +931,7 @@
       </argument>
       <argument type="collection">
 <<<<<<< HEAD
+<<<<<<< HEAD
         <argument key="cache_dir">C:/wamp/www/revestimientosjyg/app/cache/dev/translations</argument>
 =======
 <<<<<<< HEAD
@@ -918,6 +944,9 @@
 >>>>>>> 0d0ead52bb1352b193e5beee6d867bce38b40134
 >>>>>>> 46573412be1fb4c82778e0e6c2a661b1674abd1c
 >>>>>>> 53e097eb132c967e34a26f2ca2cfc1305ef9015b
+=======
+        <argument key="cache_dir">C:\xampp\htdocs\revestimientosjyg\app\cache\dev/translations</argument>
+>>>>>>> b730b3676bd61a0c5f7269e4cdb064855d4d4414
         <argument key="debug">true</argument>
       </argument>
       <argument type="collection"/>
@@ -1132,6 +1161,7 @@
     <service id="security.secure_random" class="Symfony\Component\Security\Core\Util\SecureRandom">
       <tag name="monolog.logger" channel="security"/>
 <<<<<<< HEAD
+<<<<<<< HEAD
       <argument>C:/wamp/www/revestimientosjyg/app/cache/dev/secure_random.seed</argument>
 =======
 <<<<<<< HEAD
@@ -1144,6 +1174,9 @@
 >>>>>>> 0d0ead52bb1352b193e5beee6d867bce38b40134
 >>>>>>> 46573412be1fb4c82778e0e6c2a661b1674abd1c
 >>>>>>> 53e097eb132c967e34a26f2ca2cfc1305ef9015b
+=======
+      <argument>C:\xampp\htdocs\revestimientosjyg\app\cache\dev/secure_random.seed</argument>
+>>>>>>> b730b3676bd61a0c5f7269e4cdb064855d4d4414
       <argument type="service" id="monolog.logger.security" on-invalid="ignore"/>
     </service>
     <service id="form.resolved_type_factory" class="Symfony\Component\Form\Extension\DataCollector\Proxy\ResolvedTypeFactoryDataCollectorProxy">
@@ -1379,6 +1412,7 @@
     <service id="templating.locator" class="Symfony\Bundle\FrameworkBundle\Templating\Loader\TemplateLocator" public="false">
       <argument type="service" id="file_locator"/>
 <<<<<<< HEAD
+<<<<<<< HEAD
       <argument>C:/wamp/www/revestimientosjyg/app/cache/dev</argument>
 =======
 <<<<<<< HEAD
@@ -1391,6 +1425,9 @@
 >>>>>>> 0d0ead52bb1352b193e5beee6d867bce38b40134
 >>>>>>> 46573412be1fb4c82778e0e6c2a661b1674abd1c
 >>>>>>> 53e097eb132c967e34a26f2ca2cfc1305ef9015b
+=======
+      <argument>C:\xampp\htdocs\revestimientosjyg\app\cache\dev</argument>
+>>>>>>> b730b3676bd61a0c5f7269e4cdb064855d4d4414
     </service>
     <service id="templating.helper.assets" class="Symfony\Bundle\FrameworkBundle\Templating\Helper\AssetsHelper">
       <tag name="templating.helper" alias="assets"/>
@@ -1460,6 +1497,7 @@
       <argument type="service">
         <service class="Symfony\Component\HttpKernel\Profiler\FileProfilerStorage" public="false">
 <<<<<<< HEAD
+<<<<<<< HEAD
           <argument>file:C:/wamp/www/revestimientosjyg/app/cache/dev/profiler</argument>
 =======
 <<<<<<< HEAD
@@ -1472,6 +1510,9 @@
 >>>>>>> 0d0ead52bb1352b193e5beee6d867bce38b40134
 >>>>>>> 46573412be1fb4c82778e0e6c2a661b1674abd1c
 >>>>>>> 53e097eb132c967e34a26f2ca2cfc1305ef9015b
+=======
+          <argument>file:C:\xampp\htdocs\revestimientosjyg\app\cache\dev/profiler</argument>
+>>>>>>> b730b3676bd61a0c5f7269e4cdb064855d4d4414
           <argument></argument>
           <argument></argument>
           <argument>86400</argument>
@@ -1864,6 +1905,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
 <<<<<<< HEAD
+<<<<<<< HEAD
             <argument>55e7356c38eb84.02507848</argument>
 =======
 <<<<<<< HEAD
@@ -1876,6 +1918,9 @@
 >>>>>>> 0d0ead52bb1352b193e5beee6d867bce38b40134
 >>>>>>> 46573412be1fb4c82778e0e6c2a661b1674abd1c
 >>>>>>> 53e097eb132c967e34a26f2ca2cfc1305ef9015b
+=======
+            <argument>55e7769a199829.96763442</argument>
+>>>>>>> b730b3676bd61a0c5f7269e4cdb064855d4d4414
           </service>
         </argument>
       </argument>
@@ -1999,6 +2044,7 @@
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.token_storage"/>
 <<<<<<< HEAD
+<<<<<<< HEAD
             <argument>55e7356c38eb84.02507848</argument>
 =======
 <<<<<<< HEAD
@@ -2011,6 +2057,9 @@
 >>>>>>> 0d0ead52bb1352b193e5beee6d867bce38b40134
 >>>>>>> 46573412be1fb4c82778e0e6c2a661b1674abd1c
 >>>>>>> 53e097eb132c967e34a26f2ca2cfc1305ef9015b
+=======
+            <argument>55e7769a199829.96763442</argument>
+>>>>>>> b730b3676bd61a0c5f7269e4cdb064855d4d4414
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
             <argument type="service" id="security.authentication.manager"/>
           </service>
@@ -2057,6 +2106,7 @@
         </argument>
         <argument key="autoescape">filename</argument>
 <<<<<<< HEAD
+<<<<<<< HEAD
         <argument key="cache">C:/wamp/www/revestimientosjyg/app/cache/dev/twig</argument>
 =======
 <<<<<<< HEAD
@@ -2069,6 +2119,9 @@
 >>>>>>> 0d0ead52bb1352b193e5beee6d867bce38b40134
 >>>>>>> 46573412be1fb4c82778e0e6c2a661b1674abd1c
 >>>>>>> 53e097eb132c967e34a26f2ca2cfc1305ef9015b
+=======
+        <argument key="cache">C:\xampp\htdocs\revestimientosjyg\app\cache\dev/twig</argument>
+>>>>>>> b730b3676bd61a0c5f7269e4cdb064855d4d4414
         <argument key="charset">UTF-8</argument>
         <argument key="paths" type="collection"/>
         <argument key="date" type="collection">
@@ -2376,6 +2429,7 @@
             <argument type="service">
               <service class="Assetic\Cache\ConfigCache" public="false">
 <<<<<<< HEAD
+<<<<<<< HEAD
                 <argument>C:/wamp/www/revestimientosjyg/app/cache/dev/assetic/config</argument>
 =======
 <<<<<<< HEAD
@@ -2388,6 +2442,9 @@
 >>>>>>> 0d0ead52bb1352b193e5beee6d867bce38b40134
 >>>>>>> 46573412be1fb4c82778e0e6c2a661b1674abd1c
 >>>>>>> 53e097eb132c967e34a26f2ca2cfc1305ef9015b
+=======
+                <argument>C:\xampp\htdocs\revestimientosjyg\app\cache\dev/assetic/config</argument>
+>>>>>>> b730b3676bd61a0c5f7269e4cdb064855d4d4414
               </service>
             </argument>
             <argument>true</argument>
@@ -2438,6 +2495,7 @@
     </service>
     <service id="assetic.cache" class="Assetic\Cache\FilesystemCache" public="false">
 <<<<<<< HEAD
+<<<<<<< HEAD
       <argument>C:/wamp/www/revestimientosjyg/app/cache/dev/assetic/assets</argument>
 =======
 <<<<<<< HEAD
@@ -2450,6 +2508,9 @@
 >>>>>>> 0d0ead52bb1352b193e5beee6d867bce38b40134
 >>>>>>> 46573412be1fb4c82778e0e6c2a661b1674abd1c
 >>>>>>> 53e097eb132c967e34a26f2ca2cfc1305ef9015b
+=======
+      <argument>C:\xampp\htdocs\revestimientosjyg\app\cache\dev/assetic/assets</argument>
+>>>>>>> b730b3676bd61a0c5f7269e4cdb064855d4d4414
     </service>
     <service id="assetic.request_listener" class="Symfony\Bundle\AsseticBundle\EventListener\RequestListener">
       <tag name="kernel.event_listener" event="kernel.request" method="onKernelRequest"/>
@@ -2583,6 +2644,7 @@
           </call>
           <call method="setProxyDir">
 <<<<<<< HEAD
+<<<<<<< HEAD
             <argument>C:/wamp/www/revestimientosjyg/app/cache/dev/doctrine/orm/Proxies</argument>
 =======
 <<<<<<< HEAD
@@ -2595,6 +2657,9 @@
 >>>>>>> 0d0ead52bb1352b193e5beee6d867bce38b40134
 >>>>>>> 46573412be1fb4c82778e0e6c2a661b1674abd1c
 >>>>>>> 53e097eb132c967e34a26f2ca2cfc1305ef9015b
+=======
+            <argument>C:\xampp\htdocs\revestimientosjyg\app\cache\dev/doctrine/orm/Proxies</argument>
+>>>>>>> b730b3676bd61a0c5f7269e4cdb064855d4d4414
           </call>
           <call method="setProxyNamespace">
             <argument>Proxies</argument>
@@ -2937,6 +3002,7 @@
     </service>
     <service id="session.storage.filesystem" class="Symfony\Component\HttpFoundation\Session\Storage\MockFileSessionStorage">
 <<<<<<< HEAD
+<<<<<<< HEAD
       <argument>C:/wamp/www/revestimientosjyg/app/cache/dev/sessions</argument>
 =======
 <<<<<<< HEAD
@@ -2949,6 +3015,9 @@
 >>>>>>> 0d0ead52bb1352b193e5beee6d867bce38b40134
 >>>>>>> 46573412be1fb4c82778e0e6c2a661b1674abd1c
 >>>>>>> 53e097eb132c967e34a26f2ca2cfc1305ef9015b
+=======
+      <argument>C:\xampp\htdocs\revestimientosjyg\app\cache\dev/sessions</argument>
+>>>>>>> b730b3676bd61a0c5f7269e4cdb064855d4d4414
       <argument>MOCKSESSID</argument>
       <argument type="service" id="session.storage.metadata_bag"/>
     </service>
@@ -2963,6 +3032,7 @@
     <service id="router" class="Symfony\Bundle\FrameworkBundle\Routing\Router">
       <tag name="monolog.logger" channel="router"/>
       <argument type="service" id="service_container"/>
+<<<<<<< HEAD
 <<<<<<< HEAD
       <argument>C:/wamp/www/revestimientosjyg/app/cache/dev/assetic/routing.yml</argument>
       <argument type="collection">
@@ -2984,6 +3054,11 @@
 >>>>>>> 0d0ead52bb1352b193e5beee6d867bce38b40134
 >>>>>>> 46573412be1fb4c82778e0e6c2a661b1674abd1c
 >>>>>>> 53e097eb132c967e34a26f2ca2cfc1305ef9015b
+=======
+      <argument>C:\xampp\htdocs\revestimientosjyg\app\cache\dev/assetic/routing.yml</argument>
+      <argument type="collection">
+        <argument key="cache_dir">C:\xampp\htdocs\revestimientosjyg\app\cache\dev</argument>
+>>>>>>> b730b3676bd61a0c5f7269e4cdb064855d4d4414
         <argument key="debug">true</argument>
         <argument key="generator_class">Symfony\Component\Routing\Generator\UrlGenerator</argument>
         <argument key="generator_base_class">Symfony\Component\Routing\Generator\UrlGenerator</argument>
@@ -3004,6 +3079,7 @@
         <service class="Doctrine\Common\Annotations\AnnotationReader" public="false"/>
       </argument>
 <<<<<<< HEAD
+<<<<<<< HEAD
       <argument>C:/wamp/www/revestimientosjyg/app/cache/dev/annotations</argument>
 =======
 <<<<<<< HEAD
@@ -3016,6 +3092,9 @@
 >>>>>>> 0d0ead52bb1352b193e5beee6d867bce38b40134
 >>>>>>> 46573412be1fb4c82778e0e6c2a661b1674abd1c
 >>>>>>> 53e097eb132c967e34a26f2ca2cfc1305ef9015b
+=======
+      <argument>C:\xampp\htdocs\revestimientosjyg\app\cache\dev/annotations</argument>
+>>>>>>> b730b3676bd61a0c5f7269e4cdb064855d4d4414
       <argument>true</argument>
     </service>
     <service id="security.encoder_factory" class="Symfony\Component\Security\Core\Encoder\EncoderFactory">

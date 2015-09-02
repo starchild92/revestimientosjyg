@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 jyg_revestimientos_venta:
     resource: "@JYGRevestimientosBundle/Resources/config/routing/venta.yml"
     prefix:   /venta
@@ -6,11 +7,9 @@ jyg_revestimientos_cliente:
     resource: "@JYGRevestimientosBundle/Resources/config/routing/cliente.yml"
     prefix:   /cliente
 
+=======
+>>>>>>> b730b3676bd61a0c5f7269e4cdb064855d4d4414
 jyg_revestimientos_cliente:
-    resource: "@JYGRevestimientosBundle/Resources/config/routing/cliente.yml"
-    prefix:   /cliente
-
-JYGRevestimientosBundle_cliente:
     resource: "@JYGRevestimientosBundle/Resources/config/routing/cliente.yml"
     prefix:   /cliente
 
@@ -29,14 +28,6 @@ jyg_revestimientos_deposito:
 jyg_revestimientos_item:
     resource: "@JYGRevestimientosBundle/Resources/config/routing/item.yml"
     prefix:   /item
-
-jyg_revestimientos_venta:
-    resource: "@JYGRevestimientosBundle/Resources/config/routing/venta.yml"
-    prefix:   /venta
-
-JYGRevestimientosBundle_venta:
-    resource: "@JYGRevestimientosBundle/Resources/config/routing/venta.yml"
-    prefix:   /venta
 
 jyg_revestimientos_bitacora:
     resource: "@JYGRevestimientosBundle/Resources/config/routing/bitacora.yml"
