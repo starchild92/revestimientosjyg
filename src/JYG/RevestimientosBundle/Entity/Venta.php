@@ -3,12 +3,14 @@
 namespace JYG\RevestimientosBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Venta
  *
- * @ORM\Table()
+ * @ORM\Table(name="venta")
  * @ORM\Entity(repositoryClass="JYG\RevestimientosBundle\Entity\VentaRepository")
+ * @ORM\Entity
  */
 class Venta
 {
@@ -38,24 +40,9 @@ class Venta
     /**
      * @var string
      *
-     * @ORM\Column(name="direccionCliente", type="text")
+     * @ORM\Column(name="cliente", type="string")
      */
-    private $direccionCliente;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="nombreCliente", type="string", length=255)
-     */
-    private $nombreCliente;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="telefono", type="string", length=255)
-     */
-    private $telefono;
-
+    private $cliente;
 
     /**
      * Get id
@@ -114,71 +101,71 @@ class Venta
     }
 
     /**
-     * Set direccionCliente
+     * Set cliente
      *
-     * @param string $direccionCliente
+     * @param string $cliente
      * @return Venta
      */
-    public function setDireccionCliente($direccionCliente)
+    public function setCliente($cliente)
     {
-        $this->direccionCliente = $direccionCliente;
+        $this->cliente = $cliente;
 
         return $this;
     }
 
     /**
-     * Get direccionCliente
+     * Get cliente
      *
      * @return string 
      */
-    public function getDireccionCliente()
+    public function getCliente()
     {
-        return $this->direccionCliente;
+        return $this->cliente;
     }
 
     /**
-     * Set nombreCliente
+     * Add items
      *
-     * @param string $nombreCliente
+     * @param \JYG\RevestimientosBundle\Entity\Item $items
      * @return Venta
      */
-    public function setNombreCliente($nombreCliente)
+    public function addItem(\JYG\RevestimientosBundle\Entity\Item $items)
     {
-        $this->nombreCliente = $nombreCliente;
+        $this->items[] = $items;
 
         return $this;
     }
 
     /**
-     * Get nombreCliente
+     * Remove items
      *
-     * @return string 
+     * @param \JYG\RevestimientosBundle\Entity\Item $items
      */
-    public function getNombreCliente()
+    public function removeItem(\JYG\RevestimientosBundle\Entity\Item $items)
     {
-        return $this->nombreCliente;
+        $this->items->removeElement($items);
     }
 
     /**
-     * Set telefono
+     * Get items
      *
-     * @param string $telefono
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getItems()
+    {
+        return $this->items;
+    }
+
+    /**
+     * Set items
+     *
+     * @param string $items
      * @return Venta
      */
-    public function setTelefono($telefono)
+    public function setItems($items)
     {
-        $this->telefono = $telefono;
+        $this->items = $items;
 
         return $this;
-    }
-
-    /**
-     * Get telefono
-     *
-     * @return string 
-     */
-    public function getTelefono()
-    {
-        return $this->telefono;
     }
 }

@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+3fe5ff,127.0.0.1,GET,http://localhost:8000/app_dev.php/,1441161220,,200
+24c3e2,127.0.0.1,GET,http://localhost:8000/app_dev.php/productos,1441162415,,200
+=======
 062cf3,127.0.0.1,GET,http://revestimientos/app_dev.php/,1441145831,,200
 3439b2,127.0.0.1,GET,http://revestimientos/app_dev.php/productos,1441145837,,200
 9f91fe,127.0.0.1,GET,http://revestimientos/app_dev.php/,1441145869,,200
+>>>>>>> 288a898136be9de2e5a8d6d7b7b601a83ceadb75

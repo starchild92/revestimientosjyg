@@ -1,3 +1,23 @@
+jyg_revestimientos_item:
+    resource: "@JYGRevestimientosBundle/Resources/config/routing/item.yml"
+    prefix:   /item
+
+jyg_revestimientos_venta:
+    resource: "@JYGRevestimientosBundle/Resources/config/routing/venta.yml"
+    prefix:   /venta
+
+JYGRevestimientosBundle_venta:
+    resource: "@JYGRevestimientosBundle/Resources/config/routing/venta.yml"
+    prefix:   /venta
+
+jyg_revestimientos_bitacora:
+    resource: "@JYGRevestimientosBundle/Resources/config/routing/bitacora.yml"
+    prefix:   /bitacora
+
+jyg_revestimientos_usuario:
+    resource: "@JYGRevestimientosBundle/Resources/config/routing/usuario.yml"
+    prefix:   /usuario
+
 JYGRevestimientosBundle_inicio:
     pattern:  /
     defaults: { _controller: JYGRevestimientosBundle:Page:index }
