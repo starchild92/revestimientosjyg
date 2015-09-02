@@ -1,4 +1,67 @@
 <<<<<<< HEAD
+6678db,127.0.0.1,GET,http://localhost:8000/app_dev.php/,1441216042,,200
+8e1814,127.0.0.1,GET,http://localhost:8000/app_dev.php/productos,1441216100,,200
+7d7b4e,127.0.0.1,GET,http://localhost:8000/app_dev.php/material,1441216205,,301
+d53a9d,127.0.0.1,GET,http://localhost:8000/app_dev.php/material/,1441216215,27b8df,200
+27b8df,127.0.0.1,GET,http://localhost:8000/app_dev.php/material/,1441216215,,500
+751b91,127.0.0.1,GET,http://localhost:8000/app_dev.php/material/,1441216281,272a7f,200
+272a7f,127.0.0.1,GET,http://localhost:8000/app_dev.php/material/,1441216281,,500
+bd265a,127.0.0.1,GET,http://localhost:8000/app_dev.php/material/,1441216554,837820,200
+837820,127.0.0.1,GET,http://localhost:8000/app_dev.php/material/,1441216554,,500
+9cfd2a,127.0.0.1,GET,http://localhost:8000/app_dev.php/material/,1441216602,,200
+2b5c8e,127.0.0.1,GET,http://localhost:8000/app_dev.php/material/new,1441216622,,200
+796790,127.0.0.1,POST,http://localhost:8000/app_dev.php/material/create,1441217397,,302
+7b4585,127.0.0.1,GET,http://localhost:8000/app_dev.php/material/1/show,1441217401,,200
+457fdf,127.0.0.1,GET,http://localhost:8000/app_dev.php/material/,1441217410,,200
+692d31,127.0.0.1,GET,http://localhost:8000/app_dev.php/material/new,1441217546,,200
+1cf29f,127.0.0.1,GET,http://localhost:8000/app_dev.php/material/,1441217552,,200
+79896f,127.0.0.1,GET,http://localhost:8000/app_dev.php/,1441217619,,200
+8656d3,127.0.0.1,GET,http://localhost:8000/app_dev.php/productos,1441217627,,200
+c77330,127.0.0.1,GET,http://localhost:8000/app_dev.php/productos,1441217722,,200
+b1c620,127.0.0.1,GET,http://localhost:8000/app_dev.php/productos,1441217802,,200
+5e332e,127.0.0.1,GET,http://localhost:8000/app_dev.php/productos,1441217949,,200
+6d3dc4,127.0.0.1,GET,http://localhost:8000/app_dev.php/productos,1441217954,,200
+d12283,127.0.0.1,GET,http://localhost:8000/app_dev.php/productos,1441217966,,200
+eee574,127.0.0.1,GET,http://localhost:8000/app_dev.php/productos,1441218145,,200
+e8b4f5,127.0.0.1,GET,http://localhost:8000/app_dev.php/,1441218206,,200
+146b61,127.0.0.1,GET,http://localhost:8000/app_dev.php/productos,1441218251,,200
+74baa2,127.0.0.1,GET,http://localhost:8000/app_dev.php/productos,1441218287,,200
+e7f72d,127.0.0.1,GET,http://localhost:8000/app_dev.php/,1441218348,,200
+90e041,127.0.0.1,GET,http://localhost:8000/app_dev.php/,1441218470,,200
+7a56c5,127.0.0.1,GET,http://localhost:8000/app_dev.php/,1441218478,,200
+4e1d91,127.0.0.1,GET,http://localhost:8000/app_dev.php/,1441218520,,200
+b7792b,127.0.0.1,GET,http://localhost:8000/app_dev.php/,1441218608,,200
+a0c4d1,127.0.0.1,GET,http://localhost:8000/app_dev.php/,1441218708,,200
+b95f08,127.0.0.1,GET,http://localhost:8000/app_dev.php/productos,1441218716,,200
+1f3403,127.0.0.1,GET,http://localhost:8000/app_dev.php/productos,1441218735,,200
+4b7510,127.0.0.1,GET,http://localhost:8000/app_dev.php/productos,1441218749,,200
+79e5ff,127.0.0.1,GET,http://localhost:8000/app_dev.php/productos,1441218774,,200
+6f00af,127.0.0.1,GET,http://localhost:8000/app_dev.php/productos,1441218800,,200
+0bbc3a,127.0.0.1,GET,http://localhost:8000/app_dev.php/productos,1441218827,,200
+615bed,127.0.0.1,GET,http://localhost:8000/app_dev.php/productos,1441218919,,200
+90ec01,127.0.0.1,GET,http://localhost:8000/app_dev.php/,1441221600,,200
+b91968,127.0.0.1,GET,http://localhost:8000/app_dev.php/productos,1441221640,,200
+ecac76,127.0.0.1,GET,http://localhost:8000/app_dev.php/productos,1441221666,,200
+59f594,127.0.0.1,GET,http://localhost:8000/app_dev.php/productos,1441221702,,200
+37602b,127.0.0.1,GET,http://localhost:8000/app_dev.php/productos,1441222090,,200
+3bd6c9,127.0.0.1,GET,http://localhost:8000/app_dev.php/,1441222176,,200
+6814cc,127.0.0.1,GET,http://localhost:8000/app_dev.php/productos,1441222180,,200
+772355,127.0.0.1,GET,http://localhost:8000/app_dev.php/,1441222208,,200
+b26f44,127.0.0.1,GET,http://localhost:8000/app_dev.php/,1441222233,,200
+7ec8f6,127.0.0.1,GET,http://localhost:8000/app_dev.php/productos,1441222238,,200
+1a36d1,127.0.0.1,GET,http://localhost:8000/app_dev.php/venta,1441223410,,301
+ea0aa3,127.0.0.1,GET,http://localhost:8000/app_dev.php/venta/,1441223413,,200
+3606f1,127.0.0.1,GET,http://localhost:8000/bundles/jygrevestimientos/css/bootstrap.css,1441224652,9d376f,200
+9d376f,127.0.0.1,GET,http://localhost:8000/bundles/jygrevestimientos/css/bootstrap.css,1441224655,,404
+6f3dc0,127.0.0.1,GET,http://localhost:8000/bundles/jygrevestimientos/js/jquery.min.js,1441225685,70a843,200
+70a843,127.0.0.1,GET,http://localhost:8000/bundles/jygrevestimientos/js/jquery.min.js,1441225689,,404
+53b668,127.0.0.1,GET,http://localhost:8000/app_dev.php/productos,1441227149,,200
+8aa432,127.0.0.1,GET,http://localhost:8000/app_dev.php/galeria,1441227331,,200
+5676bb,127.0.0.1,GET,http://localhost:8000/app_dev.php/productos,1441227579,,200
+9f7bb2,127.0.0.1,GET,http://localhost:8000/app_dev.php/productos,1441227954,,200
+24661c,127.0.0.1,GET,http://localhost:8000/app_dev.php/galeria,1441228196,,200
+=======
+<<<<<<< HEAD
 ad6150,127.0.0.1,GET,http://localhost:8000/app_dev.php/,1441164342,,200
 6ec7b4,127.0.0.1,GET,http://localhost:8000/app_dev.php/ayuda,1441164357,,200
 34919e,127.0.0.1,GET,http://localhost:8000/app_dev.php/contacto,1441164364,,200
@@ -305,6 +368,9 @@ b2aec5,127.0.0.1,GET,http://revestimientos/app_dev.php/contacto,1441227536,,200
 =======
 >>>>>>> 0d0ead52bb1352b193e5beee6d867bce38b40134
 >>>>>>> 46573412be1fb4c82778e0e6c2a661b1674abd1c
+<<<<<<< HEAD
+>>>>>>> 53e097eb132c967e34a26f2ca2cfc1305ef9015b
+=======
 379e2f,127.0.0.1,GET,http://revestimientos/app_dev.php/,1441232363,06a051,200
 06a051,127.0.0.1,GET,http://revestimientos/app_dev.php/,1441232364,,500
 04ae9d,127.0.0.1,GET,http://revestimientos/app_dev.php/cliente,1441232540,,301
@@ -322,5 +388,9 @@ f59288,127.0.0.1,GET,http://revestimientos/app_dev.php/material/,1441233006,,200
 b8fbab,127.0.0.1,GET,http://revestimientos/app_dev.php/material/new,1441233014,9f16b6,200
 9f16b6,127.0.0.1,GET,http://revestimientos/app_dev.php/material/new,1441233014,,500
 c1ea7f,127.0.0.1,GET,http://revestimientos/app_dev.php/material/new,1441233067,,200
+<<<<<<< HEAD
 ae8249,127.0.0.1,GET,http://revestimientos/app_dev.php/contacto,1441233288,,200
 0598f8,127.0.0.1,GET,http://revestimientos/app_dev.php/productos,1441233357,,200
+=======
+>>>>>>> b730b3676bd61a0c5f7269e4cdb064855d4d4414
+>>>>>>> a2b515f533bd488b4d47c04a29b1c4f8b130305e

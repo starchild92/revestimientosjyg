@@ -235,6 +235,8 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
+<<<<<<< HEAD
+=======
         if (0 === strpos($pathinfo, '/venta')) {
             // venta
             if (rtrim($pathinfo, '/') === '/venta') {
@@ -295,6 +297,7 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
+>>>>>>> b730b3676bd61a0c5f7269e4cdb064855d4d4414
         if (0 === strpos($pathinfo, '/material')) {
             // material
             if (rtrim($pathinfo, '/') === '/material') {
