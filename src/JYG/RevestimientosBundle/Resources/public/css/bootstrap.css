@@ -15,6 +15,11 @@
 .navSpace{
   margin-top: 50px;
 }
+.foooter{
+  border-top: 1px solid #eee;
+  padding-top: 5px;
+  margin-top: 15px;
+}
 html {
   font-family: sans-serif;
   -webkit-text-size-adjust: 100%;
@@ -1421,7 +1426,7 @@ a.bg-danger:focus {
 }
 .page-header {
   padding-bottom: 9px;
-  margin: 40px 0 20px;
+  margin: 0px 0 20px;
   border-bottom: 1px solid #eee;
 }
 ul,

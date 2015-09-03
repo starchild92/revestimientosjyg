@@ -1,11 +1,21 @@
+<<<<<<< HEAD
 jyg_revestimientos_venta:
     resource: "@JYGRevestimientosBundle/Resources/config/routing/venta.yml"
     prefix:   /venta
 
+=======
+>>>>>>> 25c0f2a5e2d8845cb5605137fcca7332380aafc9
 jyg_revestimientos_cliente:
     resource: "@JYGRevestimientosBundle/Resources/config/routing/cliente.yml"
     prefix:   /cliente
 
+<<<<<<< HEAD
+=======
+jyg_revestimientos_venta:
+    resource: "@JYGRevestimientosBundle/Resources/config/routing/venta.yml"
+    prefix:   /venta
+
+>>>>>>> 25c0f2a5e2d8845cb5605137fcca7332380aafc9
 jyg_revestimientos_material:
     resource: "@JYGRevestimientosBundle/Resources/config/routing/material.yml"
     prefix:   /material

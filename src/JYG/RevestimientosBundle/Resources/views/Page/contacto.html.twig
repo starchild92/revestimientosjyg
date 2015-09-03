@@ -3,6 +3,7 @@
 {% block title %}Revestimientos J&G - Contacto{% endblock %}
 
 {% block body %}
+<<<<<<< HEAD
 	<div class="container">
 		<div class="row">
 			<h2>Atención al Cliente</h2>
@@ -24,24 +25,48 @@
 				    			    {{ form_errors(form.nombre) }}
 				    			</div>
 							{% endif %}
+=======
+	<div class="page-header">
+		<h1>Atención al Cliente <small>Formulario de Contacto</small></h1>
+	</div>
+	<div class="row">
+		<div class="col-lg-8 col-sm-8 col-xs-12">
+			{% for flashMessage in app.session.flashbag.get('exito') %}
+		        <div class="alert alert-success alert-dismissable">
+				<button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
+				{{ flashMessage }}
+				</div>
+				 {% endfor %}
+			<form method="POST" action="{{ path('JYGRevestimientosBundle_contacto') }}" >
+					<div class = "form-group" >
+	 					{{form_label(form.nombre,'Nombre') }}
+			    		{{ form_widget(form.nombre, {'attr':{'class':'form-control' , 'data-toggle':'tooltip', 'data-placement':'right', 'title':'Nombre', 'data-container':'body'}}) }}
+			    		{% if form_errors(form.nombre) %}
+			    			<div class = "alert alert-danger alert-dismissable">
+			    				<button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
+			    			    {{ form_errors(form.nombre) }}
+			    			</div>
+						{% endif %}
+>>>>>>> 25c0f2a5e2d8845cb5605137fcca7332380aafc9
 
-							{{ form_label(form.correo, 'Correo electrónico') }}
-					    	{{ form_widget(form.correo, {'attr':{'class':'form-control'}})}}
-					    	{% if form_errors(form.correo) %}
-					    		<div class = "alert alert-danger alert-dismissable">
-					    			<button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
-					    			{{ form_errors(form.correo) }}
-					    		</div>
-							{% endif %}	
-							{{ form_label(form.asunto, 'Asunto') }}
-							{{ form_widget(form.asunto, {'attr':{'class':'form-control' , 'data-toggle':'tooltip'}}) }}
-				    		{% if form_errors(form.asunto) %}
-				    			<div class = "alert alert-danger alert-dismissable">
-				    				<button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
-				    				{{ form_errors(form.asunto) }}
-				    			</div>
-							{% endif %}
+						{{ form_label(form.correo, 'Correo electrónico para contactarte') }}
+				    	{{ form_widget(form.correo, {'attr':{'class':'form-control'}})}}
+				    	{% if form_errors(form.correo) %}
+				    		<div class = "alert alert-danger alert-dismissable">
+				    			<button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
+				    			{{ form_errors(form.correo) }}
+				    		</div>
+						{% endif %}	
+						{{ form_label(form.asunto, 'Asunto') }}
+						{{ form_widget(form.asunto, {'attr':{'class':'form-control' , 'data-toggle':'tooltip'}}) }}
+			    		{% if form_errors(form.asunto) %}
+			    			<div class = "alert alert-danger alert-dismissable">
+			    				<button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
+			    				{{ form_errors(form.asunto) }}
+			    			</div>
+						{% endif %}
 
+<<<<<<< HEAD
 							{{ form_label(form.mensaje,'Mensaje') }}
 				    		{{ form_widget(form.mensaje, {'attr':{'class':'form-control' , 'data-toggle':'tooltip', 'data-placement':'right','title':'Mensaje', 'data-container':'body'}}) }}
 				    		{% if form_errors(form.mensaje) %}
@@ -63,5 +88,56 @@
 		    </div>
 		    <div class="col-md-4"></div>
     	</div>
+=======
+						{{ form_label(form.mensaje,'Mensaje') }}
+			    		{{ form_widget(form.mensaje, {'attr':{'class':'form-control' , 'data-toggle':'tooltip', 'data-placement':'right','title':'Mensaje', 'data-container':'body'}}) }}
+			    		{% if form_errors(form.mensaje) %}
+			    			<div class = "alert alert-danger alert-dismissable">
+			    				<button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
+			    				{{ form_errors(form.mensaje) }}
+			    			</div>
+						{% endif %}
+						<div style= "padding-top: 20px;">
+							<div class="row">
+								<div class="col-sm-4">{{form_widget(form.Enviar ,{'attr':{'class':'btn btn-default btn-lg btn-block'}})}}</div>
+								<div class="col-sm-4">
+									<a href="{{ path('JYGRevestimientosBundle_inicio') }}" ><button class="btn btn-danger btn-lg btn-block" type="button">Cancelar</button></a>
+						    		<div class = "row" >
+						    	    {% do form.Cancelar.setRendered %}
+						    		{{ form_rest(form) }}	    		
+						    		</div>
+						    	</div>
+							</div>
+				    		
+				    		
+			    		</div>	
+			    	</div>
+	    	</form>
+	    </div>
+	    <div class="col-lg-4 col-sm-4 col-xs-12">
+	    	<div id="textContacto"><h3>Por favor comuniquese con nosotros</h3><p>Responderemos tan pronto nos llegue su mensaje, somos los mejores haciendo eso.</p></div>
+	    	<div id="imgContacto"></div>
+	    </div>
+>>>>>>> 25c0f2a5e2d8845cb5605137fcca7332380aafc9
 	</div>
+{% endblock %}
+{% block stylesheets %}
+	<style type="text/css">
+		#imgContacto{
+			background-image: url('{{ asset("bundles/jygrevestimientos/images/imgContacto.jpg") }}');
+			min-height: 400px;
+			width: 100%;
+			border-top: solid 5px brown;
+		}
+		#textContacto{
+			position: absolute;
+		    bottom: 0;
+		    left: 10;
+		    z-index: 1;
+		    padding: 0px 20px 10px 20px;
+		}
+		textarea{
+			resize: none;
+		}
+	</style>
 {% endblock %}

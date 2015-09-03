@@ -47,7 +47,7 @@ class PageController extends Controller
     public function contactoAction()
     {
         $consulta = new Consulta();
-        $form = $this->createForm(new ConsultaType());
+        $form = $this->createForm(new ConsultaType(), $consulta);
 
         $request = $this->getRequest();
         if ($request->getMethod() == 'POST') {
@@ -59,7 +59,8 @@ class PageController extends Controller
                     ->setSubject('Consulta en JYGRevestimientos.com.ve')
                     ->setFrom("edy992.6@gmail.com")
                     ->setTo($this->container->getParameter('JYG_Revestimientos.emails.contact_email'))
-                    ->setBody($this->renderView('JYGRevestimientosBundle:Page:contactEmail.txt.twig', array('consulta' => $consulta)));
+                    ->setContentType("text/html")
+                    ->setBody($this->renderView('JYGRevestimientosBundle:Page:contactEmail.html.twig', array('consulta' => $consulta)));
                 $this->get('mailer')->send($message);
      
                //$this->addFlash('exito', 'Tu consulta ha sido enviada, Gracias!');
