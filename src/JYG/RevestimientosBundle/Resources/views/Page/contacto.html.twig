@@ -3,9 +3,11 @@
 {% block title %}Revestimientos J&G - Contacto{% endblock %}
 
 {% block body %}
-	<div class="row">
+	<div class="page-header">
 		<h1>Atención al Cliente <small>Formulario de Contacto</small></h1>
-		<div class="col-md-8">
+	</div>
+	<div class="row">
+		<div class="col-lg-8 col-sm-8 col-xs-12">
 			{% for flashMessage in app.session.flashbag.get('exito') %}
 		        <div class="alert alert-success alert-dismissable">
 				<button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
@@ -49,8 +51,8 @@
 			    			</div>
 						{% endif %}
 						<div style= "padding-top: 20px;">
-				    		{{form_widget(form.Enviar ,{'attr':{'class':'btn btn-default'}})}}
-				    		<a href="{{ path('JYGRevestimientosBundle_inicio') }}" ><button class="btn btn-outline btn-danger" type="button">Cancelar</button></a>
+				    		{{form_widget(form.Enviar ,{'attr':{'class':'btn btn-primary btn-lg'}})}}
+				    		<a href="{{ path('JYGRevestimientosBundle_inicio') }}" ><button class="btn btn-outline btn-danger btn-lg" type="button">Cancelar</button></a>
 				    		<div class = "row" >
 				    	    {% do form.Cancelar.setRendered %}
 				    		{{ form_rest(form) }}	    		
@@ -59,8 +61,29 @@
 			    	</div>
 	    	</form>
 	    </div>
-	    <div class="col-md-4">
-	    	Aqui como una imagen para que no se vea tan solo el formulario de contacto
+	    <div class="col-lg-4 col-sm-4 col-xs-12">
+	    	<div id="textContacto"><h3>Por favor comuniquese con nosotros</h3><p>Responderemos tan pronto nos llegue su mensaje, somos los mejores haciendo eso.</p></div>
+	    	<div id="imgContacto"></div>
 	    </div>
 	</div>
+{% endblock %}
+{% block stylesheets %}
+	<style type="text/css">
+		#imgContacto{
+			background-image: url('{{ asset("bundles/jygrevestimientos/images/imgContacto.jpg") }}');
+			min-height: 400px;
+			width: 100%;
+			border-top: solid 5px brown;
+		}
+		#textContacto{
+			position: absolute;
+		    bottom: 0;
+		    left: 10;
+		    z-index: 1;
+		    padding: 0px 20px 10px 20px;
+		}
+		textarea{
+			resize: none;
+		}
+	</style>
 {% endblock %}
