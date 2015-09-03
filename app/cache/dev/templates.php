@@ -97,6 +97,7 @@
   'JYGRevestimientosBundle:Material:new.html.twig' => 'C:\\wamp\\www\\revestimientosjyg\\src\\JYG\\RevestimientosBundle/Resources/views/Material/new.html.twig',
   'JYGRevestimientosBundle:Material:show.html.twig' => 'C:\\wamp\\www\\revestimientosjyg\\src\\JYG\\RevestimientosBundle/Resources/views/Material/show.html.twig',
   'JYGRevestimientosBundle:Page:ayuda.html.twig' => 'C:\\wamp\\www\\revestimientosjyg\\src\\JYG\\RevestimientosBundle/Resources/views/Page/ayuda.html.twig',
+  'JYGRevestimientosBundle:Page:contactEmail.txt.twig' => 'C:\\wamp\\www\\revestimientosjyg\\src\\JYG\\RevestimientosBundle/Resources/views/Page/contactEmail.txt.twig',
   'JYGRevestimientosBundle:Page:contacto.html.twig' => 'C:\\wamp\\www\\revestimientosjyg\\src\\JYG\\RevestimientosBundle/Resources/views/Page/contacto.html.twig',
   'JYGRevestimientosBundle:Page:galeria.html.twig' => 'C:\\wamp\\www\\revestimientosjyg\\src\\JYG\\RevestimientosBundle/Resources/views/Page/galeria.html.twig',
   'JYGRevestimientosBundle:Page:index.html.twig' => 'C:\\wamp\\www\\revestimientosjyg\\src\\JYG\\RevestimientosBundle/Resources/views/Page/index.html.twig',

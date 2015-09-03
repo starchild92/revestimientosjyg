@@ -8,7 +8,7 @@ parameters:
     mailer_transport: "gmail"
     mailer_encryption: "ssl"
     mailer_auth_mode: "login"
-    mailer_host: "smtp.gmail.com"
+    mailer_host: "~"
     mailer_user: "edy992.6"
     mailer_password: "119212541412"
     secret: 527c5d63a870b91224e7b31971e3fb9b514e7237

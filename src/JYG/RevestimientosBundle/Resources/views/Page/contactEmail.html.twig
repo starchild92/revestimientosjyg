@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Contacto</title>
+</head>
+<body>
+	<h2>Contacto</h2>
+
+ 	<p><b>De</b> "{{ consulta.nombre }}"<br>
+ 	<b>Responder a</b> "{{ consulta.correo }}"<br>
+ 	<b>Asunto</b> "{{ consulta.asunto }}"</p>
+ 	<blockquote><i>{{ consulta.mensaje }}<i></blockquote>
+ 	<small>Enviado el {{ "now" | date("F jS \\a\\t g:ia", "America/Caracas") }}</small>
+	 
+</body>
+</html>
+
