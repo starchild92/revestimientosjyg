@@ -28,21 +28,19 @@
 					<li class="{{ app.request.attributes.get('_route') | replace({'jyg_revestimientos_page_' : ''}) == 'mision' ? 'active' }}"><a href="{{ path('JYGRevestimientosBundle_mision') }}">Misión</a></li>
 					<li class="{{ app.request.attributes.get('_route') | replace({'jyg_revestimientos_page_' : ''}) == 'contacto' ? 'active' }}"><a href="{{ path('JYGRevestimientosBundle_contacto') }}">Contacto</a></li>
 					<li class="{{ app.request.attributes.get('_route') | replace({'jyg_revestimientos_page_' : ''}) == 'ayuda' ? 'active' }}"><a href="{{ path('JYGRevestimientosBundle_ayuda') }}">Ayuda</a></li>
-				</ul>
-				<!--<ul class="nav navbar-nav pull-right">
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+					<!--<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ayuda <span class="caret"></span></a>
 						<ul class="dropdown-menu dropdown-menu-right">
-							<li><a href="#">Action</a></li>
+							<li><a href="#">Donde Ubicarnos</a></li>
 							<li><a href="#">Another action</a></li>
 							<li><a href="#">Something else here</a></li>
 							<li role="separator" class="divider"></li>
 							<li class="dropdown-header">Nav header</li>
 							<li><a href="#">Separated link</a></li>
-							<li><a href="#">One more separated link</a></li>
+							<li><a href="#">One more separated link</a></li>-->
 						</ul>
 					</li>
-				</ul> -->
+				</ul>
 			</div><!--/.nav-collapse -->
 		</div>
 	</nav>
@@ -52,8 +50,17 @@
 	<div class="container">
 		<!-- FOOTER -->
 		<footer class="foooter">
-			<p class="pull-right">{{ "now" | date("F jS", "America/Caracas") }} &middot; <a href="#">Subir</a></p>
-			<p>&copy; {{ "now" | date("Y") }} Revestimientos J&G</a></p>
+			<p class="pull-right">
+				<a href="{{ path('JYGRevestimientosBundle_inicio') }}">Inicio</a>  &middot; 
+				<a href="{{ path('JYGRevestimientosBundle_productos') }}">Productos</a>  &middot; 
+				<a href="{{ path('JYGRevestimientosBundle_galeria') }}">Galería</a>  &middot; 
+				<a href="{{ path('JYGRevestimientosBundle_vision') }}">Visión</a>  &middot; 
+				<a href="{{ path('JYGRevestimientosBundle_mision') }}">Misión</a>  &middot; 
+				<a href="{{ path('JYGRevestimientosBundle_contacto') }}">Contacto</a>  &middot; 
+				<a href="{{ path('JYGRevestimientosBundle_ayuda') }}">Ayuda</a>  
+				 | <a href="#"> Subir</a>
+			</p>
+			<p>&copy; {{ "now" | date("F jS", "America/Caracas") }} {{ "now" | date("Y") }} Revestimientos J&G</a></p>
 		</footer>
 
 	</div><!-- /.container -->
