@@ -75,6 +75,66 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
             return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::indexAction',  '_route' => 'homepage',);
         }
 
+        if (0 === strpos($pathinfo, '/venta')) {
+            // venta
+            if (rtrim($pathinfo, '/') === '/venta') {
+                if (substr($pathinfo, -1) !== '/') {
+                    return $this->redirect($pathinfo.'/', 'venta');
+                }
+
+                return array (  '_controller' => 'JYG\\RevestimientosBundle\\Controller\\VentaController::indexAction',  '_route' => 'venta',);
+            }
+
+            // venta_show
+            if (preg_match('#^/venta/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'venta_show')), array (  '_controller' => 'JYG\\RevestimientosBundle\\Controller\\VentaController::showAction',));
+            }
+
+            // venta_new
+            if ($pathinfo === '/venta/new') {
+                return array (  '_controller' => 'JYG\\RevestimientosBundle\\Controller\\VentaController::newAction',  '_route' => 'venta_new',);
+            }
+
+            // venta_create
+            if ($pathinfo === '/venta/create') {
+                if ($this->context->getMethod() != 'POST') {
+                    $allow[] = 'POST';
+                    goto not_venta_create;
+                }
+
+                return array (  '_controller' => 'JYG\\RevestimientosBundle\\Controller\\VentaController::createAction',  '_route' => 'venta_create',);
+            }
+            not_venta_create:
+
+            // venta_edit
+            if (preg_match('#^/venta/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'venta_edit')), array (  '_controller' => 'JYG\\RevestimientosBundle\\Controller\\VentaController::editAction',));
+            }
+
+            // venta_update
+            if (preg_match('#^/venta/(?P<id>[^/]++)/update$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('POST', 'PUT'))) {
+                    $allow = array_merge($allow, array('POST', 'PUT'));
+                    goto not_venta_update;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'venta_update')), array (  '_controller' => 'JYG\\RevestimientosBundle\\Controller\\VentaController::updateAction',));
+            }
+            not_venta_update:
+
+            // venta_delete
+            if (preg_match('#^/venta/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('POST', 'DELETE'))) {
+                    $allow = array_merge($allow, array('POST', 'DELETE'));
+                    goto not_venta_delete;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'venta_delete')), array (  '_controller' => 'JYG\\RevestimientosBundle\\Controller\\VentaController::deleteAction',));
+            }
+            not_venta_delete:
+
+        }
+
         if (0 === strpos($pathinfo, '/cliente')) {
             // cliente
             if (rtrim($pathinfo, '/') === '/cliente') {
@@ -315,66 +375,6 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
 
         }
 
-        if (0 === strpos($pathinfo, '/venta')) {
-            // venta
-            if (rtrim($pathinfo, '/') === '/venta') {
-                if (substr($pathinfo, -1) !== '/') {
-                    return $this->redirect($pathinfo.'/', 'venta');
-                }
-
-                return array (  '_controller' => 'JYG\\RevestimientosBundle\\Controller\\VentaController::indexAction',  '_route' => 'venta',);
-            }
-
-            // venta_show
-            if (preg_match('#^/venta/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'venta_show')), array (  '_controller' => 'JYG\\RevestimientosBundle\\Controller\\VentaController::showAction',));
-            }
-
-            // venta_new
-            if ($pathinfo === '/venta/new') {
-                return array (  '_controller' => 'JYG\\RevestimientosBundle\\Controller\\VentaController::newAction',  '_route' => 'venta_new',);
-            }
-
-            // venta_create
-            if ($pathinfo === '/venta/create') {
-                if ($this->context->getMethod() != 'POST') {
-                    $allow[] = 'POST';
-                    goto not_venta_create;
-                }
-
-                return array (  '_controller' => 'JYG\\RevestimientosBundle\\Controller\\VentaController::createAction',  '_route' => 'venta_create',);
-            }
-            not_venta_create:
-
-            // venta_edit
-            if (preg_match('#^/venta/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'venta_edit')), array (  '_controller' => 'JYG\\RevestimientosBundle\\Controller\\VentaController::editAction',));
-            }
-
-            // venta_update
-            if (preg_match('#^/venta/(?P<id>[^/]++)/update$#s', $pathinfo, $matches)) {
-                if (!in_array($this->context->getMethod(), array('POST', 'PUT'))) {
-                    $allow = array_merge($allow, array('POST', 'PUT'));
-                    goto not_venta_update;
-                }
-
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'venta_update')), array (  '_controller' => 'JYG\\RevestimientosBundle\\Controller\\VentaController::updateAction',));
-            }
-            not_venta_update:
-
-            // venta_delete
-            if (preg_match('#^/venta/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
-                if (!in_array($this->context->getMethod(), array('POST', 'DELETE'))) {
-                    $allow = array_merge($allow, array('POST', 'DELETE'));
-                    goto not_venta_delete;
-                }
-
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'venta_delete')), array (  '_controller' => 'JYG\\RevestimientosBundle\\Controller\\VentaController::deleteAction',));
-            }
-            not_venta_delete:
-
-        }
-
         if (0 === strpos($pathinfo, '/bitacora')) {
             // bitacora
             if (rtrim($pathinfo, '/') === '/bitacora') {
@@ -491,8 +491,8 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
 
         // JYGRevestimientosBundle_contacto
         if ($pathinfo === '/contacto') {
-            if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                $allow = array_merge($allow, array('GET', 'HEAD'));
+            if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
                 goto not_JYGRevestimientosBundle_contacto;
             }
 
