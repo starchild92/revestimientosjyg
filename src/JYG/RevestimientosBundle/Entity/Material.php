@@ -310,9 +310,10 @@ class Material
 
     public function getAbsolutePath()
     {
+        $id = $this->getCodigo();
         return null === $this->path
             ? null
-            : $this->getUploadRootDir().'/'.$this->id.'.'.$this->path;
+            : $this->getUploadRootDir().'/'.$id.'.'.$this->path;
     }
 
     public function getWebPath()
@@ -333,7 +334,7 @@ class Material
     {
         // se deshace del __DIR__ para no meter la pata
         // al mostrar el documento/imagen cargada en la vista.
-        return 'uploads/materiales';
+        return 'bundles/jygrevestimientos/images/materiales';
     }
 
     private $temp;
@@ -363,7 +364,7 @@ class Material
     public function preUpload()
     {
         if (null !== $this->getFile()) {
-            $this->path = $this->getFile()->getClientOriginalExtension();
+            $this->path = $this->getCodigo().'.'.$this->getFile()->getClientOriginalExtension();
         }
     }
 
@@ -390,7 +391,7 @@ class Material
         // which the UploadedFile move() method does
         $this->getFile()->move(
             $this->getUploadRootDir(),
-            $this->id.'.'.$this->getFile()->getClientOriginalExtension()
+            $this->codigo.'.'.$this->getFile()->getClientOriginalExtension()
         );
 
         $this->setFile(null);
