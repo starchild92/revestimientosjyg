@@ -2,6 +2,17 @@
 
 {% block stylesheets %}
 	<link rel="stylesheet" type="text/css" href="{{ asset('bundles/jygrevestimientos/css/carousel.css') }}">
+  <style type="text/css">
+    #img_1{
+      background-image: url('{{ asset("bundles/jygrevestimientos/images/carousel_1.jpg") }}'); min-height: 400px; width: 100%;
+    }
+    #img_2{
+      background-image: url('{{ asset("bundles/jygrevestimientos/images/carousel_2.jpg") }}'); min-height: 400px; width: 100%;
+    }
+    #img_3{
+      background-image: url('{{ asset("bundles/jygrevestimientos/images/carousel_3.jpg") }}'); min-height: 400px; width: 100%;
+    }
+  </style>
 {% endblock %}
 
 {% block body %}
@@ -14,18 +25,16 @@
         <li data-target="#myCarousel" data-slide-to="2"></li>
       </ol>
       <div class="carousel-inner" role="listbox">
-        <div class="item active">
-          <img class="first-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="First slide">
+        <div id="img_1" class="item active">
           <div class="container">
             <div class="carousel-caption">
-              <h1>Example headline.</h1>
-              <p>Note: If you're viewing this page via a <code>file://</code> URL, the "next" and "previous" Glyphicon buttons on the left and right might not load/display properly due to web browser security rules.</p>
+              <h1>Rosa y Gris Mostaza</h1>
+              <p>Some info</p>
               <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
             </div>
           </div>
         </div>
-        <div class="item">
-          <img class="second-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Second slide">
+        <div id="img_2" class="item">
           <div class="container">
             <div class="carousel-caption">
               <h1>Another example headline.</h1>
@@ -34,8 +43,7 @@
             </div>
           </div>
         </div>
-        <div class="item">
-          <img class="third-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Third slide">
+        <div id="img_3" class="item">
           <div class="container">
             <div class="carousel-caption">
               <h1>One more for good measure.</h1>
