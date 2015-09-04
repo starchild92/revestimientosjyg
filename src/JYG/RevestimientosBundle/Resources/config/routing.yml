@@ -6,10 +6,6 @@ jyg_revestimientos_cliente:
     resource: "@JYGRevestimientosBundle/Resources/config/routing/cliente.yml"
     prefix:   /cliente
 
-jyg_revestimientos_material:
-    resource: "@JYGRevestimientosBundle/Resources/config/routing/material.yml"
-    prefix:   /material
-
 jyg_revestimientos_deposito:
     resource: "@JYGRevestimientosBundle/Resources/config/routing/deposito.yml"
     prefix:   /deposito
@@ -25,6 +21,12 @@ jyg_revestimientos_bitacora:
 jyg_revestimientos_usuario:
     resource: "@JYGRevestimientosBundle/Resources/config/routing/usuario.yml"
     prefix:   /usuario
+
+page_verProducto:
+    pattern:  /productos/{id}
+    defaults: { _controller: JYGRevestimientosBundle:Page:verProducto }
+    requirements:
+        _method:  GET
 
 JYGRevestimientosBundle_inicio:
     pattern:  /
@@ -71,7 +73,3 @@ JYGRevestimientosBundle_vision:
 jyg_revestimientos_venta:
     resource: "@JYGRevestimientosBundle/Resources/config/routing/venta.yml"
     prefix:   /venta
-
-_upload:
-    path:     /upload
-    defaults: { _controller: JYGRevestimientosBundle:Archivo:Upload }

@@ -7,6 +7,7 @@
 	  <h1>Productos</h1>
 	</div>
 	<div class="row">
+		<!-- Barra de la Izquierda con los Tipos de Productos -->
 		<div class="col-lg-4 col-sm-4 col-xs-12">
 			<div class="list-group">
 			  <a href="#" class="list-group-item active">
@@ -23,79 +24,22 @@
 			  </a>
 			</div>
 		</div>
+		<!-- Productos -->
 		<div class="col-lg-8 col-sm-8 col-xs-12">
 			<div class="row">
-			  <div class="col-lg-4 col-sm-6 col-xs-6">
-			    <div class="thumbnail">
-			      <img src="{{ asset('bundles/jygrevestimientos/images/show.jpg') }}" alt="Prod1">
-			      <div class="caption">
-			        <h3>Nombre del Prod</h3>
-			        <p>Una descripción adecuada o una tabla con las caracteristicas</p>
-			        <p><a href="#" class="btn btn-primary" role="button">Ver Más</a> <a href="#" class="btn btn-default" role="button">Ver Otros</a></p>
-			      </div>
-			    </div>
-			  </div>
-			  <div class="col-lg-4 col-sm-6 col-xs-6">
-			    <div class="thumbnail">
-			      <img src="{{ asset('bundles/jygrevestimientos/images/show.jpg') }}" alt="Prod1">
-			      <div class="caption">
-			        <h3>Nombre del Prod</h3>
-			        <p>Una descripción adecuada o una tabla con las caracteristicas</p>
-			        <p><a href="#" class="btn btn-primary" role="button">Ver Más</a> <a href="#" class="btn btn-default" role="button">Ver Otros</a></p>
-			      </div>
-			    </div>
-			  </div>
-			  <div class="col-lg-4 col-sm-6 col-xs-6">
-			    <div class="thumbnail">
-			      <img src="{{ asset('bundles/jygrevestimientos/images/show.jpg') }}" alt="Prod1">
-			      <div class="caption">
-			        <h3>Nombre del Prod</h3>
-			        <p>Una descripción adecuada o una tabla con las caracteristicas</p>
-			        <p><a href="#" class="btn btn-primary" role="button">Ver Más</a> <a href="#" class="btn btn-default" role="button">Ver Otros</a></p>
-			      </div>
-			    </div>
-			  </div>
+				{% for entity in entities %}
 				<div class="col-lg-4 col-sm-6 col-xs-6">
-				    <div class="thumbnail">
-				      <img src="{{ asset('bundles/jygrevestimientos/images/show.jpg') }}" alt="Prod1">
-				      <div class="caption">
-				        <h3>Nombre del Prod</h3>
-				        <p>Una descripción adecuada o una tabla con las caracteristicas</p>
-				        <p><a href="#" class="btn btn-primary" role="button">Ver Más</a> <a href="#" class="btn btn-default" role="button">Ver Otros</a></p>
-				      </div>
-				    </div>
-				  </div>
-				  <div class="col-lg-4 col-sm-6 col-xs-6">
-				    <div class="thumbnail">
-				      <img src="{{ asset('bundles/jygrevestimientos/images/show.jpg') }}" alt="Prod1">
-				      <div class="caption">
-				        <h3>Nombre del Prod</h3>
-				        <p>Una descripción adecuada o una tabla con las caracteristicas</p>
-				        <p><a href="#" class="btn btn-primary" role="button">Ver Más</a> <a href="#" class="btn btn-default" role="button">Ver Otros</a></p>
-				      </div>
-				    </div>
-				  </div>
-				  <div class="col-lg-4 col-sm-6 col-xs-6">
-				    <div class="thumbnail">
-				      <img src="{{ asset('bundles/jygrevestimientos/images/show.jpg') }}" alt="Prod1">
-				      <div class="caption">
-				        <h3>Nombre del Prod</h3>
-				        <p>Una descripción adecuada o una tabla con las caracteristicas</p>
-				        <p><a href="#" class="btn btn-primary" role="button">Ver Más</a> <a href="#" class="btn btn-default" role="button">Ver Otros</a></p>
-				      </div>
-				    </div>
-				  </div>
-				  <div class="col-lg-4 col-sm-6 col-xs-6">
-				    <div class="thumbnail">
-				      <img src="{{ asset('bundles/jygrevestimientos/images/show.jpg') }}" alt="Prod1">
-				      <div class="caption">
-				        <h3>Nombre del Prod</h3>
-				        <p>Una descripción adecuada o una tabla con las caracteristicas</p>
-				        <p><a href="#" class="btn btn-primary" role="button">Ver Más</a> <a href="#" class="btn btn-default" role="button">Ver Otros</a></p>
-				      </div>
-				    </div>
-				  </div>
+					<div class="thumbnail">
+						<img src="{{ asset('bundles/jygrevestimientos/images/materiales/') }}{{ entity.path }}">
+						<div class="caption">
+							<h3>{{ entity.nombre }}</h3>
+							<p>{{ entity.formato }}{{ entity.color }}{{ entity.precio }} Bs{{ entity.tipo }}</p>
+							<p><a href="{{ path('page_verProducto', { 'id': entity.id }) }}" class="btn btn-success btn-xs btn-block" role="button">Ver Más</a></p>
+						</div>
+					</div>
 				</div>
+				{% endfor %}
+			</div>
 		</div>
 	</div>
 {% endblock %}

@@ -26,9 +26,14 @@ class PageController extends Controller
      */
     public function productosAction()
     {
-        return array(
-                // ...
-            );    }
+        $em = $this->getDoctrine()->getManager();
+
+        $entities = $em->getRepository('JYGRevestimientosBundle:Material')->findAll();
+
+        return $this->render('JYGRevestimientosBundle:Page:productos.html.twig', array(
+            'entities' => $entities,
+        ));
+    }
 
     /**
      * @Route("/galeria")
@@ -103,5 +108,19 @@ class PageController extends Controller
         return array(
                 // ...
             );    }
+
+    public function verProductoAction($id){
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('JYGRevestimientosBundle:Material')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Este producto no se encuentra');
+        }
+
+        return $this->render('JYGRevestimientosBundle:Page:verProducto.html.twig', array(
+            'entity'      => $entity,
+        ));
+    }
 
 }
