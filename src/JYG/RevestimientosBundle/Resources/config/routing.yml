@@ -67,3 +67,7 @@ JYGRevestimientosBundle_vision:
 jyg_revestimientos_venta:
     resource: "@JYGRevestimientosBundle/Resources/config/routing/venta.yml"
     prefix:   /venta
+
+_upload:
+    path:     /Upload
+    defaults: { _controller: JYGRevestimientosBundle:Archivo:Upload }
