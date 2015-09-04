@@ -21,7 +21,8 @@ class MaterialType extends AbstractType
             ->add('nombre')
             ->add('precio')
             ->add('tipo')
-            ->add('venta')
+            ->add('file')
+            //->add('venta')
         ;
     }
     
