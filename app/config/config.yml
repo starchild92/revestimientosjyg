@@ -80,5 +80,4 @@ swiftmailer:
     host:      "%mailer_host%"
     username:  "%mailer_user%"
     password:  "%mailer_password%"
-    delivery_address: lapv1992@gmail.com
     spool:     { type: memory }
