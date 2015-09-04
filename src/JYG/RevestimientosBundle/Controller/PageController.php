@@ -63,7 +63,7 @@ class PageController extends Controller
                     ->setBody($this->renderView('JYGRevestimientosBundle:Page:contactEmail.html.twig', array('consulta' => $consulta)));
                 $this->get('mailer')->send($message);
      
-               //$this->addFlash('exito', 'Tu consulta ha sido enviada, Gracias!');
+               $this->addFlash('exito', 'Tu consulta ha sido enviada, Gracias!');
  
                 return $this->redirect($this->generateUrl('JYGRevestimientosBundle_contacto'));
             }
