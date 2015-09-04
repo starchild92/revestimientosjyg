@@ -1,53 +1,54 @@
-{% extends '::base.html.twig' %}
+{% extends 'JYGRevestimientosBundle::base.html.twig' %}
 
-{% block body -%}
-    <h1>Material list</h1>
-
-    <table class="records_list">
+{% block body %}
+    <div class="page-header">
+        <h1 class="L_h1">Productos</h1>
+        <a class="l_a" href="{{ path('material_new') }}"><button class="btn btn-success" type="button">Añadir un nuevo Producto</button></a>
+    </div>
+    <table class="table records_list">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Codigo</th>
                 <th>Formato</th>
                 <th>Color</th>
                 <th>Nombre</th>
                 <th>Precio</th>
                 <th>Tipo</th>
-                <th>Path</th>
-                <th>Actions</th>
+                <th>Imagen</th>
+                <th>Menu</th>
             </tr>
         </thead>
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('material_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td>{{ entity.codigo }}</td>
+                <td><a href="{{ path('material_show', { 'id': entity.id }) }}">{{ entity.codigo }}</a></td>
                 <td>{{ entity.formato }}</td>
                 <td>{{ entity.color }}</td>
                 <td>{{ entity.nombre }}</td>
-                <td>{{ entity.precio }}</td>
+                <td>{{ entity.precio }} Bs</td>
                 <td>{{ entity.tipo }}</td>
-                <td>{{ entity.path }}</td>
-                <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('material_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('material_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
+                <td style="width: 109px"><img src="{{ asset('bundles/jygrevestimientos/images/materiales/') }}{{ entity.path }}" width="auto" height="90px"></td>
+                <td style="max-width: 50px;">
+                <div class="dropdown pull-right">
+                  <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    Opciones
+                    <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
+                    <li><a href="{{ path('material_show', { 'id': entity.id }) }}">Ver</a></li>
+                    <li><a href="{{ path('material_edit', { 'id': entity.id }) }}">Modificar</a></li>
+                  </ul>
+                </div>
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-
-        <ul>
-        <li>
-            <a href="{{ path('material_new') }}">
-                Create a new entry
-            </a>
-        </li>
-    </ul>
-    {% endblock %}
+{% endblock %}
+{% block stylesheets %}
+    <style type="text/css">
+        .l_a {
+            float: right;
+        }
+    </style>
+{% endblock %}
