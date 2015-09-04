@@ -1,3 +1,7 @@
+jyg_revestimientos_material:
+    resource: "@JYGRevestimientosBundle/Resources/config/routing/material.yml"
+    prefix:   /material
+
 jyg_revestimientos_cliente:
     resource: "@JYGRevestimientosBundle/Resources/config/routing/cliente.yml"
     prefix:   /cliente
@@ -69,5 +73,5 @@ jyg_revestimientos_venta:
     prefix:   /venta
 
 _upload:
-    path:     /Upload
+    path:     /upload
     defaults: { _controller: JYGRevestimientosBundle:Archivo:Upload }
