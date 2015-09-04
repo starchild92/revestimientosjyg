@@ -3,6 +3,8 @@
 namespace JYG\RevestimientosBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * Material
@@ -73,7 +75,6 @@ class Material
      * @ORM\JoinColumn(name="venta_id", referencedColumnName="id")
      */
     private $venta;
-
 
     /**
      * Get id
