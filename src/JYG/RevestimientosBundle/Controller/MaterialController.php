@@ -7,6 +7,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use JYG\RevestimientosBundle\Entity\Material;
 use JYG\RevestimientosBundle\Form\MaterialType;
+use JYG\RevestimientosBundle\Entity\Deposito;
+use JYG\RevestimientosBundle\Form\DepositoType;
 
 /**
  * Material controller.
@@ -60,7 +62,7 @@ class MaterialController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createCreateForm(Material $entity)
+    /*private function createCreateForm(Material $entity)
     {
         $form = $this->createForm(new MaterialType(), $entity, array(
             'action' => $this->generateUrl('material_create'),
@@ -70,7 +72,7 @@ class MaterialController extends Controller
         $form->add('submit', 'submit', array('label' => 'Create'));
 
         return $form;
-    }
+    }*/
 
     /**
      * Displays a form to create a new Material entity.
@@ -78,11 +80,16 @@ class MaterialController extends Controller
      */
     public function newAction()
     {
-        $entity = new Material();
-        $form   = $this->createCreateForm($entity);
+        $material = new Material();
+        //$form   = $this->createCreateForm($entity);
+        $almacen = new Deposito();
+
+        $material->getAlmacenes()->add($almacen);
+
+        $form = $this ->createForm(new MaterialType(), $material);
 
         return $this->render('JYGRevestimientosBundle:Material:new.html.twig', array(
-            'entity' => $entity,
+            'entity' => $material,
             'form'   => $form->createView(),
         ));
     }

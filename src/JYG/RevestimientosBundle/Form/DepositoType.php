@@ -15,9 +15,9 @@ class DepositoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nombrealmacen')
-            ->add('cantmaterialdisponible')
-            ->add('material')
+            ->add('nombrealmacen','text',array('label'=>'Nombre del Almacen'))
+            ->add('cantmaterialdisponible','text',array('label'=>'Cantidad Disponible'))
+            ->add('material','hidden')
         ;
     }
     

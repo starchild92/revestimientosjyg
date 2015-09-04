@@ -41,6 +41,10 @@ class Deposito
      */
     private $cantmaterialdisponible;
 
+    public function  __toString(){
+        return (string) $this->nombrealmacen;
+    }
+
     /**
      * Get id
      *

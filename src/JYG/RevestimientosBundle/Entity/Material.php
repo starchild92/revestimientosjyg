@@ -77,6 +77,11 @@ class Material
      */
     private $venta;
 
+
+    public function  __toString(){
+        return $this->codigo;
+    }
+
     /**
      * Get id
      *
