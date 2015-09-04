@@ -26,14 +26,14 @@
 	{{ form_widget(form.almacenes, {'attr':{'class':'form-control', 'data-toggle':'tooltip', 'data-placement':'right', 'data-container':'body'}}) }}#}
 	<div id="almacen">{{ form_label(form.almacenes,"Almacenado en:") }} </div>
 	<ul class="tags" data-prototype="{{ form_widget(form.almacenes.vars.prototype)|e }}">
-				    {% for almacen in form.almacenes %}
-				        
-			        	{{ form_label(almacen.nombrealmacen) }}
-		    			{{ form_widget(almacen.nombrealmacen, {'attr':{'class':'form-control' , 'data-toggle':'tooltip', 'data-placement':'right', 'data-container':'body'}}) }}
+	    {% for almacen in form.almacenes %}
+	        
+        	{{ form_label(almacen.nombrealmacen) }}
+			{{ form_widget(almacen.nombrealmacen, {'attr':{'class':'form-control' , 'data-toggle':'tooltip', 'data-placement':'right', 'data-container':'body'}}) }}
 
-		    			{{ form_label(almacen.cantmaterialdisponible) }}
-		    			{{ form_widget(almacen.cantmaterialdisponible, {'attr':{'class':'form-control' , 'data-toggle':'tooltip', 'data-placement':'right', 'data-container':'body'}}) }}
-				    {% endfor %}
+			{{ form_label(almacen.cantmaterialdisponible) }}
+			{{ form_widget(almacen.cantmaterialdisponible, {'attr':{'class':'form-control' , 'data-toggle':'tooltip', 'data-placement':'right', 'data-container':'body'}}) }}
+	    {% endfor %}
 	</ul>
        <!-- <ul class="record_actions">
 	    <li>

@@ -1,0 +1,701 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"th",
+				"thead	Tag"
+			],
+			[
+				"pa",
+				"padding-top"
+			],
+			[
+				"bord",
+				"border-radius"
+			],
+			[
+				"ma",
+				"margin"
+			],
+			[
+				"pad",
+				"padding-right"
+			],
+			[
+				"r",
+				"rgba()"
+			],
+			[
+				"wid",
+				"width"
+			],
+			[
+				"n",
+				"no-repeat"
+			],
+			[
+				"ba",
+				"background-repeat"
+			],
+			[
+				"fu",
+				"function"
+			],
+			[
+				"font",
+				"font-size"
+			],
+			[
+				"co",
+				"color"
+			],
+			[
+				"s",
+				"style	Attr"
+			],
+			[
+				"im",
+				"img	Tag"
+			],
+			[
+				"get",
+				"getFile"
+			],
+			[
+				"getC",
+				"getCodigo"
+			],
+			[
+				"border",
+				"border-radius"
+			],
+			[
+				"b",
+				"bold"
+			],
+			[
+				"form",
+				"form_control"
+			],
+			[
+				"en",
+				"entity"
+			],
+			[
+				"materia",
+				"material"
+			],
+			[
+				"mar",
+				"margin-top"
+			],
+			[
+				"min",
+				"min-height"
+			],
+			[
+				"margi",
+				"margin-bottom"
+			],
+			[
+				"padd",
+				"padding-top"
+			],
+			[
+				"backgro",
+				"background-image"
+			],
+			[
+				"bor",
+				"border-top-style"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"li",
+				"li	Tag"
+			],
+			[
+				"h",
+				"h1	Tag"
+			],
+			[
+				"margin",
+				"margin-top"
+			],
+			[
+				"enti",
+				"entities"
+			],
+			[
+				"ent",
+				"entities"
+			],
+			[
+				"J",
+				"JYGRevestimientosBundle"
+			],
+			[
+				"l",
+				"link	Tag"
+			],
+			[
+				"scr",
+				"script	Tag"
+			],
+			[
+				"p",
+				"phi"
+			],
+			[
+				"flo",
+				"flotr1"
+			],
+			[
+				"v",
+				"value"
+			],
+			[
+				"fo",
+				"form	Tag"
+			],
+			[
+				"tex",
+				"textarea	Tag"
+			],
+			[
+				"pu",
+				"public"
+			],
+			[
+				"fa",
+				"false"
+			],
+			[
+				"max",
+				"max-height"
+			],
+			[
+				"max-",
+				"max-width"
+			],
+			[
+				"wi",
+				"width"
+			],
+			[
+				"dro",
+				"dropdown-toggle"
+			],
+			[
+				"base_",
+				"base_url"
+			],
+			[
+				"alig",
+				"text-align"
+			],
+			[
+				"sty",
+				"style	Tag"
+			],
+			[
+				"u",
+				"ul	Tag"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 219.0,
+		"last_filter": "tabs",
+		"selected_items":
+		[
+			[
+				"tabs",
+				"Indentation: Convert to Tabs"
+			],
+			[
+				"reide",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"htm",
+				"Set Syntax: HTML"
+			],
+			[
+				"wra",
+				"Word Wrap: Toggle"
+			],
+			[
+				"tw",
+				"Set Syntax: HTML (Twig)"
+			],
+			[
+				"reid",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"html",
+				"Set Syntax: HTML"
+			],
+			[
+				"wr",
+				"Word Wrap: Toggle"
+			]
+		],
+		"width": 512.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/wamp/www/revestimientosjyg/src",
+		"/C/wamp/www/revestimientosjyg/src/JYG",
+		"/C/wamp/www/revestimientosjyg/src/JYG/RevestimientosBundle",
+		"/C/wamp/www/revestimientosjyg/src/JYG/RevestimientosBundle/Controller",
+		"/C/wamp/www/revestimientosjyg/src/JYG/RevestimientosBundle/Entity",
+		"/C/wamp/www/revestimientosjyg/src/JYG/RevestimientosBundle/Form",
+		"/C/wamp/www/revestimientosjyg/src/JYG/RevestimientosBundle/Resources",
+		"/C/wamp/www/revestimientosjyg/src/JYG/RevestimientosBundle/Resources/views",
+		"/C/wamp/www/revestimientosjyg/src/JYG/RevestimientosBundle/Resources/views/Material",
+		"/C/wamp/www/revestimientosjyg/src/JYG/RevestimientosBundle/Resources/views/Page",
+		"/C/wamp/www/revestimientosjyg/web"
+	],
+	"file_history":
+	[
+		"/C/wamp/www/revestimientosjyg/src/JYG/RevestimientosBundle/Entity/Material.php",
+		"/C/wamp/www/revestimientosjyg/src/JYG/RevestimientosBundle/Controller/MaterialController.php",
+		"/C/wamp/www/revestimientosjyg/src/JYG/RevestimientosBundle/Entity/Deposito.php",
+		"/C/Users/Luis Perez/AppData/Local/Temp/Temp1_allinson.zip/Nuevo.html.twig",
+		"/C/Users/Luis Perez/AppData/Local/Temp/Temp1_allinson.zip/NumerosTelefonicosType.php",
+		"/C/Users/Luis Perez/AppData/Local/Temp/Temp1_allinson.zip/Paciente.php",
+		"/C/Users/Luis Perez/AppData/Local/Temp/Temp1_allinson.zip/PacienteType.php",
+		"/C/wamp/www/revestimientosjyg/src/JYG/RevestimientosBundle/Form/DepositoType.php",
+		"/C/wamp/www/revestimientosjyg/src/JYG/RevestimientosBundle/Form/MaterialType.php",
+		"/C/wamp/www/revestimientosjyg/src/JYG/RevestimientosBundle/Resources/views/Material/new.html.twig",
+		"/C/wamp/www/revestimientosjyg/src/JYG/RevestimientosBundle/Resources/views/Page/productos.html.twig",
+		"/C/wamp/www/revestimientosjyg/src/JYG/RevestimientosBundle/Controller/PageController.php",
+		"/C/wamp/www/revestimientosjyg/src/JYG/RevestimientosBundle/Resources/views/Page/ayuda.html.twig",
+		"/C/wamp/www/revestimientosjyg/src/JYG/RevestimientosBundle/Resources/views/Page/verProducto.html.twig",
+		"/C/wamp/www/revestimientosjyg/src/JYG/RevestimientosBundle/Resources/config/routing.yml",
+		"/C/wamp/www/revestimientosjyg/src/JYG/RevestimientosBundle/Resources/views/Material/edit.html.twig",
+		"/C/wamp/www/revestimientosjyg/src/JYG/RevestimientosBundle/Resources/views/Material/index.html.twig",
+		"/C/wamp/www/revestimientosjyg/src/JYG/RevestimientosBundle/Resources/views/Page/contacto.html.twig",
+		"/C/wamp/www/revestimientosjyg/src/JYG/RevestimientosBundle/Resources/views/Material/show.html.twig",
+		"/C/wamp/www/revestimientosjyg/src/JYG/RevestimientosBundle/Entity/Archivo.php",
+		"/C/wamp/www/revestimientosjyg/src/JYG/RevestimientosBundle/Controller/ArchivoController.php",
+		"/C/wamp/www/revestimientosjyg/src/JYG/RevestimientosBundle/Form/ArchivoType.php",
+		"/C/wamp/www/revestimientosjyg/src/JYG/RevestimientosBundle/Resources/views/Page/index.html.twig",
+		"/C/wamp/www/revestimientosjyg/composer.json",
+		"/C/wamp/www/revestimientosjyg/app/AppKernel.php",
+		"/C/Users/Luis Perez/Dropbox/Symfony/when deploying the app",
+		"/C/wamp/www/revestimientosjyg/src/JYG/RevestimientosBundle/Entity/Document.php",
+		"/C/wamp/www/revestimientosjyg/src/JYG/RevestimientosBundle/Entity/Imagen.php",
+		"/C/wamp/www/revestimientosjyg/src/JYG/RevestimientosBundle/Resources/views/Usuario/new.html.twig",
+		"/C/wamp/www/revestimientosjyg/app/config/config.yml",
+		"/C/Users/Luis Perez/Desktop/EDY!!!!",
+		"/C/wamp/www/revestimientosjyg/src/JYG/RevestimientosBundle/Resources/views/base.html.twig",
+		"/C/wamp/www/revestimientosjyg/src/JYG/RevestimientosBundle/Resources/public/css/bootstrap.css",
+		"/C/wamp/www/revestimientosjyg/src/JYG/RevestimientosBundle/Resources/views/Page/galeria.html.twig",
+		"/C/wamp/www/revestimientosjyg/src/JYG/RevestimientosBundle/Resources/views/Page/mision.html.twig",
+		"/C/wamp/www/revestimientosjyg/src/JYG/RevestimientosBundle/Resources/views/Page/vision.html.twig",
+		"/C/wamp/www/revestimientosjyg/app/config/config_dev.yml",
+		"/C/wamp/www/revestimientosjyg/app/config/parameters.yml",
+		"/C/wamp/www/revestimientosjyg/src/JYG/RevestimientosBundle/Resources/views/Page/contactEmail.html.twig",
+		"/C/wamp/www/revestimientosjyg/.gitignore",
+		"/C/wamp/www/revestimientosjyg/src/JYG/RevestimientosBundle/Resources/views/Page/contactEmail.txt.twig",
+		"/C/wamp/www/revestimientosjyg/src/JYG/RevestimientosBundle/Entity/Venta.php",
+		"/C/wamp/www/revestimientosjyg/src/JYG/RevestimientosBundle/Resources/public/css/carousel.css",
+		"/C/wamp/www/revestimientosjyg/src/JYG/RevestimientosBundle/Resources/public/css/navbar-fixed-top.css",
+		"/C/wamp/www/revestimientosjyg/src/JYG/RevestimientosBundle/Form/VentaType.php",
+		"/C/wamp/www/revestimientosjyg/src/JYG/RevestimientosBundle/Controller/VentaController.php",
+		"/C/wamp/www/revestimientosjyg/src/JYG/RevestimientosBundle/Resources/views/Venta/index.html.twig",
+		"/C/wamp/www/revestimientosjyg/src/JYG/RevestimientosBundle/Resources/views/Venta/show.html.twig",
+		"/C/wamp/www/revestimientosjyg/src/JYG/RevestimientosBundle/Resources/views/Venta/new.html.twig",
+		"/C/wamp/www/revestimientosjyg/src/JYG/RevestimientosBundle/Resources/views/Venta/edit.html.twig",
+		"/C/wamp/www/revestimientosjyg/src/JYG/RevestimientosBundle/Resources/views/Cliente/show.html.twig",
+		"/C/wamp/www/revestimientosjyg/src/JYG/RevestimientosBundle/Resources/views/Cliente/new.html.twig",
+		"/C/wamp/www/revestimientosjyg/src/JYG/RevestimientosBundle/Resources/views/Cliente/index.html.twig",
+		"/C/wamp/www/revestimientosjyg/src/JYG/RevestimientosBundle/Resources/views/Cliente/edit.html.twig",
+		"/C/wamp/www/revestimientosjyg/src/JYG/RevestimientosBundle/Form/ClienteType.php",
+		"/C/wamp/www/revestimientosjyg/src/JYG/RevestimientosBundle/Entity/Cliente.php",
+		"/C/wamp/www/revestimientosjyg/src/JYG/RevestimientosBundle/Entity/Usuario.php",
+		"/C/wamp/www/revestimientosjyg/src/JYG/RevestimientosBundle/Entity/Item.php",
+		"/C/wamp/www/revestimientosjyg/src/JYG/RevestimientosBundle/Resources/config/routing/venta.yml",
+		"/C/wamp/www/revestimientosjyg/src/JYG/RevestimientosBundle/Resources/views/Bitacora/show.html.twig",
+		"/C/wamp/www/revestimientosjyg/src/JYG/RevestimientosBundle/Resources/views/Bitacora/index.html.twig",
+		"/C/wamp/www/revestimientosjyg/src/JYG/RevestimientosBundle/Resources/views/Item/new.html.twig",
+		"/C/wamp/www/revestimientosjyg/src/JYG/RevestimientosBundle/Resources/views/Item/index.html.twig",
+		"/C/wamp/www/revestimientosjyg/src/JYG/RevestimientosBundle/Resources/views/Item/edit.html.twig",
+		"/C/wamp/www/revestimientosjyg/src/JYG/RevestimientosBundle/Resources/views/Item/show.html.twig",
+		"/C/wamp/www/revestimientosjyg/src/JYG/RevestimientosBundle/Resources/views/Usuario/show.html.twig",
+		"/C/wamp/www/revestimientosjyg/src/JYG/RevestimientosBundle/Resources/views/Usuario/index.html.twig",
+		"/C/wamp/www/revestimientosjyg/src/JYG/RevestimientosBundle/Resources/views/Usuario/edit.html.twig",
+		"/C/wamp/www/revestimientosjyg_/app/Resources/views/default/index.html.twig",
+		"/C/wamp/www/revestimientosjyg_/app/Resources/views/base.html.twig",
+		"/C/wamp/www/revestimientosjyg/web/app.php",
+		"/C/wamp/www/revestimientosjyg_/src/JYG/RevestimientosBundle/Resources/views/base.html.twig",
+		"/C/wamp/www/revestimientosjyg/app/Resources/views/default/index.html.twig",
+		"/C/wamp/www/revestimientosjyg/app/Resources/views/base.html.twig",
+		"/C/wamp/www/revestimientosjyg/src/JYG/RevestimientosBundle/Resources/views/baseUsuario.html.twig",
+		"/C/Users/Luis Perez/AppData/Roaming/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/C/Users/Luis Perez/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/C/wamp/www/revestimientosjyg/app/config/routing.yml",
+		"/C/wamp/www/revestimientosjyg/src/JYG/RevestimientosBundle/Resources/views/index.html.twig",
+		"/C/wamp/www/revestimientosjyg/src/JYG/RevestimientosBundle/Controller/DefaultController.php",
+		"/C/wamp/www/revestimientosjyg/src/JYG/RevestimientosBundle/Resources/views/Default/index.html.twig",
+		"/C/wamp/www/revestimientosjyg/web/bundles/jygrevestimientos/css/navbar-fixed-top.css",
+		"/C/wamp/www/revestimientosjyg/src/JYG/RevestimientosBundle/Resources/public/js/jquery.min.js",
+		"/C/wamp/www/revestimientosjyg/Prueba",
+		"/C/wamp/www/revestimientosjyg/src/AppBundle/Controller/DefaultController.php",
+		"/C/wamp/www/revestimientosjyg/gitignorebackup",
+		"/C/Users/Luis Perez/AppData/Roaming/Skype/My Skype Received Files/parameters.yml",
+		"/C/wamp/www/FOC/application/views/simulacion.php",
+		"/G/LUISPEREZ-PC/Videos/Películas/Avengers Age of Ultron (2015)/Avengers.Age.of.Ultron.2015.720p.WEB-DL.DD5.1.H264-RARBG.es.srt",
+		"/C/wamp/www/FOC/css/bootstrap.css",
+		"/C/wamp/www/FOC/application/views/datos.php",
+		"/C/wamp/www/FOC/application/views/menu.php",
+		"/C/wamp/www/FOC/application/views/flotr1.php",
+		"/C/wamp/www/FOC/application/views/flotr_simulacion.php",
+		"/C/wamp/www/FOC/application/controllers/simulacion.php",
+		"/C/Users/Luis Perez/Desktop/Peliculas.txt",
+		"/C/wamp/www/FOC/application/views/graficas.php",
+		"/C/wamp/www/FOC/application/controllers/graficas.php",
+		"/C/wamp/www/FOC/application/views/informe.php",
+		"/C/wamp/www/FOC/application/controllers/informe.php",
+		"/C/wamp/www/FOC/application/config/autoload.php",
+		"/C/wamp/www/FOC/application/views/enunciado.php",
+		"/C/wamp/www/FOC/sources/informeescrito.docx",
+		"/C/wamp/www/FOC/js/bootstrap.js",
+		"/C/wamp/www/FOC/application/controllers/my404.php",
+		"/C/wamp/www/FOC/application/views/404.php",
+		"/G/LUISPEREZ-PC/Software/Herramientas/KMSpico v10.0.4 (Office and windows activator)/KMSpico v10.0.4 (Office and windows activator) [TechTools.NET]/ReadMe KMSpico Install.txt",
+		"/C/wamp/www/FOC/application/config/routes.php",
+		"/C/wamp/www/FOC/application/views/flotr2.php",
+		"/C/wamp/www/FOC/application/views/flotr3.php",
+		"/C/wamp/www/FOC/application/views/footer.php",
+		"/C/wamp/www/FOC/application/views/flotr4.php",
+		"/C/wamp/www/FOC/js/flotr.debug-0.2.0-alpha.js",
+		"/C/wamp/www/FOC/js/jquery.min.js",
+		"/C/wamp/www/FOC/application/views/inicio.php",
+		"/C/wamp/www/FOC/application/views/informacion.php",
+		"/C/wamp/www/FOC/to-do.txt",
+		"/C/wamp/www/FOC/css/style.css",
+		"/E/foc/to-do.txt",
+		"/C/wamp/www/FOC/js/lib/style.css",
+		"/C/wamp/www/FOC/js/flotr/examples/basic.html",
+		"/C/wamp/www/FOC/application/views/parametros.php",
+		"/C/wamp/www/FOC/application/controllers/enunciado.php",
+		"/C/wamp/www/FOC/css/carrousel.css",
+		"/C/wamp/www/FOC/css/bootstrap.min.css",
+		"/C/wamp/www/FOC/application/views/old_principal.php"
+	],
+	"find":
+	{
+		"height": 36.0
+	},
+	"find_in_files":
+	{
+		"height": 96.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"td",
+			"th",
+			"tr",
+			"h3",
+			"10",
+			"h1",
+			"btn-",
+			"file",
+			"btn",
+			"Name",
+			"name",
+			"file",
+			"Material",
+			"col-lg-4",
+			"document",
+			"path",
+			"redirectToRoute",
+			"document",
+			"h1",
+			"sm-",
+			"&middot",
+			"</li>",
+			"\"><a href",
+			"}}\"><a href",
+			"nav",
+			"navbar",
+			"head",
+			"sepa",
+			"small",
+			"h4",
+			"col-sm-6 col-xs-4",
+			"col-sm-4 col-md-4",
+			"col-sm-6 col-md-4",
+			"4",
+			"galeria",
+			"productos",
+			"JYGRevestimientos_",
+			"Revestiminetos",
+			"tel",
+			"LIHotel",
+			"Inicio",
+			"#about",
+			"BloggerBlogBundle",
+			"font-family: ",
+			"lihotel",
+			"ñ",
+			"ú",
+			"ó",
+			"í",
+			"é",
+			"á",
+			"small",
+			"default",
+			" <DIR>",
+			"button",
+			"informacion",
+			"Omega",
+			"smal",
+			"small",
+			"></",
+			"tool",
+			"tool-tip",
+			"dropdown",
+			"ready",
+			"too",
+			"tool",
+			"ready.fun",
+			"too",
+			"tooltip",
+			"tip",
+			"data-toggle",
+			"tooltip",
+			"primary",
+			"container2",
+			"container1",
+			"points: {show: true}",
+			"container2",
+			"container1",
+			"points: {show: true}",
+			"noTicks: 100",
+			" k:",
+			"canvasWidth",
+			"canvas",
+			"id=\"auto-size\"",
+			"<img",
+			"h5",
+			"container2",
+			"hide",
+			"a href=\"#\"",
+			"toggle",
+			"show",
+			"Drop",
+			"menu",
+			"click",
+			"flotr",
+			"flot",
+			"pt src",
+			"cript",
+			"panel-info",
+			"info",
+			"Info",
+			"info",
+			"shadow",
+			"file",
+			"#\">",
+			"font-family: \"Helvetica Neue\", Helvetica, Arial",
+			"font-family: \"H",
+			"font",
+			"\"\"",
+			"<li>",
+			"><a",
+			"class='active' ",
+			"href='#'\";",
+			"<?php if ($f",
+			"<?php if ($fi",
+			"<?php",
+			"primary",
+			"70",
+			"h4",
+			"col-lg-1",
+			"col-md-4",
+			"col-lg-2",
+			"140",
+			"lg-4",
+			"• ",
+			"-",
+			"	",
+			"						"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"folders":
+	[
+		{
+			"path": "C:\\wamp\\www\\FOC"
+		},
+		{
+			"path": "C:\\wamp\\www\\revestimientosjyg"
+		}
+	],
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 28.0
+	},
+	"input":
+	{
+		"height": 36.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 130.0
+	},
+	"pinned_build_system": "",
+	"project": "",
+	"replace":
+	{
+		"height": 52.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"boot",
+				"css\\bootstrap.css"
+			],
+			[
+				"boots",
+				"css\\bootstrap.css"
+			],
+			[
+				"bo",
+				"css\\bootstrap.css"
+			],
+			[
+				"jq",
+				"js\\jquery.min.js"
+			],
+			[
+				"jque",
+				"js\\jquery.min.js"
+			],
+			[
+				"bootstrap.min.css",
+				"css\\bootstrap.min.css"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 284.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
