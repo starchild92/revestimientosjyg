@@ -25,29 +25,15 @@ class Venta
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fecha", type="date")
+     * @ORM\Column(name="fecha", type="datetime")
      */
     private $fecha;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="numero", type="integer")
-     */
-    private $numero;
-
-    /**
-<<<<<<< HEAD
      * @ORM\ManyToOne(targetEntity="Cliente", inversedBy="identificador")
      * @ORM\JoinColumn(name="cliente_id", referencedColumnName="id", onDelete="CASCADE")
      */
     private $comprador;
-=======
-     * @var string
-     *
-     * @ORM\Column(name="cliente", type="string")
-     */
-    private $cliente;
 
     /**
      * @ORM\OneToMany(targetEntity="Material", mappedBy="venta")
@@ -60,7 +46,6 @@ class Venta
      * @ORM\Column(name="cantmatvendido", type="float")
      */
     private $cantmatvendido;
->>>>>>> 0d0ead52bb1352b193e5beee6d867bce38b40134
 
     /**
      * Get id
@@ -96,29 +81,6 @@ class Venta
     }
 
     /**
-     * Set numero
-     *
-     * @param integer $numero
-     * @return Venta
-     */
-    public function setNumero($numero)
-    {
-        $this->numero = $numero;
-
-        return $this;
-    }
-
-    /**
-     * Get numero
-     *
-     * @return integer 
-     */
-    public function getNumero()
-    {
-        return $this->numero;
-    }
-
-    /**
      * Set comprador
      *
      * @param \JYG\RevestimientosBundle\Entity\Cliente $comprador
@@ -127,7 +89,23 @@ class Venta
     public function setComprador(\JYG\RevestimientosBundle\Entity\Cliente $comprador = null)
     {
         $this->comprador = $comprador;
+    }
 
+    public function __construct()
+    {
+        $this->materiales = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->fecha = new \DateTime();
+    }
+
+    /**
+     * Add materiales
+     *
+     * @param \JYG\RevestimientosBundle\Entity\Material $materiales
+     * @return Venta
+     */
+    public function addMateriale(\JYG\RevestimientosBundle\Entity\Material $materiales)
+    {
+        $this->materiales[] = $materiales;
         return $this;
     }
 
@@ -141,30 +119,11 @@ class Venta
         return $this->comprador;
     }
 
-<<<<<<< HEAD
-    public function __toString() {
+    public function __toString()
+    {
         return $this->comprador->getNombre();
-=======
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->materiales = new \Doctrine\Common\Collections\ArrayCollection();
     }
-
-    /**
-     * Add materiales
-     *
-     * @param \JYG\RevestimientosBundle\Entity\Material $materiales
-     * @return Venta
-     */
-    public function addMateriale(\JYG\RevestimientosBundle\Entity\Material $materiales)
-    {
-        $this->materiales[] = $materiales;
     
-        return $this;
-    }
 
     /**
      * Remove materiales
@@ -184,6 +143,28 @@ class Venta
     public function getMateriales()
     {
         return $this->materiales;
->>>>>>> 0d0ead52bb1352b193e5beee6d867bce38b40134
+    }
+
+    /**
+     * Set cantmatvendido
+     *
+     * @param float $cantmatvendido
+     * @return Venta
+     */
+    public function setCantmatvendido($cantmatvendido)
+    {
+        $this->cantmatvendido = $cantmatvendido;
+    
+        return $this;
+    }
+
+    /**
+     * Get cantmatvendido
+     *
+     * @return float 
+     */
+    public function getCantmatvendido()
+    {
+        return $this->cantmatvendido;
     }
 }

@@ -419,4 +419,27 @@ class Material
             unlink($this->temp);
         }
     }
+
+    /**
+     * Set path
+     *
+     * @param string $path
+     * @return Material
+     */
+    public function setPath($path)
+    {
+        $this->path = $path;
+    
+        return $this;
+    }
+
+    /**
+     * Get path
+     *
+     * @return string 
+     */
+    public function getPath()
+    {
+        return $this->path;
+    }
 }

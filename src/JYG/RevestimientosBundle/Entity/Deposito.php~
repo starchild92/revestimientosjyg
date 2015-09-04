@@ -34,8 +34,6 @@ class Deposito
      */
     private $material;
 
-<<<<<<< HEAD
-=======
     /**
      * @var float
      *
@@ -43,7 +41,10 @@ class Deposito
      */
     private $cantmaterialdisponible;
 
->>>>>>> 0d0ead52bb1352b193e5beee6d867bce38b40134
+    public function  __toString(){
+        return (string) $this->nombrealmacen;
+    }
+
     /**
      * Get id
      *
@@ -98,5 +99,28 @@ class Deposito
     public function getMaterial()
     {
         return $this->material;
+    }
+
+    /**
+     * Set cantmaterialdisponible
+     *
+     * @param float $cantmaterialdisponible
+     * @return Deposito
+     */
+    public function setCantmaterialdisponible($cantmaterialdisponible)
+    {
+        $this->cantmaterialdisponible = $cantmaterialdisponible;
+    
+        return $this;
+    }
+
+    /**
+     * Get cantmaterialdisponible
+     *
+     * @return float 
+     */
+    public function getCantmaterialdisponible()
+    {
+        return $this->cantmaterialdisponible;
     }
 }

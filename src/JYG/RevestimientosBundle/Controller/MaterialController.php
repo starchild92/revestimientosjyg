@@ -83,7 +83,6 @@ class MaterialController extends Controller
         $material = new Material();
         //$form   = $this->createCreateForm($entity);
         $almacen = new Deposito();
-
         $material->getAlmacenes()->add($almacen);
 
         $form = $this ->createForm(new MaterialType(), $material);
