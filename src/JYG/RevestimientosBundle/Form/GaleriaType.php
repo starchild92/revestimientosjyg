@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class DepositoType extends AbstractType
+class GaleriaType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -15,10 +15,8 @@ class DepositoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nombrealmacen','choice',array('choices'=>array('Almacen 1'=> 'San Diego','Almacen 2' => 'UAM')
-                ,'label'=>'Nombre del Almacen'))
-            ->add('cantmaterialdisponible','text',array('label'=>'Cantidad Disponible'))
-            ->add('material','hidden', array('label' => false))
+            ->add('path')
+            ->add('file')
         ;
     }
     
@@ -28,7 +26,7 @@ class DepositoType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'JYG\RevestimientosBundle\Entity\Deposito'
+            'data_class' => 'JYG\RevestimientosBundle\Entity\Galeria'
         ));
     }
 
@@ -37,6 +35,6 @@ class DepositoType extends AbstractType
      */
     public function getName()
     {
-        return 'jyg_revestimientosbundle_deposito';
+        return 'jyg_revestimientosbundle_galeria';
     }
 }

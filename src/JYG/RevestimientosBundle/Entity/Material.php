@@ -5,6 +5,7 @@ namespace JYG\RevestimientosBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Material
@@ -234,7 +235,7 @@ class Material
      */
     public function __construct()
     {
-        $this->almacenes = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->almacenes = new ArrayCollection();
     }
 
     /**
@@ -248,6 +249,13 @@ class Material
         $this->almacenes[] = $almacenes;
     
         return $this;
+    }
+    /* Esta funcion agrega los almacenes porque la de arriba no se que coño hace */
+    public function setAlmacenes($almacenes){
+        $this->almacenes = $almacenes;
+        foreach ($almacenes as $almacen) {
+            $almacen->setMaterial($this);
+        }
     }
 
     /**
