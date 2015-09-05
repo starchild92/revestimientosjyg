@@ -307,7 +307,7 @@ class Material
     }
 
     /**
-     * @Assert\File(maxSize="6000000")
+     * @Assert\File(maxSize="6000000", mimeTypesMessage = "Sube una foto valida")
      */
     private $file;
 

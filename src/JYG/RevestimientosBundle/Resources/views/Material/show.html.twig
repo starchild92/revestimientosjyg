@@ -10,7 +10,7 @@
                 <thead>
                     <tr>
                         <th colspan="3"><h3 style="margin-top:0px;">Detalles del Producto</h3></th>
-                        <th><a href="{{ path('material') }}" ><button class="btn btn-primary btn-block" type="button">Regresar</button></a></th>
+                        <th><a href="{{ path('material') }}" class="btn btn-primary btn-block" type="button">Regresar</a></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -34,7 +34,7 @@
                     </tr>
                     <tr>
                         <td colspan="2">
-                            <a href="{{ path('material_edit', { 'id': entity.id }) }}"><button class="btn btn-success btn-block" type="button">Modificar Datos</button></a></td>
+                            <a href="{{ path('material_edit', { 'id': entity.id }) }}" class="btn btn-success btn-block" type="button">Modificar Datos</a></td>
                         <td colspan="2">{{ form(delete_form) }}</td>
                     </tr>
                 </tbody>
