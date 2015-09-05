@@ -32,7 +32,7 @@
     <div class="row">
         <div class="col-sm-4">{{ form_widget(edit_form.submit) }}</div>
         <div class="col-sm-4"><a href="{{ path('material') }}" class="btn btn-primary btn-block" type="button">Regresar a la Lista de Productos</a></div>
-        <div class="col-sm-4">{{ form(delete_form) }}</div>
+        <div class="col-sm-4">{{ form_end(edit_form) }}{{ form(delete_form) }}</div>
     </div>
-    {{ form_end(edit_form) }}
+    
 {% endblock %}

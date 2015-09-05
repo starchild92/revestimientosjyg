@@ -1,10 +1,12 @@
 {% extends 'JYGRevestimientosBundle::base.html.twig' %}
 
 {% block body %}
-    <div class="page-header">
-        <h1>Productos</h1><a href="{{ path('material_new') }}"><button class="btn btn-success" type="button">Añadir un nuevo Producto</button></a>
+    <div class="row">
+        <div class="col-sm-8"><div class="page-header"><h1>Productos</h1></div></div>
+        <div class="col-sm-4"><a href="{{ path('material_new') }}" class="btn btn-success" type="button">Añadir un nuevo Producto</a></div>
     </div>
-    <table class="table records_list">
+    <div class="panel panel-default">
+    <table class="table table-striped records_list">
         <thead>
             <tr>
                 <th>Codigo</th>
@@ -43,11 +45,12 @@
         {% endfor %}
         </tbody>
     </table>
+    </div>
 {% endblock %}
 {% block stylesheets %}
     <style type="text/css">
-        .l_a {
-            float: right;
+        #volver{
+            margin-top: 20px;
         }
     </style>
 {% endblock %}

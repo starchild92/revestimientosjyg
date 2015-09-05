@@ -27,6 +27,11 @@
 		<!-- Productos -->
 		<div class="col-lg-8 col-sm-8 col-xs-12">
 			<div class="row">
+				{% for flashMessage in app.session.flashbag.get('error') %}
+		            <div class = "alert alert-danger">
+		                {{ flashMessage }}
+		            </div>
+		        {% endfor %}
 				{% for entity in entities %}
 				<div class="col-lg-4 col-sm-6 col-xs-6">
 					<div class="thumbnail">
