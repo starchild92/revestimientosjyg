@@ -159,7 +159,7 @@ class MaterialController extends Controller
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+        $form->add('submit', 'submit', array('label' => 'Actualizar Datos del Producto'));
 
         return $form;
     }

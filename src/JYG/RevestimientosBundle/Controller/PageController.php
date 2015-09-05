@@ -30,6 +30,10 @@ class PageController extends Controller
 
         $entities = $em->getRepository('JYGRevestimientosBundle:Material')->findAll();
 
+        if (!$entities) {
+            $this->get('session')->getFlashBag()->set('error', 'No hay productos para mostrar.');
+        }
+
         return $this->render('JYGRevestimientosBundle:Page:productos.html.twig', array(
             'entities' => $entities,
         ));

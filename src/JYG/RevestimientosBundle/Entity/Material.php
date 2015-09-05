@@ -243,7 +243,7 @@ class Material
      * @param \JYG\RevestimientosBundle\Entity\Deposito $almacenes
      * @return Material
      */
-    public function addAlmacene(\JYG\RevestimientosBundle\Entity\Deposito $almacenes)
+    public function addAlmacenes(\JYG\RevestimientosBundle\Entity\Deposito $almacenes)
     {
         $this->almacenes[] = $almacenes;
     
@@ -255,7 +255,7 @@ class Material
      *
      * @param \JYG\RevestimientosBundle\Entity\Deposito $almacenes
      */
-    public function removeAlmacene(\JYG\RevestimientosBundle\Entity\Deposito $almacenes)
+    public function removeAlmacenes(\JYG\RevestimientosBundle\Entity\Deposito $almacenes)
     {
         $this->almacenes->removeElement($almacenes);
     }
