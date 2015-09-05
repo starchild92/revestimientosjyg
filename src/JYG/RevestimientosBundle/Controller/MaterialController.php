@@ -37,20 +37,41 @@ class MaterialController extends Controller
      */
     public function createAction(Request $request)
     {
-        $entity = new Material();
-        $form = $this->createCreateForm($entity);
-        $form->handleRequest($request);
+        $error ="";
+        $material = new Material();
+        $deposito = new Deposito();
 
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($entity);
-            $em->flush();
+        $material->getAlmacenes()->add($deposito);
 
-            return $this->redirect($this->generateUrl('material_show', array('id' => $entity->getId())));
+        $form = $this->createCreateForm($material);
+        $request = $this->getRequest();
+        
+        if ($request->getMethod() == "POST") 
+        {
+            $form->handleRequest($request);
+            if ($form->isValid()) 
+            {   
+                //Buscando si ya existe el material que esta agregando
+                $repositorio =  $this->getDoctrine()->getRepository('JYGRevestimientosBundle:Material')->findByCodigo($material->getCodigo());
+                if ($repositorio) {
+                    $session = $request->getSession();
+                      $this->addFlash(
+                          'error',
+                          'Ya existe un material con ese codigo'
+                       );
+                }else
+                {
+                    $almacen = $material->getAlmacenes();
+                    $material->setAlmacenes($almacen);
+                    $em = $this->getDoctrine()->getManager();
+                    $em->persist($material);
+                    $em->flush();
+                }
+                return $this->redirect($this->generateUrl('material_show', array('id' => $material->getId())));
+            }
         }
-
         return $this->render('JYGRevestimientosBundle:Material:new.html.twig', array(
-            'entity' => $entity,
+            'material' => $material,
             'form'   => $form->createView(),
         ));
     }

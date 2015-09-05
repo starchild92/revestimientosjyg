@@ -29,6 +29,7 @@ class Deposito
     private $nombrealmacen;
 
     /**
+     * @var integer
      * @ORM\ManyToOne(targetEntity="Material", inversedBy="almacenes")
      * @ORM\JoinColumn(name="material_id", referencedColumnName="id", onDelete="CASCADE")
      */
@@ -81,10 +82,10 @@ class Deposito
     /**
      * Set material
      *
-     * @param \JYG\RevestimientosBundle\Entity\Material $material
+     * @param integer  $material
      * @return Deposito
      */
-    public function setMaterial(\JYG\RevestimientosBundle\Entity\Material $material = null)
+    public function setMaterial($material)
     {
         $this->material = $material;
     
@@ -122,5 +123,12 @@ class Deposito
     public function getCantmaterialdisponible()
     {
         return $this->cantmaterialdisponible;
+    }
+
+    /* Funcion que agrega el material id si no existe en la tabla deposito*/
+    public function addMaterial(Material $material){
+        if(!$this->almacenes->contains($material)){
+            $this->almacenes->add($material);
+        }
     }
 }
