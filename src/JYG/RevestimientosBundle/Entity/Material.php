@@ -255,6 +255,7 @@ class Material
     
         return $this;
     }
+    
     /* Esta funcion agrega los almacenes porque la de arriba no se que coño hace */
     public function setAlmacenes($almacenes){
         $this->almacenes = $almacenes;

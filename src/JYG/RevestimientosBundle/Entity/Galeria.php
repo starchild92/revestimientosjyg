@@ -10,8 +10,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
  * Galeria
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="JYG\RevestimientosBundle\Entity\GaleriaRepository")
- * @ORM\HasLifecycleCallbacks
+ * @ORM\Entity
  */
 class Galeria
 {
@@ -30,6 +29,29 @@ class Galeria
     private $file;
 
     /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    public $path;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="descripcion", type="string", length=255, nullable=true)
+     */
+    private $descripcion;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
      * Get file.
      *
      * @return UploadedFile
@@ -38,18 +60,13 @@ class Galeria
     {
         return $this->file;
     }
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    public $path;
-
+    
     public function getAbsolutePath()
     {
         $id = $this->getCodigo();
         return null === $this->path
             ? null
-            : $this->getUploadRootDir().'/'.$id.'.'.$this->path;
+            : $this->getUploadRootDir().'/'.$this->path;
     }
 
     public function getWebPath()
@@ -155,7 +172,7 @@ class Galeria
      * Set path
      *
      * @param string $path
-     * @return Galeria
+     * @return Material
      */
     public function setPath($path)
     {
@@ -172,5 +189,27 @@ class Galeria
     public function getPath()
     {
         return $this->path;
+    }
+    /**
+     * Set descripcion
+     *
+     * @param string $descripcion
+     * @return Galeria
+     */
+    public function setDescripcion($descripcion)
+    {
+        $this->descripcion = $descripcion;
+    
+        return $this;
+    }
+
+    /**
+     * Get descripcion
+     *
+     * @return string 
+     */
+    public function getDescripcion()
+    {
+        return $this->descripcion;
     }
 }

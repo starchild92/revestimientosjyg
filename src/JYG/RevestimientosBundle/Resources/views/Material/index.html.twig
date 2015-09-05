@@ -2,8 +2,8 @@
 
 {% block body %}
     <div class="row">
-        <div class="col-sm-8"><div class="page-header"><h1>Productos</h1></div></div>
-        <div class="col-sm-4"><a href="{{ path('material_new') }}" class="btn btn-success" type="button">Añadir un nuevo Producto</a></div>
+        <div class="col-sm-8"><div class="page-header"><h1>Lista de Productos</h1></div></div>
+        <div class="col-sm-4"><a id="volver" href="{{ path('material_new') }}" class="btn btn-success pull-right" type="button">Añadir un nuevo Producto</a></div>
     </div>
     <div class="panel panel-default">
     <table class="table table-striped records_list">
@@ -15,6 +15,7 @@
                 <th>Nombre</th>
                 <th>Precio</th>
                 <th>Tipo</th>
+                <th>Almacen</th>
                 <th>Imagen</th>
                 <th>Menu</th>
             </tr>
@@ -28,8 +29,24 @@
                 <td>{{ entity.nombre }}</td>
                 <td>{{ entity.precio }} Bs</td>
                 <td>{{ entity.tipo }}</td>
+                <td style="width: 240px;">
+                    <table class="table" style="width: 220px;">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Cantidad</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for almacen in entity.almacenes %}<tr>
+                                <td>{{ almacen.nombrealmacen }}</td>
+                                <td>{{ almacen.cantmaterialdisponible }}</td>
+                            </tr>{% endfor %}
+                        </tbody>
+                    </table>
+                </td>
                 <td style="width: 119px"><img src="{{ asset('bundles/jygrevestimientos/images/materiales/') }}{{ entity.path }}" width="100px" height="auto"></td>
-                <td style="max-width: 50px;">
+                <td style="max-width: 70px;">
                 <div class="dropdown pull-right">
                   <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                     Opciones
@@ -51,6 +68,9 @@
     <style type="text/css">
         #volver{
             margin-top: 20px;
+        }
+        img {
+            border-radius: 5px;
         }
     </style>
 {% endblock %}

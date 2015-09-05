@@ -56,7 +56,7 @@ class MaterialController extends Controller
                 if ($repositorio) {
                     $session = $request->getSession();
                       $this->addFlash(
-                          'error',
+                          'cod',
                           'Ya existe un material con ese codigo'
                        );
                 }else

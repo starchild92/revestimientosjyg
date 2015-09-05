@@ -73,3 +73,19 @@ JYGRevestimientosBundle_vision:
 jyg_revestimientos_venta:
     resource: "@JYGRevestimientosBundle/Resources/config/routing/venta.yml"
     prefix:   /venta
+
+_nueva_imagen:
+    path:     /NuevaImagenGaleria
+    defaults: { _controller: JYGRevestimientosBundle:Galeria:NuevaImagen }
+
+_editar_imagen:
+    path:     /EditarImagenGaleria
+    defaults: { _controller: JYGRevestimientosBundle:Galeria:EditarImagen }
+
+_eliminar_imagen:
+    path:     /EliminarImagenGaleria
+    defaults: { _controller: JYGRevestimientosBundle:Galeria:EliminarImagen }
+
+_mostrar_galeria:
+    path:     /MostrarGaleria
+    defaults: { _controller: JYGRevestimientosBundle:Galeria:MostrarGaleria }
