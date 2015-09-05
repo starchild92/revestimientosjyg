@@ -54,7 +54,11 @@ class MaterialController extends Controller
                 //Buscando si ya existe el material que esta agregando
                 $repositorio =  $this->getDoctrine()->getRepository('JYGRevestimientosBundle:Material')->findByCodigo($material->getCodigo());
                 if ($repositorio) {
-                    $error = "duplicado";
+                    $session = $request->getSession();
+                      $this->addFlash(
+                          'error',
+                          'Ya existe un material con ese codigo'
+                       );
                 }else
                 {
                     $almacen = $material->getAlmacenes();
@@ -62,7 +66,6 @@ class MaterialController extends Controller
                     $em = $this->getDoctrine()->getManager();
                     $em->persist($material);
                     $em->flush();
-                    $error = "guardado";
                 }
                 return $this->redirect($this->generateUrl('material_show', array('id' => $material->getId())));
             }
@@ -70,7 +73,6 @@ class MaterialController extends Controller
         return $this->render('JYGRevestimientosBundle:Material:new.html.twig', array(
             'material' => $material,
             'form'   => $form->createView(),
-            //'error' => $error,
         ));
     }
 

@@ -15,6 +15,12 @@
     {{ form_start(form) }}
     <div class="row">
     {#{ form_widget(form) }#}
+        {% for flashMessage in app.session.flashbag.get('error') %}
+                <div class = "alert alert-danger alert-dismissable">
+                    <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
+                    {{ flashMessage }}
+                </div>
+        {% endfor %}
 
         <div class="col-lg-4 col-sm-4 col-xs-12">
             {{ form_row(form.codigo) }}
