@@ -6,65 +6,52 @@
 {% endblock %}
 
 {% block body %}
-    <h1>Material creation</h1>
-    {% form_theme form 'bootstrap_3_layout.html.twig' %}
-    {#{{ form(form) }}#}
-
-    <div class="row">
-    {{ form_start(form) }}
-    {{ form_row(form) }}
-    
-    <!--<table class="table">
-    		<tbody>
-    			<tr>
-    				<td>{{ form_label(form.codigo) }}</td>
-    				<td>{{ form_label(form.formato) }}</td>
-    				<td>{{ form_label(form.color) }}</td>
-    			</tr>
-    			<tr>
-    				<td>{{ form_widget(form.codigo, {'attr':{'class':'form-control', 'data-toggle':'tooltip', 'data-placement':'right', 'data-container':'body'}}) }}</td>
-    				<td>{{ form_widget(form.formato, {'attr':{'class':'form-control', 'data-toggle':'tooltip', 'data-placement':'right', 'data-container':'body'}}) }}</td>
-    				<td>{{ form_widget(form.color, {'attr':{'class':'form-control', 'data-toggle':'tooltip', 'data-placement':'right', 'data-container':'body'}}) }}</td>
-    			</tr>
-    			<tr>
-    				<td>{{ form_label(form.nombre) }}</td>
-    				<td>{{ form_label(form.precio) }}</td>
-    				<td>{{ form_label(form.tipo) }}</td>
-    			</tr>
-    			<tr>
-    				<td>{{ form_widget(form.nombre, {'attr':{'class':'form-control', 'data-toggle':'tooltip', 'data-placement':'right', 'data-container':'body'}}) }}</td>
-    				<td>{{ form_widget(form.precio, {'attr':{'class':'form-control', 'data-toggle':'tooltip', 'data-placement':'right', 'data-container':'body'}}) }}</td>
-    				<td>{{ form_widget(form.tipo, {'attr':{'class':'form-control', 'data-toggle':'tooltip', 'data-placement':'right', 'data-container':'body'}}) }}</td>
-    			</tr>
-    			<tr>
-    				<td>{{ form_label(form.file, "Imagen del Producto") }}</td>
-    				<td colspan="2">{{ form_label(form.almacenes,"Almacenado en:") }}</td>
-    			</tr>
-    			<tr>
-    				<td>{{ form_widget(form.file, {'attr':{'data-toggle':'tooltip', 'data-placement':'right', 'data-container':'body'}}) }}</td>
-    				<td colspan="2"><ul style="list-style: none;" class="tags" data-prototype="{{ form_widget(form.almacenes.vars.prototype)|e }}"></ul>
-					</td>
-    			</tr>
-    		</tbody>
-    	</table>-->
+    <div class="page-header">
+    <h1>Añadir Nuevo Producto</h1>
     </div>
-	{{ form_end(form) }}
-	{{ form_widget(form.submit) }}
-	
+    {#% form_theme form 'bootstrap_3_layout.html.twig' %}
+    {{{ form(form) }}#}
+
+    {{ form_start(form) }}
+    <div class="row">
+    {#{ form_widget(form) }#}
+
+        <div class="col-lg-4 col-sm-4 col-xs-12">
+            {{ form_row(form.codigo) }}
+            {{ form_row(form.formato) }}
+            {{ form_row(form.color) }}
+        </div>
+        <div class="col-lg-4 col-sm-4 col-xs-12">
+            {{ form_row(form.nombre) }}
+            {{ form_row(form.precio) }}
+            {{ form_row(form.tipo) }}
+        </div>
+        <div class="col-lg-4 col-sm-4 col-xs-12">
+            {{ form_row(form.file) }}
+            {{ form_row(form.almacenes) }}
+        </div><div class="col-sm-6">{{ form_widget(form.submit) }}</div>
+	</div>
+    {{ form_end(form) }}
 {% endblock %}
 
 {% block stylesheets %}
 	<style type="text/css">
-		.form_file {
+		#jyg_revestimientosbundle_material_file {
 			font-weight: bold;
 			width: 100%;
 			padding: 5px;
 			border-radius: 5px;
-			border: solid 1px blue;
-		}
-		li *{
-			display:inline-block;
-			/*margin: 0px 5px 0px 5px;*/
+
+            text-shadow: 0 1px 0 #fff;
+            background-image: -webkit-linear-gradient(top, #fff 0%, #e0e0e0 100%);
+            background-image:      -o-linear-gradient(top, #fff 0%, #e0e0e0 100%);
+            background-image: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#e0e0e0));
+            background-image:         linear-gradient(to bottom, #fff 0%, #e0e0e0 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe0e0e0', GradientType=0);
+            filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+            background-repeat: repeat-x;
+            border-color: #dbdbdb;
+            border-color: #ccc;
 		}
 	</style>
 {% endblock %}
