@@ -318,7 +318,7 @@ class Material
         $id = $this->getCodigo();
         return null === $this->path
             ? null
-            : $this->getUploadRootDir().'/'.$id.'.'.$this->path;
+            : $this->getUploadRootDir().'/'.$this->path;
     }
 
     public function getWebPath()

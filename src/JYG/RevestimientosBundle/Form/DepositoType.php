@@ -17,7 +17,7 @@ class DepositoType extends AbstractType
         $builder
             ->add('nombrealmacen','text',array('label'=>'Nombre del Almacen'))
             ->add('cantmaterialdisponible','text',array('label'=>'Cantidad Disponible'))
-            ->add('material','hidden')
+            ->add('material','hidden', array('label' => false))
         ;
     }
     

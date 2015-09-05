@@ -62,7 +62,7 @@ class MaterialController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    /*private function createCreateForm(Material $entity)
+    private function createCreateForm(Material $entity)
     {
         $form = $this->createForm(new MaterialType(), $entity, array(
             'action' => $this->generateUrl('material_create'),
@@ -72,7 +72,7 @@ class MaterialController extends Controller
         $form->add('submit', 'submit', array('label' => 'Create'));
 
         return $form;
-    }*/
+    }
 
     /**
      * Displays a form to create a new Material entity.
@@ -81,11 +81,17 @@ class MaterialController extends Controller
     public function newAction()
     {
         $material = new Material();
+        /*Si descomentas debajo aparece un form en*/
         //$form   = $this->createCreateForm($entity);
-        $almacen = new Deposito();
-        $material->getAlmacenes()->add($almacen);
+        //$almacen = new Deposito();
+        //$material->getAlmacenes()->add($almacen);
 
-        $form = $this ->createForm(new MaterialType(), $material);
+        $form = $this ->createForm(new MaterialType(), $material, array(
+            'action' => $this->generateUrl('material_create'),
+            'method' => 'POST',
+        ));
+
+        $form->add('submit', 'submit', array('label' => 'Crear nuevo Producto'));
 
         return $this->render('JYGRevestimientosBundle:Material:new.html.twig', array(
             'entity' => $material,
@@ -223,7 +229,9 @@ class MaterialController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('material_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
+            ->add('submit', 'submit', array(
+                'label' => 'Eliminar Producto',
+                'attr'=> array('class'=>'btn btn-danger btn-block')))
             ->getForm()
         ;
     }

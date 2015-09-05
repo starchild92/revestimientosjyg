@@ -1,93 +1,55 @@
 {% extends 'JYGRevestimientosBundle::base.html.twig' %}
 
+{% block javascripts %}
+	<script src="{{ asset('bundles/jygrevestimientos/js/jquery.min.js') }}"></script>
+	<script src="{{ asset('bundles/jygrevestimientos/js/forms.js') }}"></script>
+{% endblock %}
+
 {% block body %}
     <h1>Material creation</h1>
-    {#{% form_theme form 'bootstrap_3_layout.html.twig' %}
-    {{ form(form) }}#}
-    {{ form_label(form.codigo) }}
-	{{ form_widget(form.codigo, {'attr':{'class':'form-control', 'data-toggle':'tooltip', 'data-placement':'right', 'data-container':'body'}}) }}
+    {% form_theme form 'bootstrap_3_layout.html.twig' %}
+    {#{{ form(form) }}#}
 
-	{{ form_label(form.formato) }}
-	{{ form_widget(form.formato, {'attr':{'class':'form-control', 'data-toggle':'tooltip', 'data-placement':'right', 'data-container':'body'}}) }}
-
-	{{ form_label(form.color) }}
-	{{ form_widget(form.color, {'attr':{'class':'form-control', 'data-toggle':'tooltip', 'data-placement':'right', 'data-container':'body'}}) }}
-
-	{{ form_label(form.nombre) }}
-	{{ form_widget(form.nombre, {'attr':{'class':'form-control', 'data-toggle':'tooltip', 'data-placement':'right', 'data-container':'body'}}) }}
-
-	{{ form_label(form.tipo) }}
-	{{ form_widget(form.tipo, {'attr':{'class':'form-control', 'data-toggle':'tooltip', 'data-placement':'right', 'data-container':'body'}}) }}
-
-	{{ form_label(form.file) }}
-	{{ form_widget(form.file, {'attr':{'class':'form-control', 'data-toggle':'tooltip', 'data-placement':'right', 'data-container':'body'}}) }}
-
-	{#{{ form_label(form.almacenes) }}
-	{{ form_widget(form.almacenes, {'attr':{'class':'form-control', 'data-toggle':'tooltip', 'data-placement':'right', 'data-container':'body'}}) }}#}
-	<div id="almacen">{{ form_label(form.almacenes,"Almacenado en:") }} </div>
-	<ul class="tags" data-prototype="{{ form_widget(form.almacenes.vars.prototype)|e }}">
-	    {% for almacen in form.almacenes %}
-	        
-        	{{ form_label(almacen.nombrealmacen) }}
-			{{ form_widget(almacen.nombrealmacen, {'attr':{'class':'form-control' , 'data-toggle':'tooltip', 'data-placement':'right', 'data-container':'body'}}) }}
-
-			{{ form_label(almacen.cantmaterialdisponible) }}
-			{{ form_widget(almacen.cantmaterialdisponible, {'attr':{'class':'form-control' , 'data-toggle':'tooltip', 'data-placement':'right', 'data-container':'body'}}) }}
-	    {% endfor %}
-	</ul>
-       <!-- <ul class="record_actions">
-	    <li>
-	        <a href="{#{{ path('material') }}#}">
-	            Volver a Materiales
-	        </a>
-	    </li>
-	</ul>-->
-
-	<script>
-
-		function addTagForm(collectionHolder, $newLinkLi) 
-		{
-		    // Obtiene los datos del prototipo explicado anteriormente
-		    var prototype = collectionHolder.data('prototype');
-
-		    // Consigue el nuevo índice
-		    var index = collectionHolder.data('index');
-
-		    // Sustituye el '__name__' en el prototipo HTML para que
-		    // en su lugar sea un número basado en cuántos elementos hay
-		    var newForm = prototype.replace(/__name__/g, index);
-
-		    // Incrementa en uno el índice para el siguiente elemento
-		    collectionHolder.data('index', index + 1);
-		    var $a = newForm;
-		    // Muestra el formulario en la página en un elemento li,antes del enlace 'Agregar una etiqueta'
-		    var $newFormLi = $('<li></li>').append(newForm);
-		    $newLinkLi.before($newFormLi);
-		}
-
-		// Obtiene la ul que contiene la colección de etiquetas
-		var collectionHolder = $('ul.tags');
-		// configura una enlace "Agregar una etiqueta"
-		var $addTagLink = $('<a href="#" class="add_tag_link">Add a tag</a>');
-		var $newLinkLi = $('<li></li>').append($addTagLink);
-
-		jQuery(document).ready(function() {
-		    // Añade el ancla "Agregar una etiqueta" y las etiquetas li y ul
-		    collectionHolder.append($newLinkLi);
-
-		    // cuenta las entradas actuales en el formulario (p. ej. 2),
-		    // la usa como índice al insertar un nuevo elemento (p. ej. 2)
-		    collectionHolder.data('index', collectionHolder.find(':input').length);
-
-		    $addTagLink.on('click', function(e) {
-		        // evita crear el enlace con una "#" en la URL
-		        e.preventDefault();
-
-		        // añade una nueva etiqueta form (ve el siguiente bloque de código)
-		        addTagForm(collectionHolder, $newLinkLi);
-		    });
-		});
-	</script>
+    <div class="row">
+    	{{ form_start(form) }}
+    {{ form_widget(form) }}
+    <!--<table class="table">
+    		<tbody>
+    			<tr>
+    				<td>{{ form_label(form.codigo) }}</td>
+    				<td>{{ form_label(form.formato) }}</td>
+    				<td>{{ form_label(form.color) }}</td>
+    			</tr>
+    			<tr>
+    				<td>{{ form_widget(form.codigo, {'attr':{'class':'form-control', 'data-toggle':'tooltip', 'data-placement':'right', 'data-container':'body'}}) }}</td>
+    				<td>{{ form_widget(form.formato, {'attr':{'class':'form-control', 'data-toggle':'tooltip', 'data-placement':'right', 'data-container':'body'}}) }}</td>
+    				<td>{{ form_widget(form.color, {'attr':{'class':'form-control', 'data-toggle':'tooltip', 'data-placement':'right', 'data-container':'body'}}) }}</td>
+    			</tr>
+    			<tr>
+    				<td>{{ form_label(form.nombre) }}</td>
+    				<td>{{ form_label(form.precio) }}</td>
+    				<td>{{ form_label(form.tipo) }}</td>
+    			</tr>
+    			<tr>
+    				<td>{{ form_widget(form.nombre, {'attr':{'class':'form-control', 'data-toggle':'tooltip', 'data-placement':'right', 'data-container':'body'}}) }}</td>
+    				<td>{{ form_widget(form.precio, {'attr':{'class':'form-control', 'data-toggle':'tooltip', 'data-placement':'right', 'data-container':'body'}}) }}</td>
+    				<td>{{ form_widget(form.tipo, {'attr':{'class':'form-control', 'data-toggle':'tooltip', 'data-placement':'right', 'data-container':'body'}}) }}</td>
+    			</tr>
+    			<tr>
+    				<td>{{ form_label(form.file, "Imagen del Producto") }}</td>
+    				<td colspan="2">{{ form_label(form.almacenes,"Almacenado en:") }}</td>
+    			</tr>
+    			<tr>
+    				<td>{{ form_widget(form.file, {'attr':{'data-toggle':'tooltip', 'data-placement':'right', 'data-container':'body'}}) }}</td>
+    				<td colspan="2"><ul style="list-style: none;" class="tags" data-prototype="{{ form_widget(form.almacenes.vars.prototype)|e }}"></ul>
+					</td>
+    			</tr>
+    		</tbody>
+    	</table>-->
+    </div>
+	{{ form_end(form) }}
+	{{ form_widget(form.submit) }}
+	
 {% endblock %}
 
 {% block stylesheets %}
@@ -99,16 +61,9 @@
 			border-radius: 5px;
 			border: solid 1px blue;
 		}
+		li *{
+			display:inline-block;
+			/*margin: 0px 5px 0px 5px;*/
+		}
 	</style>
-{% endblock %}
-
-{% block javascript %}
-	{{ parent() }}
-
-	<script>
-		$(function () {
-	  		$('[data-toggle="tooltip"]').tooltip()
-		})
-	</script>
-
 {% endblock %}
