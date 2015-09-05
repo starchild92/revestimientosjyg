@@ -1,0 +1,16 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}JYGRevestimientosBundle:Galeria:NuevaImagen{% endblock %}
+
+{% block body %}
+<h1>Nueva Imagen para la Galeria</h1>
+{{ form_start(form) }}
+    <div class="row">
+        <div class="col-lg-4 col-sm-4 col-xs-12">
+            {{ form_row(form.file) }}
+            {{ form_row(form.descripcion) }}
+        </div><div class="col-sm-6">{{ form_row(form.guardar) }}</div>
+	</div>
+{{ form_end(form) }}
+
+{% endblock %}
