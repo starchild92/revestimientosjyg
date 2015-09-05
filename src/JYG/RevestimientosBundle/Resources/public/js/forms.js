@@ -1,7 +1,7 @@
 var $collectionHolder;
 
 // setup an "add a tag" link
-var $addTagLink = $('<button class="btn btn-primary btn-sm" type="button" href="#" class="add_tag_link">Añadir Almacen</button>');
+var $addTagLink = $('<button style="margin-top: 10px;" class="btn btn-success btn-sm btn-block" type="button" href="#" class="add_tag_link">Añadir Almacen</button>');
 var $newLinkLi = $('<div></div>').append($addTagLink);
 
 jQuery(document).ready(function() {
@@ -42,7 +42,7 @@ function addTagForm($collectionHolder, $newLinkLi) {
     //$newLinkLi.before($newFormLi);
 
     // also add a remove button, just for this example
-    $newFormLi.append('<a href="#" class="remove-tag btn btn-danger btn-sm">Quitar Almacen</a>');
+    $newFormLi.append('<a href="#" class="remove-tag btn btn-danger btn-sm btn-block">Quitar Almacen</a>');
     
     $newLinkLi.before($newFormLi);
     

@@ -49,6 +49,7 @@ class Material
      * @var string
      *
      * @ORM\Column(name="nombre", type="string", length=200)
+     * @Assert\NotBlank()
      */
     private $nombre;
 
@@ -56,6 +57,10 @@ class Material
      * @var float
      *
      * @ORM\Column(name="precio", type="float")
+     * @Assert\GreaterThan(
+     *     value = 0,
+     *     message = "Debe ser un valor mayor a 0"
+     * )
      */
     private $precio;
 

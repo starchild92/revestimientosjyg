@@ -69,7 +69,11 @@ class MaterialController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Create'));
+        $form->add('submit', 'submit', array(
+            'label' => 'Crear nuevo Producto',
+            'attr' => array('class' => 'btn btn-primary btn-block')
+            ))
+        ;
 
         return $form;
     }
@@ -91,7 +95,11 @@ class MaterialController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Crear nuevo Producto'));
+        $form->add('submit', 'submit', array(
+            'label' => 'Crear nuevo Producto',
+            'attr' => array('class' => 'btn btn-primary btn-block')
+            ))
+        ;
 
         return $this->render('JYGRevestimientosBundle:Material:new.html.twig', array(
             'entity' => $material,
