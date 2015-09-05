@@ -1,16 +1,38 @@
 {% extends 'JYGRevestimientosBundle::base.html.twig' %}
 
-{% block body -%}
-    <h1>Material edit</h1>
-    {% form_theme edit_form 'bootstrap_3_layout.html.twig' %}
-    {{ form(edit_form) }}
+{% block javascripts %}
+    <script src="{{ asset('bundles/jygrevestimientos/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('bundles/jygrevestimientos/js/forms.js') }}"></script>
+{% endblock %}
 
-    <ul class="record_actions">
-        <li>
-            <a href="{{ path('material') }}">
-                Back to the list
-            </a>
-        </li>
-        <li>{{ form(delete_form) }}</li>
-    </ul>
+{% block body -%}
+    {% form_theme edit_form 'bootstrap_3_layout.html.twig' %}
+    {#{ form(edit_form) }#}
+
+    <div class="page-header">
+    <h1>Modificar Producto</h1>
+    </div>
+    {{ form_start(edit_form) }}
+    <div class="row">
+        <div class="col-lg-4 col-sm-4 col-xs-12">
+            {{ form_row(edit_form.codigo) }}
+            {{ form_row(edit_form.formato) }}
+            {{ form_row(edit_form.color) }}
+        </div>
+        <div class="col-lg-4 col-sm-4 col-xs-12">
+            {{ form_row(edit_form.nombre) }}
+            {{ form_row(edit_form.precio) }}
+            {{ form_row(edit_form.tipo) }}
+        </div>
+        <div class="col-lg-4 col-sm-4 col-xs-12">
+            {{ form_row(edit_form.file) }}
+            {{ form_row(edit_form.almacenes) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4">{{ form_widget(edit_form.submit) }}</div>
+        <div class="col-sm-4"><a href="{{ path('material') }}" class="btn btn-primary btn-block" type="button">Regresar a la Lista de Productos</a></div>
+        <div class="col-sm-4">{{ form(delete_form) }}</div>
+    </div>
+    {{ form_end(edit_form) }}
 {% endblock %}

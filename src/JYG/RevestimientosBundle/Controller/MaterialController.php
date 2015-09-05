@@ -167,7 +167,11 @@ class MaterialController extends Controller
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Actualizar Datos del Producto'));
+        $form->add('submit', 'submit', array(
+            'label' => 'Actualizar Datos del Producto',
+            'attr' => array('class' => 'btn btn-success btn-block')
+            ))
+        ;
 
         return $form;
     }

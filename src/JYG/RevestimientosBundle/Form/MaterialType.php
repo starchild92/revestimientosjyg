@@ -21,7 +21,9 @@ class MaterialType extends AbstractType
             ->add('nombre')
             ->add('precio')
             ->add('tipo')
-            ->add('file', 'file', array('required' => false, 'label' => 'Archivo de Imagen'))
+            ->add('file', 'file', array(
+                'required' => false,
+                'label' => 'Archivo de Imagen'))
             ->add('venta', 'hidden')
             ->add('almacenes','collection',array(
                 'type'=> new DepositoType(),
