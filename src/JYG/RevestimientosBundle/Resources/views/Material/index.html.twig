@@ -2,8 +2,8 @@
 
 {% block body %}
     <div class="row">
-        <div class="col-sm-8"><div class="page-header"><h1>Lista de Productos</h1></div></div>
-        <div class="col-sm-4"><a id="volver" href="{{ path('material_new') }}" class="btn btn-success pull-right" type="button">Añadir un nuevo Producto</a></div>
+        <div class="col-sm-10"><div class="page-header"><h1>Lista de Productos</h1></div></div>
+        <div class="col-sm-2"><a id="volver" href="{{ path('material_new') }}" class="btn btn-success pull-right" type="button">Añadir un nuevo Producto</a></div>
     </div>
     <div class="panel panel-default">
     <table class="table table-striped records_list">
@@ -15,7 +15,7 @@
                 <th>Nombre</th>
                 <th>Precio</th>
                 <th>Tipo</th>
-                <th>Almacen</th>
+                <th>Disponibilidad</th>
                 <th>Imagen</th>
                 <th>Menu</th>
             </tr>
@@ -30,7 +30,7 @@
                 <td>{{ entity.precio }} Bs</td>
                 <td>{{ entity.tipo }}</td>
                 <td style="width: 240px;">
-                    <table class="table" style="width: 220px;">
+                    <table id="innerTable" class="table" style="width: 220px;">
                         <thead>
                             <tr>
                                 <th>Nombre</th>

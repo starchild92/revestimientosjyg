@@ -19,7 +19,7 @@ class DepositoType extends AbstractType
                     'choices'  => array('Deposito Tienda' => 'Dep. Tienda', 'Deposito Origen' => 'Dep. Origen'),
                     'label'=>'Nombre del Almacen'))
             ->add('cantmaterialdisponible','text',array('label'=>'Cantidad Disponible'))
-            ->add('material','hidden', array('label' => false))
+            //->add('material','hidden', array('label' => false))
         ;
     }
     

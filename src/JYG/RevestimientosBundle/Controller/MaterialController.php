@@ -59,8 +59,7 @@ class MaterialController extends Controller
                           'cod',
                           'Ya existe un material con ese codigo'
                        );
-                }else
-                {
+                }else{
                     $almacen = $material->getAlmacenes();
                     $material->setAlmacenes($almacen);
                     $em = $this->getDoctrine()->getManager();
@@ -210,11 +209,20 @@ class MaterialController extends Controller
             throw $this->createNotFoundException('Unable to find Material entity.');
         }
 
+        $deposito = new Deposito();
+        $entity->getAlmacenes()->add($deposito);
+
         $deleteForm = $this->createDeleteForm($id);
         $editForm = $this->createEditForm($entity);
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
+            $this->get('session')->getFlashBag()->set('error', 'Se ha modificado exitosamente el producto.');
+
+            $almacen = $entity->getAlmacenes();
+            $entity->setAlmacenes($almacen);
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($entity);
             $em->flush();
 
             return $this->redirect($this->generateUrl('material_edit', array('id' => $id)));

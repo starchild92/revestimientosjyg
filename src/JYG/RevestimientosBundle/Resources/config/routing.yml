@@ -74,18 +74,19 @@ jyg_revestimientos_venta:
     resource: "@JYGRevestimientosBundle/Resources/config/routing/venta.yml"
     prefix:   /venta
 
+#Estas rutas son para el admin :)
 _nueva_imagen:
-    path:     /NuevaImagenGaleria
+    path:     /nuevaimagengaleria
     defaults: { _controller: JYGRevestimientosBundle:Galeria:NuevaImagen }
 
 _editar_imagen:
-    path:     /EditarImagenGaleria
+    path:     /editarimagengaleria
     defaults: { _controller: JYGRevestimientosBundle:Galeria:EditarImagen }
 
 _eliminar_imagen:
-    path:     /EliminarImagenGaleria
+    path:     /eliminarimagengaleria
     defaults: { _controller: JYGRevestimientosBundle:Galeria:EliminarImagen }
 
 _mostrar_galeria:
-    path:     /MostrarGaleria
+    path:     /mostrargaleria
     defaults: { _controller: JYGRevestimientosBundle:Galeria:MostrarGaleria }
