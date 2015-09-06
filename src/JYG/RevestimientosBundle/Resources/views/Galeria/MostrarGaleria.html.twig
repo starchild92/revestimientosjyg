@@ -1,7 +1,19 @@
 {% extends "JYGRevestimientosBundle::base.html.twig" %}
 
-{% block title %}JYGRevestimientosBundle:Galeria:MostrarGaleria{% endblock %}
-
 {% block body %}
-<h1>Welcome to the Galeria:MostrarGaleria page</h1>
+	<div class="page-header">
+		<h1>Galeria de Imagenes</h1>
+	</div>
+	<div class="row">
+		<div class="col-lg-6 col-sm-6 col-xs-12">
+		{% for flashMessage in app.session.flashbag.get('error') %}
+            <div class = "alert alert-danger">
+                {{ flashMessage }}
+            </div>
+        {% endfor %}</div>
+		{% for imagen in entities %}
+			<div class="col-lg-6 col-sm-6 col-xs-12"><img src="{{ asset('bundles/jygrevestimientos/images/') }}{{ imagen.path }}">
+			{{ imagen.descripcion }}</div>
+		{% endfor %}
+	</div>
 {% endblock %}

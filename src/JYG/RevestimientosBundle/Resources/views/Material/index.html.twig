@@ -9,6 +9,7 @@
     <table class="table table-striped records_list">
         <thead>
             <tr>
+                <th>Imagen</th>
                 <th>Codigo</th>
                 <th>Formato</th>
                 <th>Color</th>
@@ -16,13 +17,13 @@
                 <th>Precio</th>
                 <th>Tipo</th>
                 <th>Disponibilidad</th>
-                <th>Imagen</th>
                 <th>Menu</th>
             </tr>
         </thead>
         <tbody>
         {% for entity in entities %}
             <tr>
+                <td style="width: 119px"><img src="{{ asset('bundles/jygrevestimientos/images/materiales/') }}{{ entity.path }}" width="100px" height="auto"></td>
                 <td><a href="{{ path('material_show', { 'id': entity.id }) }}">{{ entity.codigo }}</a></td>
                 <td>{{ entity.formato }}</td>
                 <td>{{ entity.color }}</td>
@@ -45,8 +46,7 @@
                         </tbody>
                     </table>
                 </td>
-                <td style="width: 119px"><img src="{{ asset('bundles/jygrevestimientos/images/materiales/') }}{{ entity.path }}" width="100px" height="auto"></td>
-                <td style="max-width: 70px;">
+                <td>
                 <div class="dropdown pull-right">
                   <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                     Opciones

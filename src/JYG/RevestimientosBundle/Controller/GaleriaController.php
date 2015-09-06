@@ -31,8 +31,16 @@ class GaleriaController extends Controller
 
     public function MostrarGaleriaAction()
     {
+        $em = $this->getDoctrine()->getManager();
+        $entities = $em->getRepository('JYGRevestimientosBundle:Galeria')->findAll();
+
+        if (!$entities) {
+            $this->get('session')->getFlashBag()->set('error', 'De momento no hay imagenes para mostrar en la galería.');
+        }
+
         return $this->render('JYGRevestimientosBundle:Galeria:MostrarGaleria.html.twig', array(
-                // ...
-            ));    }
+            'entities' => $entities,
+        ));
+    }
 
 }

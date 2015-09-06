@@ -62,6 +62,10 @@ class Material
      *     value = 0,
      *     message = "Debe ser un valor mayor a 0"
      * )
+     * @Assert\Type(
+     *     type="float",
+     *     message="El valor {{ value }} no válido."
+     * )
      */
     private $precio;
 
@@ -308,7 +312,7 @@ class Material
     }
 
     /**
-     * @Assert\File(maxSize="6000000", mimeTypesMessage = "Sube una foto valida")
+     * @Assert\File(maxSize="6000000", maxSizeMessage = "El Archivo es demasiado pesa demasiado.", mimeTypesMessage = "Sube una foto valida")
      */
     private $file;
 

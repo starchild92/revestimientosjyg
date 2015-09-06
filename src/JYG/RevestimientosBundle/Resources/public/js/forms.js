@@ -8,6 +8,15 @@ jQuery(document).ready(function() {
     // Get the ul that holds the collection of tags
     $collectionHolder = $('div.tags');
 
+    /*Para en el editar quitar un almacen*/
+    $collectionHolder.children().append(
+        '<a href="#" class="remove-tag btn btn-danger btn-sm btn-block">Quitar Almacen</a>');
+
+    $collectionHolder.children().click(function(e) {
+        e.preventDefault();
+        $(this).children().remove();
+        return false;
+    });
     // add the "add a tag" anchor and li to the tags ul
     $collectionHolder.append($newLinkLi);
 
@@ -16,11 +25,11 @@ jQuery(document).ready(function() {
     $collectionHolder.data('index', $collectionHolder.find(':input').length);
 
     $addTagLink.on('click', function(e) {
+        $cantHijos = $collectionHolder.children().length;
         // prevent the link from creating a "#" on the URL
         e.preventDefault();
-
         // add a new tag form (see next code block)
-        addTagForm($collectionHolder, $newLinkLi);
+        if($cantHijos < 3){ addTagForm($collectionHolder, $newLinkLi); }
     });
 });
 function addTagForm($collectionHolder, $newLinkLi) {

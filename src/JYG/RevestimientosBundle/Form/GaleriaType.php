@@ -17,10 +17,10 @@ class GaleriaType extends AbstractType
         $builder
             ->add('path','hidden')
             ->add('file', 'file', array('required' => true, 'label' => 'Archivo de Imagen'))
-            ->add('descripcion','text',array('required' => false, 'label' => 'Descripcion para la Imagen'))
+            ->add('descripcion','textarea',array('required' => false, 'label' => 'Descripcion para la Imagen'))
             ->add('guardar','submit', array(
-            'label' => 'Agregar Imagen',
-            'attr' => array('class' => 'btn btn-primary btn-block')
+                'label' => 'Agregar Imagen',
+                'attr' => array('class' => 'btn btn-primary btn-block')
             ))
         ;
     }
