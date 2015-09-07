@@ -10,12 +10,27 @@ class GaleriaController extends Controller
 {
     public function NuevaImagenAction()
     {
-
         $galeria = new Galeria();
-        $form = $this->createForm(new GaleriaType(), $galeria);     
-        return $this->render('JYGRevestimientosBundle:Galeria:NuevaImagen.html.twig', array(
+        $form = $this->createForm(new GaleriaType(), $galeria);   
+        $request = $this->getRequest();
+        
+        
+        if ($request->getMethod() == "POST") 
+        {
+            $form->handleRequest($request);
+            if ($form->isValid()) 
+            {   
+                    $em = $this->getDoctrine()->getManager();
+                    $em->persist($galeria);
+                    $em->flush();
+                
+                return $this->redirect($this->generateUrl('JYGRevestimientosBundle_galeria'));
+            }
+        }
+            return $this->render('JYGRevestimientosBundle:Galeria:NuevaImagen.html.twig', array(
                 'form' => $form->createView()
-            ));    }
+            ));   
+    }
 
     public function EditarImagenAction()
     {

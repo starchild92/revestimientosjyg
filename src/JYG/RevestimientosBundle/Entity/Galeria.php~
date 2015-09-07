@@ -28,12 +28,35 @@ class Galeria
      *
      * @ORM\Column(name="codigo", type="string", length=200)
      */
-    private $codigo;
+    private $nombreimagen;
 
-/**
-     * @Assert\File(maxSize="6000000", maxSizeMessage = "El Archivo pesa demasiado.", mimeTypesMessage = "Sube una foto valida")
+    /**
+     * @Assert\File(maxSize="6000000")
      */
     private $file;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    public $path;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="descripcion", type="string", length=255, nullable=true)
+     */
+    private $descripcion;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
     /**
      * Get file.
@@ -44,15 +67,10 @@ class Galeria
     {
         return $this->file;
     }
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    public $path;
-
+    
     public function getAbsolutePath()
     {
-        $id = $this->getCodigo();
+        $id = $this->getId();
         return null === $this->path
             ? null
             : $this->getUploadRootDir().'/'.$this->path;
@@ -106,7 +124,7 @@ class Galeria
     public function preUpload()
     {
         if (null !== $this->getFile()) {
-            $this->path = $this->getCodigo().'.'.$this->getFile()->getClientOriginalExtension();
+            $this->path = $this->getId().'.'.$this->getFile()->getClientOriginalExtension();
         }
     }
 
@@ -153,10 +171,7 @@ class Galeria
     public function removeUpload()
     {
         if (isset($this->temp)) {
-            // file_exists me dice si está, entonces lo puedo borrar.
-            if(file_exists($this->temp)){
-                unlink($this->temp);
-            }
+            unlink($this->temp);
         }
     }
 
@@ -182,28 +197,26 @@ class Galeria
     {
         return $this->path;
     }
-
-        /**
-     * Set codigo
+    /**
+     * Set descripcion
      *
-     * @param string $codigo
-     * @return Material
+     * @param string $descripcion
+     * @return Galeria
      */
-    public function setCodigo($codigo)
+    public function setDescripcion($descripcion)
     {
-        $this->codigo = $codigo;
+        $this->descripcion = $descripcion;
     
         return $this;
     }
 
     /**
-     * Get codigo
+     * Get descripcion
      *
      * @return string 
      */
-    public function getCodigo()
+    public function getDescripcion()
     {
-        return $this->codigo;
+        return $this->descripcion;
     }
-
 }

@@ -1,7 +1,3 @@
-jyg_revestimientos_material:
-    resource: "@JYGRevestimientosBundle/Resources/config/routing/material.yml"
-    prefix:   /material
-
 jyg_revestimientos_cliente:
     resource: "@JYGRevestimientosBundle/Resources/config/routing/cliente.yml"
     prefix:   /cliente
@@ -90,3 +86,7 @@ _eliminar_imagen:
 _mostrar_galeria:
     path:     /mostrargaleria
     defaults: { _controller: JYGRevestimientosBundle:Galeria:MostrarGaleria }
+
+jyg_revestimientos_material:
+    resource: "@JYGRevestimientosBundle/Resources/config/routing/material.yml"
+    prefix:   /material

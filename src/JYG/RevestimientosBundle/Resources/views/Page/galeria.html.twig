@@ -4,9 +4,27 @@
 
 {% block body %}
 	<div class="page-header">
-		<h1>Galería <small> .... </small></h1>
+		<h1>Galería</h1>
 	</div>
 	<div class="row">
-		Esto es la clase row dentro de este div van elementos col-*-*
+		<div class="col-lg-8 col-sm-8 col-xs-12">
+			<div class="row">
+				{% for flashMessage in app.session.flashbag.get('error') %}
+		            <div class = "alert alert-danger">
+		                {{ flashMessage }}
+		            </div>
+		        {% endfor %}
+				{% for entity in entities %}
+				<div class="col-lg-4 col-sm-6 col-xs-6">
+					<div class="thumbnail">
+						<img src="{{ asset('bundles/jygrevestimientos/images/galeria/') }}{{ entity.path }}">
+						<div class="caption">
+							<p>{{ entity.codigo }}</p>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
 	</div>
 {% endblock %}

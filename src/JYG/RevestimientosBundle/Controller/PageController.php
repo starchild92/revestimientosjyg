@@ -45,9 +45,19 @@ class PageController extends Controller
      */
     public function galeriaAction()
     {
-        return array(
-                // ...
-            );    }
+       $em = $this->getDoctrine()->getManager();
+
+        $entities = $em->getRepository('JYGRevestimientosBundle:Galeria')->findAll();
+
+        if (!$entities) {
+            $this->get('session')->getFlashBag()->set('error', 'No existen imagenes.');
+        }
+
+        return $this->render('JYGRevestimientosBundle:Page:galeria.html.twig', array(
+            'entities' => $entities,
+        ));
+
+    }
 
     /**
      * @Route("/contacto")

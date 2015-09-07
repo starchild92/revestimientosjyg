@@ -312,7 +312,7 @@ class Material
     }
 
     /**
-     * @Assert\File(maxSize="6000000", maxSizeMessage = "El Archivo es demasiado pesa demasiado.", mimeTypesMessage = "Sube una foto valida")
+     * @Assert\File(maxSize="6000000", maxSizeMessage = "El Archivo pesa demasiado.", mimeTypesMessage = "Sube una foto valida")
      */
     private $file;
 

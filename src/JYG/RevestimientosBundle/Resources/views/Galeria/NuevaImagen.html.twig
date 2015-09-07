@@ -10,9 +10,11 @@
 {{ form_start(form) }}
     <div class="row">
         <div class="col-lg-6 col-sm-6 col-xs-12">
+            {{ form_row(form.codigo) }}
             {{ form_row(form.file) }}
-            {{ form_row(form.descripcion) }}
+            {#{{ form_row(form.descripcion) }}#}
             {{ form_row(form.guardar) }}
+            {{ form_rest(form) }}
         </div>
 	</div>
 {{ form_end(form) }}
