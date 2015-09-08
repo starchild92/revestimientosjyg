@@ -16,7 +16,6 @@ class GaleriaType extends AbstractType
     {
         $builder
             ->add('path','hidden')
-            //->add('nombreimagen','text',array('required' => true, 'label' => 'Nombre de la Imagen'))
             ->add('file', 'file', array('required' => true, 'label' => 'Archivo de Imagen'))
             ->add('nombre','text',array('required' => true, 'label' => 'Nombre de la Imagen'))
             //->add('descripcion','textarea',array('required' => false, 'label' => 'Descripcion para la Imagen'))

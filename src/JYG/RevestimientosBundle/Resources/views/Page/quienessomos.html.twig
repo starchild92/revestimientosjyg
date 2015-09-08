@@ -1,0 +1,37 @@
+{% extends "JYGRevestimientosBundle::base.html.twig" %}
+
+{% block title %}Revestimientos J&G - Quienes Somos{% endblock %}
+
+{% block body %}
+	<div class="page-header">
+		<h1>Quiénes Somos</h1>
+	</div>
+	<div class="row">
+		<div class="col-lg-8 col-sm-8 col-xs-12">
+			<h2>Misión</h2>
+			<p>Como empresa tenemos la misión de solventar las necesidades de nuestros clientes en el ámbito de decoración y remodelaciones, tenemos el gusto de atender tanto a particulares como a empresas, nos orientamos en ser reconocidos por el liderazgo a través de nuestra pasión por los altos estándares de nuestros productos y servicios, respeto por la diversidad y  compromiso con las personas.</p>
+			<h2>Visión</h2>
+			<p>Tenemos la visión de crecer como empresa llegando a tener el liderazgo en nuestra rama de revestimientos y decoraciones de espacios y contar con la confianza de todas las personas que requieran de nuestros servicios.</p>
+			<h2> Valores </h2>
+			<p>“Revestimientos J&G Barquisimeto C.A.” así como nuestros empleados, tenemos como valor principal servir a los clientes sin distinciones, creemos en la excelencia, calidad y productividad de nuestros servicios, así como también servir a la comunidad, a la sociedad y al beneficio de todos los miembros de la empresa, enfocando nuestra empresa a su logro y apoyo.
+		</p>
+		</div>
+		<div class="col-lg-4 col-sm-4 col-xs-12">
+	    	<div id="imgContacto"></div>
+	    </div>
+	</div>
+{% endblock %}
+
+{% block stylesheets %}
+	<style type="text/css">
+		#imgContacto{
+			background-image: url('{{ asset("bundles/jygrevestimientos/images/imgContacto.jpg") }}');
+			min-height: 400px;
+			width: 100%;
+			border-top: solid 5px brown;
+		}
+		p{
+			text-align: justify;
+		}
+	</style>
+{% endblock %}

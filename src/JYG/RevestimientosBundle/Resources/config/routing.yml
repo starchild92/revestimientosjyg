@@ -54,17 +54,16 @@ JYGRevestimientosBundle_ayuda:
     requirements:
         _method:  GET
 
-JYGRevestimientosBundle_mision:
-    pattern:  /mision
-    defaults: { _controller: JYGRevestimientosBundle:Page:mision }
-    requirements:
-        _method:  GET
+JYGRevestimientosBundle_quienessomos:
+    pattern:  /quienessomos
+    defaults: { _controller: JYGRevestimientosBundle:Page:quienessomos }
 
-JYGRevestimientosBundle_vision:
-    pattern:  /vision
-    defaults: { _controller: JYGRevestimientosBundle:Page:vision }
-    requirements:
-        _method:  GET
+#esto lo comente porque lo uni todo en quienes somos (arriba)
+#JYGRevestimientosBundle_vision:
+#    pattern:  /vision
+#    defaults: { _controller: JYGRevestimientosBundle:Page:vision }
+#    requirements:
+#        _method:  GET
 
 jyg_revestimientos_venta:
     resource: "@JYGRevestimientosBundle/Resources/config/routing/venta.yml"

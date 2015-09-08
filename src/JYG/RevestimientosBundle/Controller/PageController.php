@@ -104,24 +104,15 @@ class PageController extends Controller
             );    }
 
     /**
-     * @Route("/mision")
+     * @Route("/quienessomos")
      * @Template()
      */
-    public function misionAction()
+    public function quienessomosAction()
     {
         return array(
                 // ...
             );    }
 
-    /**
-     * @Route("/vision")
-     * @Template()
-     */
-    public function visionAction()
-    {
-        return array(
-                // ...
-            );    }
 
     public function verProductoAction($id){
         $em = $this->getDoctrine()->getManager();
