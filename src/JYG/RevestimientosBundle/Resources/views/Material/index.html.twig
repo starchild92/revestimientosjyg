@@ -1,12 +1,21 @@
 {% extends 'JYGRevestimientosBundle::base.html.twig' %}
-
+{% block javascripts %}
+    <script src="{{ asset('bundles/jygrevestimientos/js/datatable.min.js') }}"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#myTable').DataTable({
+                "bSort" : false
+            });
+        });
+    </script>
+{% endblock %}
 {% block body %}
     <div class="row">
         <div class="col-sm-10"><div class="page-header"><h1>Lista de Productos</h1></div></div>
         <div class="col-sm-2"><a id="volver" href="{{ path('material_new') }}" class="btn btn-success pull-right" type="button">Añadir un nuevo Producto</a></div>
     </div>
     <div class="panel panel-default">
-    <table class="table table-striped records_list">
+    <table class="table table-striped records_list" id="myTable">
         <thead>
             <tr>
                 <th>Imagen</th>
@@ -41,7 +50,7 @@
                         <tbody>
                             {% for almacen in entity.almacenes %}<tr>
                                 <td>{{ almacen.nombrealmacen }}</td>
-                                <td>{{ almacen.cantmaterialdisponible }}</td>
+                                <td>{{ almacen.cantmaterialdisponible }} mts</td>
                             </tr>{% endfor %}
                         </tbody>
                     </table>
@@ -65,12 +74,10 @@
     </div>
 {% endblock %}
 {% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/jygrevestimientos/css/datatable.min.css') }}">
     <style type="text/css">
         #volver{
             margin-top: 20px;
-        }
-        img {
-            border-radius: 5px;
         }
     </style>
 {% endblock %}

@@ -12,4 +12,14 @@ use Doctrine\ORM\EntityRepository;
  */
 class MaterialRepository extends EntityRepository
 {
+	public function UltimosTresAgregados(){
+		$query = $this->getEntityManager()
+				->createQuery('SELECT u 
+				FROM JYGRevestimientosBundle:Material u 
+				ORDER BY u.id DESC')
+				->setMaxResults(3);
+		$result = $query->getResult();
+        
+        return $result;
+	}
 }

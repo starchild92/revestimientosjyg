@@ -16,9 +16,17 @@ class PageController extends Controller
      */
     public function indexAction()
     {
-        return array(
-                // ...
-            );    }
+        $em = $this->getDoctrine()->getManager();
+        $entity = $em->getRepository('JYGRevestimientosBundle:Material')->UltimosTresAgregados();
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Hay menos de 3 productos agregados');
+        }
+
+        return $this->render('JYGRevestimientosBundle:Page:index.html.twig', array(
+            'entity'    =>  $entity,
+        ));
+    }
 
     /**
      * @Route("/productos")
@@ -47,7 +55,7 @@ class PageController extends Controller
     {
        $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('JYGRevestimientosBundle:Galeria')->findAll();
+        $entities = $em->getRepository('JYGRevestimientosBundle:Galeria')->ObtenerporAgregado();
 
         if (!$entities) {
             $this->get('session')->getFlashBag()->set('error', 'En estos momentos no hay imágenes en la galería, pero pronto estaremos añadiendo.');
@@ -116,7 +124,6 @@ class PageController extends Controller
 
     public function verProductoAction($id){
         $em = $this->getDoctrine()->getManager();
-
         $entity = $em->getRepository('JYGRevestimientosBundle:Material')->find($id);
 
         if (!$entity) {

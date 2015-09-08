@@ -1,19 +1,84 @@
 {% extends "JYGRevestimientosBundle::base.html.twig" %}
 
+{% block javascripts %}
+    <script src="{{ asset('bundles/jygrevestimientos/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('bundles/jygrevestimientos/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('bundles/jygrevestimientos/js/modal.js') }}"></script>
+{% endblock %}
+
 {% block body %}
 	<div class="page-header">
 		<h1>Galería de Imágenes</h1>
 	</div>
 	<div class="row">
-		<div class="col-lg-6 col-sm-6 col-xs-12">
+		<div class="col-lg-12 col-sm-12 col-xs-12">
 		{% for flashMessage in app.session.flashbag.get('error') %}
             <div class = "alert alert-danger">
                 {{ flashMessage }}
             </div>
-        {% endfor %}</div>
-		{% for imagen in entities %}
-			<div class="col-lg-6 col-sm-6 col-xs-12"><img src="{{ asset('bundles/jygrevestimientos/images/galeria/') }}{{ imagen.path }}">
-			{{ imagen.nombre }}</div>
-		{% endfor %}
+        {% endfor %}
+		{% for entity in entities %}
+                <a type="button" data-toggle="modal" data-target="#exampleModal" data-whatever="{{ asset('bundles/jygrevestimientos/images/galeria/') }}{{ entity.path }}" data-nombre="{{ entity.nombre }}"><img id="thumbs" src="{{ asset('bundles/jygrevestimientos/images/galeria/') }}{{ entity.path }}"></a>
+        {% endfor %}
+    	</div>
 	</div>
+
+	<!-- el modal tio -->
+	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+		<div class="modal-dialog modal-lg" >
+			<center><p style="margin-top: 10px; font-size: 20px;"><span id="label" class="label label-success"></span></p></center>
+			<div class="modal-content bodies">
+				<center><img style="max-width: 900px; border-radius: 5px; -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, .5); box-shadow: 0 3px 9px rgba(0, 0, 0, .5);" src=""></center>
+			</div>
+		</div>
+	</div>
+	<!-- el modal tio -->
+
+{% endblock %}
+{% block stylesheets %}
+    <style type="text/css">
+    #thumbs {
+    	margin-bottom: 5px;
+    }
+    @media (max-width: 767px) {
+        #thumbs {
+            border-radius: 5px;
+            max-width: 218px;
+            max-height: 152px;
+        }
+        #thumbs:hover {
+            border: solid 2px orange;
+        }
+    }
+    @media (min-width: 768px) and (max-width: 991px) {
+    	#thumbs {
+            border-radius: 5px;
+            max-width: 200px;
+            max-height: 130px;
+        }
+        #thumbs:hover {
+            border: solid 2px orange;
+        }
+    }
+    @media (min-width: 992px) and (max-width: 1199px) {
+    	#thumbs {
+            border-radius: 5px;
+            max-width: 375px;
+            max-height: 224px;
+        }
+        #thumbs:hover {
+            border: solid 2px orange;
+        }
+	}
+	@media (min-width: 1200px) {
+		#thumbs {
+            border-radius: 5px;
+            max-width: 410px;
+            max-height: 270px;
+        }
+        #thumbs:hover {
+            border: solid 2px orange;
+        }
+	}
+    </style>
 {% endblock %}

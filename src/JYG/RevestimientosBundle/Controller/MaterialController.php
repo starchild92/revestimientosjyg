@@ -56,8 +56,7 @@ class MaterialController extends Controller
                 if ($repositorio) {
                     $session = $request->getSession();
                       $this->addFlash(
-                          'cod',
-                          'Ya existe un material con ese codigo'
+                          'cod','Ya existe un material con ese codigo, Por favor modifiquelo y vuelva a seleccionar la imágen'
                        );
                 }else{
                     $almacen = $material->getAlmacenes();
@@ -65,8 +64,9 @@ class MaterialController extends Controller
                     $em = $this->getDoctrine()->getManager();
                     $em->persist($material);
                     $em->flush();
+
+                    return $this->redirect($this->generateUrl('material_show', array('id' => $material->getId())));
                 }
-                return $this->redirect($this->generateUrl('material_show', array('id' => $material->getId())));
             }
         }
         return $this->render('JYGRevestimientosBundle:Material:new.html.twig', array(
