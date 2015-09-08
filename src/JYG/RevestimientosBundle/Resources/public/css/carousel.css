@@ -7,6 +7,17 @@ body {
   color: #5a5a5a;
 }
 
+/* Para dar aspecto redondeado en la base al carousel*/
+.left {
+  border-bottom-left-radius: 10px;
+}
+.right{
+  border-bottom-right-radius: 10px;
+}
+.item{
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
 
 /* CUSTOMIZE THE NAVBAR
 -------------------------------------------------- */

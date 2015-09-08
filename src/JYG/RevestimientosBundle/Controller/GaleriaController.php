@@ -27,8 +27,9 @@ class GaleriaController extends Controller
                 return $this->redirect($this->generateUrl('JYGRevestimientosBundle_galeria'));
             }
         }
-             $em = $this->getDoctrine()->getManager();
-            $entities = $em->getRepository('JYGRevestimientosBundle:Galeria')->findAll();
+            /*Para la imagenes que estan en galeria*/
+            $em = $this->getDoctrine()->getManager();
+            $entities = $em->getRepository('JYGRevestimientosBundle:Galeria')->ObtenerporAgregado();
             return $this->render('JYGRevestimientosBundle:Galeria:NuevaImagen.html.twig', array(
                 'form' => $form->createView(),
                 'entities' => $entities

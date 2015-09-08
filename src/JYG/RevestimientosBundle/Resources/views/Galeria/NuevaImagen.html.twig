@@ -26,7 +26,7 @@
         <div class="col-lg-6 col-sm-6 col-xs-12">
             <h4>Imágenes que están actualmente en galería.</h4>
             {% for img in entities %}
-                <img src="{{ asset('bundles/jygrevestimientos/images/galeria/') }}{{ img.path }}" data-toggle="popover" data-placement="bottom" title="{{ img.nombre }}" data-container="body" data-content="Una posible descripción de la imagen">
+                <img id="thumbs" src="{{ asset('bundles/jygrevestimientos/images/galeria/') }}{{ img.path }}" data-toggle="popover" data-placement="bottom" title="{{ img.nombre }}" data-container="body" data-content="Una posible descripción de la imagen">
             {% endfor %}
         </div>
 	</div>
@@ -35,12 +35,12 @@
 {% endblock %}
 {% block stylesheets %}
     <style type="text/css">
-        img {
+        #thumbs {
             border-radius: 5px;
             max-width: 200px;
             max-height: 130px;
         }
-        img:hover {
+        #thumbs:hover {
             border: solid 2px orange;
         }
     </style>
