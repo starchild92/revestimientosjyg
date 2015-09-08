@@ -22,19 +22,20 @@
             {{ form_row(form.codigo) }}
             {{ form_row(form.formato) }}
             {{ form_row(form.color) }}
-        </div>
-        <div class="col-lg-4 col-sm-4 col-xs-12">
             {{ form_row(form.nombre) }}
             {{ form_row(form.precio) }}
             {{ form_row(form.tipo) }}
+            {{ form_row(form.file) }}
         </div>
         <div class="col-lg-4 col-sm-4 col-xs-12">
-            {{ form_row(form.file) }}
             {{ form_row(form.almacenes) }}
+        </div>
+        <div class="col-lg-4 col-sm-4 col-xs-12">
+            Espacio para el ultimo material añadido.
         </div>
 	</div>
     <div class="row">
-        <div class="col-sm-6">{{ form_widget(form.submit) }}</div>
+        <div class="col-sm-8">{{ form_widget(form.submit) }}</div>
     </div>
     {{ form_end(form) }}
 {% endblock %}

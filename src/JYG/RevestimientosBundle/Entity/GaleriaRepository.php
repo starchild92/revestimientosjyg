@@ -12,4 +12,13 @@ use Doctrine\ORM\EntityRepository;
  */
 class GaleriaRepository extends EntityRepository
 {
+	public function ObtenerporAgregado(){
+		$query = $this->getEntityManager()
+				->createQuery('SELECT u 
+				FROM JYGRevestimientosBundle:Galeria u 
+				ORDER BY u.id DESC');
+		$result = $query->getResult();
+        
+        return $result;
+	}
 }

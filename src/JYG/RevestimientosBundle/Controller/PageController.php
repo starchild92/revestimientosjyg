@@ -50,7 +50,7 @@ class PageController extends Controller
         $entities = $em->getRepository('JYGRevestimientosBundle:Galeria')->findAll();
 
         if (!$entities) {
-            $this->get('session')->getFlashBag()->set('error', 'No existen imagenes.');
+            $this->get('session')->getFlashBag()->set('error', 'En estos momentos no hay imágenes en la galería, pero pronto estaremos añadiendo.');
         }
 
         return $this->render('JYGRevestimientosBundle:Page:galeria.html.twig', array(

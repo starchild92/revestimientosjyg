@@ -1,13 +1,18 @@
 {% extends "JYGRevestimientosBundle::base.html.twig" %}
 
 {% block title %}Revestimientos J&G - Galería{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('bundles/jygrevestimientos/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('bundles/jygrevestimientos/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('bundles/jygrevestimientos/js/modal.js') }}"></script>
+{% endblock %}
 
 {% block body %}
 	<div class="page-header">
 		<h1>Galería</h1>
 	</div>
 	<div class="row">
-		<div class="col-lg-8 col-sm-8 col-xs-12">
+		<div class="col-lg-12 col-sm-12 col-xs-12">
 			<div class="row">
 				{% for flashMessage in app.session.flashbag.get('error') %}
 		            <div class = "alert alert-danger">
@@ -15,16 +20,45 @@
 		            </div>
 		        {% endfor %}
 				{% for entity in entities %}
-				<div class="col-lg-4 col-sm-6 col-xs-6">
+				<div class="col-lg-4 col-sm-6 col-xs-12">
 					<div class="thumbnail">
-						<img src="{{ asset('bundles/jygrevestimientos/images/galeria/') }}{{ entity.path }}">
+						<a type="button" data-toggle="modal" data-target="#exampleModal" data-whatever="{{ asset('bundles/jygrevestimientos/images/galeria/') }}{{ entity.path }}" data-nombre="{{ entity.nombre }}"><img src="{{ asset('bundles/jygrevestimientos/images/galeria/') }}{{ entity.path }}"></a>
 						<div class="caption">
-							<p>{{ entity.codigo }}</p>
+							<p>{{ entity.nombre }}</p>
 						</div>
 					</div>
 				</div>
+				<div></div>
 				{% endfor %}
 			</div>
 		</div>
 	</div>
+
+	<!-- el modal tio -->
+	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+		<div class="modal-dialog modal-lg" >
+			<center><p style="margin-top: 10px; font-size: 20px;"><span id="label" class="label label-success">Fuck this</span></p></center>
+			<div class="modal-content bodies">
+				<center><img style="max-width: 900px; border-radius: 5px; -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, .5); box-shadow: 0 3px 9px rgba(0, 0, 0, .5);" src=""></center>
+			</div>
+		</div>
+	</div>
+	<!-- el modal tio -->
+
+{% endblock %}
+{% block stylesheets %}
+	<style type="text/css">
+		.thumbnail img{ 
+			border-radius: 5px;
+			min-height: 300px;
+			max-height: 300px;
+		}
+		.thumbnail .caption {
+			padding: 5px;
+		}
+		.caption p {
+			margin: 0px;
+			text-align: center;
+		}
+	</style>
 {% endblock %}

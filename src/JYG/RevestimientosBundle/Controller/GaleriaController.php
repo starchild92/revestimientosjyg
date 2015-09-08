@@ -27,8 +27,11 @@ class GaleriaController extends Controller
                 return $this->redirect($this->generateUrl('JYGRevestimientosBundle_galeria'));
             }
         }
+             $em = $this->getDoctrine()->getManager();
+            $entities = $em->getRepository('JYGRevestimientosBundle:Galeria')->findAll();
             return $this->render('JYGRevestimientosBundle:Galeria:NuevaImagen.html.twig', array(
-                'form' => $form->createView()
+                'form' => $form->createView(),
+                'entities' => $entities
             ));   
     }
 
@@ -47,13 +50,13 @@ class GaleriaController extends Controller
     public function MostrarGaleriaAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $entities = $em->getRepository('JYGRevestimientosBundle:Galeria')->findAll();
+        $entities = $em->getRepository('JYGRevestimientosBundle:Galeria')->ObtenerporAgregado();
 
         if (!$entities) {
-            $this->get('session')->getFlashBag()->set('error', 'De momento no hay imagenes para mostrar en la galería.');
+            $this->get('session')->getFlashBag()->set('error', 'De momento no hay imágenes para mostrar en la galería.');
         }
 
-        return $this->render('JYGRevestimientosBundle:Galeria:MostrarGaleria.html.twig', array(
+        return $this->render('JYGRevestimientosBundle:Page:galeria.html.twig', array(
             'entities' => $entities,
         ));
     }

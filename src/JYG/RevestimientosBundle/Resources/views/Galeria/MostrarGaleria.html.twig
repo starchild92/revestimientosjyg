@@ -2,7 +2,7 @@
 
 {% block body %}
 	<div class="page-header">
-		<h1>Galeria de Imagenes</h1>
+		<h1>Galería de Imágenes</h1>
 	</div>
 	<div class="row">
 		<div class="col-lg-6 col-sm-6 col-xs-12">
@@ -12,8 +12,8 @@
             </div>
         {% endfor %}</div>
 		{% for imagen in entities %}
-			<div class="col-lg-6 col-sm-6 col-xs-12"><img src="{{ asset('bundles/jygrevestimientos/images/') }}{{ imagen.path }}">
-			{{ imagen.descripcion }}</div>
+			<div class="col-lg-6 col-sm-6 col-xs-12"><img src="{{ asset('bundles/jygrevestimientos/images/galeria/') }}{{ imagen.path }}">
+			{{ imagen.nombre }}</div>
 		{% endfor %}
 	</div>
 {% endblock %}

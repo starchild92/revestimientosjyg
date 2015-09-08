@@ -10,7 +10,8 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
  * Galeria
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="JYG\RevestimientosBundle\Entity\GaleriaRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 class Galeria
 {
@@ -26,12 +27,12 @@ class Galeria
     /**
      * @var string
      *
-     * @ORM\Column(name="codigo", type="string", length=200)
+     * @ORM\Column(name="nombre", type="string", length=200)
      */
-    private $codigo;
+    private $nombre;
 
-/**
-     * @Assert\File(maxSize="6000000", maxSizeMessage = "El Archivo pesa demasiado.", mimeTypesMessage = "Sube una foto valida")
+    /**
+     * @Assert\File()
      */
     private $file;
 
@@ -45,6 +46,26 @@ class Galeria
         return $this->file;
     }
 
+    private $temp;
+
+    /**
+     * Sets file.
+     *
+     * @param UploadedFile $file
+     */
+    public function setFile(UploadedFile $file = null)
+    {
+        $this->file = $file;
+        // check if we have an old image path
+        if (is_file($this->getAbsolutePath())) {
+            // store the old name to delete after the update
+            $this->temp = $this->getAbsolutePath();
+            $this->path = null;
+        } else {
+            $this->path = 'initial';
+        }
+    }
+
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
@@ -52,7 +73,7 @@ class Galeria
 
     public function getAbsolutePath()
     {
-        $id = $this->getCodigo();
+        $id = $this->getNombre();
         return null === $this->path
             ? null
             : $this->getUploadRootDir().'/'.$this->path;
@@ -79,26 +100,6 @@ class Galeria
         return 'bundles/jygrevestimientos/images/galeria';
     }
 
-    private $temp;
-
-    /**
-     * Sets file.
-     *
-     * @param UploadedFile $file
-     */
-    public function setFile(UploadedFile $file = null)
-    {
-        $this->file = $file;
-        // check if we have an old image path
-        if (is_file($this->getAbsolutePath())) {
-            // store the old name to delete after the update
-            $this->temp = $this->getAbsolutePath();
-            $this->path = null;
-        } else {
-            $this->path = 'initial';
-        }
-    }
-
     /**
      * @ORM\PrePersist()
      * @ORM\PreUpdate()
@@ -106,7 +107,7 @@ class Galeria
     public function preUpload()
     {
         if (null !== $this->getFile()) {
-            $this->path = $this->getCodigo().'.'.$this->getFile()->getClientOriginalExtension();
+            $this->path = $this->getNombre().'.'.$this->getFile()->getClientOriginalExtension();
         }
     }
 
@@ -133,7 +134,7 @@ class Galeria
         // which the UploadedFile move() method does
         $this->getFile()->move(
             $this->getUploadRootDir(),
-            $this->codigo.'.'.$this->getFile()->getClientOriginalExtension()
+            $this->nombre.'.'.$this->getFile()->getClientOriginalExtension()
         );
 
         $this->setFile(null);
@@ -184,26 +185,28 @@ class Galeria
     }
 
         /**
-     * Set codigo
+     * Set nombre
      *
-     * @param string $codigo
+     * @param string $nombre
      * @return Material
      */
-    public function setCodigo($codigo)
+    public function setNombre($nombre)
     {
-        $this->codigo = $codigo;
+        /* Quitando cochinadas del nombre del archivo */
+        $nombre = preg_replace("/[^A-Za-z0-9 ]/", '', $nombre);
+        $this->nombre = $nombre;
     
         return $this;
     }
 
     /**
-     * Get codigo
+     * Get nombre
      *
      * @return string 
      */
-    public function getCodigo()
+    public function getNombre()
     {
-        return $this->codigo;
+        return $this->nombre;
     }
 
 }

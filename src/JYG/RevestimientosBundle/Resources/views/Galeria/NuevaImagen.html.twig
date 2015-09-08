@@ -2,21 +2,46 @@
 
 {% block title %}JYGRevestimientosBundle:Galeria:NuevaImagen{% endblock %}
 
+{% block javascripts %}
+    <script src="{{ asset('bundles/jygrevestimientos/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('bundles/jygrevestimientos/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('bundles/jygrevestimientos/js/popover.js') }}"></script>
+{% endblock %}
+
 {% block body %}
 	<div class="page-header">
-		<h1>Nueva Imagen para la Galeria</h1>
+		<h1>Nueva Imágen para la Galería</h1>
 	</div>
 
 {{ form_start(form) }}
     <div class="row">
         <div class="col-lg-6 col-sm-6 col-xs-12">
-            {{ form_row(form.codigo) }}
+            <p>Por favor, coloque un nombre y seleccione una imágen.</p>
+            {{ form_row(form.nombre) }}
             {{ form_row(form.file) }}
             {#{{ form_row(form.descripcion) }}#}
             {{ form_row(form.guardar) }}
             {{ form_rest(form) }}
         </div>
+        <div class="col-lg-6 col-sm-6 col-xs-12">
+            <h4>Imágenes que están actualmente en galería.</h4>
+            {% for img in entities %}
+                <img src="{{ asset('bundles/jygrevestimientos/images/galeria/') }}{{ img.path }}" data-toggle="popover" data-placement="bottom" title="{{ img.nombre }}" data-container="body" data-content="Una posible descripción de la imagen">
+            {% endfor %}
+        </div>
 	</div>
 {{ form_end(form) }}
 
+{% endblock %}
+{% block stylesheets %}
+    <style type="text/css">
+        img {
+            border-radius: 5px;
+            max-width: 200px;
+            max-height: 130px;
+        }
+        img:hover {
+            border: solid 2px orange;
+        }
+    </style>
 {% endblock %}
