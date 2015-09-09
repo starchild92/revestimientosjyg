@@ -66,3 +66,5 @@ function addTagForm($collectionHolder, $newLinkLi) {
         return false;
     });
 }
+//Para quitar el primer label 0 ese ladilloso
+$collectionHolder.find('.control-label').first().remove();
