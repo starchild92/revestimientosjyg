@@ -1,4 +1,10 @@
 {% extends 'JYGRevestimientosBundle::base.html.twig' %}
+{% block javascripts %}
+    <script src="{{ asset('bundles/jygrevestimientos/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('bundles/jygrevestimientos/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('bundles/jygrevestimientos/js/forms.js') }}"></script>
+    <script src="{{ asset('bundles/jygrevestimientos/js/modalDelEdit.js') }}"></script>
+{% endblock %}
 
 {% block body %}
     <div class="page-header">
@@ -54,7 +60,7 @@
                     <tr>
                         <td colspan="2">
                             <a href="{{ path('material_edit', { 'id': entity.id }) }}" class="btn btn-success btn-block" type="button">Modificar Datos</a></td>
-                        <td colspan="2">{{ form(delete_form) }}</td>
+                        <td colspan="2"><a type="button" class="btn btn-danger btn-block" data-toggle="modal" id="Modal" data-target="#delEditProducto">Eliminar Producto</a></td>
                     </tr>
                 </tbody>
             </table>
@@ -65,6 +71,18 @@
             <div id="imgContacto"></div>
         </div>
     </div>
+    <!-- el modal tio -->
+    <div class="modal fade" id="delEditProducto" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal-dialog modal-lg" >
+            <div class="modal-content bodies">
+                <center><h3>¿Está seguro que desea eliminar el productos y sus datos?</h3></center><br>
+                <div class="row">
+                <div class="col-sm-6">{{ form(delete_form) }}</div>
+                <div class="col-sm-6"><button type="button" class="btn btn-primary btn-block" data-dismiss="modal">Cancelar</button></div></div>
+            </div>
+        </div>
+    </div>
+    <!-- el modal tio -->
 {% endblock %}
 {% block stylesheets %}
     <style type="text/css">
