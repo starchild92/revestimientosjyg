@@ -36,7 +36,7 @@ class PageController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('JYGRevestimientosBundle:Material')->findAll();
+        $entities = $em->getRepository('JYGRevestimientosBundle:Material')->ObtenerporAgregado();
 
         if (!$entities) {
             $this->get('session')->getFlashBag()->set('error', 'No hay productos para mostrar.');

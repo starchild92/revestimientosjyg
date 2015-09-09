@@ -8,7 +8,7 @@
 {% block body %}
     <div class="row">
         <div class="col-sm-8"><div class="page-header"><h1>Añadir Nuevo Producto</h1></div></div>
-        <div class="col-sm-4"><a id="volver" href="{{ path('material') }}" class="btn btn-default pull-right" type="button">Regresar a lista de Productos</a></div>
+        <div class="col-sm-4"><a id="volver" href="{{ path('material') }}" class="btn btn-primary pull-right" type="button">Regresar a lista de Productos</a></div>
     </div>
     {{ form_start(form) }}
     <div class="row">
@@ -22,16 +22,15 @@
             {{ form_row(form.codigo) }}
             {{ form_row(form.formato) }}
             {{ form_row(form.color) }}
-            {{ form_row(form.nombre) }}
-            {{ form_row(form.precio) }}
-            {{ form_row(form.tipo) }}
             {{ form_row(form.file) }}
         </div>
         <div class="col-lg-4 col-sm-4 col-xs-12">
-            {{ form_row(form.almacenes) }}
+            {{ form_row(form.nombre) }}
+            {{ form_row(form.precio) }}
+            {{ form_row(form.tipo) }}
         </div>
         <div class="col-lg-4 col-sm-4 col-xs-12">
-            Espacio para el ultimo material añadido.
+            {{ form_row(form.almacenes) }}
         </div>
 	</div>
     <div class="row">

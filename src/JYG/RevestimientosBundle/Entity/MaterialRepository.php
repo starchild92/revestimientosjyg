@@ -22,4 +22,14 @@ class MaterialRepository extends EntityRepository
         
         return $result;
 	}
+
+	public function ObtenerporAgregado(){
+		$query = $this->getEntityManager()
+				->createQuery('SELECT u 
+				FROM JYGRevestimientosBundle:Material u 
+				ORDER BY u.id DESC');
+		$result = $query->getResult();
+        
+        return $result;
+	}
 }

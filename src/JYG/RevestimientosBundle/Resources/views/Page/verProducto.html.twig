@@ -1,5 +1,11 @@
 {% extends 'JYGRevestimientosBundle::base.html.twig' %}
 
+{% block javascripts %}
+    <script src="{{ asset('bundles/jygrevestimientos/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('bundles/jygrevestimientos/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('bundles/jygrevestimientos/js/modalDetProd.js') }}"></script>
+{% endblock %}
+
 {% block body %}
 	<div class="page-header">
 		<h2>Producto / {{ entity.nombre }}</h2>
@@ -15,7 +21,15 @@
 				</thead>
 				<tbody>
 					<tr>
-						<th>Codigo</th>
+						<th>Nombre</th>
+						<td>{{ entity.nombre }}</td>
+					</tr>
+					<tr>
+						<th>Formato</th>
+						<td>{{ entity.formato }} aproximadamente</td>
+					</tr>
+					<tr>
+						<th>Código</th>
 						<td>{{ entity.codigo }}</td>
 					</tr>
 					<tr>
@@ -23,31 +37,34 @@
 						<td>{{ entity.tipo }}</td>
 					</tr>
 					<tr>
-						<th>Formato</th>
-						<td>{{ entity.formato }}</td>
-					</tr>
-					<tr>
 						<th>Color</th>
 						<td>{{ entity.color }}</td>
-					</tr>
-					<tr>
-						<th>Nombre</th>
-						<td>{{ entity.nombre }}</td>
 					</tr>
 					<tr>
 						<th>Precio</th>
 						<td>{{ entity.precio }} Bs</td>
 					</tr>
-					
 				</tbody>
 			</table>
 
 		</div>
 		<div class="col-lg-4 col-sm-4 col-xs-12">
 			<div id="textContacto"><h3>{{ entity.nombre }}</h3><p>{{ entity.formato }}</p></div>
-	    	<div id="imgContacto"></div>
+	    	<a type="button" data-toggle="modal" data-target="#exampleModal" data-whatever="<div id='imgContacto' class='atlast'></div>" data-nombre="{{ entity.nombre }}"><div id="imgContacto"></div></a>
 		</div>
 	</div>
+
+	<!-- el modal tio -->
+	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+		<div class="modal-dialog modal-lg" >
+			<center><p style="margin-top: 10px; font-size: 20px;"><span id="label" class="label label-success"></span></p></center>
+			<div class="modal-content bodies">
+				<div id="img"></div>
+			</div>
+		</div>
+	</div>
+	<!-- el modal tio -->
+
 {% endblock %}
 {% block stylesheets %}
 	<style type="text/css">
