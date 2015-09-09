@@ -7,4 +7,6 @@ $('#exampleModal').on('show.bs.modal', function (event) {
   var modal = $(this)
   modal.find('.bodies img').attr("src", urlimagen)
   modal.find('#label').text(nombre)
+  modal.find('.modal-content').css({'max-width':'700px'})
+  modal.find('.modal-dialog').css({'max-width':'700px'})
 });

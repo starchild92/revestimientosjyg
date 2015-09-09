@@ -209,4 +209,8 @@ class Galeria
         return $this->nombre;
     }
 
+    public function getId(){
+        return $this->id;
+    }
+
 }
