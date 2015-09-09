@@ -4,70 +4,101 @@
 
 {% block body %}
 	<div class="page-header">
-		<h1>Atención al Cliente <small>Formulario de Contacto</small></h1>
+		<h1>Como encontrarnos</h1>
 	</div>
 	<div class="row">
-		<div class="col-lg-8 col-sm-8 col-xs-12">
+		<div class="col-lg-4 col-sm-6 col-xs-12">
+			<div class="page-header">
+				<h4>Formulario de Contacto</h4>
+			</div>
 			{% for flashMessage in app.session.flashbag.get('exito') %}
 		        <div class="alert alert-success alert-dismissable">
-				<button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
-				{{ flashMessage }}
+					<button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
+					{{ flashMessage }}
 				</div>
-				 {% endfor %}
+			{% endfor %}
 			<form method="POST" action="{{ path('JYGRevestimientosBundle_contacto') }}" >
-					<div class = "form-group" >
-	 					{{form_label(form.nombre,'Nombre') }}
-			    		{{ form_widget(form.nombre, {'attr':{'class':'form-control' , 'data-toggle':'tooltip', 'data-placement':'right', 'title':'Nombre', 'data-container':'body'}}) }}
-			    		{% if form_errors(form.nombre) %}
-			    			<div class = "alert alert-danger alert-dismissable">
-			    				<button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
-			    			    {{ form_errors(form.nombre) }}
-			    			</div>
-						{% endif %}
+				<div class = "form-group" >
+ 					{{form_label(form.nombre,'Nombre') }}
+		    		{{ form_widget(form.nombre, {'attr':{'class':'form-control' , 'data-toggle':'tooltip', 'data-placement':'right', 'title':'Nombre', 'data-container':'body'}}) }}
+		    		{% if form_errors(form.nombre) %}
+		    			<div class = "alert alert-danger alert-dismissable">
+		    				<button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
+		    			    {{ form_errors(form.nombre) }}
+		    			</div>
+					{% endif %}
 
-						{{ form_label(form.correo, 'Correo electrónico para contactarte') }}
-				    	{{ form_widget(form.correo, {'attr':{'class':'form-control'}})}}
-				    	{% if form_errors(form.correo) %}
-				    		<div class = "alert alert-danger alert-dismissable">
-				    			<button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
-				    			{{ form_errors(form.correo) }}
-				    		</div>
-						{% endif %}	
-						{{ form_label(form.asunto, 'Asunto') }}
-						{{ form_widget(form.asunto, {'attr':{'class':'form-control' , 'data-toggle':'tooltip'}}) }}
-			    		{% if form_errors(form.asunto) %}
-			    			<div class = "alert alert-danger alert-dismissable">
-			    				<button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
-			    				{{ form_errors(form.asunto) }}
-			    			</div>
-						{% endif %}
+					{{ form_label(form.correo, 'Correo electrónico para contactarte') }}
+			    	{{ form_widget(form.correo, {'attr':{'class':'form-control'}})}}
+			    	{% if form_errors(form.correo) %}
+			    		<div class = "alert alert-danger alert-dismissable">
+			    			<button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
+			    			{{ form_errors(form.correo) }}
+			    		</div>
+					{% endif %}	
+					{{ form_label(form.asunto, 'Asunto') }}
+					{{ form_widget(form.asunto, {'attr':{'class':'form-control' , 'data-toggle':'tooltip'}}) }}
+		    		{% if form_errors(form.asunto) %}
+		    			<div class = "alert alert-danger alert-dismissable">
+		    				<button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
+		    				{{ form_errors(form.asunto) }}
+		    			</div>
+					{% endif %}
 
-						{{ form_label(form.mensaje,'Mensaje') }}
-			    		{{ form_widget(form.mensaje, {'attr':{'class':'form-control' , 'data-toggle':'tooltip', 'data-placement':'right','title':'Mensaje', 'data-container':'body'}}) }}
-			    		{% if form_errors(form.mensaje) %}
-			    			<div class = "alert alert-danger alert-dismissable">
-			    				<button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
-			    				{{ form_errors(form.mensaje) }}
-			    			</div>
-						{% endif %}
-						<div style= "padding-top: 20px;">
-							<div class="row">
-								<div class="col-sm-4">{{form_widget(form.Enviar ,{'attr':{'class':'btn btn-primary btn-lg btn-block'}})}}</div>
-								<div class="col-sm-4">
-									<a href="{{ path('JYGRevestimientosBundle_inicio') }}" class="btn btn-default btn-lg btn-block" type="button">Cancelar</a>
-						    		<div class = "row" >
-						    	    {% do form.Cancelar.setRendered %}
-						    		{{ form_rest(form) }}	    		
-						    		</div>
-						    	</div>
-							</div>
-				    		
-				    		
-			    		</div>	
-			    	</div>
+					{{ form_label(form.mensaje,'Mensaje') }}
+		    		{{ form_widget(form.mensaje, {'attr':{'class':'form-control' , 'data-toggle':'tooltip', 'data-placement':'right','title':'Mensaje', 'data-container':'body'}}) }}
+		    		{% if form_errors(form.mensaje) %}
+		    			<div class = "alert alert-danger alert-dismissable">
+		    				<button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
+		    				{{ form_errors(form.mensaje) }}
+		    			</div>
+					{% endif %}
+					<div style= "padding-top: 20px;">
+						<div class="row">
+							<div class="col-sm-6">{{form_widget(form.Enviar ,{'attr':{'class':'btn btn-success btn-lg btn-block'}})}}</div>
+							<div class="col-sm-6">
+								<a href="{{ path('JYGRevestimientosBundle_inicio') }}" class="btn btn-danger btn-lg btn-block" type="button">Cancelar</a>
+					    		<div class = "row" >
+					    	    {% do form.Cancelar.setRendered %}
+					    		{{ form_rest(form) }}	    		
+					    		</div>
+					    	</div>
+						</div>
+			    		
+			    		
+		    		</div>	
+		    	</div>
 	    	</form>
 	    </div>
-	    <div class="col-lg-4 col-sm-4 col-xs-12">
+	    <div class="col-lg-4 col-sm-6 col-xs-12">
+	    	<div class="panel panel-default">
+		      <!-- Default panel contents -->
+	          <table class="table table-striped table-condensed">
+	            <thead>
+	              <tr>
+	                <th>Contacto</th>
+	                <th>Número de Telefono</th>
+	              </tr>
+	            </thead>
+	            <tbody>
+	              <tr>
+	                <td>Jaqueline</td>
+	                <td>0424-4555712</td>
+	              </tr>
+	              <tr>
+	                <td>El Otro</td>
+	                <td>0424 5467520</td>
+	              </tr>
+	            </tbody>
+	          </table>
+		    </div>
+	    	<div class="page-header">
+				<h4> Donde Ubicarnos </h4>
+			</div>
+			<div id="map" class="container"></div>
+			<small> haga click en el marcador</small>
+	    </div>
+	    <div class="col-lg-4 col-sm-12 col-xs-12">
 	    	<div id="textContacto"><h3>Por favor comuniquese con nosotros</h3><p>Responderemos tan pronto nos llegue su mensaje, somos los mejores haciendo eso.</p></div>
 	    	<div id="imgContacto"></div>
 	    </div>
@@ -77,7 +108,7 @@
 	<style type="text/css">
 		#imgContacto{
 			background-image: url('{{ asset("bundles/jygrevestimientos/images/imgContacto.jpg") }}');
-			min-height: 400px;
+			min-height: 480px;
 			width: 100%;
 			border-top: solid 5px brown;
 		}
@@ -91,5 +122,41 @@
 		textarea{
 			resize: none;
 		}
+		div .page-header {
+			margin-bottom: 3px;
+		}
+		#map {
+	        width: auto;
+	        height: 300px;
+	    }
 	</style>
+{% endblock %}
+{% block javascripts %}
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
+	<script type="text/javascript">
+      function initialize() {
+      	var myCenter=new google.maps.LatLng(44.5403, -78.5463);
+      	var marker=new google.maps.Marker({
+		  position:myCenter
+		});
+        var mapCanvas = document.getElementById('map');
+        var mapOptions = {
+          disableDefaultUI:true,
+          center: new google.maps.LatLng(44.5403, -78.5463),
+          zoom: 10,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+        var map = new google.maps.Map(mapCanvas, mapOptions);
+        marker.setMap(map);
+        var infowindow = new google.maps.InfoWindow({
+		  content:'<div style="font-size: 15px;">'+"Av. Principal de San Diego, Local 3, San Diego Estado Carabobo, Local 3, San Diego Estado Carabobo, Local 3, San Diego Estado Carabobo, Local 3, San Diego Estado Carabobo"+'</div>',
+		  maxWidth: 250
+		  });
+
+		google.maps.event.addListener(marker, 'click', function() {
+		  infowindow.open(map,marker);
+		  });
+      }
+      google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
 {% endblock %}

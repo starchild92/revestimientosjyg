@@ -102,16 +102,6 @@ class PageController extends Controller
     }
 
     /**
-     * @Route("/ayuda")
-     * @Template()
-     */
-    public function ayudaAction()
-    {
-        return array(
-                // ...
-            );    }
-
-    /**
      * @Route("/quienessomos")
      * @Template()
      */
