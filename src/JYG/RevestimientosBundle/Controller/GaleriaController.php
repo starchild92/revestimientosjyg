@@ -8,6 +8,18 @@ use JYG\RevestimientosBundle\Form\GaleriaType;
 
 class GaleriaController extends Controller
 {
+    public function AdministrarGaleriaAction()
+    {
+        $galeria = new Galeria();
+        $form = $this->createForm(new GaleriaType(), $galeria);
+        $em = $this->getDoctrine()->getManager();
+        $entities = $em->getRepository('JYGRevestimientosBundle:Galeria')->ObtenerporAgregado();
+        return $this->render('JYGRevestimientosBundle:Galeria:AdministrarGaleria.html.twig', array(
+            'form' => $form->createView(),
+            'entities' => $entities
+        ));
+    }
+
     public function NuevaImagenAction()
     {
         $galeria = new Galeria();
@@ -33,7 +45,7 @@ class GaleriaController extends Controller
             return $this->render('JYGRevestimientosBundle:Galeria:NuevaImagen.html.twig', array(
                 'form' => $form->createView(),
                 'entities' => $entities
-            ));   
+            ));
     }
 
     public function EditarImagenAction()

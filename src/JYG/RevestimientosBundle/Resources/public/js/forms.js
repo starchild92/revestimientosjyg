@@ -1,5 +1,5 @@
 var $collectionHolder;
-
+var $cantHijos;
 // setup an "add a tag" link
 var $addTagLink = $('<button style="margin-top: 10px;" class="btn btn-success btn-sm btn-block" type="button" href="#" class="add_tag_link">Añadir Almacen</button>');
 var $newLinkLi = $('<div></div>').append($addTagLink);
@@ -12,9 +12,12 @@ jQuery(document).ready(function() {
     $collectionHolder.children().append(
         '<a href="#" class="remove-tag btn btn-danger btn-sm btn-block">Quitar Almacen</a>');
 
-    $collectionHolder.children().click(function(e) {
+    $remover = $collectionHolder.find('.remove-tag');
+    $cantHijos = $remover.length;
+    $remover.click(function(e) {
         e.preventDefault();
-        $(this).children().remove();
+        $(this).parent().remove();
+        if($cantHijos > 0){ $cantHijos--; }
         return false;
     });
     // add the "add a tag" anchor and li to the tags ul
@@ -25,11 +28,10 @@ jQuery(document).ready(function() {
     $collectionHolder.data('index', $collectionHolder.find(':input').length);
 
     $addTagLink.on('click', function(e) {
-        $cantHijos = $collectionHolder.children().length;
         // prevent the link from creating a "#" on the URL
         e.preventDefault();
         // add a new tag form (see next code block)
-        if($cantHijos < 3){ addTagForm($collectionHolder, $newLinkLi); }
+        if($cantHijos < 2){ addTagForm($collectionHolder, $newLinkLi); $cantHijos++; }
     });
 });
 function addTagForm($collectionHolder, $newLinkLi) {
@@ -58,9 +60,8 @@ function addTagForm($collectionHolder, $newLinkLi) {
     // handle the removal, just for this example
     $('.remove-tag').click(function(e) {
         e.preventDefault();
-        
+        if($cantHijos > 0){ $cantHijos--; }
         $(this).parent().remove();
-        
         return false;
     });
 }

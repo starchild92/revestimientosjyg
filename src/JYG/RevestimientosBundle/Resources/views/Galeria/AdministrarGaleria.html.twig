@@ -1,0 +1,54 @@
+{% extends "JYGRevestimientosBundle::base.html.twig" %}
+
+{% block title %}JYGRevestimientosBundle:Galeria:NuevaImagen{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('bundles/jygrevestimientos/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('bundles/jygrevestimientos/js/bootstrap.min.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+	<div class="page-header">
+		<h1>Modifique las imagénes de la galería.</h1>
+	</div>
+
+{{ form_start(form) }}
+    <div class="row">
+        <div class="col-lg-4 col-sm-4 col-xs-12">
+        	<div class="form-group"><label class="control-label required" for="id">ID</label><input type="text" id="jyg_revestimientosbundle_galeria_id" name="jyg_revestimientosbundle_galeria[id]" required="required" class="form-control" /></div>
+            {{ form_row(form.nombre) }}
+            {{ form_row(form.file) }}
+            {#{{ form_row(form.descripcion) }}#}
+            {{ form_row(form.guardar) }}
+            {{ form_rest(form) }}
+        </div>
+        <div class="col-lg-8 col-sm-8 col-xs-12">
+            <h4>Para cambiar los atributos de una imágen haga click en cualquier imágen de la derecha.</h4>
+            {% for img in entities %}
+                 <img onclick="javascript:DataImagen('{{ img.nombre }}','{{ img.path }}','{{ img.id }}')" id="thumbs" src="{{ asset('bundles/jygrevestimientos/images/galeria/') }}{{ img.path }}" data-placement="bottom" title="{{ img.nombre }}" data-container="body" data-content="Nombre imágen: <b>{{ img.path }}</b>">
+            {% endfor %}
+        </div>
+	</div>
+{{ form_end(form) }}
+<script type="text/javascript">
+	function DataImagen(nombre, file, id) {
+	    var modal = $(document)
+	    modal.find('#jyg_revestimientosbundle_galeria_nombre').val(nombre)
+	    modal.find('#jyg_revestimientosbundle_galeria_path').val(file)
+	    modal.find('#jyg_revestimientosbundle_galeria_id').val(id)
+	}
+</script>
+{% endblock %}
+{% block stylesheets %}
+    <style type="text/css">
+        #thumbs {
+            border-radius: 5px;
+            max-width: 200px;
+            max-height: 130px;
+        }
+        #thumbs:hover {
+            border: solid 2px black;
+        }
+    </style>
+{% endblock %}
+

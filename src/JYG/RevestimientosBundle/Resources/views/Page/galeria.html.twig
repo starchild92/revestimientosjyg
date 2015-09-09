@@ -18,7 +18,7 @@
             </div>
         {% endfor %}
 		{% for entity in entities %}
-                <a type="button" data-toggle="modal" data-target="#exampleModal" data-whatever="{{ asset('bundles/jygrevestimientos/images/galeria/') }}{{ entity.path }}" data-nombre="{{ entity.nombre }}"><img id="thumbs" src="{{ asset('bundles/jygrevestimientos/images/galeria/') }}{{ entity.path }}"></a>
+                <a type="button" data-toggle="modal" data-target="#exampleModal" data-whatever="{{ asset('bundles/jygrevestimientos/images/galeria/') }}{{ entity.path }}" data-nombre="{{ entity.nombre }}"><img id="thumbs" class="img-thumbnail" src="{{ asset('bundles/jygrevestimientos/images/galeria/') }}{{ entity.path }}"></a>
         {% endfor %}
     	</div>
 	</div>
@@ -28,7 +28,7 @@
 		<div class="modal-dialog modal-lg" >
 			<center><p style="margin-top: 10px; font-size: 20px;"><span id="label" class="label label-success"></span></p></center>
 			<div class="modal-content bodies">
-				<center><img style="max-width: 900px; border-radius: 5px; -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, .5); box-shadow: 0 3px 9px rgba(0, 0, 0, .5);" src=""></center>
+				<center><img style="max-width: 700px; border-radius: 5px; -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, .5); box-shadow: 0 3px 9px rgba(0, 0, 0, .5);" src=""></center>
 			</div>
 		</div>
 	</div>
