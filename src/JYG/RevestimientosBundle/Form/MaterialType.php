@@ -19,7 +19,8 @@ class MaterialType extends AbstractType
             ->add('formato')
             ->add('color')
             ->add('nombre')
-            ->add('precio')
+            ->add('preciocompra','text', array('label' => 'Precio de Compra'))
+            ->add('precioventa', 'text', array('label' => 'Precio de Venta'))
             ->add('tipo')
             ->add('file', 'file', array(
                 'required' => false,
