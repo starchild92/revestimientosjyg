@@ -35,7 +35,6 @@
 				{% for entity in entities %}
 				<div class="col-lg-4 col-sm-6 col-xs-6">
 					<div class="thumbnail">
-						<span class="label label-warning">{{ entity.precio }} Bs</span>
 						<img src="{{ asset('bundles/jygrevestimientos/images/materiales/') }}{{ entity.path }}">
 						<div class="caption">
 							<h3>{{ entity.nombre }}</h3>
@@ -62,10 +61,6 @@
 		.thumbnail img{
 			width: 100%;
 			height: auto;
-		}
-		.label{
-			position: absolute;
-			z-index: 1;
 		}
 	</style>
 {% endblock %}
