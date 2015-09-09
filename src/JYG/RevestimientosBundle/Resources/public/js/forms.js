@@ -14,7 +14,7 @@ jQuery(document).ready(function() {
 
     $collectionHolder.children().click(function(e) {
         e.preventDefault();
-        $(this).children().remove();
+        //$(this).children().remove();
         return false;
     });
     // add the "add a tag" anchor and li to the tags ul

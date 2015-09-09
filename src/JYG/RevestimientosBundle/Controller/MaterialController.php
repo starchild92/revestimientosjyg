@@ -160,16 +160,16 @@ class MaterialController extends Controller
         $entity = $em->getRepository('JYGRevestimientosBundle:Material')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Material entity.');
+            throw $this->createNotFoundException('No se encontró el material.');
         }
 
         $editForm = $this->createEditForm($entity);
-        $deleteForm = $this->createDeleteForm($id);
+        //$deleteForm = $this->createDeleteForm($id);
 
         return $this->render('JYGRevestimientosBundle:Material:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+            //'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -206,7 +206,7 @@ class MaterialController extends Controller
         $entity = $em->getRepository('JYGRevestimientosBundle:Material')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Material entity.');
+            throw $this->createNotFoundException('No se encuentra el material.');
         }
 
         $deposito = new Deposito();
