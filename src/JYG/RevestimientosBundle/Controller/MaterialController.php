@@ -164,12 +164,12 @@ class MaterialController extends Controller
         }
 
         $editForm = $this->createEditForm($entity);
-        //$deleteForm = $this->createDeleteForm($id);
+        $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('JYGRevestimientosBundle:Material:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
-            //'delete_form' => $deleteForm->createView(),
+            'delete_form' => $deleteForm->createView(),
         ));
     }
 
