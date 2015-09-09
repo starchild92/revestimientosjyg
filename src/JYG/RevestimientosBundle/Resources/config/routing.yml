@@ -48,12 +48,6 @@ JYGRevestimientosBundle_contacto:
     requirements:
         _method:  GET|POST
 
-JYGRevestimientosBundle_ayuda:
-    pattern:  /ayuda
-    defaults: { _controller: JYGRevestimientosBundle:Page:ayuda }
-    requirements:
-        _method:  GET
-
 JYGRevestimientosBundle_quienessomos:
     pattern:  /quienessomos
     defaults: { _controller: JYGRevestimientosBundle:Page:quienessomos }
