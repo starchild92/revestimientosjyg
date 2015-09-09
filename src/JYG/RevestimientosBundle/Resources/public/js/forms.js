@@ -18,6 +18,7 @@ jQuery(document).ready(function() {
         e.preventDefault();
         $(this).parent().remove();
         if($cantHijos > 0){ $cantHijos--; }
+
         return false;
     });
     // add the "add a tag" anchor and li to the tags ul
