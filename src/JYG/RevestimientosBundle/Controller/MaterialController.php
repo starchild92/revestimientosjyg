@@ -208,20 +208,33 @@ class MaterialController extends Controller
         if (!$entity) {
             throw $this->createNotFoundException('No se encuentra el material.');
         }
-
-        $deposito = new Deposito();
-        $entity->getAlmacenes()->add($deposito);
-
+        // Crea un arreglo del los almacenes actualmente en la base de datos
+        $almacenes = array();
+        foreach ($entity->getAlmacenes() as $almacen) {
+            $almacenes[] = $almacen;
+        }
         $deleteForm = $this->createDeleteForm($id);
         $editForm = $this->createEditForm($entity);
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
-            $this->get('session')->getFlashBag()->set('error', 'Se ha modificado exitosamente el producto.');
+            // filtra almacenes para que contenga los almacenes que ya no están presentes
+            foreach ($entity->getAlmacenes() as $almacen) {
+                foreach ($almacenes as $key => $toDel) {
+                    if ($toDel->getId() === $almacen->getId()) {
+                        unset($almacenes[$key]);
+                    }
+                }
+            }
+            //para eliminar la relacion
+            foreach ($almacenes as $almacen) {
+                $em->persist($almacen);
+                $em->remove($almacen);
+            }
 
+            $this->get('session')->getFlashBag()->set('error', 'Se ha modificado exitosamente el producto.');
             $almacen = $entity->getAlmacenes();
             $entity->setAlmacenes($almacen);
-            $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
 

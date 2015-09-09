@@ -16,12 +16,9 @@ jQuery(document).ready(function() {
     $cantHijos = $remover.length;
     $remover.click(function(e) {
         e.preventDefault();
-<<<<<<< HEAD
-        //$(this).children().remove();
-=======
         $(this).parent().remove();
         if($cantHijos > 0){ $cantHijos--; }
->>>>>>> e1db0e5f6a2e86a090b403b61244f1c23e8de01b
+
         return false;
     });
     // add the "add a tag" anchor and li to the tags ul
