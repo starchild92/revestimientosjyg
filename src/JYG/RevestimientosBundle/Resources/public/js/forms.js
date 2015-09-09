@@ -14,6 +14,14 @@ jQuery(document).ready(function() {
 
     $remover = $collectionHolder.find('.remove-tag');
     $cantHijos = $remover.length;
+
+    //Para quitar el primer label 0 ese ladilloso y el label 1 cuando hay dos almacenes agregados
+    $collectionHolder.find('.control-label').first().remove();
+    if ($cantHijos > 1) {
+        $hijos = $collectionHolder.find('.control-label');
+        $hijos.get(2).remove();
+    };
+
     $remover.click(function(e) {
         e.preventDefault();
         $(this).parent().remove();
@@ -51,6 +59,8 @@ function addTagForm($collectionHolder, $newLinkLi) {
 
     // Display the form in the page in an li, before the "Add a tag" link li
     var $newFormLi = $('<div></div>').append(newForm);
+    //Quita los #label_ de los nuevos almacenes
+    $newFormLi.find('.control-label').first().remove();
     //$newLinkLi.before($newFormLi);
 
     // also add a remove button, just for this example
@@ -66,5 +76,3 @@ function addTagForm($collectionHolder, $newLinkLi) {
         return false;
     });
 }
-//Para quitar el primer label 0 ese ladilloso
-$collectionHolder.find('.control-label').first().remove();
