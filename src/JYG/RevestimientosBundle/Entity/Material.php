@@ -57,17 +57,32 @@ class Material
     /**
      * @var float
      *
-     * @ORM\Column(name="precio", type="float")
+     * @ORM\Column(name="precioventa", type="float")
      * @Assert\GreaterThan(
      *     value = 0,
      *     message = "Debe ser un valor mayor a 0"
      * )
      * @Assert\Type(
-     *     type="float",
+     *     type="numeric",
      *     message="El valor {{ value }} no válido."
      * )
      */
-    private $precio;
+    private $precioventa;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="preciocompra", type="float")
+     * @Assert\GreaterThan(
+     *     value = 0,
+     *     message = "Debe ser un valor mayor a 0"
+     * )
+     * @Assert\Type(
+     *     type="numeric",
+     *     message="El valor {{ value }} no válido."
+     * )
+     */
+    private $preciocompra;
 
     /**
      * @var string
@@ -194,28 +209,6 @@ class Material
         return $this->nombre;
     }
 
-    /**
-     * Set precio
-     *
-     * @param float $precio
-     * @return Material
-     */
-    public function setPrecio($precio)
-    {
-        $this->precio = $precio;
-    
-        return $this;
-    }
-
-    /**
-     * Get precio
-     *
-     * @return float 
-     */
-    public function getPrecio()
-    {
-        return $this->precio;
-    }
 
     /**
      * Set tipo
@@ -462,5 +455,74 @@ class Material
     public function getPath()
     {
         return $this->path;
+    }
+
+    /**
+     * Set precioventa
+     *
+     * @param float $precioventa
+     * @return Material
+     */
+    public function setPrecioventa($precioventa)
+    {
+        $this->precioventa = $precioventa;
+    
+        return $this;
+    }
+
+    /**
+     * Get precioventa
+     *
+     * @return float 
+     */
+    public function getPrecioventa()
+    {
+        return $this->precioventa;
+    }
+
+    /**
+     * Set preciocompra
+     *
+     * @param float $preciocompra
+     * @return Material
+     */
+    public function setPreciocompra($preciocompra)
+    {
+        $this->preciocompra = $preciocompra;
+    
+        return $this;
+    }
+
+    /**
+     * Get preciocompra
+     *
+     * @return float 
+     */
+    public function getPreciocompra()
+    {
+        return $this->preciocompra;
+    }
+
+    /**
+     * Add almacenes
+     *
+     * @param \JYG\RevestimientosBundle\Entity\Deposito $almacenes
+     * @return Material
+     */
+    public function addAlmacene(\JYG\RevestimientosBundle\Entity\Deposito $almacenes)
+    {
+        $this->almacenes[] = $almacenes;
+    
+        return $this;
+    }
+
+    /**
+     * Remove almacenes
+     *
+     * @param \JYG\RevestimientosBundle\Entity\Deposito $almacenes
+     */
+    public function removeAlmacene(\JYG\RevestimientosBundle\Entity\Deposito $almacenes)
+    {
+        $this->almacenes->removeElement($almacenes);
     }
 }

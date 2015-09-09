@@ -5,6 +5,7 @@ namespace JYG\RevestimientosBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Material
@@ -49,15 +50,39 @@ class Material
      * @var string
      *
      * @ORM\Column(name="nombre", type="string", length=200)
+     * @Assert\NotBlank()
      */
     private $nombre;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="precio", type="float")
+     * @ORM\Column(name="precioventa", type="float")
+     * @Assert\GreaterThan(
+     *     value = 0,
+     *     message = "Debe ser un valor mayor a 0"
+     * )
+     * @Assert\Type(
+     *     type="float",
+     *     message="El valor {{ value }} no válido."
+     * )
      */
-    private $precio;
+    private $precioventa;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="preciocompra", type="float")
+     * @Assert\GreaterThan(
+     *     value = 0,
+     *     message = "Debe ser un valor mayor a 0"
+     * )
+     * @Assert\Type(
+     *     type="float",
+     *     message="El valor {{ value }} no válido."
+     * )
+     */
+    private $preciocompra;
 
     /**
      * @var string
@@ -234,7 +259,7 @@ class Material
      */
     public function __construct()
     {
-        $this->almacenes = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->almacenes = new ArrayCollection();
     }
 
     /**
@@ -243,11 +268,19 @@ class Material
      * @param \JYG\RevestimientosBundle\Entity\Deposito $almacenes
      * @return Material
      */
-    public function addAlmacene(\JYG\RevestimientosBundle\Entity\Deposito $almacenes)
+    public function addAlmacenes(\JYG\RevestimientosBundle\Entity\Deposito $almacenes)
     {
         $this->almacenes[] = $almacenes;
     
         return $this;
+    }
+    
+    /* Esta funcion agrega los almacenes porque la de arriba no se que coño hace */
+    public function setAlmacenes($almacenes){
+        $this->almacenes = $almacenes;
+        foreach ($almacenes as $almacen) {
+            $almacen->setMaterial($this);
+        }
     }
 
     /**
@@ -255,7 +288,7 @@ class Material
      *
      * @param \JYG\RevestimientosBundle\Entity\Deposito $almacenes
      */
-    public function removeAlmacene(\JYG\RevestimientosBundle\Entity\Deposito $almacenes)
+    public function removeAlmacenes(\JYG\RevestimientosBundle\Entity\Deposito $almacenes)
     {
         $this->almacenes->removeElement($almacenes);
     }
@@ -294,7 +327,7 @@ class Material
     }
 
     /**
-     * @Assert\File(maxSize="6000000")
+     * @Assert\File(maxSize="6000000", maxSizeMessage = "El Archivo pesa demasiado.", mimeTypesMessage = "Sube una foto valida")
      */
     private $file;
 
@@ -318,7 +351,7 @@ class Material
         $id = $this->getCodigo();
         return null === $this->path
             ? null
-            : $this->getUploadRootDir().'/'.$id.'.'.$this->path;
+            : $this->getUploadRootDir().'/'.$this->path;
     }
 
     public function getWebPath()
@@ -416,7 +449,33 @@ class Material
     public function removeUpload()
     {
         if (isset($this->temp)) {
-            unlink($this->temp);
+            // file_exists me dice si está, entonces lo puedo borrar.
+            if(file_exists($this->temp)){
+                unlink($this->temp);
+            }
         }
+    }
+
+    /**
+     * Set path
+     *
+     * @param string $path
+     * @return Material
+     */
+    public function setPath($path)
+    {
+        $this->path = $path;
+    
+        return $this;
+    }
+
+    /**
+     * Get path
+     *
+     * @return string 
+     */
+    public function getPath()
+    {
+        return $this->path;
     }
 }
