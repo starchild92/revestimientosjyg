@@ -19,9 +19,9 @@ class PageController extends Controller
         $em = $this->getDoctrine()->getManager();
         $entity = $em->getRepository('JYGRevestimientosBundle:Material')->UltimosTresAgregados();
 
-        if (!$entity) {
+        /*if (!$entity) {
             throw $this->createNotFoundException('Hay menos de 3 productos agregados');
-        }
+        }*/
 
         return $this->render('JYGRevestimientosBundle:Page:index.html.twig', array(
             'entity'    =>  $entity,
