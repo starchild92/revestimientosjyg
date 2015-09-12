@@ -1,5 +1,20 @@
 {% extends "JYGRevestimientosBundle::base.html.twig" %}
 
 {% block body %}
-<h1>Welcome to the Galeria:EditarImagen page</h1>
+	<div class="row">
+        <div class="col-sm-8"><div class="page-header"><h1>Modificar Imagen de la Galería</h1></div></div>
+        <div class="col-sm-4"><a id="volver" href="{{ path('_administrar_geleria') }}" class="btn btn-success pull-right" type="button">Ver todas la imágenes</a></div>
+    </div>
+     <div class="row">
+        <div class="col-lg-6 col-sm-6 col-xs-12">
+        {{ form_start(form) }}
+            {{ form_row(form.nombre) }}
+            {{ form_row(form.path) }}
+            {{ form_row(form.descripcion) }}
+        {{ form_end(form) }}
+        </div>
+        <div class="col-lg-6 col-sm-6 col-xs-12">
+            <img class="img-thumbnail img-responisve img-rounded" src="{{ asset('bundles/jygrevestimientos/images/galeria/') }}{{ entity.id }}.{{ entity.path }}">         
+        </div>
+    </div>
 {% endblock %}

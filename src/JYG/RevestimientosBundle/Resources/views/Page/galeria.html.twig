@@ -19,7 +19,7 @@
         {% endfor %}
         </div>
 		{% for entity in entities %}
-                <a type="button" data-toggle="modal" data-target="#exampleModal" data-whatever="{{ asset('bundles/jygrevestimientos/images/galeria/') }}{{ entity.path }}" data-nombre="{{ entity.nombre }}"><img id="thumbs" class=" img-thumbnail img-responsive img-rounded" src="{{ asset('bundles/jygrevestimientos/images/galeria/') }}{{ entity.path }}"></a>
+                <a type="button" data-toggle="modal" data-target="#exampleModal" data-whatever="{{ asset('bundles/jygrevestimientos/images/galeria/') }}{{ entity.id }}.{{ entity.path }}" data-nombre="{{ entity.nombre }}"><img id="thumbs" class="img-thumbnail img-responsive img-rounded" src="{{ asset('bundles/jygrevestimientos/images/galeria/') }}{{ entity.id }}.{{ entity.path }}"></a>
         {% endfor %}
 	</div>
 
@@ -52,19 +52,19 @@
     @media (min-width: 768px) and (max-width: 991px) {
     	#thumbs {
             border-radius: 5px;
-            max-height: 130px;
+            max-height: 165px;
         }
     }
     @media (min-width: 992px) and (max-width: 1199px) {
     	#thumbs {
             border-radius: 5px;
-            max-height: 224px;
+            max-height: 214px;
         }
 	}
 	@media (min-width: 1200px) {
 		#thumbs {
             border-radius: 5px;
-            max-height: 270px;
+            max-height: 259px;
         }
 	}
     </style>

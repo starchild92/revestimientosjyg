@@ -32,6 +32,36 @@ class Galeria
     private $nombre;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="descricion", type="text")
+     */
+    private $descripcion;
+
+    /**
+     * Set descripcion
+     *
+     * @param string $descripcion
+     * @return Consulta
+     */
+    public function setDescripcion($descripcion)
+    {
+        $this->descripcion = $descripcion;
+    
+        return $this;
+    }
+
+    /**
+     * Get descripcion
+     *
+     * @return string 
+     */
+    public function getDescripcion()
+    {
+        return $this->descripcion;
+    }
+
+    /**
      * @Assert\File()
      */
     private $file;
@@ -73,7 +103,6 @@ class Galeria
 
     public function getAbsolutePath()
     {
-        $id = $this->getNombre();
         return null === $this->path
             ? null
             : $this->getUploadRootDir().'/'.$this->path;
@@ -106,8 +135,9 @@ class Galeria
      */
     public function preUpload()
     {
+        /*Aqui es donde no se pone el id :( */
         if (null !== $this->getFile()) {
-            $this->path = $this->getNombre().'.'.$this->getFile()->getClientOriginalExtension();
+            $this->path = $this->getFile()->getClientOriginalExtension();
         }
     }
 
@@ -134,7 +164,7 @@ class Galeria
         // which the UploadedFile move() method does
         $this->getFile()->move(
             $this->getUploadRootDir(),
-            $this->nombre.'.'.$this->getFile()->getClientOriginalExtension()
+            $this->id.'.'.$this->getFile()->getClientOriginalExtension()
         );
 
         $this->setFile(null);
@@ -169,7 +199,7 @@ class Galeria
      */
     public function setPath($path)
     {
-        $this->path = $path;
+        $this->path = $this->id.'.'.$path;
     
         return $this;
     }
@@ -181,7 +211,7 @@ class Galeria
      */
     public function getPath()
     {
-        return $this->path;
+        return $this->id.'.'.$this->path;
     }
 
         /**

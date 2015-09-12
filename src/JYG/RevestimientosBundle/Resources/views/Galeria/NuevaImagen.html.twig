@@ -7,24 +7,25 @@
 {% endblock %}
 
 {% block body %}
-	<div class="page-header">
-		<h1>Nueva Imágen para la Galería</h1>
-	</div>
+    <div class="row">
+        <div class="col-sm-8"><div class="page-header"><h1>Nueva Imágen para la Galería</h1></div></div>
+        <div class="col-sm-4"><a id="volver" href="{{ path('_administrar_geleria') }}" class="btn btn-success pull-right" type="button">Regresar a todas las imágenes</a></div>
+    </div>
 
 {{ form_start(form) }}
     <div class="row">
         <div class="col-lg-6 col-sm-6 col-xs-12">
-            <p>Por favor, coloque un nombre y seleccione una imágen.</p>
-            {{ form_row(form.nombre) }}
+            <h4>Por favor, coloque un nombre y seleccione una imágen.</h4>
             {{ form_row(form.file) }}
-            {#{{ form_row(form.descripcion) }}#}
+            {{ form_row(form.nombre) }}
+            {{ form_row(form.descripcion) }}
             {{ form_row(form.guardar) }}
             {{ form_rest(form) }}
         </div>
         <div class="col-lg-6 col-sm-6 col-xs-12">
             <h4>Imágenes que están actualmente en galería.</h4>
             {% for img in entities %}
-                <img id="thumbs" src="{{ asset('bundles/jygrevestimientos/images/galeria/') }}{{ img.path }}" data-toggle="popover" data-placement="bottom" title="{{ img.nombre }}" data-container="body" data-content="Una posible descripción de la imagen">
+                <img id="thumbs" src="{{ asset('bundles/jygrevestimientos/images/galeria/') }}{{ img.id }}.{{ img.path }}" data-toggle="popover" data-placement="bottom" title="{{ img.nombre }}" data-container="body" data-content="{{ img.descripcion }}">
             {% endfor %}
         </div>
 	</div>

@@ -67,8 +67,16 @@ _nueva_imagen:
     defaults: { _controller: JYGRevestimientosBundle:Galeria:NuevaImagen }
 
 _editar_imagen:
-    path:     /editarimagengaleria
+    path:     /imagengaleria/editar/{id}
     defaults: { _controller: JYGRevestimientosBundle:Galeria:EditarImagen }
+    requirements:
+        _method:  GET
+
+_actualizar_imagen_galeria:
+    path:     /actualizarimagen/{id}
+    defaults: { _controller: JYGRevestimientosBundle:Galeria:ActualizarImagen }
+    requirements:
+        _method:  POST
 
 _eliminar_imagen:
     path:     /eliminarimagengaleria
