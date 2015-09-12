@@ -3,9 +3,6 @@
 {% block stylesheets %}
 	<link rel="stylesheet" type="text/css" href="{{ asset('bundles/jygrevestimientos/css/carousel.css') }}">
   <style type="text/css">
-    #img_0{
-      background-image: url('{{ asset("bundles/jygrevestimientos/images/carousel_0.jpg") }}'); min-height: 400px; width: 100%;
-    }
     #img_1{
       background-image: url('{{ asset("bundles/jygrevestimientos/images/carousel_1.jpg") }}'); min-height: 400px; width: 100%;
     }
@@ -35,7 +32,9 @@
         <li data-target="#myCarousel" data-slide-to="2"></li>
       </ol>
       <div class="carousel-inner" role="listbox">
-        <div id="img_0" class="item active"></div>
+        <div class="item active">
+          <img src='{{ asset("bundles/jygrevestimientos/images/carousel_0.jpg") }}' class="img-responsive">
+        </div>
         <div id="img_1" class="item">
           <div class="container">
             <div class="carousel-caption">

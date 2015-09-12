@@ -8,7 +8,8 @@
 
 {% block body %}
 	<div class="page-header">
-		<h2>Producto / {{ entity.nombre }}</h2>
+		<div class="col-sm-10"><div class="page-header"><h2>Producto / {{ entity.nombre }}</h2></div></div>
+        <div class="col-sm-2"><a id="volver" href="{{ path('JYGRevestimientosBundle_productos') }}" class="btn btn-success pull-right" type="button">Todos los Productos</a></div>
 	</div>
 			
 	<div class="row">
@@ -45,17 +46,18 @@
 
 		</div>
 		<div class="col-lg-4 col-sm-4 col-xs-12">
-			<div id="textContacto"><h3>{{ entity.nombre }}</h3><p>{{ entity.formato }}</p></div>
-	    	<a type="button" data-toggle="modal" data-target="#exampleModal" data-whatever="<div id='imgContacto' class='atlast'></div>" data-nombre="{{ entity.nombre }}"><div id="imgContacto"></div></a>
+			<a type="button" data-toggle="modal" data-target="#exampleModal" data-whatever="<img src='{{ asset('bundles/jygrevestimientos/images/materiales/') }}{{ entity.path }}' style='-webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, .5); box-shadow: 0 3px 9px rgba(0, 0, 0, .5);' class='img-rounded img-responsive'>" data-nombre="{{ entity.nombre }}"><div id="textContacto"><h3>{{ entity.nombre }}</h3><p>{{ entity.formato }}</p></div>
+	    	<img src='{{ asset("bundles/jygrevestimientos/images/materiales/") }}{{ entity.path }}' class="img-rounded img-responsive"></a>
 		</div>
 	</div>
 
 	<!-- el modal tio -->
 	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
 		<div class="modal-dialog modal-lg" >
-			<center><p style="margin-top: 10px; font-size: 20px;"><span id="label" class="label label-success"></span></p></center>
+			
 			<div class="modal-content bodies">
 				<center><div id="img"></div></center>
+				<center><p style="margin-top: 10px; font-size: 20px;"><span id="label" class="label label-success"></span></p></center>
 			</div>
 		</div>
 	</div>
@@ -64,20 +66,24 @@
 {% endblock %}
 {% block stylesheets %}
 	<style type="text/css">
-		#imgContacto{
-			background-image: url('{{ asset("bundles/jygrevestimientos/images/materiales/") }}{{ entity.path }}');
-			background-size: 100% 300px;
-			background-repeat: no-repeat;
-			min-height: 400px;
-			max-width: 400px;
-			/*background-color: rgba(0, 135, 64, 0.56);*/
-			border-radius: 5px;
-		}
+		a{ color: black; font-style: underline; }
+		img:hover, a:hover { cursor: pointer; }
 		#textContacto{
 			position: absolute;
 		    bottom: 0;
 		    z-index: 1;
 		    padding: 0px 10px 10px 10px;
+		    min-width: 100%;
+			/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#feffff+0,ffffff+100&amp;0+0,1+100 */
+			/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+			background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZlZmZmZiIgc3RvcC1vcGFjaXR5PSIwIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmZmZmZmYiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+			background: -moz-linear-gradient(top,  rgba(254,255,255,0) 0%, rgba(255,255,255,1) 100%); /* FF3.6+ */
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(254,255,255,0)), color-stop(100%,rgba(255,255,255,1))); /* Chrome,Safari4+ */
+			background: -webkit-linear-gradient(top,  rgba(254,255,255,0) 0%,rgba(255,255,255,1) 100%); /* Chrome10+,Safari5.1+ */
+			background: -o-linear-gradient(top,  rgba(254,255,255,0) 0%,rgba(255,255,255,1) 100%); /* Opera 11.10+ */
+			background: -ms-linear-gradient(top,  rgba(254,255,255,0) 0%,rgba(255,255,255,1) 100%); /* IE10+ */
+			background: linear-gradient(to bottom,  rgba(254,255,255,0) 0%,rgba(255,255,255,1) 100%); /* W3C */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00feffff', endColorstr='#ffffff',GradientType=0 ); /* IE6-8 */
 		}
 	</style>
 {% endblock %}
