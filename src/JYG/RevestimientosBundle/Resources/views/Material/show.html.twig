@@ -23,24 +23,43 @@
                     <tr>
                         <th>Código</th>
                         <td>{{ entity.codigo }}</td>
-                        <th>Formato</th>
-                        <td>{{ entity.formato }}</td>
+                        <th>Tipo</th>
+                        <td>{{ entity.tipo }}</td>
                     </tr>
                     <tr>
-                        <th>Color</th>
-                        <td>{{ entity.color }}</td>
                         <th>Nombre</th>
                         <td>{{ entity.nombre }}</td>
+                        <th>Color</th>
+                        <td>{{ entity.color }}</td>
                     </tr>
                     <tr>
                         <th>Precio de Compra</th>
                         <td>{{ entity.preciocompra }} Bs</td>
                         <th>Precio de Venta</th>
                         <td>{{ entity.precioventa }} Bs</td>
+
+                    </tr>
+                    <tr>
+                        <th>Formato</th>
+                        {% if entity.formato == ''  %}
+                            <td>No Aplica</td>
+                        {% else %}
+                            <td>{{ entity.formato }}</td>
+                        {% endif %}
+                        <th>Tamaño</th>
+                        {% if entity.tamano == ''  %}
+                            <td>No Aplica</td>
+                        {% else %}
+                            <td>{{ entity.tamano }}</td>
+                        {% endif %}
                     </tr>
                     <tr >
-                        <th>Tipo</th>
-                        <td>{{ entity.tipo }}</td>
+                        <th>Unidad</th>
+                        {% if entity.unidad == ''  %}
+                            <td>No Aplica</td>
+                        {% else %}
+                            <td>{{ entity.unidad }}</td>
+                        {% endif %}
                         <th>Depósitos</th>
                         <td colspan="3">
                             <table class="table table-condensed table-bordered" style="width: 100%;">

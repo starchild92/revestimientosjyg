@@ -5,6 +5,7 @@
     <script src="{{ asset('bundles/jygrevestimientos/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('bundles/jygrevestimientos/js/forms.js') }}"></script>
     <script src="{{ asset('bundles/jygrevestimientos/js/modalDelEdit.js') }}"></script>
+    <script src="{{ asset('bundles/jygrevestimientos/js/campomaterial.js') }}"></script>
 {% endblock %}
 
 {% block body -%}
@@ -22,11 +23,14 @@
     <div class="row">
         <div class="col-lg-4 col-sm-4 col-xs-12">
             {{ form_row(edit_form.codigo) }}
-            {{ form_row(edit_form.formato) }}
-            {{ form_row(edit_form.color) }}
             {{ form_row(edit_form.tipo) }}
+            {{ form_row(edit_form.tamano) }}
+            {{ form_row(edit_form.formato) }}
+            {{ form_row(edit_form.unidad) }}
+            
         </div>
         <div class="col-lg-4 col-sm-4 col-xs-12">
+            {{ form_row(edit_form.color) }}
             {{ form_row(edit_form.nombre) }}
             {{ form_row(edit_form.preciocompra) }}
             {{ form_row(edit_form.precioventa) }}

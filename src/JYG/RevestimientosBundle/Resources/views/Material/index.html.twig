@@ -52,7 +52,13 @@
                         <tbody>
                             {% for almacen in entity.almacenes %}<tr>
                                 <td>{{ almacen.nombrealmacen }}</td>
-                                <td>{{ almacen.cantmaterialdisponible }} mts</td>
+                                <td>{{ almacen.cantmaterialdisponible }} 
+                                    {% if entity.tipo == 'Quimicos'  %}
+                                        Litros
+                                    {% else %}
+                                        mts
+                                    {% endif %}
+                                </td>
                             </tr>{% endfor %}
                         </tbody>
                     </table>

@@ -56,7 +56,7 @@ class Material
     /**
      * @var string
      *
-     * @ORM\Column(name="color", type="string", length=200)
+     * @ORM\Column(name="color", type="string", length=200, nullable=true)
      */
     private $color;
 
