@@ -79,8 +79,10 @@ _actualizar_imagen_galeria:
         _method:  POST
 
 _eliminar_imagen:
-    path:     /eliminarimagengaleria
+    path:     /eliminarimagengaleria/{id}
     defaults: { _controller: JYGRevestimientosBundle:Galeria:EliminarImagen }
+    requirements:
+        methods: GET
 
 _mostrar_galeria:
     path:     /mostrargaleria

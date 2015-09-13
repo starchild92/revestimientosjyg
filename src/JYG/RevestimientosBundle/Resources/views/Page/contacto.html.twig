@@ -4,12 +4,12 @@
 
 {% block body %}
 	<div class="page-header">
-		<h1>Como encontrarnos</h1>
+		<h1>Cómo encontrarnos</h1>
 	</div>
 	<div class="row">
 		<div class="col-lg-4 col-sm-6 col-xs-12">
 			<div class="page-header">
-				<h4>Formulario de Contacto</h4>
+				<h4 class="naranja_logo">Formulario de Contacto</h4>
 			</div>
 			{% for flashMessage in app.session.flashbag.get('exito') %}
 		        <div class="alert alert-success alert-dismissable">
@@ -55,9 +55,9 @@
 					{% endif %}
 					<div style= "padding-top: 20px;">
 						<div class="row">
-							<div class="col-sm-6">{{form_widget(form.Enviar ,{'attr':{'class':'btn btn-success btn-lg btn-block'}})}}</div>
+							<div class="col-sm-6">{{form_widget(form.Enviar ,{'attr':{'class':'btn btn-success btn-block'}})}}</div>
 							<div class="col-sm-6">
-								<a href="{{ path('JYGRevestimientosBundle_inicio') }}" class="btn btn-danger btn-lg btn-block" type="button">Cancelar</a>
+								<a href="{{ path('JYGRevestimientosBundle_inicio') }}" class="btn btn-danger btn-block" type="button">Cancelar</a>
 					    		<div class = "row" >
 					    	    {% do form.Cancelar.setRendered %}
 					    		{{ form_rest(form) }}	    		
@@ -93,10 +93,10 @@
 	          </table>
 		    </div>
 	    	<div class="page-header">
-				<h4> Donde Ubicarnos </h4>
+				<h4 class="naranja_logo">Donde Ubicarnos</h4>
 			</div>
 			<div id="map" class="container"></div>
-			<small> haga click en el marcador</small>
+			<small>haga click en el marcador</small>
 	    </div>
 	    <div class="col-lg-4 col-sm-12 col-xs-12">
 	    	<div id="textContacto"><h3>Por favor comuniquese con nosotros</h3><p>Responderemos lo más pronto posible</p></div>

@@ -88,11 +88,19 @@ class GaleriaController extends Controller
          return $this->redirect($this->generateUrl('JYGRevestimientosBundle_galeria'));
     }
 
-    public function EliminarImagenAction()
+    public function EliminarImagenAction($id)
     {
-        return $this->render('JYGRevestimientosBundle:Galeria:EliminarImagen.html.twig', array(
-                // ...
-            ));
+        $em = $this->getDoctrine()->getManager();
+        $foto = $em->getRepository('JYGRevestimientosBundle:Galeria')->find($id);
+
+        if(!$foto){
+            $this->get('session')->getFlashBag()->set('error', 'La imágen que desea eliminar no existe.');
+        }else{
+            $em->remove($foto);
+            $em->flush();
+        }
+
+        return $this->redirect($this->generateUrl('JYGRevestimientosBundle_galeria'));
     }
 
     public function MostrarGaleriaAction()

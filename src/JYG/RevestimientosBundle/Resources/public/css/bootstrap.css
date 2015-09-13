@@ -7,6 +7,7 @@
 /*!
 * Espacio para el container en el twig base y la navbar
 */
+.naranja_logo{ color: rgb(251, 134, 41); }
 .navSpace{ margin-top: 50px; }
 #volver{ margin-top: 20px; }
 .foooter{
@@ -4921,7 +4922,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 	display: inline;
 	padding: .2em .6em .3em;
 	font-size: 75%;
-	font-weight: bold;
+	/*font-weight: bold;*/
 	line-height: 1;
 	color: #fff;
 	text-align: center;
@@ -4983,6 +4984,9 @@ a.label:focus {
 .label-danger[href]:hover,
 .label-danger[href]:focus {
 	background-color: #c9302c;
+}
+.label-naranja {
+	background-color: rgb(251, 134, 41);
 }
 .badge {
 	display: inline-block;

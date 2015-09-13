@@ -1,20 +1,24 @@
 {% extends "JYGRevestimientosBundle::base.html.twig" %}
 
-{% block title %}JYGRevestimientosBundle:Galeria:NuevaImagen{% endblock %}
-
 {% block javascripts %}
     <script src="{{ asset('bundles/jygrevestimientos/js/jquery.min.js') }}"></script>
     <script src="{{ asset('bundles/jygrevestimientos/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('bundles/jygrevestimientos/js/modalDelEdit.js') }}"></script>
 {% endblock %}
 
 {% block body %}
     <div class="row">
         <div class="col-sm-8"><div class="page-header"><h1>Modifique las imagénes de la galería</h1></div></div>
-        <div class="col-sm-4"><a id="volver" href="{{ path('_nueva_imagen') }}" class="btn btn-success pull-right" type="button">Añada una nueva imágen</a></div>
+        <div class="col-sm-4"><a id="volver" href="{{ path('_nueva_imagen') }}" class="btn btn-success pull-right" type="button"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Añada una nueva imágen</a></div>
     </div>
     <div class="row">
         <div class="col-lg-12 col-sm-12 col-xs-12">
-            <table class="table table-condensed">
+            {% for flashMessage in app.session.flashbag.get('error') %}
+                <div class = "alert alert-warning">
+                    {{ flashMessage }}
+                </div>
+            {% endfor %}
+            <table class="table table-striped table-condensed records_list">
                 <thead>
                     <tr>
                         <th>Imagen</th>
@@ -26,13 +30,12 @@
                 <tbody>
                 {% for img in entities %}
                     <tr>
-                        <td><img id="thumbs" src="{{ asset('bundles/jygrevestimientos/images/galeria/') }}{{ img.id }}.{{ img.path }}">
-                        </td>
-                        <td>{{ img.nombre }}</td>
-                        <td>{{ img.descripcion }}</td>
+                        <td><center><img id="thumbs" src="{{ asset('bundles/jygrevestimientos/images/galeria/') }}{{ img.id }}.{{ img.path }}"></center></td>
+                        <td style="max-width: 110px">{{ img.nombre }}</td>
+                        <td style="max-width: 400px">{{ img.descripcion }}</td>
                         <td>
                             <a class="btn btn-primary" href="{{ path('_editar_imagen', { 'id': img.id }) }}">Modificar Detalles</a>
-                            <a class="btn btn-danger" href="{{ path('_eliminar_imagen', { 'id': img.id }) }}">Eliminar Imagen</a>
+                            <a type="button" class="btn btn-danger" data-toggle="modal" id="Modal" data-target="#ModalEliminar" data-id="{{ path('_eliminar_imagen', { 'id': img.id }) }}" data-nombre="{{ img.nombre }}">Eliminar Imágen</a>
                         </td>
                     </tr>
                 {% endfor %}
@@ -40,7 +43,20 @@
             </table>
         </div>
 	</div>
-
+    <!-- el modal tio -->
+    <div class="modal fade" id="ModalEliminar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal-dialog modal-lg" >
+            <div class="modal-content bodies">
+                <center><h3>¿Está seguro que desea eliminar <i id="nombre_" style="color: rgb(255, 114, 0)"></i> esta imágen de la galería?</h3><br>
+                <p>Tenga presente que una vez eliminada ya no se mostrará en la galería del sitio web</p></center>
+                <br>
+                <div class="row">
+                <div class="col-sm-6"><a id="ButonEliminar" class="btn btn-danger btn-block" href="">Elim. Definitivamente</a></div>
+                <div class="col-sm-6"><button type="button" class="btn btn-primary btn-block" data-dismiss="modal">Cancelar</button></div></div>
+            </div>
+        </div><center><span class="label label-primary">haga clic fuera de la ventana para cerrarla</span></center>
+    </div>
+    <!-- el modal tio -->
 {% endblock %}
 {% block stylesheets %}
     <style type="text/css">
@@ -48,9 +64,6 @@
             border-radius: 5px;
             max-width: 200px;
             max-height: 130px;
-        }
-        #thumbs:hover {
-            border: solid 2px black;
         }
     </style>
 {% endblock %}

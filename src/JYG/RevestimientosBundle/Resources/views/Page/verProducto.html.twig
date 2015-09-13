@@ -7,17 +7,16 @@
 {% endblock %}
 
 {% block body %}
-	<div class="page-header">
+	<div class="row">
 		<div class="col-sm-10"><div class="page-header"><h2>Producto / {{ entity.nombre }}</h2></div></div>
         <div class="col-sm-2"><a id="volver" href="{{ path('JYGRevestimientosBundle_productos') }}" class="btn btn-success pull-right" type="button">Todos los Productos</a></div>
 	</div>
-			
 	<div class="row">
 		<div class="col-lg-8 col-sm-8 col-xs-12">
 			<table class="table record_properties">
 				<thead>
 					<tr>
-						<th colspan="2"><h3 style="margin-top:0px;">Detalles del Producto</h3></th>
+						<th colspan="2"><h3 style="margin-top:0px;" class="naranja_logo">Detalles del Producto</h3></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -43,10 +42,9 @@
 					</tr>
 				</tbody>
 			</table>
-
 		</div>
 		<div class="col-lg-4 col-sm-4 col-xs-12">
-			<a style="color: black;" type="button" data-toggle="modal" data-target="#exampleModal" data-whatever="<img src='{{ asset('bundles/jygrevestimientos/images/materiales/') }}{{ entity.path }}' style='-webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, .5); box-shadow: 0 3px 9px rgba(0, 0, 0, .5);' class='img-rounded img-responsive'>" data-nombre="{{ entity.nombre }}"><div id="textContacto" class="raton"><h3><span class="glyphicon glyphicon-picture" aria-hidden="true"></span> {{ entity.nombre }}</h3><p>{{ entity.formato }}</p></div>
+			<a style="color: black;" type="button" data-toggle="modal" data-target="#exampleModal" data-whatever="<img src='{{ asset('bundles/jygrevestimientos/images/materiales/') }}{{ entity.path }}' style='-webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, .5); box-shadow: 0 3px 9px rgba(0, 0, 0, .5);' class='img-rounded img-responsive'>" data-nombre="{{ entity.nombre }}"><div id="textContacto" class="raton naranja_logo"><h3><span class="glyphicon glyphicon-picture" aria-hidden="true"></span> {{ entity.nombre }}</h3><p>{{ entity.formato }}</p></div>
 	    	<img src='{{ asset("bundles/jygrevestimientos/images/materiales/") }}{{ entity.path }}' class="img-rounded img-responsive"></a>
 		</div>
 	</div>
@@ -57,7 +55,7 @@
 			
 			<div class="modal-content bodies">
 				<center><div id="img"></div></center>
-				<center><p style="margin-top: 10px; font-size: 20px;"><span id="label" class="label label-success"></span></p></center>
+				<center><p style="margin-top: 10px; font-size: 20px;"><span id="label" class="label label-naranja"></span></p></center>
 			</div>
 		</div>
 	</div>
