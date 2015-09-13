@@ -16,8 +16,8 @@ class DepositoType extends AbstractType
     {
         $builder
             ->add('nombrealmacen', 'choice', array(
-                    'choices'  => array('Deposito Tienda' => 'Deposito Tienda', 'Deposito Origen' => 'Deposito Origen'),
-                    'label'=>'Nombre del Almacen'))
+                    'choices'  => array('Depósito Tienda' => 'Depósito Tienda', 'Depósito Origen' => 'Depósito Origen'),
+                    'label'=>'Nombre del Almacén'))
             ->add('cantmaterialdisponible','text',array('label'=>'Cantidad Disponible'))
             //->add('material','hidden', array('label' => false))
         ;

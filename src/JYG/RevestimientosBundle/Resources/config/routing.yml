@@ -52,12 +52,16 @@ JYGRevestimientosBundle_quienessomos:
     pattern:  /quienessomos
     defaults: { _controller: JYGRevestimientosBundle:Page:quienessomos }
 
+_inicio_sesion:
+    pattern:  /iniciosesion
+    defaults: { _controller: JYGRevestimientosBundle:Page:inicioSesion }
+
 jyg_revestimientos_venta:
     resource: "@JYGRevestimientosBundle/Resources/config/routing/venta.yml"
     prefix:   /venta
 
 #Estas rutas son para el admin :)
-_administrar_geleria:
+_administrar_galeria:
     path:     /administrargaleria
     defaults: { _controller: JYGRevestimientosBundle:Galeria:AdministrarGaleria}
 

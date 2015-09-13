@@ -222,8 +222,8 @@ class Galeria
      */
     public function setNombre($nombre)
     {
-        /* Quitando cochinadas del nombre del archivo */
-        $nombre = preg_replace("/[^A-Za-z0-9 ]/", '', $nombre);
+        /* Quitando cochinadas del nombre del archivo 
+        $nombre = preg_replace("/[^A-Za-z0-9 ]/", '', $nombre);*/
         $this->nombre = $nombre;
     
         return $this;

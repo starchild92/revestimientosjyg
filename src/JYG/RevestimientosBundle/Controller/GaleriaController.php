@@ -60,8 +60,7 @@ class GaleriaController extends Controller
             'action' => $this->generateUrl('_actualizar_imagen_galeria', array('id' => $id)),
             'method' => 'POST',
         ));
-        $form->add('file', 'file', array('required' => false, 'label' => 'Archivo de Imagen'))
-        ->add('submit', 'submit', array(
+        $form->add('submit', 'submit', array(
             'label' => 'Actualizar Datos de la Imágen',
             'attr' => array('class' => 'btn btn-success btn-block')
             ));
@@ -77,11 +76,20 @@ class GaleriaController extends Controller
         $em = $this->getDoctrine()->getEntityManager();
         $foto = $em->getRepository('JYGRevestimientosBundle:Galeria')->find($id);
         $form = $this->createForm(new GaleriaType, $foto);
+        $form->add('submit', 'submit', array(
+                'label' => 'Actualizar Datos de la Imágen',
+                'attr' => array('class' => 'btn btn-success btn-block')
+                ));
         if($request->getMethod() == 'POST'){
             $form->handleRequest($request);
 
             if ($form->isValid()){
                 $em->flush();
+            }else{
+                return $this->render('JYGRevestimientosBundle:Galeria:EditarImagen.html.twig', array(
+                    'entity'      => $foto,
+                    'form'        => $form->createView(),
+                ));
             }
         }
 

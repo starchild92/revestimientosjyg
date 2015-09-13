@@ -4,6 +4,21 @@
     <script src="{{ asset('bundles/jygrevestimientos/js/jquery.min.js') }}"></script>
     <script src="{{ asset('bundles/jygrevestimientos/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('bundles/jygrevestimientos/js/modal.js') }}"></script>
+    <script src="{{ asset('bundles/jygrevestimientos/js/masonry.js') }}"></script>
+    <script type="text/javascript">
+        $(document).ready( function() {
+          // init Masonry
+          var $grid = $('.grid').masonry({
+            itemSelector: '.grid-item',
+            percentPosition: true,
+            columnWidth: '.grid-sizer'
+          });
+          // layout Isotope after each image loads
+          $grid.imagesLoaded().progress( function() {
+            $grid.masonry();
+          }); 
+        });
+    </script>
 {% endblock %}
 
 {% block body %}
@@ -18,18 +33,27 @@
             </div>
         {% endfor %}
         </div>
-		{% for entity in entities %}
-                <a type="button" data-toggle="modal" data-target="#exampleModal" data-whatever="{{ asset('bundles/jygrevestimientos/images/galeria/') }}{{ entity.id }}.{{ entity.path }}" data-nombre="{{ entity.nombre }}"><img id="thumbs" class="img-thumbnail img-responsive img-rounded" src="{{ asset('bundles/jygrevestimientos/images/galeria/') }}{{ entity.id }}.{{ entity.path }}"></a>
-        {% endfor %}
-	</div>
+    </div>
+    <div class="row">
+        <div class="grid">
+            <div class="grid-sizer"></div>
+    		{% for entity in entities %}
+                <div class="grid-item">
+                    <a type="button" data-toggle="modal" data-target="#exampleModal" data-whatever="{{ asset('bundles/jygrevestimientos/images/galeria/') }}{{ entity.id }}.{{ entity.path }}" data-nombre="{{ entity.nombre }}" data-descripcion="{{ entity.descripcion }}"><img class="img_thumbnail img_responsive img_rounded" src="{{ asset('bundles/jygrevestimientos/images/galeria/') }}{{ entity.id }}.{{ entity.path }}"></a>
+                </div>
+            {% endfor %}
+    	</div>
+    </div>
 
 	<!-- el modal tio -->
 	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
 		<div class="modal-dialog modal-lg" >
-			<center><p style="margin-top: 10px; font-size: 20px;"><span id="label" class="label label-success"></span></p></center>
+			<center><p style="margin-top: 10px; font-size: 20px;"><span id="label" class="label label-naranja"></span></center></p>
 			<div class="modal-content bodies">
 				<center><img class="img-responsive" style="border-radius: 5px; -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, .5); box-shadow: 0 3px 9px rgba(0, 0, 0, .5); max-height:500px;" src=""></center>
 			</div>
+      <br>
+      <blockquote id="descripcion" style="background-color: #FFF"></blockquote>
 		</div>
 	</div>
 	<!-- el modal tio -->
@@ -37,35 +61,43 @@
 {% endblock %}
 {% block stylesheets %}
     <style type="text/css">
-    #thumbs {
-    	margin-bottom: 5px;
+    blockquote{ border-left: 5px solid #E45017; border-radius: .33em; }
+    .grid-item { width: 300px; }
+    * {
+      -webkit-box-sizing: border-box;
+         -moz-box-sizing: border-box;
+              box-sizing: border-box;
     }
-    #thumbs:hover {
+
+    /* force scrollbar */
+    html { overflow-y: scroll; }
+
+    /* clear fix */
+    .grid:after {
+      content: '';
+      display: block;
+      clear: both;
+    }
+
+    /* ---- .grid-item ---- */
+
+    .grid-sizer,
+    .grid-item {
+      width: 33.333%;
+    }
+
+    .grid-item {
+      float: left;
+    }
+
+    .grid-item img {
+      display: block;
+      max-width: 100%;
+      padding: 2px 1px 1px 1px;
+    }
+    .grid-item img:hover {
          border: solid 2px orange;
+         cursor: pointer;
     }
-    @media (max-width: 767px) {
-        #thumbs {
-            border-radius: 5px;
-            max-height: 152px;
-        }
-    }
-    @media (min-width: 768px) and (max-width: 991px) {
-    	#thumbs {
-            border-radius: 5px;
-            max-height: 165px;
-        }
-    }
-    @media (min-width: 992px) and (max-width: 1199px) {
-    	#thumbs {
-            border-radius: 5px;
-            max-height: 214px;
-        }
-	}
-	@media (min-width: 1200px) {
-		#thumbs {
-            border-radius: 5px;
-            max-height: 259px;
-        }
-	}
     </style>
 {% endblock %}

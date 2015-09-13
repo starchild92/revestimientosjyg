@@ -3413,6 +3413,24 @@ fieldset[disabled] .btn-warning.active {
 	color: #f0ad4e;
 	background-color: #fff;
 }
+/*** <-- LUIS WAS HERE ***/
+.btn-naranja{
+	color: #fff;
+	background-color: rgb(251, 134, 41);
+	border-color: #8A3500;
+}
+.btn-naranja:focus,
+.btn-naranja.focus {
+	color: #fff;
+    background-color: #C5671C;
+    border-color: #D2D2D2;
+}
+.btn-naranja:hover {
+	color: #fff;
+	background-color: rgb(218, 115, 33);
+	border-color: #FFFFFF;
+}
+/*** LUIS WAS HERE --> ***/
 .btn-danger {
 	color: #fff;
 	background-color: #d9534f;

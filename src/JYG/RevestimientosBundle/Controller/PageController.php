@@ -125,4 +125,8 @@ class PageController extends Controller
         ));
     }
 
+    public function inicioSesionAction(){
+        return $this->render('JYGRevestimientosBundle:Page:sesionini.html.twig');
+    }
+
 }
