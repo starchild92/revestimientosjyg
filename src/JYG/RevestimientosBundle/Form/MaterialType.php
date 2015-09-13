@@ -16,12 +16,16 @@ class MaterialType extends AbstractType
     {
         $builder
             ->add('codigo')
-            ->add('formato')
-            ->add('color')
+            ->add('tipo','choice', array(
+                    'choices'  => array('Selecciona'=>'Selecciona una','Laja Natural' => 'Laja Natural', 'Laja Formateada' => 'Laja Formateada','Quimicos' => 'Quimicos'),
+                    'label'=>'Tipo de Producto'))
+            ->add('formato','text',array('required' => false,'label'=>'Formato','disabled'=> true))
+            ->add('tamano','text',array('required' => false,'label'=>'Tamaño','disabled'=> true))
+            ->add('unidad','text',array('required' => false,'label'=>'Unidad','disabled'=> true))
             ->add('nombre')
+            ->add('color','text',array('required' => false))
             ->add('preciocompra','text', array('label' => 'Precio de Compra'))
             ->add('precioventa', 'text', array('label' => 'Precio de Venta'))
-            ->add('tipo')
             ->add('file', 'file', array(
                 'required' => false,
                 'label' => 'Archivo de Imagen'))

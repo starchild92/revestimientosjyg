@@ -34,7 +34,7 @@ class Galeria
     /**
      * @var string
      *
-     * @ORM\Column(name="descricion", type="text")
+     * @ORM\Column(name="descripcion", type="text")
      */
     private $descripcion;
 

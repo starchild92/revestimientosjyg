@@ -35,9 +35,23 @@ class Material
     /**
      * @var string
      *
-     * @ORM\Column(name="formato", type="string", length=255)
+     * @ORM\Column(name="formato", type="string", length=255, nullable=true)
      */
     private $formato;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="tamano", type="string", length=255, nullable=true)
+     */
+    private $tamano;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="unidad", type="string", length=255, nullable=true)
+     */
+    private $unidad;
 
     /**
      * @var string
@@ -63,7 +77,7 @@ class Material
      *     message = "Debe ser un valor mayor a 0"
      * )
      * @Assert\Type(
-     *     type="float",
+     *     type="numeric",
      *     message="El valor {{ value }} no válido."
      * )
      */
@@ -78,7 +92,7 @@ class Material
      *     message = "Debe ser un valor mayor a 0"
      * )
      * @Assert\Type(
-     *     type="float",
+     *     type="numeric",
      *     message="El valor {{ value }} no válido."
      * )
      */
@@ -209,28 +223,6 @@ class Material
         return $this->nombre;
     }
 
-    /**
-     * Set precio
-     *
-     * @param float $precio
-     * @return Material
-     */
-    public function setPrecio($precio)
-    {
-        $this->precio = $precio;
-    
-        return $this;
-    }
-
-    /**
-     * Get precio
-     *
-     * @return float 
-     */
-    public function getPrecio()
-    {
-        return $this->precio;
-    }
 
     /**
      * Set tipo
@@ -344,7 +336,7 @@ class Material
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    public $path;
+    protected $path;
 
     public function getAbsolutePath()
     {
@@ -477,5 +469,120 @@ class Material
     public function getPath()
     {
         return $this->path;
+    }
+
+    /**
+     * Set precioventa
+     *
+     * @param float $precioventa
+     * @return Material
+     */
+    public function setPrecioventa($precioventa)
+    {
+        $this->precioventa = $precioventa;
+    
+        return $this;
+    }
+
+    /**
+     * Get precioventa
+     *
+     * @return float 
+     */
+    public function getPrecioventa()
+    {
+        return $this->precioventa;
+    }
+
+    /**
+     * Set preciocompra
+     *
+     * @param float $preciocompra
+     * @return Material
+     */
+    public function setPreciocompra($preciocompra)
+    {
+        $this->preciocompra = $preciocompra;
+    
+        return $this;
+    }
+
+    /**
+     * Get preciocompra
+     *
+     * @return float 
+     */
+    public function getPreciocompra()
+    {
+        return $this->preciocompra;
+    }
+
+    /**
+     * Add almacenes
+     *
+     * @param \JYG\RevestimientosBundle\Entity\Deposito $almacenes
+     * @return Material
+     */
+    public function addAlmacene(\JYG\RevestimientosBundle\Entity\Deposito $almacenes)
+    {
+        $this->almacenes[] = $almacenes;
+    
+        return $this;
+    }
+
+    /**
+     * Remove almacenes
+     *
+     * @param \JYG\RevestimientosBundle\Entity\Deposito $almacenes
+     */
+    public function removeAlmacene(\JYG\RevestimientosBundle\Entity\Deposito $almacenes)
+    {
+        $this->almacenes->removeElement($almacenes);
+    }
+
+    /**
+     * Set tamaño
+     *
+     * @param string $tamaño
+     * @return Material
+     */
+    public function setTamaño($tamaño)
+    {
+        $this->tamaño = $tamaño;
+    
+        return $this;
+    }
+
+    /**
+     * Get tamaño
+     *
+     * @return string 
+     */
+    public function getTamaño()
+    {
+        return $this->tamaño;
+    }
+
+    /**
+     * Set unidad
+     *
+     * @param string $unidad
+     * @return Material
+     */
+    public function setUnidad($unidad)
+    {
+        $this->unidad = $unidad;
+    
+        return $this;
+    }
+
+    /**
+     * Get unidad
+     *
+     * @return string 
+     */
+    public function getUnidad()
+    {
+        return $this->unidad;
     }
 }
