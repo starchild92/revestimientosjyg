@@ -19,9 +19,9 @@ class MaterialType extends AbstractType
             ->add('tipo','choice', array(
                     'choices'  => array('Selecciona'=>'Selecciona una','Laja Natural' => 'Laja Natural', 'Laja Formateada' => 'Laja Formateada','Quimicos' => 'Quimicos'),
                     'label'=>'Tipo de Producto'))
-            ->add('formato','text',array('required' => false,'label'=>'Formato','disabled'=> true))
-            ->add('tamano','text',array('required' => false,'label'=>'Tamaño','disabled'=> true))
-            ->add('unidad','text',array('required' => false,'label'=>'Unidad','disabled'=> true))
+            ->add('formato','text',array('required' => false,'label'=>'Formato'))
+            ->add('tamano','text',array('required' => false,'label'=>'Tamaño'))
+            ->add('unidad','text',array('required' => false,'label'=>'Unidad'))
             ->add('nombre')
             ->add('color','text',array('required' => false))
             ->add('preciocompra','text', array('label' => 'Precio de Compra'))
