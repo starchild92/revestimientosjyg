@@ -35,9 +35,23 @@ class Material
     /**
      * @var string
      *
-     * @ORM\Column(name="formato", type="string", length=255)
+     * @ORM\Column(name="formato", type="string", length=255, nullable=true)
      */
     private $formato;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="tamano", type="string", length=255, nullable=true)
+     */
+    private $tamano;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="unidad", type="string", length=255, nullable=true)
+     */
+    private $unidad;
 
     /**
      * @var string
@@ -524,5 +538,74 @@ class Material
     public function removeAlmacene(\JYG\RevestimientosBundle\Entity\Deposito $almacenes)
     {
         $this->almacenes->removeElement($almacenes);
+    }
+
+    /**
+     * Set tamaño
+     *
+     * @param string $tamaño
+     * @return Material
+     */
+    public function setTamaño($tamaño)
+    {
+        $this->tamaño = $tamaño;
+    
+        return $this;
+    }
+
+    /**
+     * Get tamaño
+     *
+     * @return string 
+     */
+    public function getTamaño()
+    {
+        return $this->tamaño;
+    }
+
+    /**
+     * Set unidad
+     *
+     * @param string $unidad
+     * @return Material
+     */
+    public function setUnidad($unidad)
+    {
+        $this->unidad = $unidad;
+    
+        return $this;
+    }
+
+    /**
+     * Get unidad
+     *
+     * @return string 
+     */
+    public function getUnidad()
+    {
+        return $this->unidad;
+    }
+
+    /**
+     * Set tamano
+     *
+     * @param string $tamano
+     * @return Material
+     */
+    public function setTamano($tamano)
+    {
+        $this->tamano = $tamano;
+    
+        return $this;
+    }
+
+    /**
+     * Get tamano
+     *
+     * @return string 
+     */
+    public function getTamano()
+    {
+        return $this->tamano;
     }
 }

@@ -72,7 +72,7 @@ class GaleriaController extends Controller
 
     public function ActualizarImagenAction(Request $request, $id)
     {
-        $foto = new Galeria();
+        /*$foto = new Galeria();
         $em = $this->getDoctrine()->getEntityManager();
         $foto = $em->getRepository('JYGRevestimientosBundle:Galeria')->find($id);
         $form = $this->createForm(new GaleriaType, $foto);
@@ -91,7 +91,27 @@ class GaleriaController extends Controller
                     'form'        => $form->createView(),
                 ));
             }
-        }
+        }*/
+          if ($request->getMethod() == "POST") 
+          {
+            $em = $this->getDoctrine()->getManager();
+            $foto = $em->getRepository('JYGRevestimientosBundle:Galeria')->find($id);
+            if ($foto) //existe la foto seleccionada
+            {     
+                  $form = $this->createForm(new GaleriaType(), $foto);
+                  $form->handleRequest($request);
+                  if ($form->isValid()) 
+                  {
+                      $em->persist($foto);
+                      $em->flush();
+                      return $this->redirect($this->generateUrl('_administrar_geleria'));
+                  }
+            } //no se encontro la foto 
+            else
+            {
+              throw $this->createNotFoundException('La foto no existe.');
+            }
+          }
 
          return $this->redirect($this->generateUrl('JYGRevestimientosBundle_galeria'));
     }
