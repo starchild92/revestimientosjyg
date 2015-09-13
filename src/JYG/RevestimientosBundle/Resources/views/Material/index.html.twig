@@ -19,12 +19,9 @@
         <thead>
             <tr style="border-top: solid 1px #ddd;">
                 <th>Imagen</th>
-                <th>Código</th>
-                <th>Formato</th>
-                <th>Color</th>
                 <th>Nombre</th>
-                <th>Precio de Compra</th>
-                <th>Precio de Venta</th>
+                <th>Formato / Color</th>
+                <th>Precio Compra y Venta</th>
                 <th>Tipo</th>
                 <th>Disponibilidad</th>
                 <th>Menu</th>
@@ -33,33 +30,38 @@
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td style="width: 119px"><img src="{{ asset('bundles/jygrevestimientos/images/materiales/') }}{{ entity.path }}" width="100px" height="auto"></td>
-                <td><a href="{{ path('material_show', { 'id': entity.id }) }}">{{ entity.codigo }}</a></td>
-                <td>{{ entity.formato }}</td>
-                <td>{{ entity.color }}</td>
-                <td>{{ entity.nombre }}</td>
-                <td>{{ entity.preciocompra }} Bs</td>
-                <td>{{ entity.precioventa }} Bs</td>
+                <td style="width: 119px"><img src="{{ asset('bundles/jygrevestimientos/images/materiales/') }}{{ entity.path }}" width="60px" height="auto"></td>
+                <td>
+                    <table>
+                        <tr><td>{{ entity.nombre }}</td></tr>
+                        <tr><td>(<a href="{{ path('material_show', { 'id': entity.id }) }}">{{ entity.codigo }}</a>)</td></tr>
+                    </table>
+                </td>
+                <td>
+                    <table>
+                        <tr><td>{{ entity.formato }}</td></tr>
+                        <tr><td>{{ entity.color }}</td></tr>
+                    </table>
+                </td>
+                <td>
+                    <table>
+                        <tr><td>P.C {{ entity.preciocompra }} Bs</td></tr>
+                        <tr><td>P.V {{ entity.precioventa }} Bs</td></tr>
+                    </table>
+                </td>
                 <td>{{ entity.tipo }}</td>
                 <td style="width: 240px;">
                     <table class="table table-condensed table-bordered" style="width: 220px;">
-                        <thead>
-                            <tr>
-                                <th>Nombre</th>
-                                <th>Cantidad</th>
-                            </tr>
-                        </thead>
                         <tbody>
                             {% for almacen in entity.almacenes %}<tr>
-                                <td>{{ almacen.nombrealmacen }}</td>
-                                <td>{{ almacen.cantmaterialdisponible }} mts</td>
+                                <td>{{ almacen.nombrealmacen }} ({{ almacen.cantmaterialdisponible }} uni)</td>
                             </tr>{% endfor %}
                         </tbody>
                     </table>
                 </td>
                 <td>
                 <div class="dropdown pull-right">
-                  <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                  <button class="btn btn-sm btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                     Opciones
                     <span class="caret"></span>
                   </button>

@@ -40,6 +40,10 @@ class Deposito
      * @var float
      *
      * @ORM\Column(name="cantmaterialdisponible", type="float")
+     * @Assert\GreaterThan(
+     *     value = 0,
+     *     message = "Debe ser un valor mayor a 0"
+     * )
      * @Assert\Type(
      *     type="numeric",
      *     message="El valor {{ value }} no válido."
