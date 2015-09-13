@@ -541,29 +541,6 @@ class Material
     }
 
     /**
-     * Set tamaño
-     *
-     * @param string $tamaño
-     * @return Material
-     */
-    public function setTamaño($tamaño)
-    {
-        $this->tamaño = $tamaño;
-    
-        return $this;
-    }
-
-    /**
-     * Get tamaño
-     *
-     * @return string 
-     */
-    public function getTamaño()
-    {
-        return $this->tamaño;
-    }
-
-    /**
      * Set unidad
      *
      * @param string $unidad
