@@ -540,7 +540,6 @@ class Material
         $this->almacenes->removeElement($almacenes);
     }
 
-
     /**
      * Set unidad
      *

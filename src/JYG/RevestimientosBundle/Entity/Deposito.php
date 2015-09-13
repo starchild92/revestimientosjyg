@@ -3,6 +3,7 @@
 namespace JYG\RevestimientosBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Deposito
@@ -39,6 +40,10 @@ class Deposito
      * @var float
      *
      * @ORM\Column(name="cantmaterialdisponible", type="float")
+     * @Assert\Type(
+     *     type="numeric",
+     *     message="El valor {{ value }} no válido."
+     * )
      */
     private $cantmaterialdisponible;
 

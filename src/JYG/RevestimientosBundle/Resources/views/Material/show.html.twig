@@ -1,4 +1,4 @@
-{% extends 'JYGRevestimientosBundle::base.html.twig' %}
+{% extends 'JYGRevestimientosBundle::baseAdmin.html.twig' %}
 {% block javascripts %}
     <script src="{{ asset('bundles/jygrevestimientos/js/jquery.min.js') }}"></script>
     <script src="{{ asset('bundles/jygrevestimientos/js/bootstrap.min.js') }}"></script>
@@ -15,13 +15,13 @@
             <table class="table table-striped record_properties">
                 <thead>
                     <tr>
-                        <th colspan="3"><h3 style="margin-top:0px;">Detalles del Producto</h3></th>
+                        <th colspan="3"><h3 style="margin-top:0px;" class="naranja_logo">Detalles del Producto</h3></th>
                         <th><a href="{{ path('material') }}" class="btn btn-primary btn-block" type="button">Volver</a></th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <th>Codigo</th>
+                        <th>Código</th>
                         <td>{{ entity.codigo }}</td>
                         <th>Formato</th>
                         <td>{{ entity.formato }}</td>
@@ -41,7 +41,7 @@
                     <tr >
                         <th>Tipo</th>
                         <td>{{ entity.tipo }}</td>
-                        <th>Depositos</th>
+                        <th>Depósitos</th>
                         <td colspan="3">
                             <table class="table table-condensed table-bordered" style="width: 100%;">
                                 <thead>
