@@ -204,7 +204,6 @@ class MaterialController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('JYGRevestimientosBundle:Material')->find($id);
-
         if (!$entity) {
             throw $this->createNotFoundException('No se encuentra el material.');
         }
@@ -218,27 +217,32 @@ class MaterialController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
+            $codigo = $em->getRepository('JYGRevestimientosBundle:Material')->findByCodigo($entity->getCodigo());
+            if($codigo){
+                $this->get('session')->getFlashBag()->set('error', 'Ya existe el código.');
+            }else{
             // filtra almacenes para que contenga los almacenes que ya no están presentes
-            foreach ($entity->getAlmacenes() as $almacen) {
-                foreach ($almacenes as $key => $toDel) {
-                    if ($toDel->getId() === $almacen->getId()) {
-                        unset($almacenes[$key]);
+                foreach ($entity->getAlmacenes() as $almacen) {
+                    foreach ($almacenes as $key => $toDel) {
+                        if ($toDel->getId() === $almacen->getId()) {
+                            unset($almacenes[$key]);
+                        }
                     }
                 }
-            }
             //para eliminar la relacion
-            foreach ($almacenes as $almacen) {
-                $em->persist($almacen);
-                $em->remove($almacen);
+                foreach ($almacenes as $almacen) {
+                    $em->persist($almacen);
+                    $em->remove($almacen);
+                }
+
+                $this->get('session')->getFlashBag()->set('error', 'Se ha modificado exitosamente el producto.');
+                $almacen = $entity->getAlmacenes();
+                $entity->setAlmacenes($almacen);
+                $em->persist($entity);
+                $em->flush();
+
+                return $this->redirect($this->generateUrl('material_edit', array('id' => $id)));
             }
-
-            $this->get('session')->getFlashBag()->set('error', 'Se ha modificado exitosamente el producto.');
-            $almacen = $entity->getAlmacenes();
-            $entity->setAlmacenes($almacen);
-            $em->persist($entity);
-            $em->flush();
-
-            return $this->redirect($this->generateUrl('material_edit', array('id' => $id)));
         }
 
         return $this->render('JYGRevestimientosBundle:Material:edit.html.twig', array(

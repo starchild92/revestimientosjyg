@@ -79,9 +79,19 @@
       <div class="row">
         {% for producto in entity %}
         <div class="col-lg-4 col-sm-4 col-xs-12">
-          <img class="img-circle" src="{{ asset('bundles/jygrevestimientos/images/materiales/') }}{{ producto.path }}" alt="Generic placeholder image" width="140" height="140">
+          <img class="img-circle" src="{{ asset('bundles/jygrevestimientos/images/materiales/') }}{{ producto.path }}" alt="No disponible" width="140" height="140">
           <h2>{{ producto.nombre }}</h2>
-          <p>{{ producto.formato }}, {{ producto.tipo }} {{ producto.color }}</p>
+          <p> {{ producto.tipo }}
+              {% if producto.tipo == 'Laja Natural'  %}
+                {{ producto.tamano }}
+              {% endif %}
+              {% if producto.tipo == 'Laja Formateada'  %}
+                {{ producto.formato }}
+              {% endif %}
+              {% if producto.tipo == 'Quimicos'  %}
+                {{ producto.unidad }}
+              {% endif %}
+          </p>
           <p><a class="btn btn-default" href="{{ path('page_verProducto', { 'id': producto.id }) }}" role="button">Ver Detalles &raquo;</a></p>
         </div>
         {% endfor %}
