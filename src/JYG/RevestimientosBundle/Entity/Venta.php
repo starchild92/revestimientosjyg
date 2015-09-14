@@ -36,7 +36,7 @@ class Venta
     private $comprador;
 
     /**
-     * @ORM\OneToMany(targetEntity="Material", mappedBy="venta")
+     * @ORM\OneToMany(targetEntity="Material", mappedBy="venta", cascade={"persist"})
      */
     private $materiales;   
 

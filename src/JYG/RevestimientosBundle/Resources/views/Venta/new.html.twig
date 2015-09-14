@@ -1,15 +1,33 @@
-{% extends '::base.html.twig' %}
-
+{% extends 'JYGRevestimientosBundle::baseAdmin.html.twig' %}
+{% block javascripts %}
+	<script src="{{ asset('bundles/jygrevestimientos/js/jquery.min.js') }}"></script>
+	<script src="{{ asset('bundles/jygrevestimientos/js/formsVenta.js') }}"></script>
+{% endblock %}
 {% block body -%}
-    <h1>Venta creation</h1>
+    <div class="row">
+        <div class="col-sm-8"><div class="page-header"><h1>Realizar Una Nueva Venta</h1></div></div>
+        <div class="col-sm-4"><a id="volver" href="{{ path('venta') }}" class="btn btn-primary pull-right" type="button"><span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>  Regresar a las Ventas</a></div>
+    </div>
 
-    {{ form(form) }}
+    {{ form_start(form) }}
+    <div class="row">
+        {% for flashMessage in app.session.flashbag.get('cod') %}
+            <div class = "alert alert-danger alert-dismissable">
+                <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
+                {{ flashMessage }}
+            </div>
+        {% endfor %}
+        <div class="col-lg-4 col-sm-4 col-xs-12">
+            {{ form_row(form.comprador) }}
+            {{ form_row(form.cantmatvendido) }}
+        </div>
+        <div class="col-lg-4 col-sm-4 col-xs-12">
+            {{ form_row(form.materiales) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-8">{{ form_widget(form.submit) }}</div>
+    </div>
+    {{ form_end(form) }}
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('venta') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
 {% endblock %}
