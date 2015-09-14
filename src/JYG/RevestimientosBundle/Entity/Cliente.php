@@ -159,7 +159,7 @@ class Cliente
     }
 
     public function __toString() {
-        return $this->nombre;
+        return $this->nombre.', '.$this->rif;
     }
     /**
      * Constructor

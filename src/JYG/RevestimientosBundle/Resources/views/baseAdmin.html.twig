@@ -31,14 +31,14 @@
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<form class="navbar-form navbar-right" role="search">
-                    <a href="#" class="btn btn-naranja">Iniciar Sesión</a>
+                    <a href="#" class="btn btn-danger">Cerrar Sesión</a>
                 </form>
 				<ul class="nav navbar-nav navbar-right">
-					<li class="{{ app.request.attributes.get('_route') | replace({'jyg_revestimientos_page_' : ''}) == 'index' ? 'active' }}"><a href="{{ path('JYGRevestimientosBundle_inicio') }}">Inicio</a></li>
-					<li class="{{ app.request.attributes.get('_route') | replace({'jyg_revestimientos_page_' : ''}) == 'quienessomos' ? 'active' }}"><a href="{{ path('JYGRevestimientosBundle_quienessomos') }}">Quiénes Somos</a></li>
-					<li class="{{ app.request.attributes.get('_route') | replace({'jyg_revestimientos_page_' : ''}) == 'productos' ? 'active' }}"><a href="{{ path('JYGRevestimientosBundle_productos') }}">Productos</a></li>
-					<li class="{{ app.request.attributes.get('_route') | replace({'jyg_revestimientos_page_' : ''}) == 'galeria' ? 'active' }}"><a href="{{ path('JYGRevestimientosBundle_galeria') }}">Galería</a></li>
-					<li class="{{ app.request.attributes.get('_route') | replace({'jyg_revestimientos_page_' : ''}) == 'contacto' ? 'active' }}"><a href="{{ path('JYGRevestimientosBundle_contacto') }}">Contacto</a></li>
+					<li><a href="{{ path('material') }}">Productos</a></li>
+					<li><a href="{{ path('_administrar_galeria') }}">Galería</a></li>
+					<li><a href="{{ path('venta') }}">Venta</a></li>
+					<li><a href="{{ path('cliente') }}">Cliente</a></li>
+					<li><a href="{{ path('item') }}">Item</a></li>
 				</ul>
 			</div><!--/.nav-collapse -->
 		</div>

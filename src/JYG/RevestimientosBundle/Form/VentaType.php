@@ -15,10 +15,19 @@ class VentaType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            /* La fecha se coloca del servidor */
             //->add('fecha')
-            //->add('numero')
-            ->add('comprador')
-        ;
+            ->add('cantmatvendido', null, array('label' => 'Cantidad Material Vendido'))
+            ->add('comprador', null, array('label' => 'Datos del Comprador'))
+            ->add('materiales',
+                    'collection',array(
+                        'type'=> new ItemType(),
+                        'attr' => array('class' => 'tags'),
+                        'allow_add'=>'true',
+                        'by_reference'=>'false',
+                        'allow_delete' =>'true',
+                        'label' => 'Producto de la Venta')
+            );
     }
     
     /**

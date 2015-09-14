@@ -28,7 +28,8 @@ class Material
     /**
      * @var string
      *
-     * @ORM\Column(name="codigo", type="string", length=200)
+     * @ORM\Column(name="codigo", type="string", length=200, nullable=false)
+     * @ORM\OneToMany(targetEntity="Item", mappedBy="codigo",cascade={"persist","remove"})
      */
     private $codigo;
 
@@ -118,7 +119,7 @@ class Material
 
 
     public function  __toString(){
-        return $this->codigo;
+        return $this->codigo.', '.$this->nombre.', '.$this->tipo;
     }
 
     /**
@@ -246,6 +247,7 @@ class Material
     {
         return $this->tipo;
     }
+
     /**
      * Constructor
      */

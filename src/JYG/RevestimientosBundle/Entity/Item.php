@@ -31,14 +31,13 @@ class Item
     /**
      * @var string
      *
-     * @ORM\Column(name="descripcion", type="text")
+     * @ORM\Column(name="descripcion", type="string", length=255)
      */
     private $descripcion;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="codigo", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="Material", inversedBy="identificador")
+     * @ORM\JoinColumn(name="material_id", referencedColumnName="id", onDelete="CASCADE")
      */
     private $codigo;
 

@@ -30,12 +30,20 @@
                 <tbody>
                 {% for img in entities %}
                     <tr>
-                        <td><center><img id="thumbs" src="{{ asset('bundles/jygrevestimientos/images/galeria/') }}{{ img.id }}.{{ img.path }}"></center></td>
+                        <td><img id="thumbs" src="{{ asset('bundles/jygrevestimientos/images/galeria/') }}{{ img.id }}.{{ img.path }}"></td>
                         <td style="max-width: 110px">{{ img.nombre }}</td>
                         <td style="max-width: 400px">{{ img.descripcion }}</td>
-                        <td>
-                            <a class="btn btn-primary" href="{{ path('_editar_imagen', { 'id': img.id }) }}">Modificar Detalles</a>
-                            <a type="button" class="btn btn-danger" data-toggle="modal" id="Modal" data-target="#ModalEliminar" data-id="{{ path('_eliminar_imagen', { 'id': img.id }) }}" data-nombre="{{ img.nombre }}">Eliminar Imágen</a>
+                        <td style="width: 100px">
+                            <div class="dropdown pull-right">
+                              <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                Opciones
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
+                                <li><a type="button" href="{{ path('_editar_imagen', { 'id': img.id }) }}">Modificar Detalles</a></li>
+                                <li><a type="button" data-toggle="modal" id="Modal" data-target="#ModalEliminar" data-id="{{ path('_eliminar_imagen', { 'id': img.id }) }}" data-nombre="{{ img.nombre }}">Eliminar Imágen</a></li>
+                            </ul>
+                        </div>
                         </td>
                     </tr>
                 {% endfor %}

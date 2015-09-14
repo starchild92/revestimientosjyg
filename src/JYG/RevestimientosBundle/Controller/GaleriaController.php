@@ -39,7 +39,7 @@ class GaleriaController extends Controller
                     $em->persist($galeria);
                     $em->flush();
                 
-                return $this->redirect($this->generateUrl('JYGRevestimientosBundle_galeria'));
+                return $this->redirect($this->generateUrl('_nueva_imagen'));
             }
         }
             /*Para ver la imagenes que están en galería*/
@@ -72,26 +72,6 @@ class GaleriaController extends Controller
 
     public function ActualizarImagenAction(Request $request, $id)
     {
-        /*$foto = new Galeria();
-        $em = $this->getDoctrine()->getEntityManager();
-        $foto = $em->getRepository('JYGRevestimientosBundle:Galeria')->find($id);
-        $form = $this->createForm(new GaleriaType, $foto);
-        $form->add('submit', 'submit', array(
-                'label' => 'Actualizar Datos de la Imágen',
-                'attr' => array('class' => 'btn btn-success btn-block')
-                ));
-        if($request->getMethod() == 'POST'){
-            $form->handleRequest($request);
-
-            if ($form->isValid()){
-                $em->flush();
-            }else{
-                return $this->render('JYGRevestimientosBundle:Galeria:EditarImagen.html.twig', array(
-                    'entity'      => $foto,
-                    'form'        => $form->createView(),
-                ));
-            }
-        }*/
           if ($request->getMethod() == "POST") 
           {
             $em = $this->getDoctrine()->getManager();
@@ -128,7 +108,7 @@ class GaleriaController extends Controller
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('JYGRevestimientosBundle_galeria'));
+        return $this->redirect($this->generateUrl('_administrar_galeria'));
     }
 
     public function MostrarGaleriaAction()

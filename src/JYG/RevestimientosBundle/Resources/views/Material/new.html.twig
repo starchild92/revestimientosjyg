@@ -4,13 +4,12 @@
 	<script src="{{ asset('bundles/jygrevestimientos/js/jquery.min.js') }}"></script>
 	<script src="{{ asset('bundles/jygrevestimientos/js/forms.js') }}"></script>
     <script src="{{ asset('bundles/jygrevestimientos/js/campomaterial.js') }}"></script>
-
 {% endblock %}
 
 {% block body %}
     <div class="row">
         <div class="col-sm-8"><div class="page-header"><h1>Añadir Nuevo Producto</h1></div></div>
-        <div class="col-sm-4"><a id="volver" href="{{ path('material') }}" class="btn btn-primary pull-right" type="button">Regresar a lista de Productos</a></div>
+        <div class="col-sm-4"><a id="volver" href="{{ path('material') }}" class="btn btn-primary pull-right" type="button"><span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>  Regresar a lista de Productos</a></div>
     </div>
     {{ form_start(form) }}
     <div class="row">

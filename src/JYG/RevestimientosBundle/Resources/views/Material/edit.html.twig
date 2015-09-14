@@ -12,7 +12,7 @@
     {% form_theme edit_form 'bootstrap_3_layout.html.twig' %}
     <div class="row">
         <div class="col-sm-8"><div class="page-header"><h1>Modificar Producto</h1></div></div>
-        <div class="col-sm-4"><a id="volver" href="{{ path('material') }}" class="btn btn-primary pull-right" type="button">Regresar a lista de Productos</a></div>
+        <div class="col-sm-4"><a id="volver" href="{{ path('material') }}" class="btn btn-primary pull-right" type="button"><span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span> Regresar a lista de Productos</a></div>
     </div>
     {% for flashMessage in app.session.flashbag.get('error') %}
         <div class="row"><div class="col-sm-12"><div class = "alert alert-success">
