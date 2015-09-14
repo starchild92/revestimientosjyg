@@ -92,6 +92,10 @@ _mostrar_galeria:
     path:     /mostrargaleria
     defaults: { _controller: JYGRevestimientosBundle:Galeria:MostrarGaleria }
 
+_productos_tipo: 
+    path:     /productos/tipo/{var}
+    defaults: { _controller: JYGRevestimientosBundle:Page:Tipo }
+
 jyg_revestimientos_material:
     resource: "@JYGRevestimientosBundle/Resources/config/routing/material.yml"
     prefix:   /material

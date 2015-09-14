@@ -20,7 +20,7 @@
             <tr style="border-top: solid 1px #ddd;">
                 <th>Imagen</th>
                 <th>Nombre</th>
-                <th>Formato / Color</th>
+                <th>Formato/Color</th>
                 <th>Precio Compra y Venta</th>
                 <th>Tipo</th>
                 <th>Disponibilidad</th>
@@ -40,7 +40,7 @@
                 <td>
                     <table>
                         <tr><td>{{ entity.formato }}</td></tr>
-                        <tr><td>{{ entity.color }}</td></tr>
+                        <tr><td>{% if entity.tipo == 'Quimicos'  %}No Aplica{% else %}{{ entity.color }}{% endif %}</td></tr>
                     </table>
                 </td>
                 <td>
@@ -54,11 +54,7 @@
                     <table class="table table-condensed table-bordered" style="width: 220px;">
                         <tbody>
                             {% for almacen in entity.almacenes %}<tr>
-                                <td>{{ almacen.nombrealmacen }} ({{ almacen.cantmaterialdisponible }} {% if entity.tipo == 'Quimicos'  %}
-                                        Litros
-                                    {% else %}
-                                        mts
-                                    {% endif %})</td>
+                                <td>{{ almacen.nombrealmacen }} ({{ almacen.cantmaterialdisponible }}{% if entity.tipo == 'Quimicos'  %} Litros{% else %} mts{% endif %})</td>
                             </tr>{% endfor %}
                         </tbody>
                     </table>

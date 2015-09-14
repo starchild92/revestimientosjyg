@@ -23,7 +23,7 @@
             {{ form_rest(form) }}
         </div>
         <div class="col-lg-6 col-sm-6 col-xs-12">
-            <h4>Imágenes que están actualmente en galería.</h4>
+            <h4>Actualmente hay {{ entities|length }} imágenes en galería.</h4>
             {% for img in entities %}
                 <img id="thumbs" src="{{ asset('bundles/jygrevestimientos/images/galeria/') }}{{ img.id }}.{{ img.path }}" data-toggle="popover" data-placement="bottom" title="{{ img.nombre }}" data-container="body" data-content="{{ img.descripcion }}">
             {% endfor %}

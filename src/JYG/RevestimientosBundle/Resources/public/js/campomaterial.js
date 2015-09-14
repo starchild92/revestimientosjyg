@@ -25,6 +25,7 @@
     $(document).find('#jyg_revestimientosbundle_material_tamano').val('')
     $(document).find('#jyg_revestimientosbundle_material_unidad').removeAttr('disabled')
     $(document).find('#jyg_revestimientosbundle_material_color').attr('disabled','true')
+    $(document).find('#jyg_revestimientosbundle_material_color').val('')
   }
 }
 document.addEventListener("change", function(){
@@ -55,6 +56,7 @@ document.addEventListener("change", function(){
     $(document).find('#jyg_revestimientosbundle_material_tamano').val('')
     $(document).find('#jyg_revestimientosbundle_material_unidad').removeAttr('disabled')
     $(document).find('#jyg_revestimientosbundle_material_color').attr('disabled','true')
+    $(document).find('#jyg_revestimientosbundle_material_color').val('')
   }
 });
 $('*[id^="jyg_revestimientosbundle_material_almacenes_"]').keyup(function() {

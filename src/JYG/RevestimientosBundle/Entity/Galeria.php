@@ -28,6 +28,7 @@ class Galeria
      * @var string
      *
      * @ORM\Column(name="nombre", type="string", length=200)
+     * @Assert\NotBlank(message="Coloca un nombre para la imagen")
      */
     private $nombre;
 
@@ -35,6 +36,7 @@ class Galeria
      * @var string
      *
      * @ORM\Column(name="descripcion", type="text")
+     * @Assert\NotBlank(message="Debe añadir una descripción")
      */
     private $descripcion;
 

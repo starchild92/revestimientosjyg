@@ -47,6 +47,27 @@ class PageController extends Controller
         ));
     }
 
+    public function tipoAction($var)
+    {
+        $em = $this->getDoctrine()->getManager();
+        if($var === 'formateada'){
+            $entities = $em->getRepository('JYGRevestimientosBundle:Material')->ObtenerFormateada();
+        }
+        if($var === 'natural'){
+            $entities = $em->getRepository('JYGRevestimientosBundle:Material')->ObtenerNatural();
+        }
+        if($var === 'quimicos'){
+            $entities = $em->getRepository('JYGRevestimientosBundle:Material')->ObtenerQuimicos();
+        }
+        if (!$entities) {
+            $this->get('session')->getFlashBag()->set('error', 'No hay productos para mostrar.');
+        }
+
+        return $this->render('JYGRevestimientosBundle:Page:productos.html.twig', array(
+            'entities' => $entities,
+        ));
+    }
+
     /**
      * @Route("/galeria")
      * @Template()
