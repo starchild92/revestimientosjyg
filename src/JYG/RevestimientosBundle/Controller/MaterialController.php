@@ -202,55 +202,58 @@ class MaterialController extends Controller
     public function updateAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
-
         $entity = $em->getRepository('JYGRevestimientosBundle:Material')->find($id);
         if (!$entity) {
-            throw $this->createNotFoundException('No se encuentra el material.');
-        }
-        // Crea un arreglo del los almacenes actualmente en la base de datos
-        $almacenes = array();
-        foreach ($entity->getAlmacenes() as $almacen) {
-            $almacenes[] = $almacen;
-        }
-        $deleteForm = $this->createDeleteForm($id);
-        $editForm = $this->createEditForm($entity);
-        $editForm->handleRequest($request);
+            //throw $this->createNotFoundException('No se encuentra el producto.');
+            $this->get('session')->getFlashBag()->set('error', 'Parece que el producto que está buscando no existe.');
+        }else{
+            // Crea un arreglo del los almacenes actualmente en la base de datos
+            $almacenes = array();
+            foreach ($entity->getAlmacenes() as $almacen) {
+                $almacenes[] = $almacen;
+            }
+            $deleteForm = $this->createDeleteForm($id);
+            $editForm = $this->createEditForm($entity);
+            $editForm->handleRequest($request);
 
-        if ($editForm->isValid()) {
-            $codigo = $em->getRepository('JYGRevestimientosBundle:Material')->findByCodigo($entity->getCodigo());
-            if($codigo){
-                $this->get('session')->getFlashBag()->set('error', 'Ya existe el código.');
-            }else{
-            // filtra almacenes para que contenga los almacenes que ya no están presentes
-                foreach ($entity->getAlmacenes() as $almacen) {
-                    foreach ($almacenes as $key => $toDel) {
-                        if ($toDel->getId() === $almacen->getId()) {
-                            unset($almacenes[$key]);
+            if ($editForm->isValid()) {
+                $codigo = $em->getRepository('JYGRevestimientosBundle:Material')->findByCodigo($entity->getCodigo());
+                if($codigo){
+                //    $this->get('session')->getFlashBag()->set('error', 'Ya existe el código.');
+                //}else{
+                // filtra almacenes para que contenga los almacenes que ya no están presentes
+                    foreach ($entity->getAlmacenes() as $almacen) {
+                        foreach ($almacenes as $key => $toDel) {
+                            if ($toDel->getId() === $almacen->getId()) {
+                                unset($almacenes[$key]);
+                            }
                         }
                     }
-                }
-            //para eliminar la relacion
-                foreach ($almacenes as $almacen) {
-                    $em->persist($almacen);
-                    $em->remove($almacen);
-                }
+                //para eliminar la relacion
+                    foreach ($almacenes as $almacen) {
+                        $em->persist($almacen);
+                        $em->remove($almacen);
+                    }
+                    
+                    $this->get('session')->getFlashBag()->set('error', 'Se ha modificado exitosamente el producto.');
+                    $almacen = $entity->getAlmacenes();
+                    $entity->setAlmacenes($almacen);
+                    $em->persist($entity);
+                    $em->flush();
 
-                $this->get('session')->getFlashBag()->set('error', 'Se ha modificado exitosamente el producto.');
-                $almacen = $entity->getAlmacenes();
-                $entity->setAlmacenes($almacen);
-                $em->persist($entity);
-                $em->flush();
-
-                return $this->redirect($this->generateUrl('material_edit', array('id' => $id)));
+                    return $this->redirect($this->generateUrl('material_edit', array('id' => $id)));
+                }
             }
-        }
 
-        return $this->render('JYGRevestimientosBundle:Material:edit.html.twig', array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        ));
+            return $this->render('JYGRevestimientosBundle:Material:edit.html.twig', array(
+                'entity'      => $entity,
+                'edit_form'   => $editForm->createView(),
+                'delete_form' => $deleteForm->createView(),
+            ));
+        }
+        return $this->redirect($this->generateUrl('material'));
     }
+
     /**
      * Deletes a Material entity.
      *

@@ -30,7 +30,11 @@
                         <th>Nombre</th>
                         <td>{{ entity.nombre }}</td>
                         <th>Color</th>
-                        <td>{{ entity.color }}</td>
+                        {% if entity.color == ''  %}
+                            <td>No Aplica</td>
+                        {% else %}
+                            <td>{{ entity.color }}</td>
+                        {% endif %}
                     </tr>
                     <tr>
                         <th>Precio de Compra</th>
@@ -58,7 +62,7 @@
                         {% if entity.unidad == ''  %}
                             <td>No Aplica</td>
                         {% else %}
-                            <td>{{ entity.unidad }}</td>
+                            <td>{{ entity.unidad }} litros por unidad</td>
                         {% endif %}
                         <th>Depósitos</th>
                         <td colspan="3">

@@ -19,41 +19,41 @@ jyg_revestimientos_usuario:
     prefix:   /usuario
 
 page_verProducto:
-    pattern:  /productos/{id}
+    path:  /productos/{id}
     defaults: { _controller: JYGRevestimientosBundle:Page:verProducto }
     requirements:
-        _method:  GET
+        methods:  GET
 
 JYGRevestimientosBundle_inicio:
-    pattern:  /
+    path:  /
     defaults: { _controller: JYGRevestimientosBundle:Page:index }
     requirements:
-        _method:  GET
+        methods:  GET
 
 JYGRevestimientosBundle_productos:
-    pattern:  /productos
+    path:  /productos
     defaults: { _controller: JYGRevestimientosBundle:Page:productos }
     requirements:
-        _method:  GET
+        methods:  GET
 
 JYGRevestimientosBundle_galeria:
-    pattern:  /galeria
+    path:  /galeria
     defaults: { _controller: JYGRevestimientosBundle:Page:galeria }
     requirements:
-        _method:  GET
+        methods:  GET
 
 JYGRevestimientosBundle_contacto:
-    pattern:  /contacto
+    path:  /contacto
     defaults: { _controller: JYGRevestimientosBundle:Page:contacto }
     requirements:
-        _method:  GET|POST
+        methods:  GET|POST
 
 JYGRevestimientosBundle_quienessomos:
-    pattern:  /quienessomos
+    path:  /quienessomos
     defaults: { _controller: JYGRevestimientosBundle:Page:quienessomos }
 
 _inicio_sesion:
-    pattern:  /iniciosesion
+    path:  /iniciosesion
     defaults: { _controller: JYGRevestimientosBundle:Page:inicioSesion }
 
 jyg_revestimientos_venta:
@@ -74,13 +74,7 @@ _editar_imagen:
     path:     /imagengaleria/editar/{id}
     defaults: { _controller: JYGRevestimientosBundle:Galeria:EditarImagen }
     requirements:
-        _method:  GET
-
-_actualizar_imagen_galeria:
-    path:     /actualizarimagen/{id}
-    defaults: { _controller: JYGRevestimientosBundle:Galeria:ActualizarImagen }
-    requirements:
-        _method:  POST
+        methods:  GET|POST
 
 _eliminar_imagen:
     path:     /eliminarimagengaleria/{id}

@@ -39,7 +39,7 @@
                 </td>
                 <td>
                     <table>
-                        <tr><td>{{ entity.formato }}</td></tr>
+                        <tr><td>{{ entity.formato }}{{ entity.tamano }}{{ entity.unidad }}</td></tr>
                         <tr><td>{% if entity.tipo == 'Quimicos'  %}No Aplica{% else %}{{ entity.color }}{% endif %}</td></tr>
                     </table>
                 </td>

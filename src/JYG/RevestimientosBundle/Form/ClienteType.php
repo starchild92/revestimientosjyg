@@ -15,10 +15,10 @@ class ClienteType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('rif')
-            ->add('nombre')
-            ->add('direccion')
-            ->add('telefono')
+            ->add('rif', 'text', array('label' => 'Registro de Identificación Fiscal o Cédula de Identidad'))
+            ->add('nombre', 'text', array('label' => 'Nombre del Cliente'))
+            ->add('direccion', null, array('label' => 'Dirección del Cliente'))
+            ->add('telefono', null, array('label' => 'Teléfono del Cliente'))
         ;
     }
     

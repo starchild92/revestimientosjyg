@@ -11,9 +11,9 @@
             {{ form_errors(form) }}
 
             {{ form_row(form.nombre) }}
-            {{form_label(form.nombre,'Archivo de Imágen') }}
-            {{ form_widget(form.file, {'attr':{ 'required': '' }}) }}
+            {{ form_row(form.file) }}
             {{ form_row(form.descripcion) }}
+
         {{ form_end(form) }}
         </div>
         <div class="col-lg-6 col-sm-6 col-xs-12">

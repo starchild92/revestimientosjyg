@@ -22,7 +22,7 @@
     {{ form_start(edit_form) }}
     <div class="row">
         <div class="col-lg-4 col-sm-4 col-xs-12">
-            {{ form_row(edit_form.codigo) }}
+            {{ form_row(edit_form.codigo, { 'attr': {'readonly': 'true'} }) }}
             {{ form_row(edit_form.tipo) }}
             {{ form_row(edit_form.tamano) }}
             {{ form_row(edit_form.formato) }}

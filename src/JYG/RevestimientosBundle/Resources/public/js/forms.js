@@ -1,21 +1,21 @@
 var $collectionHolder;
 var $cantHijos;
 // setup an "add a tag" link
-var $addTagLink = $('<button style="margin-top: 10px;" class="btn btn-success btn-sm btn-block" type="button" href="#" class="add_tag_link">Añadir Almacen</button>');
+var $addTagLink = $('<button style="margin-top: 10px;" class="btn btn-success btn-sm btn-block" type="button" href="#" class="add_tag_link">Añadir Depósito</button>');
 var $newLinkLi = $('<div></div>').append($addTagLink);
 
 jQuery(document).ready(function() {
     // Get the ul that holds the collection of tags
     $collectionHolder = $('div.tags');
 
-    /*Para en el editar quitar un almacen*/
+    /*Para en el editar quitar un Depósito*/
     $collectionHolder.children().append(
-        '<a href="#" class="remove-tag btn btn-danger btn-sm btn-block">Quitar Almacen</a>');
+        '<a href="#" class="remove-tag btn btn-danger btn-sm btn-block">Quitar Depósito</a>');
 
     $remover = $collectionHolder.find('.remove-tag');
     $cantHijos = $remover.length;
 
-    //Para quitar el primer label 0 ese ladilloso y el label 1 cuando hay dos almacenes agregados
+    //Para quitar el primer label 0 ese ladilloso y el label 1 cuando hay dos Depósitoes agregados
     $collectionHolder.find('.control-label').first().remove();
     if ($cantHijos > 1) {
         $hijos = $collectionHolder.find('.control-label');
@@ -59,12 +59,12 @@ function addTagForm($collectionHolder, $newLinkLi) {
 
     // Display the form in the page in an li, before the "Add a tag" link li
     var $newFormLi = $('<div></div>').append(newForm);
-    //Quita los #label_ de los nuevos almacenes
+    //Quita los #label_ de los nuevos Depósitoes
     $newFormLi.find('.control-label').first().remove();
     //$newLinkLi.before($newFormLi);
 
     // also add a remove button, just for this example
-    $newFormLi.append('<a href="#" class="remove-tag btn btn-danger btn-sm btn-block">Quitar Almacen</a>');
+    $newFormLi.append('<a href="#" class="remove-tag btn btn-danger btn-sm btn-block">Quitar Depósito</a>');
     
     $newLinkLi.before($newFormLi);
     

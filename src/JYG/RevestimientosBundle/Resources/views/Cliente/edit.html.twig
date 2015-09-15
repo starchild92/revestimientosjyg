@@ -1,16 +1,30 @@
 {% extends 'JYGRevestimientosBundle::baseAdmin.html.twig' %}
 
 {% block body -%}
-    <h1>Cliente edit</h1>
+	<div class="row">
+        <div class="col-sm-8"><div class="page-header"><h1>Modificar Datos de <small>{{ entity.nombre }}</small></h1></div></div>
+        <div class="col-sm-4"><a id="volver" href="{{ path('cliente') }}" class="btn btn-success pull-right" type="button"><span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>  Regresar a lista de Clientes</a></div>
+    </div>
 
-    {{ form(edit_form) }}
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('cliente') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+        {{ form_start(edit_form) }}
+    <div class="row">
+        {% for flashMessage in app.session.flashbag.get('cod') %}
+            <div class = "alert alert-danger alert-dismissable">
+                <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
+                {{ flashMessage }}
+            </div>
+        {% endfor %}
+        <div class="col-lg-6 col-sm-6 col-xs-12">
+            {{ form_row(edit_form.rif) }}
+            {{ form_row(edit_form.nombre) }}
+        </div>
+        <div class="col-lg-6 col-sm-6 col-xs-12">
+            {{ form_row(edit_form.telefono) }}
+            {{ form_row(edit_form.direccion) }}
+        </div>
+	</div>
+    <div class="row">
+        <div class="col-lg-6 col-sm-6 col-xs-12">{{ form_widget(edit_form.submit) }}{{ form_end(edit_form) }}</div>
+        <div class="col-lg-6 col-sm-6 col-xs-12">{{ form(delete_form) }}</div>
+    </div>
 {% endblock %}

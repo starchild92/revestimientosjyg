@@ -38,7 +38,7 @@
 						<img src="{{ asset('bundles/jygrevestimientos/images/materiales/') }}{{ entity.path }}" class="img-responsive img-rounded">
 						<div class="caption">
 							<h3 class="naranja_logo"><center>{{ entity.nombre }}</center></h3>
-							{% if entity.tipo != 'Quimicos' %}
+							
 							<table class="table table-condensed">
 								<tr><th>Tipo</th><td>{{ entity.tipo }}</td></tr>
 								{% if entity.tipo == 'Laja Natural'  %}
@@ -50,10 +50,10 @@
 									<tr><th>Form.</th><td>{{ entity.formato }}</td></tr>
 								{% endif %}
 								{% if entity.tipo == 'Quimicos'  %}
-									<tr><th>Unid.</th><td>{{ entity.unidad }}</td></tr>
+									<tr><th>Unid.</th><td>{{ entity.unidad }} <abbr title="Litros por Unidad">LxU</abbr></td></tr>
 								{% endif %}
 							</table>
-							{% endif %}
+							
 							<p><a href="{{ path('page_verProducto', { 'id': entity.id }) }}" class="btn btn-naranja btn-block" role="button">Ver Más</a></p>
 						</div>
 					</div>
