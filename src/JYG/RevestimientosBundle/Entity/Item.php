@@ -33,7 +33,7 @@ class Item
      *
      * @ORM\Column(name="descripcion", type="string", length=255)
      */
-    private $descripcion;
+    //private $descripcion;
 
     /**
      * @ORM\ManyToOne(targetEntity="Material", inversedBy="identificador")

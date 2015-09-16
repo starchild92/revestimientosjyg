@@ -119,7 +119,7 @@ class Material
 
 
     public function  __toString(){
-        return $this->codigo.', '.$this->nombre.', '.$this->tipo;
+        return $this->codigo.', '.$this->nombre.' ('.$this->tipo.')';
     }
 
     /**

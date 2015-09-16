@@ -44,17 +44,19 @@
         {% for entity in entities %}
             <tr>
                 <td><a href="{{ path('venta_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td>{% if entity.fecha %}{{ entity.fecha|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if entity.fecha %}{{ entity.fecha|date('d/m/Y H:i', timezone="America/Caracas") }}{% endif %}</td>
                 <td>{{ entity.comprador }}</td>
                 <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('venta_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('venta_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
+                <div class="dropdown pull-right">
+                  <button class="btn btn-sm btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    Opciones
+                    <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
+                    <li><a href="{{ path('venta_show', { 'id': entity.id }) }}">Ver Detalles de la Compra</a></li>
+                    <li><a href="{{ path('venta_edit', { 'id': entity.id }) }}">Modificar la Compra</a></li>
+                  </ul>
+                </div>
                 </td>
             </tr>
         {% endfor %}

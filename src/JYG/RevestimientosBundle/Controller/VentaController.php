@@ -48,7 +48,8 @@ class VentaController extends Controller
             $em->flush();
 
             /*Enviar mensaje "se ha creado la venta, ahora añadir items "*/
-            $this->get('session')->getFlashBag()->set('mensaje', 'Se ha creado la venta exitosamente, ahora agregue los productos para continuar.');
+            //$this->get('session')->getFlashBag()->set('mensaje', 'Se ha creado la venta exitosamente, ahora agregue los productos para continuar.');
+            
             //return $this->redirect($this->generateUrl('item_new', array('id' => $entity->getId())));
 
             $em = $this->getDoctrine()->getManager();
@@ -56,6 +57,15 @@ class VentaController extends Controller
             
             if ($cliente) {
                 //throw $this->createNotFoundException($entity->getComprador());
+                $this->get('session')->getFlashBag()->set('mensaje', 'Se ha realizado la venta con exito. Solo falta vincular en esta parte del codigo los item con el id de la venta');
+                $em = $this->getDoctrine()->getManager();
+                $entities = $em->getRepository('JYGRevestimientosBundle:Venta')->findAll();
+
+                return $this->render('JYGRevestimientosBundle:Venta:index.html.twig', array(
+                    'entities' => $entities,
+                ));
+
+                /*Olvidemos la parte de debajo por un momento
                 $item = new Item();
                 $form_item = $this->createForm(new ItemType(), $item, array(
                     'action' => $this->generateUrl('item_create'),
@@ -66,11 +76,15 @@ class VentaController extends Controller
                     'label' => 'Agregar Item',
                     'attr' => array('class' => 'btn btn-block btn-primary')));
 
+                //throw $this->createNotFoundException($entity->getId());
+                //En este punto tengo el ID de la venta cuando se hace submit y los datos del cliente
+                //Debo regresar al formulario para añadir lo
+
                 return $this->render('JYGRevestimientosBundle:Item:new.html.twig', array(
                     'venta' => $entity,
                     'cliente' => $cliente,
                     'form' => $form_item->createView()
-                ));
+                ));*/
             }
         }
 
@@ -256,7 +270,9 @@ class VentaController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('venta_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
+            ->add('submit', 'submit', array(
+                'label' => 'Eliminar Venta',
+                'attr' => array('class'=>'btn btn-danger btn-block')))
             ->getForm()
         ;
     }

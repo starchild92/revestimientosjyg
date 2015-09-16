@@ -22,7 +22,7 @@ function PonerDatos(a,b,c,d,e){
     $pointer.find('#direccion_cliente').val(d);
 }
 
-/*var $collectionHolder;
+var $collectionHolder;
 var $cantHijos;
 // setup an "add a tag" link
 var $addTagLink = $('<button style="margin-top: 10px;" class="btn btn-success btn-sm btn-block" type="button" href="#" class="add_tag_link">Añadir Nuevo Producto</button>');
@@ -100,4 +100,4 @@ function addTagForm($collectionHolder, $newLinkLi) {
         $(this).parent().remove();
         return false;
     });
-}*/
+}

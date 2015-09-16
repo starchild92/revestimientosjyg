@@ -33,10 +33,6 @@ class Cliente
      * @var string
      *
      * @ORM\Column(name="rif", type="string", length=255)
-     * @Assert\Regex(
-     *      pattern="/[a-zA-Z]+[-]+\d+[-]+\d/",
-     *      message="Ejemplo: J-0000000-0"
-     * )
      */
     private $rif;
 

@@ -1,5 +1,8 @@
 {% extends 'JYGRevestimientosBundle::baseAdmin.html.twig' %}
-
+{% block javascripts %}
+	<script src="{{ asset('bundles/jygrevestimientos/js/jquery.min.js') }}"></script>
+	<script src="{{ asset('bundles/jygrevestimientos/js/formsVenta.js') }}"></script>
+{% endblock %}
 {% block body -%}
     <h1>Venta edit</h1>
 
