@@ -12,4 +12,14 @@ use Doctrine\ORM\EntityRepository;
  */
 class ItemRepository extends EntityRepository
 {
+	public function findNumVenta($a){
+		$query = $this->getEntityManager()
+				->createQuery('SELECT u 
+				FROM JYGRevestimientosBundle:Item u 
+				WHERE u.numeroVenta= :num');
+		$query->setParameter('num', $a);
+		$result = $query->getResult();
+        
+        return $result;
+	}
 }

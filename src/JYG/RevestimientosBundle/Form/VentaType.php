@@ -16,10 +16,9 @@ class VentaType extends AbstractType
     {
         $builder
             /* La fecha se coloca del servidor */
-            //->add('fecha')
-            ->add('cantmatvendido', null, array('label' => 'Cantidad Material Vendido'))
-            ->add('comprador', null, array('label' => 'Datos del Comprador'))
-            ->add('materiales',
+            ->add('fecha', 'datetime', array('label' => 'Fecha y Hora de la Compra'))
+            ->add('comprador', 'text', array('label' => 'Datos del Comprador (ID de la BD)', 'read_only' => true))
+            /*->add('materiales',
                     'collection',array(
                         'type'=> new ItemType(),
                         'attr' => array('class' => 'tags'),
@@ -27,7 +26,7 @@ class VentaType extends AbstractType
                         'by_reference'=>'false',
                         'allow_delete' =>'true',
                         'label' => 'Producto de la Venta')
-            );
+            )*/;
     }
     
     /**

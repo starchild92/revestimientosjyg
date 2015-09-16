@@ -30,22 +30,14 @@ class Venta
     private $fecha;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Cliente", inversedBy="identificador")
-     * @ORM\JoinColumn(name="cliente_id", referencedColumnName="id", onDelete="CASCADE")
+     * @ORM\Column(name="id_cliente", type="integer")
      */
     private $comprador;
 
     /**
      * @ORM\OneToMany(targetEntity="Material", mappedBy="venta", cascade={"persist"})
      */
-    private $materiales;   
-
-    /**
-     * @var \float
-     *
-     * @ORM\Column(name="cantmatvendido", type="float")
-     */
-    private $cantmatvendido;
+    private $materiales;
 
     /**
      * Get id
@@ -83,10 +75,8 @@ class Venta
     /**
      * Set comprador
      *
-     * @param \JYG\RevestimientosBundle\Entity\Cliente $comprador
-     * @return Venta
      */
-    public function setComprador(\JYG\RevestimientosBundle\Entity\Cliente $comprador = null)
+    public function setComprador($comprador = null)
     {
         $this->comprador = $comprador;
     }
@@ -143,28 +133,5 @@ class Venta
     public function getMateriales()
     {
         return $this->materiales;
-    }
-
-    /**
-     * Set cantmatvendido
-     *
-     * @param float $cantmatvendido
-     * @return Venta
-     */
-    public function setCantmatvendido($cantmatvendido)
-    {
-        $this->cantmatvendido = $cantmatvendido;
-    
-        return $this;
-    }
-
-    /**
-     * Get cantmatvendido
-     *
-     * @return float 
-     */
-    public function getCantmatvendido()
-    {
-        return $this->cantmatvendido;
     }
 }

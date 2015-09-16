@@ -1,15 +1,38 @@
 {% extends 'JYGRevestimientosBundle::baseAdmin.html.twig' %}
-
+{% block javascripts %}
+	<script src="{{ asset('bundles/jygrevestimientos/js/jquery.min.js') }}"></script>
+	<script src="{{ asset('bundles/jygrevestimientos/js/formsVenta.js') }}"></script>
+{% endblock %}
 {% block body -%}
-    <h1>Item creation</h1>
+	<div class="row">
+        <div class="col-sm-12"><div class="page-header"><h1>Añadir Productos a la Venta</h1></div></div>
+    </div>
 
-    {{ form(form) }}
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('item') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
+    {% for flashMessage in app.session.flashbag.get('mensaje') %}
+    <div class = "alert alert-info alert-dismissable">
+        <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
+        {{ flashMessage }}
+    </div>
+    {% endfor %}
+    <div class="row">
+    	<div class="col-lg-12 col-sm-12 col-xs-12">
+	        <div class="form-group">
+	            <div class="row">
+	                <div class="col-lg-3 col-sm-3 col-xs-12"><label class="control-label">ID Cliente</label><input disabled="true" class="form-control" value="{{ cliente.id }}" type="text"></div>
+	                <div class="col-lg-3 col-sm-3 col-xs-12"><label class="control-label">RIF</label><input disabled="true" class="form-control" value="{{ cliente.rif }}" type="text"></div>
+	                <div class="col-lg-3 col-sm-3 col-xs-12"><label class="control-label">Nombre Cliente</label><input disabled="true" class="form-control" value="{{ cliente.nombre }}" type="text"></div>
+	                <div class="col-lg-3 col-sm-3 col-xs-12"><label class="control-label">Teléfono</label><input disabled="true" class="form-control" value="{{ cliente.telefono }}" type="text"></div>
+	            </div>
+	            <div class="row">
+	            	<div class="col-lg-4 col-sm-4 col-xs-12"><label class="control-label">Dirección</label><input disabled="true" class="form-control" value="{{ cliente.direccion }}" type="textarea"></div>
+	            	<div class="col-lg-4 col-sm-4 col-xs-12"><label class="control-label">ID de la Venta</label><input disabled="true" class="form-control" value="{{ venta.id }}" type="textarea" id="id_venta"></div>
+	            	<div class="col-lg-4 col-sm-4 col-xs-12"><label class="control-label">Fecha y Hora de la Venta</label><input disabled="true" class="form-control" value="{{ venta.fecha|date('Y-m-d H:m') }}" type="textarea"></div>
+	            </div>
+	        </div>
+    	</div>
+	
+    	<div class="col-lg-12 col-sm-12 col-xs-12">
+	    	{{ form(form) }}
+		</div>
+	</div>
 {% endblock %}

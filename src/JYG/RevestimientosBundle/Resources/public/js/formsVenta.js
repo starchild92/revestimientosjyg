@@ -1,4 +1,33 @@
-var $collectionHolder;
+jQuery(document).ready(function (){
+    //Usado en la vista de la venta para deshabilitar varios campos
+    $(document).find('#jyg_revestimientosbundle_venta_fecha_date_day').after("<br><label class='label-control'>Hora</label><br>");
+    $('*[id^="jyg_revestimientosbundle_venta_fecha_"]').attr('readonly','true')
+
+    //Usado en la vista de item para poner el item en el atributo del articulo
+    $(document).find("#jyg_revestimientosbundle_item_numeroVenta").attr('readonly','true')
+    $(document).find("#jyg_revestimientosbundle_item_numeroVenta").val(
+        $(document).find("#id_venta").val()
+    );
+});
+
+//Copiar los datos de la tabla de clientes a los campos que no hacen nada ;) es solo para mostrarlos.
+function PonerDatos(a,b,c,d,e){
+    var $pointer = $(document);
+
+    $pointer.find('#id_cliente').val(a);
+    $pointer.find('#jyg_revestimientosbundle_venta_comprador').val(a);
+    $pointer.find('#rif_cliente').val(c);
+    $pointer.find('#nombre_cliente').val(b);
+    $pointer.find('#telefono_cliente').val(e);
+    $pointer.find('#direccion_cliente').val(d);
+}
+
+
+
+
+
+
+/*var $collectionHolder;
 var $cantHijos;
 // setup an "add a tag" link
 var $addTagLink = $('<button style="margin-top: 10px;" class="btn btn-success btn-sm btn-block" type="button" href="#" class="add_tag_link">Añadir Nuevo Producto</button>');
@@ -8,7 +37,7 @@ jQuery(document).ready(function() {
     // Get the ul that holds the collection of tags
     $collectionHolder = $('div.tags');
 
-    /*Para en el editar quitar un almacen*/
+    //Para en el editar quitar un almacen
     $collectionHolder.children().append(
         '<a href="#" class="remove-tag btn btn-danger btn-sm btn-block">Quitar Producto</a>');
 
@@ -40,7 +69,7 @@ jQuery(document).ready(function() {
         // prevent the link from creating a "#" on the URL
         e.preventDefault();
         // add a new tag form (see next code block)
-        /*Es la cantidad maxima de items que podrá agregar a la venta*/
+        //Es la cantidad maxima de items que podrá agregar a la venta
         if($cantHijos < 100){ addTagForm($collectionHolder, $newLinkLi); $cantHijos++; }
     });
 });
@@ -76,4 +105,4 @@ function addTagForm($collectionHolder, $newLinkLi) {
         $(this).parent().remove();
         return false;
     });
-}
+}*/

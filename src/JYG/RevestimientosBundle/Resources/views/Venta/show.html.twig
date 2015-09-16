@@ -2,20 +2,47 @@
 
 {% block body -%}
     <h1>Venta</h1>
-
-    <table class="record_properties">
+    <table class="table table-bordered record_properties">
         <tbody>
             <tr>
-                <th>Id</th>
-                <td>{{ entity.id }}</td>
-            </tr>
-            <tr>
+                <th>Número de Compra</th>
+                <td>#{{ entity.id }}</td>
                 <th>Fecha</th>
                 <td>{{ entity.fecha|date('Y-m-d H:i:s') }}</td>
             </tr>
             <tr>
-                <th>Comprador</th>
-                <td>{{ entity.comprador }}</td>
+                <td colspan="2">
+                    <table class="table">
+                        <thead>
+                            <th colspan="2">Detalles del Comprador</th>
+                        </thead>
+                        <tbody>
+                            <tr><td>{{ cliente.nombre }}</td><td>{{ cliente.rif }}</td></tr>
+                            <tr><td>{{ cliente.direccion }}</td><td>{{ cliente.telefono }}</td></tr>
+                        </tbody>
+                    </table>
+                </td>
+                <td colspan="2">
+                    <table class="table">
+                        <thead>
+                            <th colspan="3">Detalles de la Venta</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>Código</th>
+                                <th>Descripción</th>
+                                <th>Cantidad</th>
+                            </tr>
+                            {% for item in items %}
+                            <tr>
+                                <td>{{ item.id }}</td>
+                                <td>{{ item.descripcion }}</td>
+                                <td>{{ item.cantidad }} unidades</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </td>
             </tr>
         </tbody>
     </table>

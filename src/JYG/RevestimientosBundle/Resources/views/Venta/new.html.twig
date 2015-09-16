@@ -5,7 +5,7 @@
 {% endblock %}
 {% block body -%}
     <div class="row">
-        <div class="col-sm-8"><div class="page-header"><h1>Realizar Una Nueva Venta</h1></div></div>
+        <div class="col-sm-8"><div class="page-header"><h1>Elija Un Cliente</h1></div></div>
         <div class="col-sm-4"><a id="volver" href="{{ path('venta') }}" class="btn btn-primary pull-right" type="button"><span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>  Regresar a las Ventas</a></div>
     </div>
 
@@ -18,16 +18,45 @@
             </div>
         {% endfor %}
         <div class="col-lg-4 col-sm-4 col-xs-12">
-            {{ form_row(form.comprador) }}
-            {{ form_row(form.cantmatvendido) }}
+            Tabla para filtrar a los clientes
+            <div class="panel panel-default">
+              <div class="panel-heading text-center"><b>Clientes</b></div>
+                <table class="table table-condensed table-striped table-bordered">
+                    <tbody>
+                        {% for cliente in clientes %}
+                        <tr>
+                            <td onclick="PonerDatos('{{ cliente.id }}','{{ cliente.nombre }}','{{ cliente.rif }}','{{ cliente.direccion }}','{{ cliente.telefono }}');" id="fila_tabla">{{ cliente.nombre }}, {{ cliente.rif }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
         </div>
         <div class="col-lg-4 col-sm-4 col-xs-12">
-            {{ form_row(form.materiales) }}
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-lg-4"><label class="control-label">ID</label><input disabled="true" class="form-control" type="text" id="id_cliente"></div>
+                    <div class="col-lg-8"><label class="control-label">RIF</label><input disabled="true" class="form-control" type="text" id="rif_cliente"></div>
+                </div>
+                <label class="control-label">Nombre Cliente</label><input disabled="true" class="form-control" type="text" id="nombre_cliente">
+                <label class="control-label">Teléfono</label><input disabled="true" class="form-control" type="text" id="telefono_cliente">
+                <label class="control-label">Dirección</label><input disabled="true" class="form-control" type="textarea" id="direccion_cliente">
+            </div>
+        </div>
+        <div class="col-lg-4 col-sm-4 col-xs-12">
+            {{ form_row(form.fecha) }}
+            {{ form_row(form.comprador) }}
+            {{ form_widget(form.submit) }}
+            {{ form_end(form) }}
         </div>
     </div>
-    <div class="row">
-        <div class="col-sm-8">{{ form_widget(form.submit) }}</div>
-    </div>
-    {{ form_end(form) }}
-
+{% endblock %}
+{% block stylesheets %}
+    <style type="text/css">
+        #fila_tabla:hover {
+            background-color: rgba(252, 133, 41, 0.46);
+            font-style: italic;
+            cursor: pointer;
+        }
+    </style>
 {% endblock %}
