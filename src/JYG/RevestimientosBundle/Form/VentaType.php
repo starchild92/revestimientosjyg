@@ -18,7 +18,7 @@ class VentaType extends AbstractType
             /* La fecha se coloca del servidor */
             ->add('fecha', 'datetime', array('label' => 'Fecha y Hora de la Compra'))
             ->add('comprador', 'text', array('label' => 'Datos del Comprador (ID de la BD)', 'read_only' => true))
-            /*->add('materiales',
+            ->add('materiales',
                     'collection',array(
                         'type'=> new ItemType(),
                         'attr' => array('class' => 'tags'),
@@ -26,7 +26,7 @@ class VentaType extends AbstractType
                         'by_reference'=>'false',
                         'allow_delete' =>'true',
                         'label' => 'Producto de la Venta')
-            )*/;
+            );
     }
     
     /**

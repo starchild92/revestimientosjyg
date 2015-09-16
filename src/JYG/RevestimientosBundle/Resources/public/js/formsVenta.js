@@ -22,11 +22,6 @@ function PonerDatos(a,b,c,d,e){
     $pointer.find('#direccion_cliente').val(d);
 }
 
-
-
-
-
-
 /*var $collectionHolder;
 var $cantHijos;
 // setup an "add a tag" link
