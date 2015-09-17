@@ -29,7 +29,7 @@ class Material
      * @var string
      *
      * @ORM\Column(name="codigo", type="string", length=200, nullable=false)
-     * @ORM\OneToMany(targetEntity="Item", mappedBy="codigo",cascade={"persist","remove"})
+     * @ORM\OneToMany(targetEntity="Item", mappedBy="codigo", cascade={"persist","remove"})
      */
     private $codigo;
 
@@ -112,10 +112,10 @@ class Material
     private $almacenes;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Venta", inversedBy="materiales")
-     * @ORM\JoinColumn(name="venta_id", referencedColumnName="id")
+     * //@ORM\ManyToOne(targetEntity="Venta", inversedBy="materiales")
+     * //@ORM\JoinColumn(name="venta_id", referencedColumnName="id")
      */
-    private $venta;
+    //private $venta;
 
 
     public function  __toString(){
