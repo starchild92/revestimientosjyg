@@ -29,6 +29,7 @@ class Venta
      */
     private $fecha;
 
+    //con una relacion a cliente
     /**
      * @ORM\Column(name="id_cliente", type="integer")
      */
