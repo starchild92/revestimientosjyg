@@ -29,6 +29,7 @@ class Venta
      */
     private $fecha;
 
+    //con una relacion a cliente
     /**
      * @var integer
      * @ORM\ManyToOne(targetEntity="Cliente", inversedBy="compras")
