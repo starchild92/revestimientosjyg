@@ -17,7 +17,7 @@ class VentaType extends AbstractType
         $builder
             /* La fecha se coloca del servidor */
             ->add('fecha', 'datetime', array('label' => 'Fecha y Hora de la Compra'))
-            ->add('comprador', 'text', array('label' => 'Datos del Comprador (ID de la BD)', 'read_only' => true))
+            ->add('comprador', 'collection', array('type' => new ClienteType(),'label' => 'Datos del Cliente'))
             ->add('materiales',
                     'collection',array(
                         'type'=> new ItemType(),

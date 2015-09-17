@@ -4,6 +4,7 @@ namespace JYG\RevestimientosBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\Common\Collections\ArrayCollection;
 
 
 /**
@@ -23,11 +24,6 @@ class Cliente
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
-    /**
-     *
-     */
-    private $identificador;
 
     /**
      * @var string
@@ -56,6 +52,11 @@ class Cliente
      * @ORM\Column(name="telefono", type="string", length=255)
      */
     private $telefono;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Venta", mappedBy="comprador",cascade={"persist","remove"})
+     */
+    private $compras;
 
 
     /**
@@ -166,41 +167,8 @@ class Cliente
     /**
      * Constructor
      */
-    public function __construct()
-    {
-        $this->identificador = new \Doctrine\Common\Collections\ArrayCollection();
+    public function __construct() {
+        $this->compras = new ArrayCollection();
     }
 
-    /**
-     * Add identificador
-     *
-     * @param \JYG\RevestimientosBundle\Entity\Venta $identificador
-     * @return Cliente
-     */
-    public function addIdentificador(\JYG\RevestimientosBundle\Entity\Venta $identificador)
-    {
-        $this->identificador[] = $identificador;
-
-        return $this;
-    }
-
-    /**
-     * Remove identificador
-     *
-     * @param \JYG\RevestimientosBundle\Entity\Venta $identificador
-     */
-    public function removeIdentificador(\JYG\RevestimientosBundle\Entity\Venta $identificador)
-    {
-        $this->identificador->removeElement($identificador);
-    }
-
-    /**
-     * Get identificador
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getIdentificador()
-    {
-        return $this->identificador;
-    }
 }

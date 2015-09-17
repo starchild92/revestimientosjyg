@@ -19,6 +19,7 @@ class ClienteType extends AbstractType
             ->add('nombre', 'text', array('label' => 'Nombre del Cliente'))
             ->add('direccion', null, array('label' => 'Dirección del Cliente'))
             ->add('telefono', null, array('label' => 'Teléfono del Cliente'))
+            ->add('compras', 'hidden')
         ;
     }
     

@@ -29,24 +29,26 @@ class Item
     private $cantidad;
 
     /**
-     * @var string
+     * @var text
      *
-     * @ORM\Column(name="descripcion", type="string", length=255)
+     * @ORM\Column(name="descripcionmaterial", type="text")
      */
-    //private $descripcion;
+    private $descripcionmaterial;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Material")
+     * @ORM\ManyToOne(targetEntity="Material", inversedBy="codigo")
      * @ORM\JoinColumn(name="material_id", referencedColumnName="id", onDelete="CASCADE")
      */
-    private $codigo;
+    private $codigomaterial;
 
     /**
      * @var integer
-     *
-     * @ORM\Column(name="numeroVenta", type="integer")
+     * @ORM\ManyToOne(targetEntity="Venta", inversedBy="materiales")
+     * @ORM\JoinColumn(name="venta_id", referencedColumnName="id", onDelete="CASCADE")
      */
-    private $numeroVenta;
+    private $venta;
+
+
 
 
     /**
