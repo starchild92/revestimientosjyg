@@ -28,7 +28,7 @@ class MaterialType extends AbstractType
             ->add('preciocompra','text', array('label' => 'Precio de Compra'))
             ->add('precioventa', 'text', array('label' => 'Precio de Venta'))
             ->add('file', 'file', array('required' => false,'label' => 'Archivo de Imagen del Prodcuto'))
-            //->add('venta', 'hidden')
+            ->add('venta', 'hidden')
             ->add('almacenes','collection',array(
                 'type'=> new DepositoType(),
                 'attr' => array('class' => 'tags'),

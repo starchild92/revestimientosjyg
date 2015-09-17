@@ -31,14 +31,17 @@ class Venta
 
     //con una relacion a cliente
     /**
-     * @ORM\Column(name="id_cliente", type="integer")
+     * @var integer
+     * @ORM\ManyToOne(targetEntity="Cliente", inversedBy="compras")
+     * @ORM\JoinColumn(name="cliente_id", referencedColumnName="id", onDelete="CASCADE")
      */
     private $comprador;
 
     /**
-     * @ORM\OneToMany(targetEntity="Item", mappedBy="codigo", cascade={"persist"})
-     */
+     * @ORM\OneToMany(targetEntity="Item", mappedBy="venta")
+     **/
     private $materiales;
+
 
     /**
      * Get id

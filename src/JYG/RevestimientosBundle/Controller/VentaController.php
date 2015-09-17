@@ -10,7 +10,9 @@ use JYG\RevestimientosBundle\Form\VentaType;
 
 # Para poder hacer los forms
 use JYG\RevestimientosBundle\Entity\Item;
-use JYG\RevestimientosBundle\Form\ItemType;
+use JYG\RevestimientosBundle\Entity\Cliente;
+use JYG\RevestimientosBundle\Form\ClienteType;
+
 
 /**
  * Venta controller.
@@ -43,55 +45,14 @@ class VentaController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($entity);
-            $em->flush();
-
-            /*Enviar mensaje "se ha creado la venta, ahora añadir items "*/
-            //$this->get('session')->getFlashBag()->set('mensaje', 'Se ha creado la venta exitosamente, ahora agregue los productos para continuar.');
-            
-            //return $this->redirect($this->generateUrl('item_new', array('id' => $entity->getId())));
-
-            $em = $this->getDoctrine()->getManager();
-            $cliente = $em->getRepository('JYGRevestimientosBundle:Cliente')->find($entity->getComprador());
-            
-            if ($cliente) {
-                //throw $this->createNotFoundException($entity->getComprador());
-                $this->get('session')->getFlashBag()->set('mensaje', 'Se ha realizado la venta con exito. Solo falta vincular en esta parte del codigo los item con el id de la venta');
-                $em = $this->getDoctrine()->getManager();
-                $entities = $em->getRepository('JYGRevestimientosBundle:Venta')->findAll();
-
-                return $this->render('JYGRevestimientosBundle:Venta:index.html.twig', array(
-                    'entities' => $entities,
-                ));
-
-                /*Olvidemos la parte de debajo por un momento
-                $item = new Item();
-                $form_item = $this->createForm(new ItemType(), $item, array(
-                    'action' => $this->generateUrl('item_create'),
-                    'method' => 'POST',
-                ));
-
-                $form_item->add('submit', 'submit', array(
-                    'label' => 'Agregar Item',
-                    'attr' => array('class' => 'btn btn-block btn-primary')));
-
-                //throw $this->createNotFoundException($entity->getId());
-                //En este punto tengo el ID de la venta cuando se hace submit y los datos del cliente
-                //Debo regresar al formulario para añadir lo
-
-                return $this->render('JYGRevestimientosBundle:Item:new.html.twig', array(
-                    'venta' => $entity,
-                    'cliente' => $cliente,
-                    'form' => $form_item->createView()
-                ));*/
+                
             }
-        }
+        
 
-        /*return $this->render('JYGRevestimientosBundle:Venta:new.html.twig', array(
+        return $this->render('JYGRevestimientosBundle:Venta:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
-        ));*/
+        ));
     }
 
     /**
@@ -127,6 +88,9 @@ class VentaController extends Controller
         /*Los Clientes para que pueda elegir al que está comprando */
         $em = $this->getDoctrine()->getManager();
         $clientes = $em->getRepository('JYGRevestimientosBundle:Cliente')->findAll();
+
+        //$cliente = new Cliente();
+        //$form_cliente = $this->createForm(new ClienteType(), $cliente);
 
         return $this->render('JYGRevestimientosBundle:Venta:new.html.twig', array(
             'entity' => $entity,
