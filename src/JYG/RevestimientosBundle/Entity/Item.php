@@ -49,8 +49,6 @@ class Item
     private $venta;
 
 
-
-
     /**
      * Get id
      *
@@ -85,49 +83,49 @@ class Item
     }
 
     /**
-     * Set descripcion
+     * Set descripcionmaterial
      *
-     * @param string $descripcion
+     * @param string $descripcionmaterial
      * @return Item
      */
-    public function setDescripcion($descripcion)
+    public function setDescripcionmaterial($descripcionmaterial)
     {
-        $this->descripcion = $descripcion;
+        $this->descripcionmaterial = $descripcionmaterial;
 
         return $this;
     }
 
     /**
-     * Get descripcion
+     * Get descripcionmaterial
      *
      * @return string 
      */
-    public function getDescripcion()
+    public function getDescripcionmaterial()
     {
-        return $this->descripcion;
+        return $this->descripcionmaterial;
     }
 
     /**
-     * Set codigo
+     * Set codigomaterial
      *
-     * @param string $codigo
+     * @param string $codigomaterial
      * @return Item
      */
-    public function setCodigo($codigo)
+    public function setCodigomaterial($codigomaterial)
     {
-        $this->codigo = $codigo;
+        $this->codigomaterial = $codigomaterial;
 
         return $this;
     }
 
     /**
-     * Get codigo
+     * Get codigomaterial
      *
      * @return string 
      */
-    public function getCodigo()
+    public function getCodigomaterial()
     {
-        return $this->codigo;
+        return $this->codigomaterial;
     }
 
     /**
