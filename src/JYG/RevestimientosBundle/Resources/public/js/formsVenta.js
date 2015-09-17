@@ -4,10 +4,12 @@ jQuery(document).ready(function (){
     $('*[id^="jyg_revestimientosbundle_venta_fecha_"]').attr('readonly','true')
 
     //Usado en la vista de item para poner el item en el atributo del articulo
-    $(document).find("#jyg_revestimientosbundle_item_numeroVenta").attr('readonly','true')
+    /*$(document).find("#jyg_revestimientosbundle_item_numeroVenta").attr('readonly','true')
     $(document).find("#jyg_revestimientosbundle_item_numeroVenta").val(
         $(document).find("#id_venta").val()
-    );
+    );*/
+
+    $(document).find('#jyg_revestimientosbundle_venta_comprador_rif').attr('readonly','true')
 });
 
 //Copiar los datos de la tabla de clientes a los campos que no hacen nada ;) es solo para mostrarlos.
@@ -16,10 +18,10 @@ function PonerDatos(a,b,c,d,e){
 
     $pointer.find('#id_cliente').val(a);
     $pointer.find('#jyg_revestimientosbundle_venta_comprador').val(a);
-    $pointer.find('#rif_cliente').val(c);
-    $pointer.find('#nombre_cliente').val(b);
-    $pointer.find('#telefono_cliente').val(e);
-    $pointer.find('#direccion_cliente').val(d);
+    $pointer.find('#jyg_revestimientosbundle_venta_comprador_rif').val(c);
+    $pointer.find('#jyg_revestimientosbundle_venta_comprador_nombre').val(b);
+    $pointer.find('#jyg_revestimientosbundle_venta_comprador_telefono').val(e);
+    $pointer.find('#jyg_revestimientosbundle_venta_comprador_direccion').val(d);
 }
 
 var $collectionHolder;
