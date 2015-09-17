@@ -171,37 +171,4 @@ class Cliente
         $this->compras = new ArrayCollection();
     }
 
-
-    /**
-     * Add compras
-     *
-     * @param \JYG\RevestimientosBundle\Entity\Venta $compras
-     * @return Cliente
-     */
-    public function addCompra(\JYG\RevestimientosBundle\Entity\Venta $compras)
-    {
-        $this->compras[] = $compras;
-    
-        return $this;
-    }
-
-    /**
-     * Remove compras
-     *
-     * @param \JYG\RevestimientosBundle\Entity\Venta $compras
-     */
-    public function removeCompra(\JYG\RevestimientosBundle\Entity\Venta $compras)
-    {
-        $this->compras->removeElement($compras);
-    }
-
-    /**
-     * Get compras
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getCompras()
-    {
-        return $this->compras;
-    }
 }

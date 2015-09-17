@@ -17,8 +17,8 @@ class ClienteType extends AbstractType
         $builder
             ->add('rif', 'text', array('label' => 'Registro de Identificación Fiscal o Cédula de Identidad'))
             ->add('nombre', 'text', array('label' => 'Nombre del Cliente'))
-            ->add('direccion', null, array('label' => 'Dirección del Cliente'))
-            ->add('telefono', null, array('label' => 'Teléfono del Cliente'))
+            ->add('direccion', 'textarea', array('label' => 'Dirección del Cliente'))
+            ->add('telefono', 'text', array('label' => 'Teléfono del Cliente'))
             ->add('compras', 'hidden')
         ;
     }

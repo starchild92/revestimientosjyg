@@ -33,6 +33,8 @@
             </div>
         </div>
         <div class="col-lg-4 col-sm-4 col-xs-12">
+            {{ form_row(form.comprador) }}
+
             <!--<div class="form-group">
                 <div class="row">
                     <div class="col-lg-4"><label class="control-label">ID</label><input disabled="true" class="form-control" type="text" id="id_cliente"></div>
@@ -45,7 +47,6 @@
         </div>
         <div class="col-lg-4 col-sm-4 col-xs-12">
             {{ form_row(form.fecha) }}
-            {{ form_row(form.comprador) }}
             {{ form_row(form.materiales) }}
             {{ form_widget(form.submit) }}
             {{ form_end(form) }}
