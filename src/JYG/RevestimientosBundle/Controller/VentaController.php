@@ -71,26 +71,25 @@ class VentaController extends Controller
                     $em = $this->getDoctrine()->getManager();
                     $em->persist($cliente);
                     $em->flush();
+                    //Guardando los items de la venta
+                    $item = $entity->getItems();
+                    $hasta = $item->count();
+                    for ($i=1; $i<=$hasta ; $i++) { 
+                        $item[$i]->setDescripcionmaterial($item[$i]->getCodigomaterial());
+                    }
+                    $entity->setItems($item);
 
-                    /*$clienteNuevo = $em->getRepository('JYGRevestimientosBundle:Venta')->BuscarPorRif($entity->getComprador()->getRif());
-                    $idClienteNuevo = $clienteNuevo[0]->getId();*/
-
+                    //Colocandolo en la venta y luego guardando la venta
                     $entity->setComprador($cliente);
                     $em->persist($entity);
                     $em->flush();
-
-                    //throw $this->createNotFoundException($idClienteNuevo);
-
                 }else{
-                    //throw $this->createNotFoundException('Si existe el cliente, hay que guardar solo su id en la columna de Venta que lo asocia a la compra');
-
-                    //$items = $entity->getItems();
-                    //throw $this->createNotFoundException($entity->getItems());
-
+                
                     $item = $entity->getItems();
-                    //throw $this->createNotFoundException($item[0]);
-
-                    //$material = $em->getRepository('JYGRevestimientosBundle:Material')->findById();
+                    $hasta = $item->count();
+                    for ($i=1; $i<=$hasta ; $i++) { 
+                        $item[$i]->setDescripcionmaterial($item[$i]->getCodigomaterial());
+                    }
                     $entity->setItems($item);
 
                     //Buscando el cliente que ya existe
