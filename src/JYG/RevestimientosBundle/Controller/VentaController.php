@@ -41,12 +41,25 @@ class VentaController extends Controller
     public function createAction(Request $request)
     {
         $entity = new Venta();
+        $cliente = new Cliente();
+        $item = new Item();
         $form = $this->createCreateForm($entity);
-        $form->handleRequest($request);
+        if ($request->getMethod() == "POST") 
+        {
+            $form->handleRequest($request);
+            if ($form->isValid()) 
+            {
+                $cliente_ = $entity->getComprador();
+                $clienteaux = $cliente_->getId();
+                throw $this->createNotFoundException($item);
+                $clienteaux = $this->getDoctrine()->getManager()->getRepository('JYGRevestimientosBundle:Cliente')->findById($cliente_->getId());
+                if (!$clienteaux) { //no existe el cliente
+                    
+                }
 
-        if ($form->isValid()) {
-                
+
             }
+        }
         
 
         return $this->render('JYGRevestimientosBundle:Venta:new.html.twig', array(
@@ -88,9 +101,6 @@ class VentaController extends Controller
         /*Los Clientes para que pueda elegir al que está comprando */
         $em = $this->getDoctrine()->getManager();
         $clientes = $em->getRepository('JYGRevestimientosBundle:Cliente')->findAll();
-
-        //$cliente = new Cliente();
-        //$form_cliente = $this->createForm(new ClienteType(), $cliente);
 
         return $this->render('JYGRevestimientosBundle:Venta:new.html.twig', array(
             'entity' => $entity,

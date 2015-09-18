@@ -164,11 +164,5 @@ class Cliente
     public function __toString() {
         return $this->nombre.', '.$this->rif;
     }
-    /**
-     * Constructor
-     */
-    public function __construct() {
-        $this->compras = new ArrayCollection();
-    }
-
+    
 }

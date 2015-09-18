@@ -38,9 +38,9 @@ class Venta
     private $comprador;
 
     /**
-     * @ORM\OneToMany(targetEntity="Item", mappedBy="venta")
+     * @ORM\OneToMany(targetEntity="Item", mappedBy="venta", cascade={"persist","remove"})
      **/
-    private $materiales;
+    private $items;
 
 
     /**
@@ -80,7 +80,7 @@ class Venta
      * Set comprador
      *
      */
-    public function setComprador($comprador = null)
+    public function setComprador($comprador)
     {
         $this->comprador = $comprador;
     }
@@ -91,16 +91,13 @@ class Venta
         $this->fecha = new \DateTime();
     }
 
-    /**
-     * Add materiales
-     *
-     * @param \JYG\RevestimientosBundle\Entity\Material $materiales
-     * @return Venta
-     */
-    public function addMateriale(\JYG\RevestimientosBundle\Entity\Material $materiales)
-    {
-        $this->materiales[] = $materiales;
-        return $this;
+
+    /* Esta funcion agrega los items */
+    public function setItems($items){
+        $this->items = $items;
+        foreach ($items as $item) {
+            $item->setVenta($this);
+        }
     }
 
     /**
@@ -120,22 +117,35 @@ class Venta
     
 
     /**
-     * Remove materiales
+     * Add items
      *
-     * @param \JYG\RevestimientosBundle\Entity\Material $materiales
+     * @param \JYG\RevestimientosBundle\Entity\Item $items
+     * @return Venta
      */
-    public function removeMateriale(\JYG\RevestimientosBundle\Entity\Material $materiales)
+    public function addItem(\JYG\RevestimientosBundle\Entity\Item $items)
     {
-        $this->materiales->removeElement($materiales);
+        $this->items[] = $items;
+    
+        return $this;
     }
 
     /**
-     * Get materiales
+     * Remove items
+     *
+     * @param \JYG\RevestimientosBundle\Entity\Item $items
+     */
+    public function removeItem(\JYG\RevestimientosBundle\Entity\Item $items)
+    {
+        $this->items->removeElement($items);
+    }
+
+    /**
+     * Get items
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getMateriales()
+    public function getItems()
     {
-        return $this->materiales;
+        return $this->items;
     }
 }

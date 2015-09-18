@@ -43,7 +43,7 @@ class Item
 
     /**
      * @var integer
-     * @ORM\ManyToOne(targetEntity="Venta", inversedBy="items")
+     * @ORM\ManyToOne(targetEntity="Venta", inversedBy="materiales")
      * @ORM\JoinColumn(name="venta_id", referencedColumnName="id", onDelete="CASCADE")
      */
     private $venta;
@@ -129,25 +129,25 @@ class Item
     }
 
     /**
-     * Set venta
+     * Set numeroVenta
      *
-     * @param \JYG\RevestimientosBundle\Entity\Venta $venta
+     * @param integer $numeroVenta
      * @return Item
      */
-    public function setVenta(\JYG\RevestimientosBundle\Entity\Venta $venta = null)
+    public function setNumeroVenta($numeroVenta)
     {
-        $this->venta = $venta;
-    
+        $this->numeroVenta = $numeroVenta;
+
         return $this;
     }
 
     /**
-     * Get venta
+     * Get numeroVenta
      *
-     * @return \JYG\RevestimientosBundle\Entity\Venta 
+     * @return integer 
      */
-    public function getVenta()
+    public function getNumeroVenta()
     {
-        return $this->venta;
+        return $this->numeroVenta;
     }
 }

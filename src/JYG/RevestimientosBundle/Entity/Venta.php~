@@ -29,23 +29,19 @@ class Venta
      */
     private $fecha;
 
+    //con una relacion a cliente
     /**
-     * @ORM\ManyToOne(targetEntity="Cliente", inversedBy="identificador")
+     * @var integer
+     * @ORM\ManyToOne(targetEntity="Cliente", inversedBy="compras")
      * @ORM\JoinColumn(name="cliente_id", referencedColumnName="id", onDelete="CASCADE")
      */
     private $comprador;
 
     /**
-     * @ORM\OneToMany(targetEntity="Material", mappedBy="venta")
-     */
-    private $materiales;   
+     * @ORM\OneToMany(targetEntity="Item", mappedBy="venta", cascade={"persist","remove"})
+     **/
+    private $items;
 
-    /**
-     * @var \float
-     *
-     * @ORM\Column(name="cantmatvendido", type="float")
-     */
-    private $cantmatvendido;
 
     /**
      * Get id
@@ -83,10 +79,8 @@ class Venta
     /**
      * Set comprador
      *
-     * @param \JYG\RevestimientosBundle\Entity\Cliente $comprador
-     * @return Venta
      */
-    public function setComprador(\JYG\RevestimientosBundle\Entity\Cliente $comprador = null)
+    public function setComprador($comprador = null)
     {
         $this->comprador = $comprador;
     }
@@ -107,6 +101,14 @@ class Venta
     {
         $this->materiales[] = $materiales;
         return $this;
+    }
+
+    /* Esta funcion agrega los almacenes porque la de arriba no se que coño hace */
+    public function setMateriales($materiales){
+        $this->materiales = $materiales;
+        foreach ($materiales as $material) {
+            $material->setVenta($this);
+        }
     }
 
     /**
@@ -143,28 +145,5 @@ class Venta
     public function getMateriales()
     {
         return $this->materiales;
-    }
-
-    /**
-     * Set cantmatvendido
-     *
-     * @param float $cantmatvendido
-     * @return Venta
-     */
-    public function setCantmatvendido($cantmatvendido)
-    {
-        $this->cantmatvendido = $cantmatvendido;
-    
-        return $this;
-    }
-
-    /**
-     * Get cantmatvendido
-     *
-     * @return float 
-     */
-    public function getCantmatvendido()
-    {
-        return $this->cantmatvendido;
     }
 }
