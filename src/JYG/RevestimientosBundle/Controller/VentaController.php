@@ -73,17 +73,24 @@ class VentaController extends Controller
                     $em->persist($cliente);
                     $em->flush();
 
-                    /*$clienteNuevo = $em->getRepository('JYGRevestimientosBundle:Venta')->BuscarPorRif($entity->getComprador()->getRif());
-                    $idClienteNuevo = $clienteNuevo[0]->getId();*/
-
+                    //Colocandolo en la venta y luego guardando la venta
                     $entity->setComprador($cliente);
                     $em->persist($entity);
                     $em->flush();
-
-                    //throw $this->createNotFoundException($idClienteNuevo);
-
                 }else{
                     //throw $this->createNotFoundException('Si existe el cliente, hay que guardar solo su id en la columna de Venta que lo asocia a la compra');
+
+                    $item = $entity->getItems();
+                    $hasta = $item->count();
+                    for ($i=1; $i<=$hasta ; $i++) { 
+                        $item[$i]->setDescripcionmaterial($item[$i]->getCodigomaterial());
+                    }
+                    $entity->setItems($item);
+
+                    //Buscando el cliente que ya existe
+                    $entity->setComprador($clienteaux[0]);
+                    $em->persist($entity);
+                    $em->flush();
                 }
 
 

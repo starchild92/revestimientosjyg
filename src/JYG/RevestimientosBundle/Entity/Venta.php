@@ -31,7 +31,7 @@ class Venta
     //con una relacion a cliente
     /**
      * @var integer
-     * @ORM\ManyToOne(targetEntity="Cliente", inversedBy="compras")
+     * @ORM\ManyToOne(targetEntity="Cliente", inversedBy="compras", cascade={"persist"})
      * @ORM\JoinColumn(name="cliente_id", referencedColumnName="id", onDelete="CASCADE")
      */
     private $comprador;

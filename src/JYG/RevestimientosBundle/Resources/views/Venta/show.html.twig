@@ -44,14 +44,12 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <th>Código</th>
-                                    <th>Descripción</th>
+                                    <th>Código y Descripción</th>
                                     <th>Cantidad</th>
                                 </tr>
                                 {% for item in items %}
                                 <tr>
                                     <td>{{ item.codigomaterial }}</td>
-                                    <td>{{ item.descripcionmaterial }}</td>
                                     <td>{{ item.cantidad }} unidades</td>
                                 </tr>
                                 {% endfor %}
@@ -63,7 +61,7 @@
         </table>
         </div>
     </div>
-    
+
     <div class="row">
         <div class="col-lg-4 col-sm-4 col-xs-12"><a class="btn btn-block btn-default" href="{{ path('venta') }}">Ver Todas las Ventas</a></div>
         <div class="col-lg-4 col-sm-4 col-xs-12"><a class="btn btn-block btn-default" href="{{ path('venta_edit', { 'id': entity.id }) }}">Modificar Esta Venta</a></div>

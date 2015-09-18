@@ -112,7 +112,7 @@ class Material
     private $almacenes;
 
     public function  __toString(){
-        return $this->codigo;
+        return $this->codigo.', '.$this->nombre.' ('.$this->tipo.')';
     }
 
     public function getdescripcionmaterial()

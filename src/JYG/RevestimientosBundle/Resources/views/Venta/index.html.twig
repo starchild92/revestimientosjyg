@@ -26,9 +26,9 @@
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('venta_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.id }}</td>
                 <td>{% if entity.fecha %}{{ entity.fecha|date('d/m/Y H:i', timezone="America/Caracas") }}{% endif %}</td>
-                <td>{{ entity.comprador }}</td>
+                <td><a href="{{ path('venta_show', { 'id': entity.id }) }}">{{ entity.comprador }}</a></td>
                 <td>
                 <div class="dropdown pull-right">
                   <button class="btn btn-sm btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
