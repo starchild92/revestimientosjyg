@@ -9,8 +9,37 @@ jQuery(document).ready(function (){
         $(document).find("#id_venta").val()
     );*/
 
-    $(document).find('#jyg_revestimientosbundle_venta_comprador_rif').attr('readonly','true')
+    $(document).find('#jyg_revestimientosbundle_venta_comprador_rif').attr('readonly','true');
+    $(document).find('#jyg_revestimientosbundle_venta_comprador_nombre').attr('readonly','true');
+    $(document).find('#jyg_revestimientosbundle_venta_comprador_direccion').attr('readonly','true');
+    $(document).find('#jyg_revestimientosbundle_venta_comprador_telefono').attr('readonly','true');
 });
+
+/*Para buscar en la tabla el nuevo usuario o agregar uno nuevo*/
+function toggleTabla(){
+    if ($(document).find('#botontoggle').text() == 'Registrar Nuevo Cliente'){
+        $(document).find('#botontoggle').text('Añadir Cliente de la Tabla');
+        $(document).find('#jyg_revestimientosbundle_venta_comprador_rif').removeAttr('readonly');
+        $(document).find('#jyg_revestimientosbundle_venta_comprador_nombre').removeAttr('readonly');
+        $(document).find('#jyg_revestimientosbundle_venta_comprador_direccion').removeAttr('readonly');
+        $(document).find('#jyg_revestimientosbundle_venta_comprador_telefono').removeAttr('readonly');
+
+        $(document).find('#jyg_revestimientosbundle_venta_comprador_rif').val('');
+        $(document).find('#jyg_revestimientosbundle_venta_comprador_nombre').val('');
+        $(document).find('#jyg_revestimientosbundle_venta_comprador_direccion').val('');
+        $(document).find('#jyg_revestimientosbundle_venta_comprador_telefono').val('');
+
+        $a = document.getElementById('tablafiltro').style.visibility = "hidden";
+    }else{
+        $(document).find('#botontoggle').text('Registrar Nuevo Cliente');
+        $(document).find('#jyg_revestimientosbundle_venta_comprador_rif').attr('readonly','true');
+        $(document).find('#jyg_revestimientosbundle_venta_comprador_nombre').attr('readonly','true');
+        $(document).find('#jyg_revestimientosbundle_venta_comprador_direccion').attr('readonly','true');
+        $(document).find('#jyg_revestimientosbundle_venta_comprador_telefono').attr('readonly','true');
+        
+        $a = document.getElementById('tablafiltro').style.visibility = "inherit";
+    }
+}
 
 //Copiar los datos de la tabla de clientes a los campos que no hacen nada ;) es solo para mostrarlos.
 function PonerDatos(a,b,c,d,e){
