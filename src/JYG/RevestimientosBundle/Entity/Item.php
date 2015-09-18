@@ -48,7 +48,6 @@ class Item
      */
     private $venta;
 
-
     /**
      * Get id
      *
@@ -149,5 +148,11 @@ class Item
     public function getVenta()
     {
         return $this->venta;
+    }
+    /* Funcion que agrega el material id si no existe en la tabla deposito*/
+    public function addVenta(Venta $venta){
+        if(!$this->venta->contains($venta)){
+            $this->venta->add($venta);
+        }
     }
 }

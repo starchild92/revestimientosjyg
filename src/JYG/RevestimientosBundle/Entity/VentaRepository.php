@@ -12,4 +12,14 @@ use Doctrine\ORM\EntityRepository;
  */
 class VentaRepository extends EntityRepository
 {
+	public function BuscarPorRif($rif){
+		$query = $this->getEntityManager()
+				->createQuery('SELECT u 
+				FROM JYGRevestimientosBundle:Cliente u 
+				WHERE u.rif = :rif');
+		$query->setParameter('rif', $rif);
+		$result = $query->getResult();
+        
+        return $result;
+	}
 }

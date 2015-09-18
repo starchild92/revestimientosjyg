@@ -1,7 +1,7 @@
 jQuery(document).ready(function (){
     //Usado en la vista de la venta para deshabilitar varios campos
-    $(document).find('#jyg_revestimientosbundle_venta_fecha_date_day').after("<br><label class='label-control'>Hora</label><br>");
-    $('*[id^="jyg_revestimientosbundle_venta_fecha_"]').attr('readonly','true')
+    /*$(document).find('#jyg_revestimientosbundle_venta_fecha_date_day').after("<br><label class='label-control'>Hora</label><br>");
+    $('*[id^="jyg_revestimientosbundle_venta_fecha_"]').attr('readonly','true')*/
 
     //Usado en la vista de item para poner el item en el atributo del articulo
     /*$(document).find("#jyg_revestimientosbundle_item_numeroVenta").attr('readonly','true')
@@ -13,6 +13,9 @@ jQuery(document).ready(function (){
     $(document).find('#jyg_revestimientosbundle_venta_comprador_nombre').attr('readonly','true');
     $(document).find('#jyg_revestimientosbundle_venta_comprador_direccion').attr('readonly','true');
     $(document).find('#jyg_revestimientosbundle_venta_comprador_telefono').attr('readonly','true');
+    $a = document.getElementById('lastCol');
+    $b = $a.getElementsByClassName('form-group');
+    $b[0].style.display = "none";
 });
 
 /*Para buscar en la tabla el nuevo usuario o agregar uno nuevo*/

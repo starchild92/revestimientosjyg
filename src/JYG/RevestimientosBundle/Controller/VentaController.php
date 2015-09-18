@@ -49,22 +49,65 @@ class VentaController extends Controller
             $form->handleRequest($request);
             if ($form->isValid()) 
             {
-                $cliente_ = $entity->getComprador();
-                $clienteaux = $cliente_->getId();
-                throw $this->createNotFoundException($cliente_);
-                $clienteaux = $this->getDoctrine()->getManager()->getRepository('JYGRevestimientosBundle:Cliente')->findById($cliente_->getId());
+                /*$cliente_ = $entity->getComprador()->getNombre();
+                $cliente_ = $cliente_.' '.$entity->getComprador()->getRif();
+                $cliente_ = $cliente_.' '.$entity->getComprador()->getDireccion();
+                $cliente_ = $cliente_.' '.$entity->getComprador()->getTelefono();
+
+               // throw $this->createNotFoundException($cliente_);*/
+
+                $em = $this->getDoctrine()->getManager();
+                $clienteaux = $em->getRepository('JYGRevestimientosBundle:Venta')->BuscarPorRif($entity->getComprador()->getRif());
                 if (!$clienteaux) { //no existe el cliente
+                    //throw $this->createNotFoundException('No existe el cliente, hay que crearlo con los datos del formulario');
                     
+                    //Obtengo los datos del nuevo cliente
+                    $cliente->setRif($entity->getComprador()->getRif());
+                    $cliente->setNombre($entity->getComprador()->getNombre());
+                    $cliente->setDireccion($entity->getComprador()->getDireccion());
+                    $cliente->setTelefono($entity->getComprador()->getTelefono());
+                    
+                    //Guardo al nuevo cliente la bd
+                    $em = $this->getDoctrine()->getManager();
+                    $em->persist($cliente);
+                    $em->flush();
+
+                    /*$clienteNuevo = $em->getRepository('JYGRevestimientosBundle:Venta')->BuscarPorRif($entity->getComprador()->getRif());
+                    $idClienteNuevo = $clienteNuevo[0]->getId();*/
+
+                    $entity->setComprador($cliente);
+                    $em->persist($entity);
+                    $em->flush();
+
+                    //throw $this->createNotFoundException($idClienteNuevo);
+
+                }else{
+                    //throw $this->createNotFoundException('Si existe el cliente, hay que guardar solo su id en la columna de Venta que lo asocia a la compra');
+
+                    //$items = $entity->getItems();
+                    //throw $this->createNotFoundException($entity->getItems());
+
+                    $item = $entity->getItems();
+                    //throw $this->createNotFoundException($item[0]);
+
+                    //$material = $em->getRepository('JYGRevestimientosBundle:Material')->findById();
+                    $entity->setItems($item);
+
+                    //Buscando el cliente que ya existe
+                    $entity->setComprador($clienteaux[0]);
+                    $em->persist($entity);
+                    $em->flush();
                 }
 
 
             }
         }
         
+        $em = $this->getDoctrine()->getManager();
+        $entities = $em->getRepository('JYGRevestimientosBundle:Venta')->findAll();
 
-        return $this->render('JYGRevestimientosBundle:Venta:new.html.twig', array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
+        return $this->render('JYGRevestimientosBundle:Venta:index.html.twig', array(
+            'entities' => $entities,
         ));
     }
 
@@ -118,7 +161,7 @@ class VentaController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $venta = $em->getRepository('JYGRevestimientosBundle:Venta')->find($id);
-        $items = $em->getRepository('JYGRevestimientosBundle:Item')->findNumVenta($venta->getId());
+        $items = $em->getRepository('JYGRevestimientosBundle:Item')->findNumVenta($id);
         $cliente = $em->getRepository('JYGRevestimientosBundle:Cliente')->find($venta->getComprador());
 
 

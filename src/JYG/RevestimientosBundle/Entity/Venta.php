@@ -7,9 +7,8 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Venta
  *
- * @ORM\Table(name="venta")
  * @ORM\Entity(repositoryClass="JYG\RevestimientosBundle\Entity\VentaRepository")
- * @ORM\Entity
+ * @ORM\Table(name="venta")
  */
 class Venta
 {
@@ -32,7 +31,7 @@ class Venta
     //con una relacion a cliente
     /**
      * @var integer
-     * @ORM\ManyToOne(targetEntity="Cliente", inversedBy="compras")
+     * @ORM\ManyToOne(targetEntity="Cliente", inversedBy="compras",cascade={"persist"})
      * @ORM\JoinColumn(name="cliente_id", referencedColumnName="id", onDelete="CASCADE")
      */
     private $comprador;
@@ -41,7 +40,6 @@ class Venta
      * @ORM\OneToMany(targetEntity="Item", mappedBy="venta", cascade={"persist","remove"})
      **/
     private $items;
-
 
     /**
      * Get id
@@ -87,7 +85,7 @@ class Venta
 
     public function __construct()
     {
-        $this->materiales = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->items = new \Doctrine\Common\Collections\ArrayCollection();
         $this->fecha = new \DateTime();
     }
 

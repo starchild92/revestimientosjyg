@@ -33,32 +33,12 @@ class MaterialRepository extends EntityRepository
         return $result;
 	}
 
-	public function ObtenerFormateada(){
+	public function ObtenerTipo($tipo){
 		$query = $this->getEntityManager()
 				->createQuery('SELECT u 
 				FROM JYGRevestimientosBundle:Material u 
 				WHERE u.tipo= :tipo');
-		$query->setParameter('tipo', 'Laja Formateada');
-		$result = $query->getResult();
-        
-        return $result;
-	}
-	public function ObtenerNatural(){
-		$query = $this->getEntityManager()
-				->createQuery('SELECT u 
-				FROM JYGRevestimientosBundle:Material u 
-				WHERE u.tipo= :tipo');
-		$query->setParameter('tipo', 'Laja Natural');
-		$result = $query->getResult();
-        
-        return $result;
-	}
-	public function ObtenerQuimicos(){
-		$query = $this->getEntityManager()
-				->createQuery('SELECT u 
-				FROM JYGRevestimientosBundle:Material u 
-				WHERE u.tipo= :tipo');
-		$query->setParameter('tipo', 'Quimicos');
+		$query->setParameter('tipo', $tipo);
 		$result = $query->getResult();
         
         return $result;
