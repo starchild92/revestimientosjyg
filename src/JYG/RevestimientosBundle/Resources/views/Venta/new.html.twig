@@ -2,6 +2,22 @@
 {% block javascripts %}
 	<script src="{{ asset('bundles/jygrevestimientos/js/jquery.min.js') }}"></script>
 	<script src="{{ asset('bundles/jygrevestimientos/js/formsVenta.js') }}"></script>
+    <script src="{{ asset('bundles/jygrevestimientos/js/datatable.min.js') }}"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#myTable').DataTable({
+                "bSort" : false,
+                "bPaginate" : false,
+                "bInfo" : false
+            });
+            /*Elimina primer hijo de la tabla de busqueda*/
+            $(document).find('#myTable_wrapper .row :first').remove();
+            $(document).find('#myTable_wrapper .row :first').removeClass();
+            $(document).find('#myTable_wrapper .row :first').addClass('col-lg-12');
+            $(document).find('#myTable_wrapper .row :first input').removeClass();
+            $(document).find('#myTable_wrapper .row :first input').addClass('form-control input-sm');
+        });
+    </script>
 {% endblock %}
 {% block body -%}
     <div class="row">
@@ -9,7 +25,6 @@
         <div class="col-sm-4"><a id="volver" href="{{ path('venta') }}" class="btn btn-primary pull-right" type="button"><span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>  Regresar a las Ventas</a></div>
     </div>
 
-    {{ form_start(form) }}
     <div class="row">
         {% for flashMessage in app.session.flashbag.get('cod') %}
             <div class = "alert alert-danger alert-dismissable">
@@ -18,10 +33,14 @@
             </div>
         {% endfor %}
         <div class="col-lg-4 col-sm-4 col-xs-12">
-            Tabla para filtrar a los clientes
-            <div class="panel panel-default">
-              <div class="panel-heading text-center"><b>Clientes</b></div>
-                <table class="table table-condensed table-striped table-bordered">
+            <button id="botontoggle" onclick="toggleTabla()" style="margin-bottom:5px" class="btn btn-block btn-info">Registrar Nuevo Cliente</button>
+            <div id="tablafiltro" class="panel panel-default">
+                <table class="table table-condensed table-striped table-bordered" id="myTable">
+                    <thead>
+                        <tr>
+                            <th>Datos del Cliente</th>
+                        </tr>
+                    </thead>
                     <tbody>
                         {% for cliente in clientes %}
                         <tr>
@@ -32,6 +51,7 @@
                 </table>
             </div>
         </div>
+        {{ form_start(form) }}
         <div class="col-lg-4 col-sm-4 col-xs-12">
             {{ form_row(form.comprador) }}
         </div>
@@ -39,8 +59,9 @@
             {{ form_row(form.fecha) }}
             {{ form_row(form.materiales) }}
             {{ form_widget(form.submit) }}
-            {{ form_end(form) }}
+            
         </div>
+        {{ form_end(form) }}
     </div>
 {% endblock %}
 {% block stylesheets %}
@@ -49,6 +70,9 @@
             background-color: rgba(252, 133, 41, 0.46);
             font-style: italic;
             cursor: pointer;
+        }
+        .input-sm{
+            width: 100%;
         }
     </style>
 {% endblock %}
