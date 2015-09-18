@@ -19,7 +19,7 @@ class ClienteType extends AbstractType
             ->add('nombre', 'text', array('label' => 'Nombre del Cliente'))
             ->add('direccion', 'textarea', array('label' => 'Dirección del Cliente'))
             ->add('telefono', 'text', array('label' => 'Teléfono del Cliente'))
-            ->add('compras','text',array('mapped'=>false))
+            ->add('venta',new VentaType())
         ;
     }
     

@@ -51,7 +51,7 @@ class VentaController extends Controller
             {
                 $cliente_ = $entity->getComprador();
                 $clienteaux = $cliente_->getId();
-                throw $this->createNotFoundException($item);
+                throw $this->createNotFoundException($cliente_);
                 $clienteaux = $this->getDoctrine()->getManager()->getRepository('JYGRevestimientosBundle:Cliente')->findById($cliente_->getId());
                 if (!$clienteaux) { //no existe el cliente
                     

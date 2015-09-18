@@ -56,7 +56,7 @@ class Cliente
     /**
      * @ORM\OneToMany(targetEntity="Venta", mappedBy="comprador",cascade={"persist","remove"})
      */
-    private $compras;
+    private $venta;
 
 
     /**
@@ -165,44 +165,45 @@ class Cliente
         return $this->nombre.', '.$this->rif;
     }
     
+    
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->compras = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->venta = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
-     * Add compras
+     * Add venta
      *
-     * @param \JYG\RevestimientosBundle\Entity\Venta $compras
+     * @param \JYG\RevestimientosBundle\Entity\Venta $venta
      * @return Cliente
      */
-    public function addCompra(\JYG\RevestimientosBundle\Entity\Venta $compras)
+    public function addVentum(\JYG\RevestimientosBundle\Entity\Venta $venta)
     {
-        $this->compras[] = $compras;
+        $this->venta[] = $venta;
     
         return $this;
     }
 
     /**
-     * Remove compras
+     * Remove venta
      *
-     * @param \JYG\RevestimientosBundle\Entity\Venta $compras
+     * @param \JYG\RevestimientosBundle\Entity\Venta $venta
      */
-    public function removeCompra(\JYG\RevestimientosBundle\Entity\Venta $compras)
+    public function removeVentum(\JYG\RevestimientosBundle\Entity\Venta $venta)
     {
-        $this->compras->removeElement($compras);
+        $this->venta->removeElement($venta);
     }
 
     /**
-     * Get compras
+     * Get venta
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getCompras()
+    public function getVenta()
     {
-        return $this->compras;
+        return $this->venta;
     }
 }
