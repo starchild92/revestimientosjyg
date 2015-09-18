@@ -51,13 +51,13 @@ class PageController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         if($var === 'formateada'){
-            $entities = $em->getRepository('JYGRevestimientosBundle:Material')->ObtenerFormateada();
+            $entities = $em->getRepository('JYGRevestimientosBundle:Material')->ObtenerTipo('Laja Formateada');
         }
         if($var === 'natural'){
-            $entities = $em->getRepository('JYGRevestimientosBundle:Material')->ObtenerNatural();
+            $entities = $em->getRepository('JYGRevestimientosBundle:Material')->ObtenerTipo('Laja Natural');
         }
         if($var === 'quimicos'){
-            $entities = $em->getRepository('JYGRevestimientosBundle:Material')->ObtenerQuimicos();
+            $entities = $em->getRepository('JYGRevestimientosBundle:Material')->ObtenerTipo('Quimicos');
         }
         if (!$entities) {
             $this->get('session')->getFlashBag()->set('error', 'No hay productos para mostrar.');

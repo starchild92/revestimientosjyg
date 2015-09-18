@@ -16,7 +16,7 @@ class ItemRepository extends EntityRepository
 		$query = $this->getEntityManager()
 				->createQuery('SELECT u 
 				FROM JYGRevestimientosBundle:Item u 
-				WHERE u.numeroVenta= :num');
+				WHERE u.venta= :num');
 		$query->setParameter('num', $a);
 		$result = $query->getResult();
         

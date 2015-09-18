@@ -48,7 +48,6 @@ class Item
      */
     private $venta;
 
-
     /**
      * Get id
      *
