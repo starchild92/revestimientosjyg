@@ -32,11 +32,7 @@ class Venta
     //con una relacion a cliente
     /**
      * @var integer
-<<<<<<< HEAD
-     * @ORM\ManyToOne(targetEntity="Cliente", inversedBy="compras",cascade={"persist"})
-=======
-     * @ORM\ManyToOne(targetEntity="Cliente", inversedBy="compras", cascade={"persist"})
->>>>>>> 0e051627dc099f639c0ceb35a1ea676f698eeca2
+     * @ORM\ManyToOne(targetEntity="Cliente", inversedBy="venta",cascade={"persist"})
      * @ORM\JoinColumn(name="cliente_id", referencedColumnName="id", onDelete="CASCADE")
      * @Assert\Valid
      */

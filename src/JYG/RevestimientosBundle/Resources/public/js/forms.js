@@ -1,7 +1,7 @@
 var $collectionHolder;
 var $cantHijos;
 // setup an "add a tag" link
-var $addTagLink = $('<button style="margin-top: 10px;" class="btn btn-success btn-sm btn-block" type="button" href="#" class="add_tag_link">Añadir Depósito</button>');
+var $addTagLink = $('<button style="margin-top: 10px;" class="btn btn-success btn-sm btn-block" type="button" href="#" class="add_tag_link"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>  Añadir Depósito</button>');
 var $newLinkLi = $('<div></div>').append($addTagLink);
 
 jQuery(document).ready(function() {
@@ -10,7 +10,7 @@ jQuery(document).ready(function() {
 
     /*Para en el editar quitar un Depósito*/
     $collectionHolder.children().append(
-        '<a href="#" class="remove-tag btn btn-danger btn-sm btn-block">Quitar Depósito</a>');
+        '<a href="#" class="remove-tag btn btn-danger btn-sm btn-block"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span>  Quitar Depósito</a>');
 
     $remover = $collectionHolder.find('.remove-tag');
     $cantHijos = $remover.length;
@@ -64,7 +64,7 @@ function addTagForm($collectionHolder, $newLinkLi) {
     //$newLinkLi.before($newFormLi);
 
     // also add a remove button, just for this example
-    $newFormLi.append('<a href="#" class="remove-tag btn btn-danger btn-sm btn-block">Quitar Depósito</a>');
+    $newFormLi.append('<a href="#" class="remove-tag btn btn-danger btn-sm btn-block"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span>  Quitar Depósito</a>');
     
     $newLinkLi.before($newFormLi);
     

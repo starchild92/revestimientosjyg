@@ -115,11 +115,11 @@ class Material
         return $this->codigo.', '.$this->nombre.' ('.$this->tipo.')';
     }
 
-    public function getdescripcionmaterial()
+    /*public function getdescripcionmaterial()
     {
 
-        return $this->codigo.', '.$this->nombre.' ('.$this->tipo.')';
-    }
+        return $this->codigo.', '.$this->nombre.' ['.$this->tipo.']';
+    }*/
 
     /**
      * Get id

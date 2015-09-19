@@ -22,4 +22,14 @@ class ItemRepository extends EntityRepository
         
         return $result;
 	}
+
+	public function AllOrdenById(){
+		$query = $this->getEntityManager()
+			->createQuery('SELECT u
+				FROM JYGRevestimientosBundle:Item u
+				ORDER BY u.id DESC');
+		$result = $query->getResult();
+
+		return $result;
+	}
 }

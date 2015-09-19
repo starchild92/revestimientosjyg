@@ -12,4 +12,13 @@ use Doctrine\ORM\EntityRepository;
  */
 class ClienteRepository extends EntityRepository
 {
+	public function AllOrdenById(){
+		$query = $this->getEntityManager()
+			->createQuery('SELECT u
+				FROM JYGRevestimientosBundle:Cliente u
+				ORDER BY u.id DESC');
+		$result = $query->getResult();
+
+		return $result;
+	}
 }

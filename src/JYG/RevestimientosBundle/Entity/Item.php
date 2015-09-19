@@ -36,7 +36,7 @@ class Item
     private $descripcionmaterial;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Material", inversedBy="codigo")
+     * @ORM\ManyToOne(targetEntity="Material")
      * @ORM\JoinColumn(name="material_id", referencedColumnName="id", onDelete="CASCADE")
      */
     private $codigomaterial;

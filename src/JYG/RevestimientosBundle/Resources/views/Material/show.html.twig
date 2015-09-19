@@ -16,7 +16,7 @@
                 <thead>
                     <tr>
                         <th colspan="3"><h3 style="margin-top:0px;" class="naranja_logo">Detalles del Producto</h3></th>
-                        <th><a href="{{ path('material') }}" class="btn btn-primary btn-block" type="button">Volver</a></th>
+                        <th><a href="{{ path('material') }}" class="btn btn-primary btn-block" type="button"><span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>  Volver</a></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -76,20 +76,18 @@
                                 <tbody>
                                     {% for almacen in entity.almacenes %}<tr>
                                         <td>{{ almacen.nombrealmacen }}</td>
-                                        <td>{{ almacen.cantmaterialdisponible }} mts</td>
+                                        <td>{{ almacen.cantmaterialdisponible }} {% if entity.unidad != ''  %}unidades{% else %}mts{% endif %}</td>
                                     </tr>{% endfor %}
                                 </tbody>
                             </table>
                         </td>
                     </tr>
-                    <tr>
-                        <td colspan="2">
-                            <a href="{{ path('material_edit', { 'id': entity.id }) }}" class="btn btn-success btn-block" type="button">Modificar Datos</a></td>
-                        <td colspan="2"><a type="button" class="btn btn-danger btn-block" data-toggle="modal" id="Modal" data-target="#delEditProducto">Eliminar Producto</a></td>
-                    </tr>
                 </tbody>
             </table>
-            
+            <div class="row">
+                <div class="col-lg-6 col-sm-6 col-xs-12"><a href="{{ path('material_edit', { 'id': entity.id }) }}" class="btn btn-success btn-block" type="button"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>  Modificar Datos</a></div>
+                <div class="col-lg-6 col-sm-6 col-xs-12"><a type="button" class="btn btn-danger btn-block" data-toggle="modal" id="Modal" data-target="#delEditProducto"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span>  Eliminar Producto</a></div>
+            </div>
         </div>
         <div class="col-lg-4 col-sm-4 col-xs-12">
             <div id="textContacto"><h3>{{ entity.nombre }}</h3><p>{{ entity.formato }}</p></div>

@@ -71,14 +71,8 @@ class VentaController extends Controller
                     $em = $this->getDoctrine()->getManager();
                     $em->persist($cliente);
                     $em->flush();
-                    //Guardando los items de la venta
-                    $item = $entity->getItems();
-                    $hasta = $item->count();
-                    for ($i=1; $i<=$hasta ; $i++) { 
-                        $item[$i]->setDescripcionmaterial($item[$i]->getCodigomaterial());
-                    }
-                    $entity->setItems($item);
 
+                    //Guardando los items de la venta
                     $item = $entity->getItems();
                     $hasta = $item->count();
                     for ($i=1; $i<=$hasta ; $i++) { 
@@ -96,7 +90,59 @@ class VentaController extends Controller
                     $hasta = $item->count();
                     for ($i=1; $i<=$hasta ; $i++) { 
                         $item[$i]->setDescripcionmaterial($item[$i]->getCodigomaterial());
-                    }
+                        
+                        $depositos = $item[$i]->getCodigomaterial();//El producto que está comprando
+                        $cant_comprada = $item[$i]->getCantidad(); //Cantidad que pide el cliente
+
+                        //throw $this->createNotFoundException($cant_comprada);
+                        //throw $this->createNotFoundException($depositos); 
+
+                        $almacenes = $depositos->getAlmacenes(); //obtiene los depositos en la bd del item i que se está comprando
+                        //throw $this->createNotFoundException($almacenes->count().$almacenes[0]->getnombrealmacen(). $almacenes[0]->getCantmaterialdisponible()); 
+
+                        $num_almacenes_disp = $almacenes->count();
+                        
+                        $datos = '';//con motivo de imprimir en el throw
+                        //throw $this->createNotFoundException($num_almacenes_disp);
+                        $aux = $cant_comprada;
+                        $cant_disponible = 0;
+                        //Primero veo si puedo hacer la venta
+                        for ($j=0; $j<$num_almacenes_disp; $j++) { $cant_disponible = $almacenes[$j]->getCantmaterialdisponible() + $cant_disponible; }
+                        if($cant_disponible>=$aux){
+                            //puedo vender el producto
+                            for ($j=0; $j<$num_almacenes_disp && $aux>=0; $j++){
+                            $cant_disponible = $almacenes[$j]->getCantmaterialdisponible() + $cant_disponible;
+                            //Aqui elegimos para el item_i de cual almacen_j restar
+                                if($almacenes[$j]->getCantmaterialdisponible()>=$aux){ //si con el primer almacen se puede satisfacer la venta
+                                    $almacenes[$j]->setCantmaterialdisponible($almacenes[$j]->getCantmaterialdisponible()-$aux); //lo quito del almacen
+                                    $aux = 0;
+                                }else{
+                                    if($cant_disponible>=$aux){ //si aux es menor que la cantidad total disponible
+                                        for ($k=0; $k<$num_almacenes_disp ; $k++) {
+                                            $aux = $aux - $almacenes[$k]->getCantmaterialdisponible();
+                                            
+                                            if($aux > 0){
+                                                $almacenes[$k]->setCantmaterialdisponible(0);
+                                            }else{
+                                                $almacenes[$k]->setCantmaterialdisponible($almacenes[$k]->getCantmaterialdisponible()-$aux);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            //throw $this->createNotFoundException($datos);
+                        }else{
+                            //No se puede comprar una verga
+                            $session = $request->getSession();
+                            $this->addFlash('mensaje','El producto'.$item[$i]->getDescripcionmaterial().' no se puede vender, no hay suficiente cantidad para realizar la venta');
+                            
+                            $entities = $em->getRepository('JYGRevestimientosBundle:Venta')->findAll();
+
+                            return $this->render('JYGRevestimientosBundle:Venta:index.html.twig', array(
+                                'entities' => $entities,
+                            ));
+                        }
+                    }//End for
                     $entity->setItems($item);
 
                     //Buscando el cliente que ya existe

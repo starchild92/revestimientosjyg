@@ -23,7 +23,7 @@ class ItemController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('JYGRevestimientosBundle:Item')->findAll();
+        $entities = $em->getRepository('JYGRevestimientosBundle:Item')->AllOrdenById();
 
         return $this->render('JYGRevestimientosBundle:Item:index.html.twig', array(
             'entities' => $entities,
