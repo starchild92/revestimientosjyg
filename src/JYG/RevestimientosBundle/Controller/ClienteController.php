@@ -174,6 +174,7 @@ class ClienteController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
+            $this->get('session')->getFlashBag()->set('cod', 'Se ha actualizado la información del cliente de manera correcta');
             $em->flush();
 
             return $this->redirect($this->generateUrl('cliente_edit', array('id' => $id)));

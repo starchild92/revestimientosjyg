@@ -6,18 +6,18 @@
     </div>
 
     <div class="row">
-        <div class="col-lg-6 col-sm-6 col-xs-6">
+        <div class="col-lg-6 col-sm-12 col-xs-12">
             <table class="table table-bordered record_properties">
             <tbody>
                 <tr>
-                    <th>Número de Compra</th>
-                    <td>#{{ entity.id }}</td>
+                    <th>Código de la Compra</th>
+                    <td class="info">#{{ entity.id }}</td>
                 </tr>
                 <tr>
                     <td colspan="2">
                         <table class="table">
                             <thead>
-                                <th colspan="2">Detalles del Comprador</th>
+                                <th colspan="2" class="info">Detalles del Comprador</th>
                             </thead>
                             <tbody>
                                 <tr><td>{{ cliente.nombre }}</td><td>{{ cliente.rif }}</td></tr>
@@ -29,7 +29,7 @@
             </tbody>
         </table>
         </div>
-        <div class="col-lg-6 col-sm-6 col-xs-6">
+        <div class="col-lg-6 col-sm-12 col-xs-12">
             <table class="table table-bordered record_properties">
             <tbody>
                 <tr>
@@ -40,7 +40,7 @@
                     <td colspan="2">
                         <table class="table">
                             <thead>
-                                <th colspan="3">Detalles de la Venta</th>
+                                <th colspan="3" class="info">Detalles de la Venta</th>
                             </thead>
                             <tbody>
                                 <tr>
@@ -49,7 +49,7 @@
                                 </tr>
                                 {% for item in items %}
                                 <tr>
-                                    <td>{{ item.codigomaterial }}</td>
+                                    <td>{{ item.descripcionmaterial }}</td>
                                     <td>{{ item.cantidad }} unidades</td>
                                 </tr>
                                 {% endfor %}
@@ -63,9 +63,9 @@
     </div>
 
     <div class="row">
-        <div class="col-lg-4 col-sm-4 col-xs-12"><a class="btn btn-block btn-default" href="{{ path('venta') }}">Ver Todas las Ventas</a></div>
-        <div class="col-lg-4 col-sm-4 col-xs-12"><a class="btn btn-block btn-default" href="{{ path('venta_edit', { 'id': entity.id }) }}">Modificar Esta Venta</a></div>
-        <div class="col-lg-4 col-sm-4 col-xs-12">{{ form(delete_form) }}</div>
+        <div class="col-lg-6 col-sm-6 col-xs-12"><a class="btn btn-block btn-primary" href="{{ path('venta') }}"><span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span> Ver Todas las Ventas</a></div>
+        <!--<div class="col-lg-6 col-sm-6 col-xs-12"><a class="btn btn-block btn-primary" href="{#{ path('venta_edit', { 'id': entity.id }) }#}">Modificar Esta Venta</a></div>-->
+        <div class="col-lg-6 col-sm-6 col-xs-12">{{ form(delete_form) }}</div>
     </div>
         
         

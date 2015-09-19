@@ -1,9 +1,11 @@
 {% extends 'JYGRevestimientosBundle::baseAdmin.html.twig' %}
-
+{% block javascripts %}
+    <script src="{{ asset('bundles/jygrevestimientos/js/jquery.min.js') }}"></script>
+{% endblock %}
 {% block body %}
 	<div class="row">
         <div class="col-sm-8"><div class="page-header"><h1>Modificar Imagen de la Galería</h1></div></div>
-        <div class="col-sm-4"><a id="volver" href="{{ path('_administrar_galeria') }}" class="btn btn-success pull-right" type="button">Ver todas la imágenes</a></div>
+        <div class="col-sm-4"><a id="volver" href="{{ path('_administrar_galeria') }}" class="btn btn-primary pull-right" type="button"><span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span> Ver todas la imágenes</a></div>
     </div>
      <div class="row">
         <div class="col-lg-6 col-sm-6 col-xs-12">
@@ -20,4 +22,8 @@
             <img class="img-thumbnail img-responisve img-rounded" src="{{ asset('bundles/jygrevestimientos/images/galeria/') }}{{ entity.id }}.{{ entity.path }}">         
         </div>
     </div>
+    <script type="text/javascript">
+        $a = document.getElementById('jyg_revestimientosbundle_galeria_file');
+        $a.removeAttribute('required')
+    </script>
 {% endblock %}

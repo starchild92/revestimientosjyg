@@ -29,6 +29,11 @@ class Cliente
      * @var string
      *
      * @ORM\Column(name="rif", type="string", length=255)
+     * @Assert\Regex(
+     *     pattern="/[a-zA-Z]+[-]+\d+[-]+(\d{1})*|([a-zA-Z]+[-]+\d*)/",
+     *     match=true,
+     *     message="Ejemplo: J-00000000-0 o V-00000000"
+     * )
      */
     private $rif;
 
@@ -36,6 +41,17 @@ class Cliente
      * @var string
      *
      * @ORM\Column(name="nombre", type="string", length=255)
+     * @Assert\Regex(
+     *     pattern="/\d/",
+     *     match=false,
+     *     message="Su nombre no puede contener números o simbolos especiales"
+     * )
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 50,
+     *      minMessage = "Por favor, escriba un nombre de al menos 2 letras",
+     *      maxMessage = "Solo tiene permitido 50 caracteres para este campo"
+     * )
      */
     private $nombre;
 
@@ -50,6 +66,11 @@ class Cliente
      * @var string
      *
      * @ORM\Column(name="telefono", type="string", length=255)
+     * @Assert\Regex(
+     *     pattern="/([\+^0-9 ()-])+/",
+     *     match=true,
+     *     message="Ejemplo. +58 400 0000000 ó (0400) 0000000 ó +58 400-000-00-00"
+     * )
      */
     private $telefono;
 
@@ -162,7 +183,7 @@ class Cliente
     }
 
     public function __toString() {
-        return $this->nombre.', '.$this->rif;
+        return $this->nombre.', '.$this->rif.'. Telf.: '.$this->telefono;
     }
     
     
