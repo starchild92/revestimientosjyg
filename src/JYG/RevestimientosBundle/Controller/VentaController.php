@@ -73,6 +73,13 @@ class VentaController extends Controller
                     $em->persist($cliente);
                     $em->flush();
 
+                    $item = $entity->getItems();
+                    $hasta = $item->count();
+                    for ($i=1; $i<=$hasta ; $i++) { 
+                        $item[$i]->setDescripcionmaterial($item[$i]->getCodigomaterial());
+                    }
+                    $entity->setItems($item);
+
                     //Colocandolo en la venta y luego guardando la venta
                     $entity->setComprador($cliente);
                     $em->persist($entity);
@@ -92,8 +99,8 @@ class VentaController extends Controller
                     $em->persist($entity);
                     $em->flush();
                 }
-
-
+            }else{
+                
             }
         }
         

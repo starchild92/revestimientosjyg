@@ -17,15 +17,17 @@ class VentaType extends AbstractType
         $builder
             /* La fecha se coloca del servidor */
             ->add('fecha', 'datetime', array('label' => 'Fecha y Hora de la Compra'))
-            ->add('comprador', new ClienteType())
+            ->add('comprador', new ClienteType(), array('cascade_validation' => true))
             ->add('items',
                     'collection',array(
                         'type'=> new ItemType(),
+                        'cascade_validation' => true,
                         'attr' => array('class' => 'tags'),
                         'allow_add'=>'true',
                         'by_reference'=>'false',
                         'allow_delete' =>'true',
-                        'label' => 'Producto de la Venta')
+                        'label' => 'Producto de la Venta'
+                        )
             );
     }
     

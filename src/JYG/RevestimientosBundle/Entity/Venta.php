@@ -3,6 +3,7 @@
 namespace JYG\RevestimientosBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Venta
@@ -33,11 +34,13 @@ class Venta
      * @var integer
      * @ORM\ManyToOne(targetEntity="Cliente", inversedBy="compras", cascade={"persist"})
      * @ORM\JoinColumn(name="cliente_id", referencedColumnName="id", onDelete="CASCADE")
+     * @Assert\Valid
      */
     private $comprador;
 
     /**
      * @ORM\OneToMany(targetEntity="Item", mappedBy="venta", cascade={"persist","remove"})
+     * @Assert\Valid
      **/
     private $items;
 
