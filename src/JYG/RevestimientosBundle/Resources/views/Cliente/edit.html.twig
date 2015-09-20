@@ -1,5 +1,11 @@
 {% extends 'JYGRevestimientosBundle::baseAdmin.html.twig' %}
 
+{% block javascripts %}
+    <script src="{{ asset('bundles/jygrevestimientos/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('bundles/jygrevestimientos/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('bundles/jygrevestimientos/js/modalDelEdit.js') }}"></script>
+{% endblock %}
+
 {% block body -%}
 	<div class="row">
         <div class="col-sm-8"><div class="page-header"><h1>Modificar Datos de <small>{{ entity.nombre }}</small></h1></div></div>
@@ -24,8 +30,8 @@
         </div>
 	</div>
     <div class="row">
-        <div class="col-lg-6 col-sm-6 col-xs-12">{{ form_widget(edit_form.submit) }}{{ form_end(edit_form) }}
-            <a type="button" class="btn btn-danger btn-block" data-toggle="modal" id="Modal" data-target="#delElimCliente"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span>  Eliminar Producto</a></div>
+        <div class="col-lg-6 col-sm-6 col-xs-12">{{ form_widget(edit_form.submit) }}{{ form_end(edit_form) }}</div>
+        <div class="col-lg-6 col-sm-6 col-xs-12"><a type="button" class="btn btn-danger btn-block" data-toggle="modal" id="Modal" data-target="#delElimCliente"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span>  Eliminar Cliente</a></div>
     </div>
 
     <!-- el modal tio -->
