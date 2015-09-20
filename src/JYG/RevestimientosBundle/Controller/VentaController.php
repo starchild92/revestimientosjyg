@@ -64,24 +64,16 @@ class VentaController extends Controller
                     $em = $this->getDoctrine()->getManager();
                     $em->persist($cliente);
                     $em->flush();
-
-                    //Guardando los items de la venta
-                    $item = $entity->getItems();
-                    $hasta = $item->count();
-                    for ($i=1; $i<=$hasta ; $i++) { 
-                        $item[$i]->setDescripcionmaterial($item[$i]->getCodigomaterial());
-                    }
-                    $entity->setItems($item);
-
-                    //Colocandolo en la venta y luego guardando la venta
-                    $entity->setComprador($cliente);
-                    $em->persist($entity);
-                    $em->flush();
                 }else{
-                    $item = $entity->getItems();
-                    $hasta = $item->count();
-                    for ($i=1; $i<=$hasta ; $i++) { 
-                        $item[$i]->setDescripcionmaterial($item[$i]->getCodigomaterial());     
+                    
+                    //Buscando el cliente que ya existe
+                    $entity->setComprador($clienteaux[0]);
+                }  
+                //Guardando los items
+                $item = $entity->getItems();
+                $hasta = $item->count();
+                for ($i=1; $i<=$hasta ; $i++) { 
+                    $item[$i]->setDescripcionmaterial($item[$i]->getCodigomaterial());     
 
                         $depositos = $item[$i]->getCodigomaterial();//El producto que está comprando
                         $cant_comprada = $item[$i]->getCantidad(); //Cantidad que pide el cliente
@@ -96,8 +88,8 @@ class VentaController extends Controller
                         for ($j=0; $j<$num_almacenes_disp; $j++){ $cant_disponible = $almacenes[$j]->getCantmaterialdisponible() + $cant_disponible; }
                         if($cant_disponible>=$aux){
                             //puedo vender el producto
-                            for ($j=0; $j<$num_almacenes_disp && $aux>=0; $j++){
-                            $cant_disponible = $almacenes[$j]->getCantmaterialdisponible() + $cant_disponible;
+                                for ($j=0; $j<$num_almacenes_disp && $aux>=0; $j++){
+                                    $cant_disponible = $almacenes[$j]->getCantmaterialdisponible() + $cant_disponible;
                             //Aqui elegimos para el item_i de cual almacen_j restar
                                 if($almacenes[$j]->getCantmaterialdisponible()>=$aux){ //si con el primer almacen se puede satisfacer la venta
                                     $almacenes[$j]->setCantmaterialdisponible($almacenes[$j]->getCantmaterialdisponible()-$aux); //lo quito del almacen
@@ -124,12 +116,10 @@ class VentaController extends Controller
 
                             return $this->render('JYGRevestimientosBundle:Venta:index.html.twig', array(
                                 'entities' => $entities,
-                            ));
+                                ));
                         }
                     }//End for
                     $entity->setItems($item);
-                    //Buscando el cliente que ya existe
-                    $entity->setComprador($clienteaux[0]);
                     $em->persist($entity);
                     $em->flush();
                     //compro bien
@@ -141,17 +131,16 @@ class VentaController extends Controller
                     return $this->render('JYGRevestimientosBundle:Venta:index.html.twig', array(
                         'entities' => $entities,
                         ));
-                }   
+                }
             }
-        }
-        $em = $this->getDoctrine()->getManager();
-        $clientes = $em->getRepository('JYGRevestimientosBundle:Cliente')->findAll();
+            $em = $this->getDoctrine()->getManager();
+            $clientes = $em->getRepository('JYGRevestimientosBundle:Cliente')->findAll();
 
-        return $this->render('JYGRevestimientosBundle:Venta:new.html.twig', array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
-            'clientes' => $clientes,
-        ));
+            return $this->render('JYGRevestimientosBundle:Venta:new.html.twig', array(
+                'entity' => $entity,
+                'form'   => $form->createView(),
+                'clientes' => $clientes,
+                ));
     }
 
     /**
@@ -260,7 +249,7 @@ class VentaController extends Controller
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+        $form->add('submit', 'submit', array('label' => 'Actualizar Datos de la Venta'));
 
         return $form;
     }
