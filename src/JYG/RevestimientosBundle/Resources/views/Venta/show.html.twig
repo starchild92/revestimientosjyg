@@ -1,5 +1,7 @@
 {% extends 'JYGRevestimientosBundle::baseAdmin.html.twig' %}
-
+{% block javascripts %}
+    <script src="{{ asset('bundles/jygrevestimientos/js/modalDelEdit.js') }}"></script>
+{% endblock %}
 {% block body -%}
     <div class="row">
         <div class="col-sm-12"><div class="page-header"><h1>Venta #{{ entity.id }}</h1></div></div>
@@ -65,9 +67,23 @@
     <div class="row">
         <div class="col-lg-6 col-sm-6 col-xs-12"><a class="btn btn-block btn-primary" href="{{ path('venta') }}"><span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span> Ver Todas las Ventas</a></div>
         <!--<div class="col-lg-6 col-sm-6 col-xs-12"><a class="btn btn-block btn-primary" href="{#{ path('venta_edit', { 'id': entity.id }) }#}">Modificar Esta Venta</a></div>-->
-        <div class="col-lg-6 col-sm-6 col-xs-12">{{ form(delete_form) }}</div>
+        
+        <div class="col-lg-6 col-sm-6 col-xs-12"><a type="button" data-toggle="modal" id="Modal" data-target="#ModalEliminarVenta" data-nombre="{{ cliente.nombre }}">Eliminar Venta</a></div>
     </div>
         
-        
+    <!-- el modal tio -->
+    <div class="modal fade" id="ModalEliminarVenta" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal-dialog modal-lg" >
+            <div class="modal-content bodies">
+                <center><h3>¿Está seguro que desea eliminar <i id="nombre_" style="color: rgb(255, 114, 0)"></i> esta imágen de la galería?</h3><br>
+                <p>Tenga presente que una vez eliminada ya no se mostrará en la galería del sitio web</p></center>
+                <br>
+                <div class="row">
+                <div class="col-sm-6">{{ form(delete_form) }}</div>
+                <div class="col-sm-6"><button type="button" class="btn btn-primary btn-block" data-dismiss="modal">Cancelar</button></div></div>
+            </div>
+        </div><center><span class="label label-primary">haga clic fuera de la ventana para cerrarla</span></center>
+    </div>
+    <!-- el modal tio -->
         
 {% endblock %}
