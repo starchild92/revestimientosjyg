@@ -268,7 +268,7 @@ class MaterialController extends Controller
             $entity = $em->getRepository('JYGRevestimientosBundle:Material')->find($id);
 
             if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Material entity.');
+                throw $this->createNotFoundException('No se encuentra el material seleccionado');
             }
 
             $em->remove($entity);
