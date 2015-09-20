@@ -93,7 +93,7 @@ class VentaController extends Controller
                         $aux = $cant_comprada;
                         $cant_disponible = 0;
                         //Primero veo si puedo hacer la venta
-                        for ($j=0; $j<$num_almacenes_disp; $j++) { $cant_disponible = $almacenes[$j]->getCantmaterialdisponible() + $cant_disponible; }
+                        for ($j=0; $j<$num_almacenes_disp; $j++){ $cant_disponible = $almacenes[$j]->getCantmaterialdisponible() + $cant_disponible; }
                         if($cant_disponible>=$aux){
                             //puedo vender el producto
                             for ($j=0; $j<$num_almacenes_disp && $aux>=0; $j++){

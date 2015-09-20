@@ -1,5 +1,7 @@
 {% extends 'JYGRevestimientosBundle::baseAdmin.html.twig' %}
 {% block javascripts %}
+    <script src="{{ asset('bundles/jygrevestimientos/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('bundles/jygrevestimientos/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('bundles/jygrevestimientos/js/modalDelEdit.js') }}"></script>
 {% endblock %}
 {% block body -%}
@@ -68,15 +70,15 @@
         <div class="col-lg-6 col-sm-6 col-xs-12"><a class="btn btn-block btn-primary" href="{{ path('venta') }}"><span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span> Ver Todas las Ventas</a></div>
         <!--<div class="col-lg-6 col-sm-6 col-xs-12"><a class="btn btn-block btn-primary" href="{#{ path('venta_edit', { 'id': entity.id }) }#}">Modificar Esta Venta</a></div>-->
         
-        <div class="col-lg-6 col-sm-6 col-xs-12"><a type="button" data-toggle="modal" id="Modal" data-target="#ModalEliminarVenta" data-nombre="{{ cliente.nombre }}">Eliminar Venta</a></div>
+        <div class="col-lg-6 col-sm-6 col-xs-12"><a type="button" data-toggle="modal" id="Modal" data-target="#ModalEliminarVenta" data-nombre="{{ entity.id }}" data-cliente="{{ cliente.nombre }}" class="btn btn-block btn-danger">Eliminar Venta</a></div>
     </div>
         
     <!-- el modal tio -->
     <div class="modal fade" id="ModalEliminarVenta" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
         <div class="modal-dialog modal-lg" >
             <div class="modal-content bodies">
-                <center><h3>¿Está seguro que desea eliminar <i id="nombre_" style="color: rgb(255, 114, 0)"></i> esta imágen de la galería?</h3><br>
-                <p>Tenga presente que una vez eliminada ya no se mostrará en la galería del sitio web</p></center>
+                <center><h3>¿Está seguro que desea eliminar la venta <i id="nombre_" style="color: rgb(255, 114, 0)"></i> del cliente <i id="nombre_cliente"></i>?</h3><br>
+                <p>Esto eliminará la venta y repondrá los productos comprados en el inventario.</p></center>
                 <br>
                 <div class="row">
                 <div class="col-sm-6">{{ form(delete_form) }}</div>
