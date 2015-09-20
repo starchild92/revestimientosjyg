@@ -6,6 +6,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use JYG\RevestimientosBundle\Entity\Consulta;
+use JYG\RevestimientosBundle\Entity\Login;
+use JYG\RevestimientosBundle\Form\LoginType;
 use JYG\RevestimientosBundle\Form\ConsultaType;
 
 class PageController extends Controller
@@ -147,7 +149,32 @@ class PageController extends Controller
     }
 
     public function inicioSesionAction(){
-        return $this->render('JYGRevestimientosBundle:Page:sesionini.html.twig');
+
+        $login = new Login();
+        $form = $this->createForm(new LoginType(), $login);
+        $request = $this->getRequest();
+        if ($request->getMethod() == 'POST') {
+            $form->bind($request);
+            if ($form->isValid()) {
+                $login = $form->get('login')->getData();
+                $password = $form->get('password')->getData();
+                 $em = $this->getDoctrine()
+                   ->getEntityManager();
+                $user = $em->getRepository('JYGRevestimientosBundle:Login')
+                            ->validarCuenta($login, $password);
+               if ($user == null) {
+                $this->get('session')->getFlashBag()->set('errorsesion', 'Lo sentimos, usted no está registrado');
+                return $this->render('JYGRevestimientosBundle:Page:sesionini.html.twig', array(
+                    'form' => $form->createView()
+                    ));
+                }else{
+                     return $this->redirect($this->generateUrl('material')); //LLEVAR A INDEX ADMIN (SIN HACER AUN)
+                }
+            }
+        }
+        return $this->render('JYGRevestimientosBundle:Page:sesionini.html.twig', array(
+            'form' => $form->createView()
+        )); 
     }
 
 }

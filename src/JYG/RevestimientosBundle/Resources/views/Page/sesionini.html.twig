@@ -43,22 +43,32 @@
   </nav>
     <div class="container-fluid navSpace">
       <div class="row">
-        <form class="form-signin">
+        <form class="form-signin" action="{{ path('_inicio_sesion') }}" method="post">
         <div class="col-lg-12 col-sm-12">
           <img src='{{ asset("bundles/jygrevestimientos/images/header.png") }}' class="img-responsive item">
           
             <h4 class="form-signin-heading"><center>Iniciar Sesión</center></h4>
-            <label for="inputEmail" class="sr-only">Correo Electronico</label>
+            {% for flashMessage in app.session.flashbag.get('errorsesion') %}
+            <div class = "alert alert-danger alert-dismissable">
+                <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
+                {{ flashMessage }}
+            </div>
+        {% endfor %}
+            {{ form_start(form) }}
+            {{ form_widget(form.login, {'attr': {'placeholder': 'Usuario'} }) }} <br> 
+            {{ form_widget(form.password, {'attr': {'placeholder': 'Clave'} }) }}  
+            {{ form_row(form._token) }}
+            {{ form_rest(form) }}
+            <!--<label for="inputEmail" class="sr-only">Correo Electronico</label>
             <input type="email" id="inputEmail" class="form-control" placeholder="Correo Electronico" required autofocus>
             <label for="inputPassword" class="sr-only">Contraseña</label>
-            <input type="password" id="inputPassword" class="form-control" placeholder="Contraseña" required>
+            <input type="password" id="inputPassword" class="form-control" placeholder="Contraseña" required>-->
             <div class="checkbox">
-              <label>
-                <input type="checkbox" value="remember-me"> Recordarme
-              </label>
+              <label for="remember_me">Recordarme</label>
+                <input type="checkbox" id="remember_me" name="_remember_me" checked />
             </div>
             <button class="btn btn-naranja btn-block" type="submit">Continuar...</button>
-          
+          {{ form_end(form) }}
         </div></form>
       </div>
     </div> <!-- /container -->
