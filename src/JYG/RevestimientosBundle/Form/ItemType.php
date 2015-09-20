@@ -16,7 +16,7 @@ class ItemType extends AbstractType
     {
         $builder
             ->add('venta', 'hidden')
-            ->add('codigomaterial', null, array('label' => 'Producto'))
+            ->add('codigomaterial', null, array('label' => 'Producto','data_class' => null))
             ->add('cantidad', 'text', array('label' => 'Cantidad de Producto'))
             ->add('descripcionmaterial', 'hidden')
         ;

@@ -49,13 +49,6 @@ class VentaController extends Controller
             $form->handleRequest($request);
             if ($form->isValid()) 
             {
-                /*$cliente_ = $entity->getComprador()->getNombre();
-                $cliente_ = $cliente_.' '.$entity->getComprador()->getRif();
-                $cliente_ = $cliente_.' '.$entity->getComprador()->getDireccion();
-                $cliente_ = $cliente_.' '.$entity->getComprador()->getTelefono();
-
-               // throw $this->createNotFoundException($cliente_);*/
-
                 $em = $this->getDoctrine()->getManager();
                 $clienteaux = $em->getRepository('JYGRevestimientosBundle:Venta')->BuscarPorRif($entity->getComprador()->getRif());
                 if (!$clienteaux) { //no existe el cliente
@@ -85,25 +78,18 @@ class VentaController extends Controller
                     $em->persist($entity);
                     $em->flush();
                 }else{
-                
                     $item = $entity->getItems();
                     $hasta = $item->count();
                     for ($i=1; $i<=$hasta ; $i++) { 
-                        $item[$i]->setDescripcionmaterial($item[$i]->getCodigomaterial());
-                        
+                        $item[$i]->setDescripcionmaterial($item[$i]->getCodigomaterial());     
+
                         $depositos = $item[$i]->getCodigomaterial();//El producto que está comprando
                         $cant_comprada = $item[$i]->getCantidad(); //Cantidad que pide el cliente
 
-                        //throw $this->createNotFoundException($cant_comprada);
-                        //throw $this->createNotFoundException($depositos); 
-
                         $almacenes = $depositos->getAlmacenes(); //obtiene los depositos en la bd del item i que se está comprando
-                        //throw $this->createNotFoundException($almacenes->count().$almacenes[0]->getnombrealmacen(). $almacenes[0]->getCantmaterialdisponible()); 
-
                         $num_almacenes_disp = $almacenes->count();
                         
                         $datos = '';//con motivo de imprimir en el throw
-                        //throw $this->createNotFoundException($num_almacenes_disp);
                         $aux = $cant_comprada;
                         $cant_disponible = 0;
                         //Primero veo si puedo hacer la venta
@@ -120,7 +106,6 @@ class VentaController extends Controller
                                     if($cant_disponible>=$aux){ //si aux es menor que la cantidad total disponible
                                         for ($k=0; $k<$num_almacenes_disp ; $k++) {
                                             $aux = $aux - $almacenes[$k]->getCantmaterialdisponible();
-                                            
                                             if($aux > 0){
                                                 $almacenes[$k]->setCantmaterialdisponible(0);
                                             }else{
@@ -130,7 +115,6 @@ class VentaController extends Controller
                                     }
                                 }
                             }
-                            //throw $this->createNotFoundException($datos);
                         }else{
                             //No se puede comprar una verga
                             $session = $request->getSession();
@@ -144,22 +128,29 @@ class VentaController extends Controller
                         }
                     }//End for
                     $entity->setItems($item);
-
                     //Buscando el cliente que ya existe
                     $entity->setComprador($clienteaux[0]);
                     $em->persist($entity);
                     $em->flush();
-                }
-            }else{
-                
+                    //compro bien
+                    $session = $request->getSession();
+                    $this->addFlash('mensaje','La venta se ha realizado con éxito');
+
+                    $entities = $em->getRepository('JYGRevestimientosBundle:Venta')->findAll();
+
+                    return $this->render('JYGRevestimientosBundle:Venta:index.html.twig', array(
+                        'entities' => $entities,
+                        ));
+                }   
             }
         }
-        
         $em = $this->getDoctrine()->getManager();
-        $entities = $em->getRepository('JYGRevestimientosBundle:Venta')->findAll();
+        $clientes = $em->getRepository('JYGRevestimientosBundle:Cliente')->findAll();
 
-        return $this->render('JYGRevestimientosBundle:Venta:index.html.twig', array(
-            'entities' => $entities,
+        return $this->render('JYGRevestimientosBundle:Venta:new.html.twig', array(
+            'entity' => $entity,
+            'form'   => $form->createView(),
+            'clientes' => $clientes,
         ));
     }
 
@@ -244,7 +235,7 @@ class VentaController extends Controller
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Venta entity.');
         }
-
+        
         $editForm = $this->createEditForm($entity);
         $deleteForm = $this->createDeleteForm($id);
 

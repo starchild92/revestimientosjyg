@@ -4,16 +4,31 @@
 	<script src="{{ asset('bundles/jygrevestimientos/js/formsVenta.js') }}"></script>
 {% endblock %}
 {% block body -%}
-    <h1>Venta edit</h1>
-
-    {{ form(edit_form) }}
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('venta') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+     {% form_theme edit_form 'bootstrap_3_layout.html.twig' %}
+    <div class="row">
+        <div class="col-sm-8"><div class="page-header"><h1>Modificar Venta</h1></div></div>
+        <div class="col-sm-4"><a id="volver" href="{{ path('venta') }}" class="btn btn-primary pull-right" type="button"><span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>  Regresar a las Ventas</a></div>
+    </div>
+    {% for flashMessage in app.session.flashbag.get('error') %}
+        <div class="row"><div class="col-sm-12"><div class = "alert alert-success">
+            {{ flashMessage }}
+        </div></div></div>
+    {% endfor %}
+    {{ form_start(edit_form) }}
+    <div class="row">
+        <div class="col-lg-4 col-sm-4 col-xs-12">
+            {#{{ form_row(edit_form.codigo, { 'attr': {'readonly': 'true'} }) }}#}
+            {{ form_row(edit_form.fecha) }}  
+            {{ form_row(edit_form.comprador) }}         
+        </div>
+        <div class="col-lg-4 col-sm-4 col-xs-12">
+            {{ form_row(edit_form.items) }}          
+        </div>
+        <div class="col-lg-4 col-sm-4 col-xs-12">
+            
+            
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4">{{ form_widget(edit_form.submit) }}</div>
 {% endblock %}

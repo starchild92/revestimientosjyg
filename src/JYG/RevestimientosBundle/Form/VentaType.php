@@ -26,6 +26,7 @@ class VentaType extends AbstractType
                         'allow_add'=>'true',
                         'by_reference'=>'false',
                         'allow_delete' =>'true',
+                        'data_class' => 'JYG\RevestimientosBundle\Entity\Item',
                         'label' => 'Producto de la Venta'
                         )
             );

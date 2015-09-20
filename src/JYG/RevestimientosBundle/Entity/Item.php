@@ -3,6 +3,7 @@
 namespace JYG\RevestimientosBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Item
@@ -22,9 +23,17 @@ class Item
     private $id;
 
     /**
-     * @var integer
+     * @var float
      *
-     * @ORM\Column(name="cantidad", type="integer")
+     * @ORM\Column(name="cantidad", type="float")
+     * @Assert\GreaterThan(
+     *     value = 0,
+     *     message = "Debe ser un valor mayor a 0"
+     * )
+     * @Assert\Type(
+     *     type="numeric",
+     *     message="El valor {{ value }} no válido."
+     * )
      */
     private $cantidad;
 
@@ -61,7 +70,7 @@ class Item
     /**
      * Set cantidad
      *
-     * @param integer $cantidad
+     * @param float $cantidad
      * @return Item
      */
     public function setCantidad($cantidad)
@@ -74,7 +83,7 @@ class Item
     /**
      * Get cantidad
      *
-     * @return integer 
+     * @return float 
      */
     public function getCantidad()
     {

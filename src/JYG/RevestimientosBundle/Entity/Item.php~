@@ -3,6 +3,7 @@
 namespace JYG\RevestimientosBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Item
@@ -22,9 +23,17 @@ class Item
     private $id;
 
     /**
-     * @var integer
+     * @var float
      *
-     * @ORM\Column(name="cantidad", type="integer")
+     * @ORM\Column(name="cantidad", type="float")
+     * @Assert\GreaterThan(
+     *     value = 0,
+     *     message = "Debe ser un valor mayor a 0"
+     * )
+     * @Assert\Type(
+     *     type="numeric",
+     *     message="El valor {{ value }} no válido."
+     * )
      */
     private $cantidad;
 
@@ -36,18 +45,17 @@ class Item
     private $descripcionmaterial;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Material", inversedBy="codigo")
+     * @ORM\ManyToOne(targetEntity="Material")
      * @ORM\JoinColumn(name="material_id", referencedColumnName="id", onDelete="CASCADE")
      */
     private $codigomaterial;
 
     /**
      * @var integer
-     * @ORM\ManyToOne(targetEntity="Venta", inversedBy="materiales")
+     * @ORM\ManyToOne(targetEntity="Venta", inversedBy="items")
      * @ORM\JoinColumn(name="venta_id", referencedColumnName="id", onDelete="CASCADE")
      */
     private $venta;
-
 
     /**
      * Get id
@@ -129,25 +137,31 @@ class Item
     }
 
     /**
-     * Set numeroVenta
+     * Set venta
      *
-     * @param integer $numeroVenta
+     * @param \JYG\RevestimientosBundle\Entity\Venta $venta
      * @return Item
      */
-    public function setNumeroVenta($numeroVenta)
+    public function setVenta(\JYG\RevestimientosBundle\Entity\Venta $venta = null)
     {
-        $this->numeroVenta = $numeroVenta;
-
+        $this->venta = $venta;
+    
         return $this;
     }
 
     /**
-     * Get numeroVenta
+     * Get venta
      *
-     * @return integer 
+     * @return \JYG\RevestimientosBundle\Entity\Venta 
      */
-    public function getNumeroVenta()
+    public function getVenta()
     {
-        return $this->numeroVenta;
+        return $this->venta;
+    }
+    /* Funcion que agrega el material id si no existe en la tabla deposito*/
+    public function addVenta(Venta $venta){
+        if(!$this->venta->contains($venta)){
+            $this->venta->add($venta);
+        }
     }
 }
