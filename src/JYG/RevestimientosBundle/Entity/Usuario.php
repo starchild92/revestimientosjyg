@@ -3,6 +3,7 @@
 namespace JYG\RevestimientosBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Usuario
@@ -25,6 +26,12 @@ class Usuario
      * @var string
      *
      * @ORM\Column(name="nombre", type="string", length=255)
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 50,
+     *      minMessage = "Su nombre debe tener al menos {{ limit }} letras",
+     *      maxMessage = "Su nombre no puede tener {{ limit }} letras"
+     * )
      */
     private $nombre;
 
@@ -32,6 +39,12 @@ class Usuario
      * @var string
      *
      * @ORM\Column(name="apellido", type="string", length=255)
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 50,
+     *      minMessage = "Su apellido debe tener al menos {{ limit }} letras",
+     *      maxMessage = "Su apellido no puede tener {{ limit }} letras"
+     * )
      */
     private $apellido;
 
@@ -46,6 +59,11 @@ class Usuario
      * @var string
      *
      * @ORM\Column(name="correo", type="string", length=255)
+     * @Assert\Email(
+     *     message = "El mail '{{ value }}' no es válido.",
+     *     checkMX = true,
+     *     checkHost = true
+     * )
      */
     private $correo;
 
@@ -56,10 +74,23 @@ class Usuario
      */
     private $login;
 
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="cuenta", type="string", length=50)
+     */
+    private $cuenta = 'Usuario';
+
     /**
      * @var string
      *
      * @ORM\Column(name="contrasena", type="string", length=255)
+     * @Assert\Length(
+     *      min = 5,
+     *      max = 18,
+     *      minMessage = "Escriba una clave con 5 o más letras y menos o {{ limit }} letras",
+     *      maxMessage = "La clave que ha escrito supera el límite de {{ limit }} letras"
+     * )
      */
     private $contrasena;
 
@@ -210,5 +241,28 @@ class Usuario
     public function getContrasena()
     {
         return $this->contrasena;
+    }
+
+    /**
+     * Set cuenta
+     *
+     * @param string $cuenta
+     * @return Usuario
+     */
+    public function setCuenta($cuenta)
+    {
+        $this->cuenta = $cuenta;
+    
+        return $this;
+    }
+
+    /**
+     * Get cuenta
+     *
+     * @return string 
+     */
+    public function getCuenta()
+    {
+        return $this->cuenta;
     }
 }

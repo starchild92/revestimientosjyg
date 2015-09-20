@@ -56,6 +56,13 @@ class Usuario
      */
     private $login;
 
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="cuenta", type="string", length=50)
+     */
+    private $cuenta = 'Usuario';
+
     /**
      * @var string
      *

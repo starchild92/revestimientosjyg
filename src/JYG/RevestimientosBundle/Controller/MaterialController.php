@@ -9,6 +9,7 @@ use JYG\RevestimientosBundle\Entity\Material;
 use JYG\RevestimientosBundle\Form\MaterialType;
 use JYG\RevestimientosBundle\Entity\Deposito;
 use JYG\RevestimientosBundle\Form\DepositoType;
+use JYG\RevestimientosBundle\Entity\Bitacora;
 
 /**
  * Material controller.
@@ -64,7 +65,8 @@ class MaterialController extends Controller
                     $em = $this->getDoctrine()->getManager();
                     $em->persist($material);
                     $em->flush();
-
+                    /*Entrada en la bitacora*/
+                    //$this->addLog( $this->getUser()->getnombreUsuario(), $this->getUser()->getId(), 'Agregada Cita: '. $paciente->getNombre().' '. $paciente->getApellido());
                     return $this->redirect($this->generateUrl('material_show', array('id' => $material->getId())));
                 }
             }
@@ -105,11 +107,6 @@ class MaterialController extends Controller
     public function newAction()
     {
         $material = new Material();
-        /*Si descomentas debajo aparece un form en*/
-        //$form   = $this->createCreateForm($entity);
-        //$almacen = new Deposito();
-        //$material->getAlmacenes()->add($almacen);
-
         $form = $this ->createForm(new MaterialType(), $material, array(
             'action' => $this->generateUrl('material_create'),
             'method' => 'POST',
@@ -296,4 +293,33 @@ class MaterialController extends Controller
             ->getForm()
         ;
     }
+
+    /*Funciones para guardar la bitácora:
+    * Esta función agrega una nueva entrada a la tabla bitácora.
+    */
+    private function addLog($login, $operacion, $fecha )
+    {
+        /* Se obtiene la hora del evento:*/
+        
+        $time = new \DateTime();
+        /*Se establece la zona horaria correctamente.*/
+        $zone = $this->container->getParameter('time_zone');
+        $time->setTimezone( new \DateTimeZone($zone));
+        
+
+        /*Se crea el objeto bitacora para almacenarlo posteriormente*/
+        $bitacora = new Bitacora();
+        $bitacora->setLogin( $login )
+            ->setOperacion($operacion)
+            ->setFecha( $time );
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($bitacora);
+        $em->flush();
+
+        return $this;
+
+    }
+
+
 }
