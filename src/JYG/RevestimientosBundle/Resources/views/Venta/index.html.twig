@@ -15,8 +15,14 @@
         <a type="button" id="volver" class="btn btn-success btn-block" href="{{ path('venta_new') }}"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>  Realizar Nueva Venta</a>
         </div>
     </div>
-        {% for flashMessage in app.session.flashbag.get('mensaje') %}
-            <div class = "alert alert-info alert-dismissable">
+        {% for flashMessage in app.session.flashbag.get('error') %}
+            <div class = "alert alert-danger alert-dismissable">
+                <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
+                {{ flashMessage }}
+            </div>
+        {% endfor %}
+        {% for flashMessage in app.session.flashbag.get('exito') %}
+            <div class = "alert alert-success alert-dismissable">
                 <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
                 {{ flashMessage }}
             </div>
@@ -35,7 +41,7 @@
         {% for entity in entities %}
             <tr>
                 <td>{{ entity.id }}</td>
-                <td>{% if entity.fecha %}{{ entity.fecha|date('d/m/Y H:i', timezone="America/Caracas") }}{% endif %}</td>
+                <td>{% if entity.fecha %}{{ entity.fecha|date('jS \\d\\e F \\a\\ g:ia', timezone="America/Caracas") }}{% endif %}</td>
                 <td><a href="{{ path('venta_show', { 'id': entity.id }) }}">{{ entity.comprador }}</a></td>
                 <td>
                     <div class="dropdown pull-right">

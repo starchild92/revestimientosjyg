@@ -1,7 +1,7 @@
 {% extends 'JYGRevestimientosBundle::baseAdmin.html.twig' %}
 {% block javascripts %}
 	<script src="{{ asset('bundles/jygrevestimientos/js/jquery.min.js') }}"></script>
-	<script src="{{ asset('bundles/jygrevestimientos/js/formsVenta.js') }}"></script>
+	<script src="{{ asset('bundles/jygrevestimientos/js/formsVentaEdit.js') }}"></script>
 {% endblock %}
 {% block body -%}
      {% form_theme edit_form 'bootstrap_3_layout.html.twig' %}
@@ -23,7 +23,7 @@
         <div class="col-lg-4 col-sm-4 col-xs-12">
             {{ form_row(edit_form.comprador) }}
         </div>
-        <div class="col-lg-4 col-sm-4 col-xs-12">
+        <div id="lastCol" class="col-lg-4 col-sm-4 col-xs-12">
             {{ form_row(edit_form.items) }}
         </div>
     </div>

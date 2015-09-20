@@ -111,16 +111,6 @@ class Material
      */
     private $almacenes;
 
-    public function  __toString(){
-        return $this->codigo.', '.$this->nombre.' ('.$this->tipo.')';
-    }
-
-    /*public function getdescripcionmaterial()
-    {
-
-        return $this->codigo.', '.$this->nombre.' ['.$this->tipo.']';
-    }*/
-
     /**
      * Get id
      *
@@ -294,6 +284,25 @@ class Material
     public function getAlmacenes()
     {
         return $this->almacenes;
+    }
+
+    public function  __toString(){
+
+        /*$dep = $this->getAlmacenes();
+        $cant_alm = $dep->count();
+        $cad = '';
+        for ($i=0; $i < $cant_alm ; $i++) {
+            $nombre_dep = $dep[$i]->getNombrealmacen();
+            if ($nombre_dep == 'Depósito Origen') {
+                $nombre_dep = "Origen";
+            }else{
+                $nombre_dep = "Tienda";
+            }
+            $cad = $nombre_dep.':'.$dep[$i]->getCantmaterialdisponible().', '.$cad;
+        }
+        $cad = rtrim($cad, ', ');
+        return $this->codigo.', '.$this->nombre.' ('.$this->tipo.')['.$cad.']';*/
+        return $this->codigo.', '.$this->nombre.' ('.$this->tipo.')';
     }
 
     /**

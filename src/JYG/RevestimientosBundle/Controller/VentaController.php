@@ -44,17 +44,25 @@ class VentaController extends Controller
         $cliente = new Cliente();
         $item = new Item();
         $form = $this->createCreateForm($entity);
-        if ($request->getMethod() == "POST") 
-        {
+        $se_puede_vender = true;
+        if ($request->getMethod() == "POST"){
             $form->handleRequest($request);
-            if ($form->isValid()) 
-            {
+            if ($form->isValid()) {
                 $em = $this->getDoctrine()->getManager();
                 $clienteaux = $em->getRepository('JYGRevestimientosBundle:Venta')->BuscarPorRif($entity->getComprador()->getRif());
                 if (!$clienteaux) { //no existe el cliente
-                    //throw $this->createNotFoundException('No existe el cliente, hay que crearlo con los datos del formulario');
-                    
                     //Obtengo los datos del nuevo cliente
+                    if($entity->getComprador()->getRif() == '' || $entity->getComprador()->getNombre() == '' || $entity->getComprador()->getDireccion() == '' || $entity->getComprador()->getTelefono()){
+                        $session = $request->getSession();
+                        $session->getFlashBag()->add('error','Debes elegir un usuario o agregar uno nuevo para poder realizar la venta.');
+                        $em = $this->getDoctrine()->getManager();
+                        $clientes = $em->getRepository('JYGRevestimientosBundle:Cliente')->findAll();
+                        return $this->render('JYGRevestimientosBundle:Venta:new.html.twig', array(
+                            'entity' => $entity,
+                            'form'   => $form->createView(),
+                            'clientes' => $clientes,
+                            ));
+                    }
                     $cliente->setRif($entity->getComprador()->getRif());
                     $cliente->setNombre($entity->getComprador()->getNombre());
                     $cliente->setDireccion($entity->getComprador()->getDireccion());
@@ -65,7 +73,6 @@ class VentaController extends Controller
                     $em->persist($cliente);
                     $em->flush();
                 }else{
-                    
                     //Buscando el cliente que ya existe
                     $entity->setComprador($clienteaux[0]);
                 }  
@@ -75,72 +82,92 @@ class VentaController extends Controller
                 for ($i=1; $i<=$hasta ; $i++) { 
                     $item[$i]->setDescripcionmaterial($item[$i]->getCodigomaterial());     
 
-                        $depositos = $item[$i]->getCodigomaterial();//El producto que está comprando
-                        $cant_comprada = $item[$i]->getCantidad(); //Cantidad que pide el cliente
+                    $depositos = $item[$i]->getCodigomaterial();//El producto que está comprando
+                    $cant_comprada = $item[$i]->getCantidad(); //Cantidad que pide el cliente
 
-                        $almacenes = $depositos->getAlmacenes(); //obtiene los depositos en la bd del item i que se está comprando
-                        $num_almacenes_disp = $almacenes->count();
-                        
-                        $datos = '';//con motivo de imprimir en el throw
-                        $aux = $cant_comprada;
-                        $cant_disponible = 0;
-                        //Primero veo si puedo hacer la venta
-                        for ($j=0; $j<$num_almacenes_disp; $j++){ $cant_disponible = $almacenes[$j]->getCantmaterialdisponible() + $cant_disponible; }
-                        if($cant_disponible>=$aux){
-                            //puedo vender el producto
-                                for ($j=0; $j<$num_almacenes_disp && $aux>=0; $j++){
-                                    $cant_disponible = $almacenes[$j]->getCantmaterialdisponible() + $cant_disponible;
-                            //Aqui elegimos para el item_i de cual almacen_j restar
-                                if($almacenes[$j]->getCantmaterialdisponible()>=$aux){ //si con el primer almacen se puede satisfacer la venta
-                                    $almacenes[$j]->setCantmaterialdisponible($almacenes[$j]->getCantmaterialdisponible()-$aux); //lo quito del almacen
-                                    $aux = 0;
-                                }else{
-                                    if($cant_disponible>=$aux){ //si aux es menor que la cantidad total disponible
-                                        for ($k=0; $k<$num_almacenes_disp ; $k++) {
-                                            $aux = $aux - $almacenes[$k]->getCantmaterialdisponible();
-                                            if($aux > 0){
-                                                $almacenes[$k]->setCantmaterialdisponible(0);
-                                            }else{
-                                                $almacenes[$k]->setCantmaterialdisponible($almacenes[$k]->getCantmaterialdisponible()-$aux);
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }else{
-                            //No se puede comprar una verga
-                            $session = $request->getSession();
-                            $this->addFlash('mensaje','El producto'.$item[$i]->getDescripcionmaterial().' no se puede vender, no hay suficiente cantidad para realizar la venta');
-                            
-                            $entities = $em->getRepository('JYGRevestimientosBundle:Venta')->findAll();
-
-                            return $this->render('JYGRevestimientosBundle:Venta:index.html.twig', array(
-                                'entities' => $entities,
-                                ));
+                    $almacenes = $depositos->getAlmacenes(); //obtiene los depositos en la bd del item i que se está comprando
+                    $num_almacenes_disp = $almacenes->count();
+                    
+                    $datos = '';//con motivo de imprimir en el throw
+                    $aux = $cant_comprada;
+                    $cant_disponible = 0;
+                    //Primero veo si puedo hacer la venta
+                    for ($j=0; $j<$num_almacenes_disp; $j++){ $cant_disponible = $almacenes[$j]->getCantmaterialdisponible() + $cant_disponible; }
+                    if($cant_disponible>=$aux){
+                        //puedo vender el producto
+                        ///////////////////////////////////////////////////////
+                        //Caso con el 1er almacen
+                        if($almacenes[0]->getCantmaterialdisponible()>=$aux && $aux!=0){
+                            $descripcion = $item[$i]->getCodigomaterial().', '.$almacenes[0]->getNombrealmacen().'='.$aux;
+                            $almacenes[0]->setCantmaterialdisponible($almacenes[0]->getCantmaterialdisponible()-$aux);
+                            $aux = 0;
                         }
-                    }//End for
-                    $entity->setItems($item);
-                    $em->persist($entity);
-                    $em->flush();
-                    //compro bien
-                    $session = $request->getSession();
-                    $this->addFlash('mensaje','La venta se ha realizado con éxito');
+                        //caso con el 2do almacen
+                        if($almacenes[1]->getCantmaterialdisponible()>=$aux && $aux!=0){
+                            $descripcion = $item[$i]->getCodigomaterial().', '.$almacenes[1]->getNombrealmacen().'='.$aux;
+                             $almacenes[1]->setCantmaterialdisponible($almacenes[1]->getCantmaterialdisponible()-$aux);
+                             $aux = 0;
+                        }
+                        //con ambos almacenes
+                        if($almacenes[0]->getCantmaterialdisponible()>0 && $almacenes[1]->getCantmaterialdisponible()>0 && $aux!=0){
+                            $aux = $aux - $almacenes[0]->getCantmaterialdisponible();
+                            $descripcion = $item[$i]->getCodigomaterial().', '.$almacenes[0]->getNombrealmacen().'='.$almacenes[0]->getCantmaterialdisponible();
+                            $almacenes[0]->setCantmaterialdisponible(0);
+                            $almacenes[1]->setCantmaterialdisponible($almacenes[1]->getCantmaterialdisponible()-$aux);
+                            $descripcion = $descripcion.' y '.$almacenes[1]->getNombrealmacen().'='.$aux;
+                        }
+                        //////////////////////////////////////////////////////
+                        $item[$i]->setDescripcionmaterial($descripcion);
+                        $session = $request->getSession();
+                        $session->getFlashBag()->add('exito','El producto "'.$item[$i]->getDescripcionmaterial().'" si se puede vender, hay la cantidad suficiente.');
+                    }else{
+                        //No se puede vender
+                        $se_puede_vender = false;
+                        $session = $request->getSession();
+                        $session->getFlashBag()->add('error','El producto "'.$item[$i]->getDescripcionmaterial().'" no se puede vender, no hay suficiente cantidad para realizar la venta');
+                    }//se puedo vender
+                }//End for
 
-                    $entities = $em->getRepository('JYGRevestimientosBundle:Venta')->findAll();
+                if(!$se_puede_vender){
+                    $em = $this->getDoctrine()->getManager();
+                    $clientes = $em->getRepository('JYGRevestimientosBundle:Cliente')->findAll();
 
-                    return $this->render('JYGRevestimientosBundle:Venta:index.html.twig', array(
-                        'entities' => $entities,
+                    return $this->render('JYGRevestimientosBundle:Venta:new.html.twig', array(
+                        'entity' => $entity,
+                        'form'   => $form->createView(),
+                        'clientes' => $clientes,
                         ));
-                }
-            }
-            $em = $this->getDoctrine()->getManager();
-            $clientes = $em->getRepository('JYGRevestimientosBundle:Cliente')->findAll();
+                }else{
+                    if ($hasta > 0) {
+                        $entity->setItems($item);
+                        $em->persist($entity);
+                        $em->flush();
+                        
+                        //compro bien
+                        $session = $request->getSession();
+                        $this->addFlash('exito','La venta se ha realizado con éxito');
 
-            return $this->render('JYGRevestimientosBundle:Venta:new.html.twig', array(
-                'entity' => $entity,
-                'form'   => $form->createView(),
-                'clientes' => $clientes,
-                ));
+                        $entities = $em->getRepository('JYGRevestimientosBundle:Venta')->findAll();
+                        return $this->render('JYGRevestimientosBundle:Venta:index.html.twig', array(
+                            'entities' => $entities));
+                    }else{
+                        $session = $request->getSession();
+                        $this->addFlash('error','Debe elegir un producto para la venta');
+                    }
+                    
+                }// fin else se puedo vender
+                    
+            }//if is valid
+        }//if del post request
+        
+        $em = $this->getDoctrine()->getManager();
+        $clientes = $em->getRepository('JYGRevestimientosBundle:Cliente')->findAll();
+
+        return $this->render('JYGRevestimientosBundle:Venta:new.html.twig', array(
+            'entity' => $entity,
+            'form'   => $form->createView(),
+            'clientes' => $clientes,
+            ));
     }
 
     /**

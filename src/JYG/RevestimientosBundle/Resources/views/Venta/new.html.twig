@@ -1,7 +1,7 @@
 {% extends 'JYGRevestimientosBundle::baseAdmin.html.twig' %}
 {% block javascripts %}
 	<script src="{{ asset('bundles/jygrevestimientos/js/jquery.min.js') }}"></script>
-	<script src="{{ asset('bundles/jygrevestimientos/js/formsVenta.js') }}"></script>
+    <script src="{{ asset('bundles/jygrevestimientos/js/formsVenta.js') }}"></script>
     <script src="{{ asset('bundles/jygrevestimientos/js/datatable.min.js') }}"></script>
     <script type="text/javascript">
         $(document).ready(function(){
@@ -27,6 +27,12 @@
 
     <div class="row">
         {% for flashMessage in app.session.flashbag.get('cod') %}
+            <div class = "alert alert-danger alert-dismissable">
+                <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
+                {{ flashMessage }}
+            </div>
+        {% endfor %}
+        {% for flashMessage in app.session.flashbag.get('error') %}
             <div class = "alert alert-danger alert-dismissable">
                 <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
                 {{ flashMessage }}
