@@ -1,3 +1,4 @@
+/*Modal de ver la imagen los detalles del producto vista usuario */
 $('#exampleModal').on('show.bs.modal', function (event) {
   var button = $(event.relatedTarget)
   var urlimagen = button.data('whatever')
