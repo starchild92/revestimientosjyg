@@ -38,7 +38,8 @@ class VentaType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'JYG\RevestimientosBundle\Entity\Venta'
+            'data_class' => 'JYG\RevestimientosBundle\Entity\Venta',
+            'cascade_validation' => true,
         ));
     }
 

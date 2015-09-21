@@ -22,4 +22,14 @@ class VentaRepository extends EntityRepository
         
         return $result;
 	}
+
+	public function AllOrdenById(){
+		$query = $this->getEntityManager()
+			->createQuery('SELECT u
+				FROM JYGRevestimientosBundle:Venta u
+				ORDER BY u.id DESC');
+		$result = $query->getResult();
+
+		return $result;
+	}
 }

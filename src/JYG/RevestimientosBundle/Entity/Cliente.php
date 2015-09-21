@@ -12,7 +12,6 @@ use Doctrine\Common\Collections\ArrayCollection;
  *
  * @ORM\Table(name="cliente")
  * @ORM\Entity(repositoryClass="JYG\RevestimientosBundle\Entity\ClienteRepository")
- * @ORM\Entity
  */
 class Cliente
 {

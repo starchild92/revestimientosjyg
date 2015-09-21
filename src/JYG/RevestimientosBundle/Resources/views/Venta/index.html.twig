@@ -3,7 +3,9 @@
     <script src="{{ asset('bundles/jygrevestimientos/js/datatable.min.js') }}"></script>
     <script type="text/javascript">
         $(document).ready(function(){
-            $('#myTable').DataTable({});
+            $('#myTable').DataTable({
+                "order": [[ 0, "asc" ]]
+            });
         });
     </script>
 {% endblock %}

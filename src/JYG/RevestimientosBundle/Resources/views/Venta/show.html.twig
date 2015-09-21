@@ -6,7 +6,8 @@
 {% endblock %}
 {% block body -%}
     <div class="row">
-        <div class="col-sm-12"><div class="page-header"><h1>Venta #{{ entity.id }}</h1></div></div>
+        <div class="col-lg-9 col-sm-9 col-xs-12"><div class="page-header"><h1>Venta #{{ entity.id }}</h1></div></div>
+        <div class="col-lg-3 col-sm-3 col-xs-12"><a id="volver" class="btn btn-block btn-success" href="{{ path('venta') }}"><span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span> Ver Todas las Ventas</a></div>
     </div>
 
     <div class="row">
@@ -67,15 +68,14 @@
     </div>
 
     <div class="row">
-        <div class="col-lg-6 col-sm-6 col-xs-12"><a class="btn btn-block btn-primary" href="{{ path('venta') }}"><span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span> Ver Todas las Ventas</a></div>
-        <!--<div class="col-lg-6 col-sm-6 col-xs-12"><a class="btn btn-block btn-primary" href="{#{ path('venta_edit', { 'id': entity.id }) }#}">Modificar Esta Venta</a></div>-->
-        
-        <div class="col-lg-6 col-sm-6 col-xs-12"><a type="button" data-toggle="modal" id="Modal" data-target="#ModalEliminarVenta" data-nombre="{{ entity.id }}" data-cliente="{{ cliente.nombre }}" class="btn btn-block btn-danger">Eliminar Venta</a></div>
+        <div class="col-lg-6 col-sm-6 col-xs-12"><a type="button" data-toggle="modal" id="Modal" data-target="#ModalEliminarVenta" data-nombre="{{ entity.id }}" data-cliente="{{ cliente.nombre }}" class="btn btn-block btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Eliminar Venta</a></div>
+
+        <div class="col-lg-6 col-sm-6 col-xs-12"><a class="btn btn-block btn-primary" href="{#{ path('venta_edit', { 'id': entity.id }) }#}"><span class="glyphicon glyphicon-print" aria-hidden="true"></span> Descargar "Nota de Entrega"</a></div>
     </div>
         
     <!-- el modal tio -->
     <div class="modal fade" id="ModalEliminarVenta" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-        <div class="modal-dialog modal-lg" >
+        <div class="modal-dialog" >
             <div class="modal-content bodies">
                 <center><h3>¿Está seguro que desea eliminar la venta <i id="nombre_" style="color: rgb(255, 114, 0)"></i> del cliente <i id="nombre_cliente"></i>?</h3><br>
                 <p>Esto eliminará la venta y repondrá los productos comprados en el inventario.</p></center>

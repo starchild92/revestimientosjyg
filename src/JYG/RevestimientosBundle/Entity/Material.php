@@ -30,6 +30,11 @@ class Material
      *
      * @ORM\Column(name="codigo", type="string", length=200, nullable=false)
      * @ORM\OneToMany(targetEntity="Item", mappedBy="codigomaterial", cascade={"persist","remove"})
+     * @Assert\Regex(
+     *     pattern="/[(,)]/",
+     *     match=false,
+     *     message="El código del material no puede tener comas (,)."
+     * )
      */
     private $codigo;
 
@@ -129,6 +134,7 @@ class Material
      */
     public function setCodigo($codigo)
     {
+        $codigo = strtoupper($codigo);
         $this->codigo = $codigo;
     
         return $this;
