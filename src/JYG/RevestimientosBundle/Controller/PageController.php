@@ -175,7 +175,7 @@ class PageController extends Controller
                     ));
                 }else{
 
-                    return $this->render('JYGRevestimientosBundle:Page:indexAdmin.html.twig's); 
+                    return $this->render('JYGRevestimientosBundle:Page:indexAdmin.html.twig'); 
                 }
             }
         }
