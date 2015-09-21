@@ -7,6 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use JYG\RevestimientosBundle\Entity\Consulta;
 use JYG\RevestimientosBundle\Entity\Login;
+use JYG\RevestimientosBundle\Entity\Usuario;
 use JYG\RevestimientosBundle\Form\LoginType;
 use JYG\RevestimientosBundle\Form\ConsultaType;
 
@@ -148,6 +149,12 @@ class PageController extends Controller
         ));
     }
 
+    public function inicioAdminAction(){
+
+        return $this->render('JYGRevestimientosBundle:Page:indexAdmin.html.twig'
+        );
+    }
+
     public function inicioSesionAction(){
 
         $login = new Login();
@@ -158,8 +165,7 @@ class PageController extends Controller
             if ($form->isValid()) {
                 $login = $form->get('login')->getData();
                 $password = $form->get('password')->getData();
-                 $em = $this->getDoctrine()
-                   ->getEntityManager();
+                $em = $this->getDoctrine()->getEntityManager();
                 $user = $em->getRepository('JYGRevestimientosBundle:Login')
                             ->validarCuenta($login, $password);
                if ($user == null) {
@@ -168,7 +174,8 @@ class PageController extends Controller
                     'form' => $form->createView()
                     ));
                 }else{
-                     return $this->redirect($this->generateUrl('material')); //LLEVAR A INDEX ADMIN (SIN HACER AUN)
+
+                    return $this->render('JYGRevestimientosBundle:Page:indexAdmin.html.twig's); 
                 }
             }
         }

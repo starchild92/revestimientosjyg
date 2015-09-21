@@ -56,6 +56,10 @@ _inicio_sesion:
     path:  /iniciosesion
     defaults: { _controller: JYGRevestimientosBundle:Page:inicioSesion }
 
+inicio_admin:
+    path:  /sistemainventario
+    defaults: { _controller: JYGRevestimientosBundle:Page:inicioAdmin }
+
 jyg_revestimientos_venta:
     resource: "@JYGRevestimientosBundle/Resources/config/routing/venta.yml"
     prefix:   /venta
@@ -93,3 +97,5 @@ _productos_tipo:
 jyg_revestimientos_material:
     resource: "@JYGRevestimientosBundle/Resources/config/routing/material.yml"
     prefix:   /material
+
+
