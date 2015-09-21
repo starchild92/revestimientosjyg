@@ -40,6 +40,7 @@ class VentaController extends Controller
      */
     public function createAction(Request $request)
     {
+        $session = $request->getSession();
         $entity = new Venta();
         $cliente = new Cliente();
         $item = new Item();
@@ -54,8 +55,7 @@ class VentaController extends Controller
                 //Operaciones respecto al cliente
                 if (!$clienteaux){ //no existe el cliente
                     //Obtengo los datos del nuevo cliente
-                    if($entity->getComprador()->getRif() == '' || $entity->getComprador()->getNombre() == '' || $entity->getComprador()->getDireccion() == '' || $entity->getComprador()->getTelefono()){
-                        $session = $request->getSession();
+                    if($entity->getComprador()->getRif() == '' || $entity->getComprador()->getNombre() == '' || $entity->getComprador()->getDireccion() == '' || $entity->getComprador()->getTelefono()){            
                         $session->getFlashBag()->add('error','Debes elegir un usuario o agregar uno nuevo para poder realizar la venta. Por favor no dejes campos en blanco.');
                         $em = $this->getDoctrine()->getManager();
                         $clientes = $em->getRepository('JYGRevestimientosBundle:Cliente')->findAll();
@@ -124,12 +124,10 @@ class VentaController extends Controller
                         }
                         //////////////////////////////////////////////////////
                         $item[$i]->setDescripcionmaterial($descripcion);
-                        $session = $request->getSession();
                         $session->getFlashBag()->add('exito','El producto "'.$item[$i]->getDescripcionmaterial().'" si se puede vender, hay la cantidad suficiente.');
                     }else{
                         //No se puede vender
-                        $se_puede_vender = false;
-                        $session = $request->getSession();
+                        $se_puede_vender = false;            
                         $session->getFlashBag()->add('error','No hay suficiente cantidad de "'.$item[$i]->getDescripcionmaterial().'" para realizar la venta');
                         $entity->removeItem($item[$i]);//Quitando el item que no se puede vender
                     }//se puedo vender
@@ -151,22 +149,19 @@ class VentaController extends Controller
                         $em->persist($entity);
                         $em->flush();
                         
-                        //compro bien
-                        $session = $request->getSession();
+                        //compro bien            
                         $this->addFlash('exito','La venta se ha realizado con éxito');
 
                         $entities = $em->getRepository('JYGRevestimientosBundle:Venta')->findAll();
                         return $this->render('JYGRevestimientosBundle:Venta:index.html.twig', array(
                             'entities' => $entities));
-                    }else{
-                        $session = $request->getSession();
+                    }else{            
                         $this->addFlash('error','Debe elegir un producto para la venta');
                     }
                     
                 }// fin else se puedo vender
                     
-            }else{
-                $session = $request->getSession();
+            }else{    
                 $this->addFlash('error','Los datos del Cliente no se pudieron procesar, verifiquelos y intente de nuevo.');
             }//if is valid
         }//if del post request
@@ -322,12 +317,29 @@ class VentaController extends Controller
             'delete_form' => $deleteForm->createView(),
         ));
     }
+    
+    public function contar_hasta($caracter, $cad_aux){
+        $a = 0;
+        $j = strlen($cad_aux);
+        
+        while ($j > 0) {
+            $j = $j-1;
+            if ($cad_aux[$j] != $caracter) {
+               $a = $a-1;
+            }else{
+               $j = 0; 
+           }
+        }
+        return $a;
+    }
+
     /**
      * Deletes a Venta entity.
      *
      */
     public function deleteAction(Request $request, $id)
     {
+        $session = $request->getSession();
         $form = $this->createDeleteForm($id);
         $form->handleRequest($request);
 
@@ -335,8 +347,7 @@ class VentaController extends Controller
             $em = $this->getDoctrine()->getManager();
             $entity = $em->getRepository('JYGRevestimientosBundle:Venta')->find($id);
 
-            if (!$entity) {
-                $session = $request->getSession();
+            if (!$entity) {    
                 $this->addFlash('error','La venta que desea eliminar no existe.');
                 return $this->redirect($this->generateUrl('venta'));
             }else{
@@ -345,30 +356,64 @@ class VentaController extends Controller
                 $item = $entity->getItems();
                 $hasta = $item->count();
 
-                for ($i=1; $i<=$hasta; $i++) { 
-                    //$item[$i]->setDescripcionmaterial($item[$i]->getCodigomaterial());     
-
+                for ($i=0; $i<$hasta; $i++){ //Para cada producto de la venta
                     $material = $item[$i]->getCodigomaterial();//El producto que compró (una instancia de material)
                     $almacenes = $material->getAlmacenes(); //almacenes con las cantidades actuales del producto
 
                     $cadena_raw = $item[$i]->getDescripcionmaterial();
-                    $wordlist = array("Depósito Tienda=", "Depósito Origen=");
-
-                    foreach ($wordlist as &$word){
-                        $word = '/\b' . preg_quote($word, '/') . '\b/';
-                    }
-
-                    $cadena_raw = preg_replace($wordlist, '', $cadena_raw);
-
-                    throw $this->createNotFoundException($cadena_raw);
+                    /*$wordlist = array("Depósito Tienda=", "Depósito Origen=");
+                    foreach ($wordlist as &$word){ $word = '/\b' . preg_quote($word, '/') . '\b/'; }
+                    $cadena_raw = preg_replace($wordlist, '', $cadena_raw);*/
                     
-                    //$cant_comprada = $item[$i]->getCantidad(); //Cantidad que pide el cliente
+                    $a = $this->contar_hasta(',', $cadena_raw);
+                    
+                    //Substraigo desde la primera coma de atras hacia delante hasta el final de la cadena
+                    $datos_alm = substr($cadena_raw, $a); //Depósito Tienda=70 y Depósito Origen=10
+                    
+                    //Cantidad de depositos de donde se extrajo el producto para la venta
+                    $cant_depositos_venta = substr_count($datos_alm, "Depósito"); 
 
-                    $almacenes = $depositos->getAlmacenes(); //obtiene los depositos en la bd del item i que se está comprando
-                    $num_almacenes_disp = $almacenes->count();
-                }
-                throw $this->createNotFoundException($hasta);
+                    //las posibilidades son 1 o 2 (que son los depositos de donde se puede comprar)
+                    if($cant_depositos_venta == 1){
+                        $a = $this->contar_hasta('=', $datos_alm);
+                        $cant_material = substr($datos_alm, $a);
+                        $nombre_dep = substr($datos_alm, 1, $a-1);
 
+                        for ($j=0; $j<$cant_depositos_venta; $j++) { 
+                            if ($almacenes[$j]->getNombrealmacen() == $nombre_dep) {
+                                $almacenes[$j]->setCantmaterialdisponible($almacenes[$j]->getCantmaterialdisponible()+$cant_material);
+                                //throw $this->createNotFoundException($almacenes[$j]->getNombrealmacen().$nombre_dep);
+                            }
+                        }
+                    }else{
+
+                        $a = $this->contar_hasta('y', $datos_alm);
+
+                        $primera_cad = substr($datos_alm, $a);
+                        $segunda_cad = substr($datos_alm, 1, $a-1);
+
+                        $a = $this->contar_hasta('=', $primera_cad);
+                        $cant_material = substr($primera_cad, $a);
+                        $nombre_dep = substr($primera_cad, 1, $a-1);
+                        
+                        for ($j=0; $j<$cant_depositos_venta; $j++) { 
+                            if ($almacenes[$j]->getNombrealmacen() == $nombre_dep) {
+                                $almacenes[$j]->setCantmaterialdisponible($almacenes[$j]->getCantmaterialdisponible()+$cant_material);
+                            }
+                        }
+
+                        $a = $this->contar_hasta('=', $segunda_cad);
+                        $cant_material = substr($segunda_cad, $a);
+                        $nombre_dep = substr($segunda_cad, 0, $a-1);
+
+                        for ($j=0; $j<$cant_depositos_venta; $j++) { 
+                            if ($almacenes[$j]->getNombrealmacen() == $nombre_dep) {
+                                $almacenes[$j]->setCantmaterialdisponible($almacenes[$j]->getCantmaterialdisponible()+$cant_material);
+                            }
+                        }
+                    }
+                }//End del form de los items
+                $session->getFlashBag()->add('exito','Se ha eliminado la venta y se han restaurado las cantidades en los Depósitos.');
                 $em->remove($entity);
                 $em->flush();
             }
