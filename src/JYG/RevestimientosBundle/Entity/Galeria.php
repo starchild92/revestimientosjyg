@@ -101,7 +101,7 @@ class Galeria
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $path;
+    public $path;
 
     public function getAbsolutePath()
     {

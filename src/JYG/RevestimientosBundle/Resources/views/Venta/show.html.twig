@@ -68,9 +68,8 @@
     </div>
 
     <div class="row">
-        <div class="col-lg-6 col-sm-6 col-xs-12"><a type="button" data-toggle="modal" id="Modal" data-target="#ModalEliminarVenta" data-nombre="{{ entity.id }}" data-cliente="{{ cliente.nombre }}" class="btn btn-block btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Eliminar Venta</a></div>
-
         <div class="col-lg-6 col-sm-6 col-xs-12"><a class="btn btn-block btn-primary" href="{#{ path('venta_edit', { 'id': entity.id }) }#}"><span class="glyphicon glyphicon-print" aria-hidden="true"></span> Descargar "Nota de Entrega"</a></div>
+        <div class="col-lg-6 col-sm-6 col-xs-12"><a type="button" data-toggle="modal" id="Modal" data-target="#ModalEliminarVenta" data-nombre="{{ entity.id }}" data-cliente="{{ cliente.nombre }}" class="btn btn-block btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Eliminar Venta</a></div>
     </div>
         
     <!-- el modal tio -->

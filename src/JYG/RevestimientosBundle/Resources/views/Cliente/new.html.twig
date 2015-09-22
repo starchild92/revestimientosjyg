@@ -7,7 +7,7 @@
     </div>
 
         {{ form_start(form) }}
-    <div class="row">
+    <div class="row well">
         {% for flashMessage in app.session.flashbag.get('cod') %}
             <div class = "alert alert-danger alert-dismissable">
                 <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>

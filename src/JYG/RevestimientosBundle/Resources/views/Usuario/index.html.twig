@@ -1,9 +1,12 @@
-{% extends 'JYGRevestimientosBundle::base.html.twig' %}
+{% extends 'JYGRevestimientosBundle::baseAdmin.html.twig' %}
 
 {% block body -%}
-    <h1>Usuario list</h1>
-
-    <table class="records_list">
+    <div class="row">
+        <div class="col-lg-10 col-sm-10"><div class="page-header"><h1>Lista de Usuario</h1></div></div>
+        <div class="col-sm-2"><a id="volver" href="{{ path('usuario_new') }}" class="btn btn-success pull-right" type="button"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>  Añadir un nuevo Usuario</a></div>
+    </div>
+    <div class="row"><div class="col-lg-12 col-sm-12">
+    <table class="table table-bordered table-responsive table-striped records_list">
         <thead>
             <tr>
                 <th>Id</th>
@@ -27,25 +30,18 @@
                 <td>{{ entity.login }}</td>
                 <td>{{ entity.contrasena }}</td>
                 <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('usuario_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('usuario_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
+                    <div class="dropdown pull-right">
+                      <button class="btn btn-sm btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Opciones  <span class="caret"></span>
+                      </button>
+                      <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
+                        <li><a href="{{ path('usuario_show', { 'id': entity.id }) }}">Ver Detalles del Usuario</a></li>
+                        <li><a href="{{ path('usuario_edit', { 'id': entity.id }) }}">Modificar Usuario</a></li>
+                      </ul>
+                    </div>
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-
-        <ul>
-        <li>
-            <a href="{{ path('usuario_new') }}">
-                Create a new entry
-            </a>
-        </li>
-    </ul>
-    {% endblock %}
+    </div></div>
+{% endblock %}

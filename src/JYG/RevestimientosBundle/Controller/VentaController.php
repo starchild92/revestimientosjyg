@@ -162,7 +162,7 @@ class VentaController extends Controller
                 }// fin else se puedo vender
                     
             }else{    
-                $this->addFlash('error','Los datos del Cliente no se pudieron procesar, verifiquelos y intente de nuevo.');
+                $this->addFlash('error','Ha ocurrido un inconveniente al procesar los datos, por favor, verifique la información.');
             }//if is valid
         }//if del post request
         
