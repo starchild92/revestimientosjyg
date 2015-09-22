@@ -19,8 +19,15 @@ class UsuarioType extends AbstractType
             ->add('apellido')
             ->add('telefono')
             ->add('correo')
-            ->add('login')
-            ->add('contrasena')
+            ->add('login','text',array('label' => 'Usuario'))
+            ->add('contrasena','repeated', array(
+                'type' => 'password',
+                'invalid_message' => 'Los campos de contraseña deben coincidir ',
+                'options' => array('attr' => array('class' => 'password-field')),
+                'required' => true,
+                'first_options'  => array('label' => 'Contraseña'),
+                'second_options' => array('label' => 'Repite la Contraseña'),
+                ))
         ;
     }
     

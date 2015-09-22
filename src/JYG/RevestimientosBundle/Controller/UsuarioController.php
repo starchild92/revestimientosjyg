@@ -67,7 +67,10 @@ class UsuarioController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Create'));
+        $form->add('submit', 'submit', array(
+            'label' => 'Añadir Nuevo Usuario',
+            'attr' => array('class' => 'btn btn-primary btn-block')
+        ));
 
         return $form;
     }
