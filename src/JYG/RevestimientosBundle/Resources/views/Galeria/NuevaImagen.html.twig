@@ -13,7 +13,7 @@
     </div>
 
 {{ form_start(form) }}
-    <div class="row">
+    <div class="row well">
         <div class="col-lg-6 col-sm-6 col-xs-12">
             {{ form_row(form.file) }}
             {{ form_row(form.nombre) }}
@@ -22,7 +22,7 @@
             {{ form_rest(form) }}
         </div>
         <div class="col-lg-6 col-sm-6 col-xs-12">
-            <div class="well well-sm">Actualmente hay {{ entities|length }} imágenes en galería.</div>
+            <div>Actualmente hay {{ entities|length }} imágenes en galería.</div>
             {% for img in entities %}
                 <img id="thumbs" src="{{ asset('bundles/jygrevestimientos/images/galeria/') }}{{ img.id }}.{{ img.path }}" data-toggle="popover" data-placement="bottom" title="{{ img.nombre }}" data-container="body" data-content="{{ img.descripcion }}">
             {% endfor %}

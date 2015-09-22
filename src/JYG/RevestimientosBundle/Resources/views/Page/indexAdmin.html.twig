@@ -1,114 +1,111 @@
 {% extends 'JYGRevestimientosBundle::baseAdmin.html.twig' %}
 
 {% block body %}
-
-	<div class="container-fluid">
-			<div class="col-lg-12 col-sm-12 principio well well-lg">
-				<h1>Bienvenido/a</h1>
-				<div> <h4> ¿Que le gustaría hacer hoy?</h4> </div>
-				<div class="row">
-					<div class="col-lg-3 col-md-6">
-						<div class="panel panel-primary">
-							<div class="panel-heading">
-								<div class="row">
-									<div class="col-xs-2">
-										<span class="glyphicon glyphicon-th" aria-hidden="true" id="sp"></span> 
-									</div>
-									<div class="col-xs-10">
-										<h5>  Gestión de Productos</h5>
-									</div>
-								</div>
+	<div class="col-lg-12 col-sm-12 well principio">
+		<h1>Bienvenido/a</h1>
+		<div> <h4> ¿Que le gustaría hacer hoy?</h4> </div>
+		<div class="row">
+			<div class="col-lg-3 col-md-6">
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<div class="row">
+							<div class="col-xs-2">
+								<span class="glyphicon glyphicon-th" aria-hidden="true" id="sp"></span> 
 							</div>
-							<a href="{{ path('material') }}">
-								<div class="panel-footer">
-									<span class="pull-right">Ir   <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></span>
-									<div class="clearfix"></div>
-								</div>
-							</a>
+							<div class="col-xs-10">
+								<h5>  Gestión de Productos</h5>
+							</div>
 						</div>
 					</div>
-					<div class="col-lg-3 col-md-6">
-						<div class="panel panel-primary">
-							<div class="panel-heading">
-								<div class="row">
-									<div class="col-xs-2">
-										<span class="glyphicon glyphicon-usd" aria-hidden="true" id="sp"></span> 
-									</div>
-									<div class="col-xs-10">
-										<h5>Gestión de Ventas</h5>
-									</div>
-								</div>
-							</div>
-							<a href="{{ path('venta') }}">
-								<div class="panel-footer">
-									<span class="pull-right">Ir        <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></span>
-									<div class="clearfix"></div>
-								</div>
-							</a>
+					<a href="{{ path('material') }}">
+						<div class="panel-footer">
+							<span class="pull-right">Ir   <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></span>
+							<div class="clearfix"></div>
 						</div>
-					</div>
-					<div class="col-lg-3 col-md-6">
-						<div class="panel panel-primary">
-							<div class="panel-heading">
-								<div class="row">
-									<div class="col-xs-2">
-										<span class="glyphicon glyphicon-briefcase" aria-hidden="true" id="sp"></span> 
-									</div>
-									<div class="col-xs-10">
-										<h5>Gestión de Clientes</h5>
-									</div>
-								</div>
-							</div>
-							<a href="{{ path('cliente') }}">
-								<div class="panel-footer">
-									<span class="pull-right">Ir        <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></span>
-									<div class="clearfix"></div>
-								</div>
-							</a>
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-6">
-						<div class="panel panel-primary">
-							<div class="panel-heading">
-								<div class="row">
-									<div class="col-xs-2">
-										<span class="glyphicon glyphicon-user" aria-hidden="true" id="sp"></span> 
-									</div>
-									<div class="col-xs-10">
-										<h5>Gestión de Usuarios</h5>
-									</div>
-								</div>
-							</div>
-							<a href="{{ path('usuario') }}">
-								<div class="panel-footer">
-									<span class="pull-right">Ir        <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></span>
-									<div class="clearfix"></div>
-								</div>
-							</a>
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-6">
-						<div class="panel panel-primary">
-							<div class="panel-heading">
-								<div class="row">
-									<div class="col-xs-2">
-										<span class="glyphicon glyphicon-picture" aria-hidden="true" id="sp"></span> 
-									</div>
-									<div class="col-xs-10">
-										<h5>Gestión de la Galería</h5>
-									</div>
-								</div>
-							</div>
-							<a href="{{ path('_administrar_galeria') }}">
-								<div class="panel-footer">
-									<span class="pull-right">Ir        <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></span>
-									<div class="clearfix"></div>
-								</div>
-							</a>
-						</div>
-					</div>
+					</a>
 				</div>
 			</div>
+			<div class="col-lg-3 col-md-6">
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<div class="row">
+							<div class="col-xs-2">
+								<span class="glyphicon glyphicon-usd" aria-hidden="true" id="sp"></span> 
+							</div>
+							<div class="col-xs-10">
+								<h5>Gestión de Ventas</h5>
+							</div>
+						</div>
+					</div>
+					<a href="{{ path('venta') }}">
+						<div class="panel-footer">
+							<span class="pull-right">Ir        <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></span>
+							<div class="clearfix"></div>
+						</div>
+					</a>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6">
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<div class="row">
+							<div class="col-xs-2">
+								<span class="glyphicon glyphicon-briefcase" aria-hidden="true" id="sp"></span> 
+							</div>
+							<div class="col-xs-10">
+								<h5>Gestión de Clientes</h5>
+							</div>
+						</div>
+					</div>
+					<a href="{{ path('cliente') }}">
+						<div class="panel-footer">
+							<span class="pull-right">Ir        <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></span>
+							<div class="clearfix"></div>
+						</div>
+					</a>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6">
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<div class="row">
+							<div class="col-xs-2">
+								<span class="glyphicon glyphicon-user" aria-hidden="true" id="sp"></span> 
+							</div>
+							<div class="col-xs-10">
+								<h5>Gestión de Usuarios</h5>
+							</div>
+						</div>
+					</div>
+					<a href="{{ path('usuario') }}">
+						<div class="panel-footer">
+							<span class="pull-right">Ir        <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></span>
+							<div class="clearfix"></div>
+						</div>
+					</a>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6">
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<div class="row">
+							<div class="col-xs-2">
+								<span class="glyphicon glyphicon-picture" aria-hidden="true" id="sp"></span> 
+							</div>
+							<div class="col-xs-10">
+								<h5>Gestión de la Galería</h5>
+							</div>
+						</div>
+					</div>
+					<a href="{{ path('_administrar_galeria') }}">
+						<div class="panel-footer">
+							<span class="pull-right">Ir        <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></span>
+							<div class="clearfix"></div>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
 	</div>
 {% endblock %}
 
@@ -118,25 +115,11 @@
                 font-size: 2em;
         }
         .principio{
-        	margin-top: 63px;
-        	margin-left: 60px;
+        	margin-top: 30px;
         	padding-top: 15px;
         	padding-bottom: 30px;
         	border-radius: 10px;
         }
-        .well-lg {
-        	padding: 24px;
-        	border-radius: 6px;
-        }
-        .well {
-        	min-height: 20px;
-        	padding: 19px;
-        	margin-bottom: 20px;
-        	background-color: #f5f5f5;
-        	border: 1px solid #e3e3e3;
-        	border-radius: 4px;
-        	-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
-        	box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
-        }
+        a:hover{ cursor: pointer; }
     </style>
 {% endblock %}

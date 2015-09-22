@@ -1,52 +1,32 @@
-{% extends 'JYGRevestimientosBundle::base.html.twig' %}
+{% extends 'JYGRevestimientosBundle::baseAdmin.html.twig' %}
 
 {% block body -%}
-    <h1>Usuario</h1>
+    <div class="row">
+        <div class="col-lg-9 col-sm-9 col-xs-12"><div class="page-header"><h1>Usuario #{{ entity.id }}</h1></div></div>
+        <div class="col-lg-3 col-sm-3 col-xs-12"><a id="volver" class="btn btn-block btn-success" href="{{ path('usuario') }}"><span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span> Ver Todas los Usuarios</a></div>
+    </div>
 
-    <table class="record_properties">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ entity.id }}</td>
-            </tr>
-            <tr>
-                <th>Nombre</th>
-                <td>{{ entity.nombre }}</td>
-            </tr>
-            <tr>
-                <th>Apellido</th>
-                <td>{{ entity.apellido }}</td>
-            </tr>
-            <tr>
-                <th>Telefono</th>
-                <td>{{ entity.telefono }}</td>
-            </tr>
-            <tr>
-                <th>Correo</th>
-                <td>{{ entity.correo }}</td>
-            </tr>
-            <tr>
-                <th>Login</th>
-                <td>{{ entity.login }}</td>
-            </tr>
-            <tr>
-                <th>Contrasena</th>
-                <td>{{ entity.contrasena }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('usuario') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('usuario_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+    <div class="well row">
+        <div class="col-lg-4 col-sm-4 col-xs-12">
+        <table class="table"><thead><tr><th>Nombre y Apellido</th></tr></thead>
+        <tbody><tr><td>{{ entity.apellido }}, {{ entity.nombre }}</td></tr></tbody></table>
+        </div>
+        <div class="col-lg-4 col-sm-4 col-xs-12">
+        <table class="table"><thead><tr><th>Teléfono</th></tr></thead>
+        <tbody><tr><td>{{ entity.telefono }}</td></tr></tbody></table>
+        </div>
+        <div class="col-lg-4 col-sm-4 col-xs-12">
+        <table class="table"><thead><tr><th colspan="2">Correo Electronico y Login</th></tr></thead>
+        <tbody><tr><td>{{ entity.correo }}</td><td>{{ entity.login }}</td></tr></tbody></table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4 col-sm-4 col-xs-12">
+        <a href="{{ path('usuario_edit', { 'id': entity.id }) }}" class="btn btn-primary btn-block">Modificar Detalles del Usuario</a>
+        </div>
+        <div class="col-lg-4 col-sm-4 col-xs-12">
+        </div>
+        <div class="col-lg-4 col-sm-4 col-xs-12">
+        {{ form(delete_form) }}</div>
+    </div>
 {% endblock %}

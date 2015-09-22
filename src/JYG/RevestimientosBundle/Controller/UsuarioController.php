@@ -67,10 +67,7 @@ class UsuarioController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array(
-            'label' => 'Añadir Nuevo Usuario',
-            'attr' => array('class' => 'btn btn-primary btn-block')
-        ));
+        $form->add('submit', 'submit', array('label' => 'Añadir nuevo usuario', 'attr' => array('class' => 'btn btn-success btn-block')));
 
         return $form;
     }
@@ -150,7 +147,7 @@ class UsuarioController extends Controller
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+        $form->add('submit', 'submit', array('label' => 'Actualizar Usuario', 'attr' => array('class' => 'btn btn-success btn-block')));
 
         return $form;
     }
@@ -220,7 +217,7 @@ class UsuarioController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('usuario_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
+            ->add('submit', 'submit', array('label' => 'Eliminar Usuario', 'attr' => array('class' => 'btn btn-danger btn-block')))
             ->getForm()
         ;
     }

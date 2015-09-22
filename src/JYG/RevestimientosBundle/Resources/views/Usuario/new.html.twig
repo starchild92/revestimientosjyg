@@ -1,15 +1,18 @@
-{% extends 'JYGRevestimientosBundle::base.html.twig' %}
+{% extends 'JYGRevestimientosBundle::baseAdmin.html.twig' %}
 
 {% block body -%}
-    <h1>Usuario creation</h1>
+    <div class="row">
+        <div class="col-sm-8"><div class="page-header"><h1>Añadir Nuevo Usuario</h1></div></div>
+        <div class="col-sm-4"><a id="volver" href="{{ path('usuario') }}" class="btn btn-primary pull-right" type="button"><span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>  Regresar a lista de Usuarios</a></div>
+    </div>
     {% form_theme form 'bootstrap_3_layout.html.twig' %}
-    {{ form(form) }}
+    	{{ form_start(form) }}
+    <div class="row well">
+    	<div class="col-lg-4 col-sm-4 col-xs-12">{{ form_row(form.nombre) }}{{ form_row(form.correo) }}{{ form_row(form.submit) }}</div>
+    	<div class="col-lg-4 col-sm-4 col-xs-12">{{ form_row(form.apellido) }}{{ form_row(form.login) }}</div>
+    	<div class="col-lg-4 col-sm-4 col-xs-12">{{ form_row(form.telefono) }}{{ form_row(form.contrasena) }}</div>
+    </div>
+    {{ form_end(form) }}
+    	
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('usuario') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
 {% endblock %}

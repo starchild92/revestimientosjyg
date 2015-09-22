@@ -12,7 +12,7 @@
         <div class="col-sm-4"><a id="volver" href="{{ path('material') }}" class="btn btn-primary pull-right" type="button"><span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>  Regresar a lista de Productos</a></div>
     </div>
     {{ form_start(form) }}
-    <div class="row">
+    <div class="row well">
         {% for flashMessage in app.session.flashbag.get('cod') %}
             <div class = "alert alert-danger alert-dismissable">
                 <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
