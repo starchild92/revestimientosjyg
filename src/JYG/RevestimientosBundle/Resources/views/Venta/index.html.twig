@@ -4,7 +4,7 @@
     <script type="text/javascript">
         $(document).ready(function(){
             $('#myTable').DataTable({
-                "order": [[ 0, "asc" ]]
+                "order": [[ 0, "desc" ]]
             });
         });
     </script>
@@ -12,7 +12,7 @@
 
 {% block body -%}
     <div class="row">
-        <div class="col-sm-9"><div class="page-header"><h1>Ventas</h1></div></div>
+        <div class="col-sm-9"><div class="page-header"><h1>Lista de Ventas</h1></div></div>
         <div class="col-sm-3">
         <a type="button" id="volver" class="btn btn-success btn-block" href="{{ path('venta_new') }}"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>  Realizar Nueva Venta</a>
         </div>
@@ -36,7 +36,7 @@
                 <th>Id</th>
                 <th>Fecha</th>
                 <th>Comprador</th>
-                <th>Actions</th>
+                <th>Opciones</th>
             </tr>
         </thead>
         <tbody>

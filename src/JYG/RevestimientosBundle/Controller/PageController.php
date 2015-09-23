@@ -5,6 +5,7 @@ namespace JYG\RevestimientosBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+
 use JYG\RevestimientosBundle\Entity\Consulta;
 use JYG\RevestimientosBundle\Entity\Login;
 use JYG\RevestimientosBundle\Entity\Usuario;
@@ -151,10 +152,12 @@ class PageController extends Controller
 
     public function inicioAdminAction(){
 
-        return $this->render('JYGRevestimientosBundle:Page:indexAdmin.html.twig'
-        );
+        return $this->render('JYGRevestimientosBundle:Page:indexAdmin.html.twig');
     }
 
+    /**
+     * @Route("/iniciosesion")
+     */
     public function inicioSesionAction(){
 
         $login = new Login();

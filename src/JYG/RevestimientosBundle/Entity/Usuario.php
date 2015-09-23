@@ -4,12 +4,15 @@ namespace JYG\RevestimientosBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Usuario
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="JYG\RevestimientosBundle\Entity\UsuarioRepository")
+ * @UniqueEntity("correo", message="Esta dirección de correo ya está en uso")
+ * @UniqueEntity("login", message="Este login ya existe")
  */
 class Usuario
 {
@@ -52,6 +55,11 @@ class Usuario
      * @var string
      *
      * @ORM\Column(name="telefono", type="string", length=255)
+     * @Assert\Regex(
+     *     pattern="/([\+^0-9 ()-])+/",
+     *     match=true,
+     *     message="Ejemplo. +58 400 0000000 ó (0400) 0000000 ó +58 400-000-00-00"
+     * )
      */
     private $telefono;
 
@@ -60,7 +68,7 @@ class Usuario
      *
      * @ORM\Column(name="correo", type="string", length=255)
      * @Assert\Email(
-     *     message = "El mail '{{ value }}' no es válido.",
+     *     message = "El mail {{ value }} no es válido.",
      *     checkMX = true,
      *     checkHost = true
      * )

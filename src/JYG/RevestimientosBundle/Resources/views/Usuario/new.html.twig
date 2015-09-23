@@ -8,11 +8,12 @@
     {% form_theme form 'bootstrap_3_layout.html.twig' %}
     	{{ form_start(form) }}
     <div class="row well">
-    	<div class="col-lg-4 col-sm-4 col-xs-12">{{ form_row(form.nombre) }}{{ form_row(form.correo) }}{{ form_row(form.submit) }}</div>
-    	<div class="col-lg-4 col-sm-4 col-xs-12">{{ form_row(form.apellido) }}{{ form_row(form.login) }}</div>
-    	<div class="col-lg-4 col-sm-4 col-xs-12">{{ form_row(form.telefono) }}{{ form_row(form.contrasena) }}</div>
+    	<div class="col-lg-4 col-sm-4 col-xs-12">{{ form_row(form.nombre) }}{{ form_row(form.correo) }}</div>
+    	<div class="col-lg-4 col-sm-4 col-xs-12">{{ form_row(form.apellido) }}{{ form_row(form.telefono) }}</div>
+    	<div class="col-lg-4 col-sm-4 col-xs-12">{{ form_row(form.cuenta) }}{{ form_row(form.login) }}{{ form_row(form.contrasena) }}</div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4 col-sm-4 col-xs-12">{{ form_row(form.submit) }}</div>
     </div>
     {{ form_end(form) }}
-    	
-
 {% endblock %}
