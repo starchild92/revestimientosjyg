@@ -83,7 +83,7 @@ class GaleriaController extends Controller
                 if ($form->isValid()){
                       $em->persist($entity);
                       $em->flush();
-
+                      $this->get('session')->getFlashBag()->set('cod', 'La imagen se ha modificado con éxito');
                       return $this->redirect($this->generateUrl('_administrar_galeria'));
 
                   }else{
@@ -124,8 +124,10 @@ class GaleriaController extends Controller
         if(!$foto){
             $this->get('session')->getFlashBag()->set('error', 'La imágen que desea eliminar no existe.');
         }else{
+
             $em->remove($foto);
             $em->flush();
+            $this->get('session')->getFlashBag()->set('cod', 'La imagen fue eliminada correctamente.');
         }
 
         return $this->redirect($this->generateUrl('_administrar_galeria'));

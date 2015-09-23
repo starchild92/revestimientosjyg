@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use JYG\RevestimientosBundle\Entity\Usuario;
 use JYG\RevestimientosBundle\Form\UsuarioType;
+use JYG\RevestimientosBundle\Entity\Bitacora;
 
 /**
  * Usuario controller.
@@ -42,6 +43,8 @@ class UsuarioController extends Controller
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
+            /*Entrada en la bitacora*/
+            //$this->addLog($this->getUser()->getnombreUsuario(), 'Usuario'. $entity->getLogin().' Registrado');
             $em->flush();
 
             return $this->redirect($this->generateUrl('usuario_show', array('id' => $entity->getId())));
@@ -170,8 +173,10 @@ class UsuarioController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
+            /*Entrada en la bitacora*/
+            //$this->addLog($this->getUser()->getnombreUsuario(), 'Datos del Usuario:'. $entity->getLogin().' Modificados');
             $em->flush();
-
+            $this->get('session')->getFlashBag()->set('cod', 'Se ha actualizado la información del usuario de manera correcta');
             return $this->redirect($this->generateUrl('usuario_show', array('id' => $id)));
         }
 
@@ -197,9 +202,11 @@ class UsuarioController extends Controller
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find Usuario entity.');
             }
-
+            /*Entrada en la bitacora*/
+            //$this->addLog($this->getUser()->getnombreUsuario(), 'Usuario'. $entity->getLogin().' Eliminado');
             $em->remove($entity);
             $em->flush();
+            $this->get('session')->getFlashBag()->set('cod', 'El usuario ha sido eliminado correctamente');
         }
 
         return $this->redirect($this->generateUrl('usuario'));
@@ -220,5 +227,31 @@ class UsuarioController extends Controller
             ->add('submit', 'submit', array('label' => 'Eliminar Usuario', 'attr' => array('class' => 'btn btn-danger btn-block')))
             ->getForm()
         ;
+    }
+
+    /*Funciones para guardar la bitácora:
+    * Esta función agrega una nueva entrada a la tabla bitácora.
+    */
+    private function addLog($login, $operacion, $fecha )
+    {
+        /* Se obtiene la hora del evento:*/
+        
+        $time = new \DateTime();
+        /*Se establece la zona horaria correctamente.*/
+        $zone = $this->container->getParameter('time_zone');
+        $time->setTimezone( new \DateTimeZone($zone));
+        
+
+        /*Se crea el objeto bitacora para almacenarlo posteriormente*/
+        $bitacora = new Bitacora();
+        $bitacora->setLogin( $login )
+            ->setOperacion($operacion)
+            ->setFecha( $time );
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($bitacora);
+        $em->flush();
+
+        return $this;
     }
 }

@@ -13,6 +13,12 @@
         <div class="col-sm-2"><a id="volver" href="{{ path('material_new') }}" class="btn btn-success pull-right" type="button"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>  Añadir un nuevo Producto</a></div>
     </div>
     <div class="panel panel-default">
+        {% for flashMessage in app.session.flashbag.get('cod') %}
+            <div class = "alert alert-success alert-dismissable">
+                <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
+                {{ flashMessage }}
+            </div>
+        {% endfor %}
         <table class="table table-condensed table-bordered table-responsive records_list" id="myTable">
             <thead>
                 <tr class="info">

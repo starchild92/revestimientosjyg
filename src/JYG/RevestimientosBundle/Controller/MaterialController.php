@@ -66,7 +66,8 @@ class MaterialController extends Controller
                     $em->persist($material);
                     $em->flush();
                     /*Entrada en la bitacora*/
-                    //$this->addLog( $this->getUser()->getnombreUsuario(), $this->getUser()->getId(), 'Agregada Cita: '. $paciente->getNombre().' '. $paciente->getApellido());
+                    //$this->addLog($this->getUser()->getnombreUsuario(), 'Agregado Producto: '. $material->getCodigo().''. $material->getNombre().''.$material->getTipo());
+                    $this->get('session')->getFlashBag()->set('cod', 'El producto fue agregado con éxito');
                     return $this->redirect($this->generateUrl('material_show', array('id' => $material->getId())));
                 }
             }
@@ -237,8 +238,10 @@ class MaterialController extends Controller
                     $entity->setAlmacenes($almacen);
                     $em->persist($entity);
                     $em->flush();
+                    /*Entrada en la bitacora*/
+                    //$this->addLog($this->getUser()->getnombreUsuario(), 'Modificado Producto: '. $entity->getCodigo().''. $entity->getNombre().''.$entity->getTipo());
 
-                    return $this->redirect($this->generateUrl('material_edit', array('id' => $id)));
+                    return $this->redirect($this->generateUrl('material_show', array('id' => $id)));
                 }
             }
 
@@ -268,8 +271,11 @@ class MaterialController extends Controller
                 throw $this->createNotFoundException('No se encuentra el material seleccionado');
             }
 
-            $em->remove($entity);
+            $em->remove($entity);            
             $em->flush();
+            /*Entrada en la bitacora*/
+            //$this->addLog($this->getUser()->getnombreUsuario(), 'Eliminado Producto: '. $entity->getCodigo().''. $entity->getNombre().''.$entity->getTipo());
+            $this->get('session')->getFlashBag()->set('cod', 'El producto ha sido eliminado correctamente.');
         }
 
         return $this->redirect($this->generateUrl('material'));
@@ -318,8 +324,5 @@ class MaterialController extends Controller
         $em->flush();
 
         return $this;
-
     }
-
-
 }

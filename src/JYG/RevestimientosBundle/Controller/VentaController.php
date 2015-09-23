@@ -7,7 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use JYG\RevestimientosBundle\Entity\Venta;
 use JYG\RevestimientosBundle\Form\VentaType;
-
+use JYG\RevestimientosBundle\Entity\Bitacora;
 # Para poder hacer los forms
 use JYG\RevestimientosBundle\Entity\Item;
 use JYG\RevestimientosBundle\Entity\Cliente;
@@ -74,6 +74,7 @@ class VentaController extends Controller
                     $em = $this->getDoctrine()->getManager();
                     $em->persist($cliente);
                     $em->flush();
+
                 }else{
                     //Buscando el cliente que ya existe
                     $entity->setComprador($clienteaux[0]);
@@ -135,8 +136,6 @@ class VentaController extends Controller
                 if(!$se_puede_vender){
                     $em = $this->getDoctrine()->getManager();
                     $clientes = $em->getRepository('JYGRevestimientosBundle:Cliente')->findAll();
-
-                    
                     $form = $this->createCreateForm($entity);
                     return $this->render('JYGRevestimientosBundle:Venta:new.html.twig', array(
                         'entity' => $entity,
@@ -148,7 +147,10 @@ class VentaController extends Controller
                         $entity->setItems($item);
                         $em->persist($entity);
                         $em->flush();
-                        
+
+                        /*Entrada en la bitacora*/
+                        //$this->addLog($this->getUser()->getnombreUsuario(), 'Venta realizada a: '. $entity->getComprador()->getNombre());
+
                         //compro bien            
                         $this->addFlash('exito','La venta se ha realizado con éxito');
 
@@ -415,6 +417,8 @@ class VentaController extends Controller
                 }//End del form de los items
                 $session->getFlashBag()->add('exito','Se ha eliminado la venta y se han restaurado las cantidades en los Depósitos.');
                 $em->remove($entity);
+                /*Entrada en la bitacora*/
+                //$this->addLog($this->getUser()->getnombreUsuario(), 'Eliminó Venta de: '. $entity->getComprador()->getNombre());
                 $em->flush();
             }
         }
@@ -439,5 +443,31 @@ class VentaController extends Controller
                 'attr' => array('class'=>'btn btn-danger btn-block')))
             ->getForm()
         ;
+    }
+
+    /*Funciones para guardar la bitácora:
+    * Esta función agrega una nueva entrada a la tabla bitácora.
+    */
+    private function addLog($login, $operacion, $fecha )
+    {
+        /* Se obtiene la hora del evento:*/
+        
+        $time = new \DateTime();
+        /*Se establece la zona horaria correctamente.*/
+        $zone = $this->container->getParameter('time_zone');
+        $time->setTimezone( new \DateTimeZone($zone));
+        
+
+        /*Se crea el objeto bitacora para almacenarlo posteriormente*/
+        $bitacora = new Bitacora();
+        $bitacora->setLogin( $login )
+            ->setOperacion($operacion)
+            ->setFecha( $time );
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($bitacora);
+        $em->flush();
+
+        return $this;
     }
 }

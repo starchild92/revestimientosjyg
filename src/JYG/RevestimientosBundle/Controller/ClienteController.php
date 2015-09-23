@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use JYG\RevestimientosBundle\Entity\Cliente;
 use JYG\RevestimientosBundle\Form\ClienteType;
+use JYG\RevestimientosBundle\Entity\Bitacora;
 
 /**
  * Cliente controller.
@@ -42,6 +43,8 @@ class ClienteController extends Controller
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
+            /*Entrada en la bitacora*/
+            //$this->addLog($this->getUser()->getnombreUsuario(), 'Cliente: '. $entity->getNombre().' Registrado');
             $em->flush();
 
             return $this->redirect($this->generateUrl('cliente_show', array('id' => $entity->getId())));
@@ -176,8 +179,10 @@ class ClienteController extends Controller
         if ($editForm->isValid()) {
             $this->get('session')->getFlashBag()->set('cod', 'Se ha actualizado la información del cliente de manera correcta');
             $em->flush();
+            /*Entrada en la bitacora*/
+            //$this->addLog($this->getUser()->getnombreUsuario(), 'Datos de: '. $entity->getNombre().' Modificados');
 
-            return $this->redirect($this->generateUrl('cliente_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('cliente_show', array('id' => $id)));
         }
 
         return $this->render('JYGRevestimientosBundle:Cliente:edit.html.twig', array(
@@ -202,11 +207,12 @@ class ClienteController extends Controller
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find Cliente entity.');
             }
-
+            /*Entrada en la bitacora*/
+            //$this->addLog($this->getUser()->getnombreUsuario(), 'Cliente:'. $entity->getNombre().' Eliminado');
             $em->remove($entity);
             $em->flush();
         }
-
+        $this->get('session')->getFlashBag()->set('cod', 'El Cliente ha sido eliminado de manera correcta');
         return $this->redirect($this->generateUrl('cliente'));
     }
 
@@ -226,5 +232,31 @@ class ClienteController extends Controller
             'attr' => array('class' => 'btn btn-danger btn-block')))
             ->getForm()
         ;
+    }
+
+    /*Funciones para guardar la bitácora:
+    * Esta función agrega una nueva entrada a la tabla bitácora.
+    */
+    private function addLog($login, $operacion, $fecha )
+    {
+        /* Se obtiene la hora del evento:*/
+        
+        $time = new \DateTime();
+        /*Se establece la zona horaria correctamente.*/
+        $zone = $this->container->getParameter('time_zone');
+        $time->setTimezone( new \DateTimeZone($zone));
+        
+
+        /*Se crea el objeto bitacora para almacenarlo posteriormente*/
+        $bitacora = new Bitacora();
+        $bitacora->setLogin( $login )
+            ->setOperacion($operacion)
+            ->setFecha( $time );
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($bitacora);
+        $em->flush();
+
+        return $this;
     }
 }

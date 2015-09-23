@@ -1,23 +1,4 @@
-jyg_revestimientos_cliente:
-    resource: "@JYGRevestimientosBundle/Resources/config/routing/cliente.yml"
-    prefix:   /cliente
-
-jyg_revestimientos_deposito:
-    resource: "@JYGRevestimientosBundle/Resources/config/routing/deposito.yml"
-    prefix:   /deposito
-
-jyg_revestimientos_item:
-    resource: "@JYGRevestimientosBundle/Resources/config/routing/item.yml"
-    prefix:   /item
-
-jyg_revestimientos_bitacora:
-    resource: "@JYGRevestimientosBundle/Resources/config/routing/bitacora.yml"
-    prefix:   /bitacora
-
-jyg_revestimientos_usuario:
-    resource: "@JYGRevestimientosBundle/Resources/config/routing/usuario.yml"
-    prefix:   /usuario
-
+#rutas de la pagina publicitaria
 page_verProducto:
     path:  /productos/{id}
     defaults: { _controller: JYGRevestimientosBundle:Page:verProducto }
@@ -52,6 +33,31 @@ JYGRevestimientosBundle_quienessomos:
     path:  /quienessomos
     defaults: { _controller: JYGRevestimientosBundle:Page:quienessomos }
 
+#Estas rutas son para el admin :)
+jyg_revestimientos_cliente:
+    resource: "@JYGRevestimientosBundle/Resources/config/routing/cliente.yml"
+    prefix:   /cliente
+
+jyg_revestimientos_deposito:
+    resource: "@JYGRevestimientosBundle/Resources/config/routing/deposito.yml"
+    prefix:   /deposito
+
+jyg_revestimientos_item:
+    resource: "@JYGRevestimientosBundle/Resources/config/routing/item.yml"
+    prefix:   /item
+
+jyg_revestimientos_bitacora:
+    resource: "@JYGRevestimientosBundle/Resources/config/routing/bitacora.yml"
+    prefix:   /bitacora
+
+jyg_revestimientos_usuario:
+    resource: "@JYGRevestimientosBundle/Resources/config/routing/usuario.yml"
+    prefix:   /usuario
+
+_administrar_galeria:
+    path:     /administrargaleria
+    defaults: { _controller: JYGRevestimientosBundle:Galeria:AdministrarGaleria}
+
 _inicio_sesion:
     path:  /iniciosesion
     defaults: { _controller: JYGRevestimientosBundle:Page:inicioSesion }
@@ -64,12 +70,6 @@ jyg_revestimientos_venta:
     resource: "@JYGRevestimientosBundle/Resources/config/routing/venta.yml"
     prefix:   /venta
 
-#Estas rutas son para el admin :)
-_administrar_galeria:
-    path:     /administrargaleria
-    defaults: { _controller: JYGRevestimientosBundle:Galeria:AdministrarGaleria}
-
-#Hecha
 _nueva_imagen:
     path:     /nuevaimagengaleria
     defaults: { _controller: JYGRevestimientosBundle:Galeria:NuevaImagen }

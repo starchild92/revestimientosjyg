@@ -1,34 +1,39 @@
 {% extends 'JYGRevestimientosBundle::baseAdmin.html.twig' %}
 
 {% block body -%}
-    <h1>Bitacora</h1>
+    <div class="row">
+    <div class="page-header">
+        <div class="col-sm-8"><h1>Operación /<small>#{{ entity.id }}</small></h1></div>
+        <div class="col-sm-4"><a id="volver" href="{{ path('bitacora') }}" class="btn btn-primary pull-right" type="button"><span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>  Regresar a la Bitácora</a></div>
+    </div>
+    </div>
 
-    <table class="record_properties">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ entity.id }}</td>
-            </tr>
-            <tr>
-                <th>Login</th>
-                <td>{{ entity.login }}</td>
-            </tr>
-            <tr>
-                <th>Operacion</th>
-                <td>{{ entity.operacion }}</td>
-            </tr>
-            <tr>
-                <th>Fecha</th>
-                <td>{{ entity.fecha|date('Y-m-d H:i:s') }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('bitacora') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
+    <div class="row">
+        <div class="col-lg-12 col-sm-12 col-xs-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">Resumen de la Operación</div>
+                    <table class="table table-striped table-bordered record_properties">
+                        <tbody>
+                            <tr>
+                                <th>ID</th>
+                                <td>{{ entity.id }}</td>
+                            </tr>
+                            <tr>
+                                <th>Usuario</th>
+                                <td>{{ entity.login }}</td>
+                            </tr>
+                            <tr>
+                                <th>Operación Realizada</th>
+                                <td>{{ entity.operacion }}</td>
+                            </tr>
+                            <tr>
+                                <th>Fecha</th>
+                                <td>{{ entity.fecha|date('d-m-Y -- g:ia') }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
