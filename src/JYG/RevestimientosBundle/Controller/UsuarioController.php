@@ -172,7 +172,7 @@ class UsuarioController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('usuario_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('usuario_show', array('id' => $id)));
         }
 
         return $this->render('JYGRevestimientosBundle:Usuario:edit.html.twig', array(
