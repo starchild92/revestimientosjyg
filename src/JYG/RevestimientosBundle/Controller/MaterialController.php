@@ -4,6 +4,8 @@ namespace JYG\RevestimientosBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 use JYG\RevestimientosBundle\Entity\Material;
 use JYG\RevestimientosBundle\Form\MaterialType;
@@ -19,8 +21,8 @@ class MaterialController extends Controller
 {
 
     /**
-     * Lists all Material entities.
-     *
+     * @Route("/material")
+     * @Template()
      */
     public function indexAction()
     {

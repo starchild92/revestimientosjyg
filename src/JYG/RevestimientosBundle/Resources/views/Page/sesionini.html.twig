@@ -1,69 +1,70 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Inicio de Sesión">
-    <meta name="author" content="Edilianny Sánchez, Luis Pérez">
-    <link rel="icon" href="../../favicon.ico">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Inicio de Sesión">
+	<meta name="author" content="Edilianny Sánchez, Luis Pérez">
+	<link rel="icon" href="../../favicon.ico">
 
-    <title>Revestimientos J&G - Inicio Sesión</title>
-    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/jygrevestimientos/css/signin.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/jygrevestimientos/css/bootstrap.css') }}">
-    <style type="text/css">
-    @font-face{
-      font-family: Martel;
-      src: url('{{ asset('bundles/jygrevestimientos/fonts/Arimo-Regular.ttf') }}');
-    }
-  </style>
-  <link rel="icon" type="image/x-icon" href="{{ asset('favicon.png') }}" />
-  </head>
+	<title>Revestimientos J&G - Inicio Sesión</title>
+	<link rel="stylesheet" type="text/css" href="{{ asset('bundles/jygrevestimientos/css/signin.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('bundles/jygrevestimientos/css/bootstrap.css') }}">
+	<style type="text/css">
+		@font-face{
+			font-family: Martel;
+			src: url('{{ asset('bundles/jygrevestimientos/fonts/Arimo-Regular.ttf') }}');
+		}
+	</style>
+	<link rel="icon" type="image/x-icon" href="{{ asset('favicon.png') }}" />
+</head>
 
-  <body style="background-image: url('{{ asset('bundles/jygrevestimientos/images/background_admin.jpg') }}') !important; background-repeat: repeat">
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <img class="navbar-brand" src="{{ asset('bundles/jygrevestimientos/images/brand.png') }}"><a class="navbar-brand" href="{{ path('JYGRevestimientosBundle_inicio') }}">Revestimientos J&G Barquisimeto C.A</a>
+<body style="background-image: url('{{ asset('bundles/jygrevestimientos/images/background_admin.jpg') }}') !important; background-repeat: repeat">
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<img class="navbar-brand" src="{{ asset('bundles/jygrevestimientos/images/brand.png') }}"><a class="navbar-brand" href="{{ path('JYGRevestimientosBundle_inicio') }}">Revestimientos J&G Barquisimeto C.A</a>
 
-      </div>
-      <div id="navbar" class="navbar-collapse collapse">
-        <ul class="nav navbar-nav navbar-right">
-          <li class="{{ app.request.attributes.get('_route') | replace({'jyg_revestimientos_page_' : ''}) == 'index' ? 'active' }}"><a href="{{ path('JYGRevestimientosBundle_inicio') }}">Inicio</a></li>
-        </ul>
-      </div><!--/.nav-collapse -->
-    </div>
-  </nav>
-    <div class="container-fluid navSpace">
-      <div class="row">
-        <form class="form-signin" action="{{ path('_inicio_sesion') }}" method="post">
-        <div class="col-lg-12 col-sm-12">
-          <img src='{{ asset("bundles/jygrevestimientos/images/header.png") }}' class="img-responsive item">
-          
-            <h4 class="form-signin-heading"><center>Iniciar Sesión</center></h4>
-            {% for flashMessage in app.session.flashbag.get('errorsesion') %}
-            <div class = "alert alert-danger alert-dismissable">
-                <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
-                {{ flashMessage }}
-            </div>
-        {% endfor %}
-            {{ form_start(form) }}
-            {{ form_widget(form.login, {'attr': {'placeholder': 'Usuario'} }) }} <br> 
-            {{ form_widget(form.password, {'attr': {'placeholder': 'Clave'} }) }}  
-            {{ form_row(form._token) }}
-            {{ form_rest(form) }}
-              <!--<input type="checkbox" id="remember_me" name="_remember_me" checked />
-              <label for="remember_me">Recordarme</label>-->
-            <button class="btn btn-naranja btn-block" type="submit">Continuar...</button>
-          {{ form_end(form) }}
-        </div></form>
-      </div>
-    </div> <!-- /container -->
-  </body>
+			</div>
+			<div id="navbar" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li class="{{ app.request.attributes.get('_route') | replace({'jyg_revestimientos_page_' : ''}) == 'index' ? 'active' }}"><a href="{{ path('JYGRevestimientosBundle_inicio') }}">Inicio</a></li>
+				</ul>
+			</div><!--/.nav-collapse -->
+		</div>
+	</nav>
+	<div class="container-fluid navSpace">
+		<div class="row">
+			<form class="form-signin" action="{{ path('_inicio_sesion') }}" method="post">
+				<div class="col-lg-12 col-sm-12">
+					<img src='{{ asset("bundles/jygrevestimientos/images/header.png") }}' class="img-responsive item">
+					
+					<h4 class="form-signin-heading"><center>Iniciar Sesión</center></h4>
+					{% for flashMessage in app.session.flashbag.get('errorsesion') %}
+						<div class = "alert alert-danger alert-dismissable">
+							<button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
+							{{ flashMessage }}
+						</div>
+					{% endfor %}
+					{{ form_start(form) }}
+					{{ form_widget(form.login, {'attr': {'placeholder': 'Usuario'} }) }} <br> 
+					{{ form_widget(form.password, {'attr': {'placeholder': 'Clave'} }) }}  
+					{{ form_row(form._token) }}
+					{{ form_rest(form) }}
+							<!--<input type="checkbox" id="remember_me" name="_remember_me" checked />
+							<label for="remember_me">Recordarme</label>-->
+							<button class="btn btn-naranja btn-block" type="submit">Continuar...</button>
+							{{ form_end(form) }}
+						</div>
+			</form>
+		</div>
+	</div> <!-- /container -->
+</body>
 </html>

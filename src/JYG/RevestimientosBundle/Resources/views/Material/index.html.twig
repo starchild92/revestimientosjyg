@@ -28,7 +28,7 @@
                     <th>Precios</th>
                     <th>Tipo</th>
                     <th>Disponibilidad</th>
-                    <th>Menu</th>
+                    <th>Opciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -49,13 +49,13 @@
                     </td>
                     <td>
                         <table>
-                            <tr><td>P.Compra {{ entity.preciocompra }} Bs</td></tr>
-                            <tr><td>P.Venta {{ entity.precioventa }} Bs</td></tr>
+                            <tr><td>Precio Compra {{ entity.preciocompra }} Bs</td></tr>
+                            <tr><td>Precio Venta  {{ entity.precioventa }} Bs</td></tr>
                         </table>
                     </td>
                     <td>{{ entity.tipo }}</td>
                     <td>
-                        <table class="table table-condensed table-bordered table-responsive">
+                        <table class="table table-condensed table-bordered table-responsive table-bottom">
                             <tbody>
                                 {% for almacen in entity.almacenes %}<tr>
                                     <td>{{ almacen.nombrealmacen }} ({{ almacen.cantmaterialdisponible }}{% if entity.tipo == 'Quimicos'  %} Litros{% else %} mts{% endif %})</td>
@@ -83,4 +83,8 @@
 {% endblock %}
 {% block stylesheets %}
     <link rel="stylesheet" type="text/css" href="{{ asset('bundles/jygrevestimientos/css/datatable.min.css') }}">
+    <style type="text/css">
+    .table-bottom{
+        margin-bottom: 0px;
+        }</style>
 {% endblock %}

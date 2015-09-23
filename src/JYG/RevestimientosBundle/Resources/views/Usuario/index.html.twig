@@ -34,10 +34,11 @@
                 <th>Id</th>
                 <th>Nombre</th>
                 <th>Apellido</th>
-                <th>Telefono</th>
-                <th>Correo</th>
+                <th>Teléfono</th>
+                <th>Correo Electrónico</th>
                 <th>Login</th>
-                <th>Contrasena</th>
+                <th>Cuenta</th>
+                <!--<th>Contraseña (Codificada por razones de seguridad)</th>-->
                 <th>Opciones</th>
             </tr>
         </thead>
@@ -50,7 +51,8 @@
                 <td>{{ entity.telefono }}</td>
                 <td>{{ entity.correo }}</td>
                 <td>{{ entity.login }}</td>
-                <td>{{ entity.contrasena }}</td>
+                <td>{{ entity.cuenta }}</td>
+                <!--<td>{#{ entity.contrasena }#}</td>-->
                 <td>
                     <div class="dropdown pull-right">
                       <button class="btn btn-sm btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Opciones  <span class="caret"></span>

@@ -20,14 +20,10 @@ class UsuarioType extends AbstractType
             ->add('telefono', 'text', array('label' => 'Télefono del Usuario'))
             ->add('correo', 'text', array('label' => 'Correo Electronico del Usuario'))
             ->add('login', 'text', array('label' => 'Login del Usuario'))
-            ->add('contrasena','repeated', array(
-                'type' => 'password',
-                'invalid_message' => 'Los campos de contraseña deben coincidir ',
-                'options' => array('attr' => array('class' => 'password-field')),
-                'required' => true,
-                'first_options'  => array('label' => 'Contraseña'),
-                'second_options' => array('label' => 'Repite la Contraseña'),
-                ))
+            ->add('cuenta','choice', array(
+                    'choices'  => array('Usuario' => 'Usuario', 'Administrador' => 'Administrador'),
+                    'label'=>'Tipo de Cuenta'))
+            ->add('contrasena', 'password', array('label' => 'Contraseña'))
         ;
     }
     

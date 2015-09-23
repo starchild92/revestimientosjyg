@@ -285,7 +285,9 @@ class VentaController extends Controller
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Actualizar Datos de la Venta'));
+        $form->add('submit', 'submit', array(
+            'label' => 'Actualizar Datos de la Venta',
+            'attr' => array('class'=>'btn btn-block btn-primary')));
 
         return $form;
     }
