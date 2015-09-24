@@ -34,13 +34,19 @@
                     <a href="#" class="btn btn-danger">Cerrar Sesión</a>
                 </form>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="{{ path('inicio_admin') }}">Inicio</a></li>
-					<li><a href="{{ path('material') }}">Productos</a></li>
-					<li><a href="{{ path('venta') }}">Venta</a></li>					
-					<li><a href="{{ path('cliente') }}">Clientes</a></li>
-					<li><a href="{{ path('usuario') }}">Usuarios</a></li>
-					<li><a href="{{ path('_administrar_galeria') }}">Galería</a></li>
-					<li><a href="{{ path('bitacora') }}">Bitácora</a></li>
+					<li class="{{ app.request.attributes.get('_route')  == 'inicio_admin' ? 'active' }}"><a href="{{ path('inicio_admin') }}">Inicio</a></li>
+
+					<li class="{% if app.request.attributes.get('_route') == 'material' or app.request.attributes.get('_route') == 'material_show' or app.request.attributes.get('_route') == 'material_new' or app.request.attributes.get('_route') == 'material_edit'  %}active{% endif %}"><a href="{{ path('material') }}">Productos</a></li>
+
+					<li class="{% if app.request.attributes.get('_route') == 'venta' or app.request.attributes.get('_route') == 'venta_show' or app.request.attributes.get('_route') == 'venta_new' or app.request.attributes.get('_route') == 'venta_edit'  %}active{% endif %}"><a href="{{ path('venta') }}">Ventas</a></li>	
+									
+					<li class="{% if app.request.attributes.get('_route') == 'cliente' or app.request.attributes.get('_route') == 'cliente_show' or app.request.attributes.get('_route') == 'cliente_new' or app.request.attributes.get('_route') == 'cliente_edit'  %}active{% endif %}"><a href="{{ path('cliente') }}">Clientes</a></li>
+
+					<li class="{% if app.request.attributes.get('_route') == 'usuario' or app.request.attributes.get('_route') == 'usuario_show' or app.request.attributes.get('_route') == 'usuario_new' or app.request.attributes.get('_route') == 'usuario_edit'  %}active{% endif %}"><a href="{{ path('usuario') }}">Usuarios</a></li>
+
+					<li class="{% if app.request.attributes.get('_route') == '_administrar_galeria' or app.request.attributes.get('_route') == '_nueva_imagen' or app.request.attributes.get('_route') == '_editar_imagen'   %}active{% endif %}"><a href="{{ path('_administrar_galeria') }}">Galería</a></li>
+
+					<li class="{% if app.request.attributes.get('_route') == 'bitacora' or app.request.attributes.get('_route') == 'bitacora_show'  %}active{% endif %}"><a href="{{ path('bitacora') }}">Bitácora</a></li>
 				</ul>
 			</div><!--/.nav-collapse -->
 		</div>

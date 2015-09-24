@@ -36,11 +36,11 @@
                         <th class="info">Nombre</th>
                         <td>{{ entity.nombre }}</td>
                         <th class="info">Color</th>
-                        {% if entity.color == ''  %}
+                        {#{% if entity.color == ''  %}
                             <td>No Aplica</td>
-                        {% else %}
+                        {% else %}#}
                             <td>{{ entity.color }}</td>
-                        {% endif %}
+                        {#{% endif %}#}
                     </tr>
                     <tr>
                         <th class="info">Precio de Compra</th>
@@ -49,12 +49,12 @@
                         <td>{{ entity.precioventa }} Bs</td>
 
                     </tr>
-                    <tr>
-                        <th class="info">Formato</th>
+                    {#<tr>
+                        
                         {% if entity.formato == ''  %}
                             <td>No Aplica</td>
                         {% else %}
-                            <td>{{ entity.formato }}</td>
+                            
                         {% endif %}
                         <th class="info">Tamaño</th>
                         {% if entity.tamano == ''  %}
@@ -62,14 +62,16 @@
                         {% else %}
                             <td>{{ entity.tamano }}</td>
                         {% endif %}
-                    </tr>
+                    </tr>#}
                     <tr >
-                        <th class="info">Unidad</th>
+                        <th class="info">Formato</th>
+                        <td>{{ entity.formato }}</td>
+                       {# <th class="info">Unidad</th>
                         {% if entity.unidad == ''  %}
                             <td>No Aplica</td>
                         {% else %}
                             <td>{{ entity.unidad }} litros por unidad</td>
-                        {% endif %}
+                        {% endif %}#}
                         <th class="info">Depósitos</th>
                         <td colspan="3">
                             <table class="table table-condensed table-bordered" style="width: 100%;">
@@ -82,7 +84,7 @@
                                 <tbody>
                                     {% for almacen in entity.almacenes %}<tr>
                                         <td>{{ almacen.nombrealmacen }}</td>
-                                        <td>{{ almacen.cantmaterialdisponible }} {% if entity.unidad != ''  %}unidades{% else %}mts{% endif %}</td>
+                                        <td>{{ almacen.cantmaterialdisponible }}{# {% if entity.unidad != ''  %}unidades{% else %}mts{% endif %}#}</td>
                                     </tr>{% endfor %}
                                 </tbody>
                             </table>
@@ -96,7 +98,7 @@
             </div>
         </div>
         <div class="col-lg-4 col-sm-4 col-xs-12">
-            <div id="textContacto"><h3>{{ entity.nombre }}</h3><p>{{ entity.formato }}</p></div>
+            <div id="textContacto"><h4>{{ entity.nombre }}</h4><p>{{ entity.formato }}</p></div>
             <div id="imgContacto"></div>
         </div>
     </div>
