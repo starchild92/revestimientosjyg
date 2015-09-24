@@ -76,8 +76,10 @@ class MaterialController extends Controller
                     $em = $this->getDoctrine()->getManager();
                     $em->persist($material);
                     $em->flush();
+                    $session = $this->getRequest()->getSession();
+                    $login = $session->get('login');
                     /*Entrada en la bitacora*/
-                    //$this->addLog($this->getUser()->getnombreUsuario(), 'Agregado Producto: '. $material->getCodigo().''. $material->getNombre().''.$material->getTipo());
+                    $this->addLog($login, 'Agregado Producto: '. $material->getCodigo().''. $material->getNombre().''.$material->getTipo());
                     $this->get('session')->getFlashBag()->set('cod', 'El producto fue agregado con éxito');
                     return $this->redirect($this->generateUrl('material_show', array('id' => $material->getId())));
                 }
@@ -256,8 +258,10 @@ class MaterialController extends Controller
                     $entity->setNombre($nombre);
                     $em->persist($entity);
                     $em->flush();
+                    $session = $this->getRequest()->getSession();
+                    $login = $session->get('login');
                     /*Entrada en la bitacora*/
-                    //$this->addLog($this->getUser()->getnombreUsuario(), 'Modificado Producto: '. $entity->getCodigo().''. $entity->getNombre().''.$entity->getTipo());
+                    $this->addLog($login, 'Modificado Producto: '. $entity->getCodigo().''. $entity->getNombre().''.$entity->getTipo());
 
                     return $this->redirect($this->generateUrl('material_show', array('id' => $id)));
                 }
@@ -286,13 +290,15 @@ class MaterialController extends Controller
             $entity = $em->getRepository('JYGRevestimientosBundle:Material')->find($id);
 
             if (!$entity) {
-                throw $this->createNotFoundException('No se encuentra el material seleccionado');
+                throw $this->createNotFoundException('No se encuentra el material');
             }
 
             $em->remove($entity);            
             $em->flush();
+            $session = $this->getRequest()->getSession();
+            $login = $session->get('login');
             /*Entrada en la bitacora*/
-            //$this->addLog($this->getUser()->getnombreUsuario(), 'Eliminado Producto: '. $entity->getCodigo().''. $entity->getNombre().''.$entity->getTipo());
+            $this->addLog($login, 'Eliminado Producto: '. $entity->getCodigo().''. $entity->getNombre().''.$entity->getTipo());
             $this->get('session')->getFlashBag()->set('cod', 'El producto ha sido eliminado correctamente.');
         }
 
@@ -321,7 +327,7 @@ class MaterialController extends Controller
     /*Funciones para guardar la bitácora:
     * Esta función agrega una nueva entrada a la tabla bitácora.
     */
-    private function addLog($login, $operacion, $fecha )
+    private function addLog($login, $operacion )
     {
         /* Se obtiene la hora del evento:*/
         

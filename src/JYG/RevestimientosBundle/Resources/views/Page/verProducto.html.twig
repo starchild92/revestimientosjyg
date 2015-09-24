@@ -22,9 +22,9 @@
 				<tbody>
 					<tr>
 						<th><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> Nombre</th>
-						<td>{{ entity.nombre }}</td>
+						<td>{{ entity.tipo }}</td>
 					</tr>
-					{% if entity.tipo == 'Laja Formateada'  %}
+					{#{% if entity.tipo == 'Laja Formateada'  %}#}
 						<tr>
 							<th><span class="glyphicon glyphicon-th" aria-hidden="true"></span> Tipo</th>
 							<td>{{ entity.tipo }}</td>
@@ -37,7 +37,7 @@
 							<th><span class="glyphicon glyphicon-tint" aria-hidden="true"></span> Color</th>
 							<td>{{ entity.color }}</td>
 						</tr>
-					{% endif %}
+					{#{% endif %}
 					{% if entity.tipo == 'Laja Natural'  %}
 						<tr>
 							<th><span class="glyphicon glyphicon-th" aria-hidden="true"></span> Tipo</th>
@@ -57,12 +57,12 @@
 							<th><span class="glyphicon glyphicon-scale" aria-hidden="true"></span> Unidades</th>
 							<td>{{ entity.unidad }} litros por unidad</td>
 						</tr>
-					{% endif %}
+					{% endif %}#}
 				</tbody>
 			</table>
 		</div>
 		<div class="col-lg-4 col-sm-4 col-xs-12">
-			<a style="color: black;" type="button" data-toggle="modal" data-target="#exampleModal" data-whatever="<img src='{{ asset('bundles/jygrevestimientos/images/materiales/') }}{{ entity.path }}' style='-webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, .5); box-shadow: 0 3px 9px rgba(0, 0, 0, .5);' class='img-rounded img-responsive'>" data-nombre="{{ entity.nombre }}"><div id="textContacto" class="raton"><h3><span class="glyphicon glyphicon-picture" aria-hidden="true"></span> {{ entity.nombre }}</h3><p>{{ entity.formato }}</p></div>
+			<a style="color: black;" type="button" data-toggle="modal" data-target="#exampleModal" data-whatever="<img src='{{ asset('bundles/jygrevestimientos/images/materiales/') }}{{ entity.path }}' style='-webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, .5); box-shadow: 0 3px 9px rgba(0, 0, 0, .5);' class='img-rounded img-responsive'>" data-nombre="{{ entity.nombre }}"><div id="textContacto" class="raton"><h4><span class="glyphicon glyphicon-picture" aria-hidden="true"></span> {{ entity.nombre }}</h4><p>{{ entity.formato }}</p></div>
 	    	<img src='{{ asset("bundles/jygrevestimientos/images/materiales/") }}{{ entity.path }}' class="img-rounded img-responsive"></a>
 		</div>
 	</div>

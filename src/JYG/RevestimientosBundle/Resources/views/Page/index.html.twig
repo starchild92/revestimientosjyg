@@ -82,15 +82,19 @@
           <img class="img-circle" src="{{ asset('bundles/jygrevestimientos/images/materiales/') }}{{ producto.path }}" alt="No disponible" width="140" height="140">
           <h2>{{ producto.nombre }}</h2>
           <p> {{ producto.tipo }}
-              {% if producto.tipo == 'Laja Natural'  %}
+              {#% if producto.tipo == 'Laja Natural'  %}
                 {{ producto.formato }}
+              {#{% if producto.tipo == 'Laja Natural'  %}
+                {{ producto.tamano }}
               {% endif %}
-              {% if producto.tipo == 'Laja Formateada'  %}
+              {% if producto.tipo == 'Laja Formateada'  %}#}
                 {{ producto.formato }}
-              {% endif %}
+             {# {% endif %}
               {% if producto.tipo == 'Quimicos'  %}
                 {{ producto.formato }}
               {% endif %}
+                {{ producto.unidad }}
+              {% endif %}#}
           </p>
           <p><a class="btn btn-default" href="{{ path('page_verProducto', { 'id': producto.id }) }}" role="button">Ver Detalles &raquo;</a></p>
         </div>

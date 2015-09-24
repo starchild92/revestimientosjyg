@@ -12,15 +12,15 @@
 			<div class="list-group">
 			  <a href="{{ path('_productos_tipo', { 'var': 'formateada' })  }}" class="list-group-item">
 			    <h4 class="list-group-item-heading"><span class="glyphicon glyphicon-th-large" aria-hidden="true"></span> Lajas Formateadas</h4>
-			    <p class="list-group-item-text">Descripción del Producto.<br><small>Haga click para mostrar todos los productos de este tipo</small></p>
+			    <p class="list-group-item-text">Lajas Formateadas.<br><small>Haga click para mostrar todos los productos de este tipo</small></p>
 			  </a>
 			  <a href="{{ path('_productos_tipo', { 'var': 'natural' })  }}" class="list-group-item">
 			    <h4 class="list-group-item-heading"><span class="glyphicon glyphicon-th-large" aria-hidden="true"></span> Lajas Naturales</h4>
-			    <p class="list-group-item-text">Descripción del Producto.<br><small>Haga click para mostrar todos los productos de este tipo</small></p>
+			    <p class="list-group-item-text">Lajas Naturales.<br><small>Haga click para mostrar todos los productos de este tipo</small></p>
 			  </a>
-			  <a href="{{ path('_productos_tipo', { 'var': 'quimicos' })  }}" class="list-group-item">
-			    <h4 class="list-group-item-heading"><span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span> Químicos</h4>
-			    <p class="list-group-item-text">Químicos para el mantenimiento de los revestimientos.<br><small>Haga click para mostrar todos los productos de este tipo</small></p>
+			  <a href="{{ path('_productos_tipo', { 'var': 'otro' })  }}" class="list-group-item">
+			    <h4 class="list-group-item-heading"><span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span> Otros Productos</h4>
+			    <p class="list-group-item-text">Selladores, Tablillas y Pisos Artesanales, Tacos, entre otros.<br><small>Haga click para mostrar todos los productos</small></p>
 			  </a>
 			</div>
 		</div>
@@ -41,17 +41,17 @@
 							
 							<table class="table table-condensed">
 								<tr><th>Tipo</th><td>{{ entity.tipo }}</td></tr>
-								{% if entity.tipo == 'Laja Natural'  %}
+								{#{% if entity.tipo == 'Laja Natural'  %}#}
 									<tr><th>Color</th><td>{{ entity.color }}</td></tr>
-									<tr><th>Tam.</th><td>{{ entity.tamano }}</td></tr>
-								{% endif %}
-								{% if entity.tipo == 'Laja Formateada'  %}
-									<tr><th>Color</th><td>{{ entity.color }}</td></tr>
+									{#<tr><th>Tam.</th><td>{{ entity.tamano }}</td></tr>
+								{% endif %}#}
+								{#{% if entity.tipo == 'Laja Formateada'  %}
+									<tr><th>Color</th><td>{{ entity.color }}</td></tr>#}
 									<tr><th>Form.</th><td>{{ entity.formato }}</td></tr>
-								{% endif %}
+								{#{% endif %}
 								{% if entity.tipo == 'Quimicos'  %}
 									<tr><th>Unid.</th><td>{{ entity.unidad }} <abbr title="Litros por Unidad">LxU</abbr></td></tr>
-								{% endif %}
+								{% endif %}#}
 							</table>
 							
 							<p><a href="{{ path('page_verProducto', { 'id': entity.id }) }}" class="btn btn-naranja btn-block" role="button">Ver Más</a></p>

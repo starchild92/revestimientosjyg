@@ -154,7 +154,9 @@ class VentaController extends Controller
                         $em->flush();
 
                         /*Entrada en la bitacora*/
-                        //$this->addLog($this->getUser()->getnombreUsuario(), 'Venta realizada a: '. $entity->getComprador()->getNombre());
+                        $session = $this->getRequest()->getSession();
+                        $login = $session->get('login');
+                        $this->addLog($login, 'Venta realizada a: '. $entity->getComprador()->getNombre());
 
                         //compro bien            
                         $this->addFlash('exito','La venta se ha realizado con éxito');
@@ -239,7 +241,7 @@ class VentaController extends Controller
 
 
         if (!$venta) {
-            throw $this->createNotFoundException('Unable to find Venta venta.');
+            throw $this->createNotFoundException('No existen los datos de la venta.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
@@ -424,8 +426,10 @@ class VentaController extends Controller
                 }//End del form de los items
                 $session->getFlashBag()->add('exito','Se ha eliminado la venta y se han restaurado las cantidades en los Depósitos.');
                 $em->remove($entity);
+                $session = $this->getRequest()->getSession();
+                $login = $session->get('login');
                 /*Entrada en la bitacora*/
-                //$this->addLog($this->getUser()->getnombreUsuario(), 'Eliminó Venta de: '. $entity->getComprador()->getNombre());
+                $this->addLog($login, 'Eliminó Venta de: '. $entity->getComprador()->getNombre());
                 $em->flush();
             }
         }
@@ -455,7 +459,7 @@ class VentaController extends Controller
     /*Funciones para guardar la bitácora:
     * Esta función agrega una nueva entrada a la tabla bitácora.
     */
-    private function addLog($login, $operacion, $fecha )
+    private function addLog($login, $operacion)
     {
         /* Se obtiene la hora del evento:*/
         
@@ -469,7 +473,7 @@ class VentaController extends Controller
         $bitacora = new Bitacora();
         $bitacora->setLogin( $login )
             ->setOperacion($operacion)
-            ->setFecha( $time );
+            ->setFecha($time);
 
         $em = $this->getDoctrine()->getManager();
         $em->persist($bitacora);

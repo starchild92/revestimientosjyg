@@ -46,8 +46,10 @@ class ClienteController extends Controller
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
+            $session = $this->getRequest()->getSession();
+            $login = $session->get('login');
             /*Entrada en la bitacora*/
-            //$this->addLog($this->getUser()->getnombreUsuario(), 'Cliente: '. $entity->getNombre().' Registrado');
+            $this->addLog($login, 'Cliente: '. $entity->getNombre().' Registrado');
             $em->flush();
 
             return $this->redirect($this->generateUrl('cliente_show', array('id' => $entity->getId())));
@@ -182,8 +184,10 @@ class ClienteController extends Controller
         if ($editForm->isValid()) {
             $this->get('session')->getFlashBag()->set('cod', 'Se ha actualizado la información del cliente de manera correcta');
             $em->flush();
+            $session = $this->getRequest()->getSession();
+            $login = $session->get('login');
             /*Entrada en la bitacora*/
-            //$this->addLog($this->getUser()->getnombreUsuario(), 'Datos de: '. $entity->getNombre().' Modificados');
+            $this->addLog($login, 'Datos de: '. $entity->getNombre().' Modificados');
 
             return $this->redirect($this->generateUrl('cliente_show', array('id' => $id)));
         }
@@ -208,10 +212,12 @@ class ClienteController extends Controller
             $entity = $em->getRepository('JYGRevestimientosBundle:Cliente')->find($id);
 
             if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Cliente entity.');
+                throw $this->createNotFoundException('No se encuentra el cliente.');
             }
+            $session = $this->getRequest()->getSession();
+            $login = $session->get('login');
             /*Entrada en la bitacora*/
-            //$this->addLog($this->getUser()->getnombreUsuario(), 'Cliente:'. $entity->getNombre().' Eliminado');
+            $this->addLog($login, 'Cliente:'. $entity->getNombre().' Eliminado');
             $nombre = $entity->getNombre();
             $em->remove($entity);
             $em->flush();
@@ -241,7 +247,7 @@ class ClienteController extends Controller
     /*Funciones para guardar la bitácora:
     * Esta función agrega una nueva entrada a la tabla bitácora.
     */
-    private function addLog($login, $operacion, $fecha )
+    private function addLog($login, $operacion)
     {
         /* Se obtiene la hora del evento:*/
         
