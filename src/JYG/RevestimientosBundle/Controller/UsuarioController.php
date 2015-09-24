@@ -49,8 +49,10 @@ class UsuarioController extends Controller
             $plain = md5($entity->getPassword());
             $entity->setPassword($plain);
             $em->persist($entity);
+            $session = $this->getRequest()->getSession();
+            $login = $session->get('login');
             /*Entrada en la bitacora*/
-            //$this->addLog($this->getUser()->getnombreUsuario(), 'Usuario'. $entity->getLogin().' Registrado');
+            $this->addLog($login, 'Usuario'. $entity->getLogin().' Registrado');
             $em->flush();
 
             return $this->redirect($this->generateUrl('usuario_show', array('id' => $entity->getId())));
@@ -179,8 +181,10 @@ class UsuarioController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
+            $session = $this->getRequest()->getSession();
+            $login = $session->get('login');
             /*Entrada en la bitacora*/
-            //$this->addLog($this->getUser()->getnombreUsuario(), 'Datos del Usuario:'. $entity->getLogin().' Modificados');
+            $this->addLog($login, 'Datos del Usuario:'. $entity->getLogin().' Modificados');
             $em->flush();
             $this->get('session')->getFlashBag()->set('cod', 'Se ha actualizado la información del usuario de manera correcta');
             return $this->redirect($this->generateUrl('usuario_show', array('id' => $id)));
@@ -208,8 +212,10 @@ class UsuarioController extends Controller
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find Usuario entity.');
             }
+            $session = $this->getRequest()->getSession();
+            $login = $session->get('login');
             /*Entrada en la bitacora*/
-            //$this->addLog($this->getUser()->getnombreUsuario(), 'Usuario'. $entity->getLogin().' Eliminado');
+            $this->addLog($login, 'Usuario'. $entity->getLogin().' Eliminado');
             $em->remove($entity);
             $em->flush();
             $this->get('session')->getFlashBag()->set('cod', 'El usuario ha sido eliminado correctamente');
@@ -238,7 +244,7 @@ class UsuarioController extends Controller
     /*Funciones para guardar la bitácora:
     * Esta función agrega una nueva entrada a la tabla bitácora.
     */
-    private function addLog($login, $operacion, $fecha )
+    private function addLog($login, $operacion)
     {
         /* Se obtiene la hora del evento:*/
         
@@ -252,7 +258,7 @@ class UsuarioController extends Controller
         $bitacora = new Bitacora();
         $bitacora->setLogin( $login )
             ->setOperacion($operacion)
-            ->setFecha( $time );
+            ->setFecha($time);
 
         $em = $this->getDoctrine()->getManager();
         $em->persist($bitacora);

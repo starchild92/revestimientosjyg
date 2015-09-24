@@ -29,7 +29,7 @@ class PageController extends Controller
         /*if (!$entity) {
             throw $this->createNotFoundException('Hay menos de 3 productos agregados');
         }*/
-
+        throw $this->createNotFoundException('');
         return $this->render('JYGRevestimientosBundle:Page:index.html.twig', array(
             'entity'    =>  $entity,
         ));
@@ -63,8 +63,8 @@ class PageController extends Controller
         if($var === 'natural'){
             $entities = $em->getRepository('JYGRevestimientosBundle:Material')->ObtenerTipo('Laja Natural');
         }
-        if($var === 'quimicos'){
-            $entities = $em->getRepository('JYGRevestimientosBundle:Material')->ObtenerTipo('Quimicos');
+        if($var === 'otro'){
+            $entities = $em->getRepository('JYGRevestimientosBundle:Material')->ObtenerOtroTipo();
         }
         if (!$entities) {
             $this->get('session')->getFlashBag()->set('error', 'No hay productos para mostrar.');

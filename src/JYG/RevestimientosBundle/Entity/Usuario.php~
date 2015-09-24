@@ -4,135 +4,104 @@ namespace JYG\RevestimientosBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Usuario
  *
- * @ORM\Table(name="app_usuarios")
+ * @ORM\Table()
  * @ORM\Entity(repositoryClass="JYG\RevestimientosBundle\Entity\UsuarioRepository")
+ * @UniqueEntity("correo", message="Esta dirección de correo ya está en uso")
+ * @UniqueEntity("username", message="Este username ya existe")
  */
-class Usuario implements UserInterface, \Serializable
+class Usuario
 {
     /**
-     * @ORM\Column(type="integer")
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=25, unique=true)
-     */
-    private $username;
-
-    /**
-     * @ORM\Column(type="string", length=64)
+     * @var string
+     *
+     * @ORM\Column(name="nombre", type="string", length=255)
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 50,
+     *      minMessage = "Su nombre debe tener al menos {{ limit }} letras",
+     *      maxMessage = "Su nombre no puede tener {{ limit }} letras"
+     * )
      */
     private $nombre;
 
     /**
-     * @ORM\Column(type="string", length=64)
+     * @var string
+     *
+     * @ORM\Column(name="apellido", type="string", length=255)
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 50,
+     *      minMessage = "Su apellido debe tener al menos {{ limit }} letras",
+     *      maxMessage = "Su apellido no puede tener {{ limit }} letras"
+     * )
      */
     private $apellido;
 
     /**
-     * @ORM\Column(type="string", length=64)
+     * @var string
+     *
+     * @ORM\Column(name="telefono", type="string", length=255)
+     * @Assert\Regex(
+     *     pattern="/([\+^0-9 ()-])+/",
+     *     match=true,
+     *     message="Ejemplo. +58 400 0000000 ó (0400) 0000000 ó +58 400-000-00-00"
+     * )
      */
     private $telefono;
 
     /**
-     * @ORM\Column(type="string", length=64)
+     * @var string
+     *
+     * @ORM\Column(name="correo", type="string", length=255)
+     * @Assert\Email(
+     *     message = "El mail {{ value }} no es válido.",
+     *     checkMX = true,
+     *     checkHost = true
+     * )
+     */
+    private $correo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="username", type="string", length=255)
+     */
+    private $username;
+
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="cuenta", type="string", length=50)
+     */
+    private $cuenta = 'Usuario';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="password", type="string", length=255)
+     * @Assert\Length(
+     *      min = 5,
+     *      max = 18,
+     *      minMessage = "Escriba una clave con 5 o más letras y menos o {{ limit }} letras",
+     *      maxMessage = "La clave que ha escrito supera el límite de {{ limit }} letras"
+     * )
      */
     private $password;
 
-    /**
-     * @ORM\Column(name="is_active", type="boolean")
-     */
-    private $isActive;
-
-
-    /**
-     * @ORM\Column(type="string", length=60, unique=true)
-     * @Assert\NotBlank()
-     * @Assert\Email()
-     */
-    protected $email;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank()
-     * @Assert\Length(max = 4096)
-     */
-    protected $plainPassword;
-
-
-    public function getPlainPassword()
-    {
-        return $this->plainPassword;
-    }
-
-    public function setPlainPassword($password)
-    {
-        $this->plainPassword = $password;
-    }
-
-    public function __construct()
-    {
-        $this->isActive = true;
-        // may not be needed, see section on salt below
-        // $this->salt = md5(uniqid(null, true));
-    }
-
-    public function getUsername()
-    {
-        return $this->username;
-    }
-
-    public function getSalt()
-    {
-        // you *may* need a real salt depending on your encoder
-        // see section on salt below
-        return null;
-    }
-
-    public function getPassword()
-    {
-        return $this->password;
-    }
-
-    public function getRoles()
-    {
-        return array('ROLE_USER');
-    }
-
-    public function eraseCredentials()
-    {
-    }
-
-    /** @see \Serializable::serialize() */
-    public function serialize()
-    {
-        return serialize(array(
-            $this->id,
-            $this->username,
-            $this->password,
-            // see section on salt below
-            // $this->salt,
-        ));
-    }
-
-    /** @see \Serializable::unserialize() */
-    public function unserialize($serialized)
-    {
-        list (
-            $this->id,
-            $this->username,
-            $this->password,
-            // see section on salt below
-            // $this->salt
-        ) = unserialize($serialized);
-    }
 
     /**
      * Get id
@@ -142,6 +111,98 @@ class Usuario implements UserInterface, \Serializable
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set nombre
+     *
+     * @param string $nombre
+     * @return Usuario
+     */
+    public function setNombre($nombre)
+    {
+        $this->nombre = $nombre;
+
+        return $this;
+    }
+
+    /**
+     * Get nombre
+     *
+     * @return string 
+     */
+    public function getNombre()
+    {
+        return $this->nombre;
+    }
+
+    /**
+     * Set apellido
+     *
+     * @param string $apellido
+     * @return Usuario
+     */
+    public function setApellido($apellido)
+    {
+        $this->apellido = $apellido;
+
+        return $this;
+    }
+
+    /**
+     * Get apellido
+     *
+     * @return string 
+     */
+    public function getApellido()
+    {
+        return $this->apellido;
+    }
+
+    /**
+     * Set telefono
+     *
+     * @param string $telefono
+     * @return Usuario
+     */
+    public function setTelefono($telefono)
+    {
+        $this->telefono = $telefono;
+
+        return $this;
+    }
+
+    /**
+     * Get telefono
+     *
+     * @return string 
+     */
+    public function getTelefono()
+    {
+        return $this->telefono;
+    }
+
+    /**
+     * Set correo
+     *
+     * @param string $correo
+     * @return Usuario
+     */
+    public function setCorreo($correo)
+    {
+        $this->correo = $correo;
+
+        return $this;
+    }
+
+    /**
+     * Get correo
+     *
+     * @return string 
+     */
+    public function getCorreo()
+    {
+        return $this->correo;
     }
 
     /**
@@ -158,6 +219,16 @@ class Usuario implements UserInterface, \Serializable
     }
 
     /**
+     * Get username
+     *
+     * @return string 
+     */
+    public function getUsername()
+    {
+        return $this->username;
+    }
+
+    /**
      * Set password
      *
      * @param string $password
@@ -171,48 +242,35 @@ class Usuario implements UserInterface, \Serializable
     }
 
     /**
-     * Set email
-     *
-     * @param string $email
-     * @return Usuario
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
-
-        return $this;
-    }
-
-    /**
-     * Get email
+     * Get password
      *
      * @return string 
      */
-    public function getEmail()
+    public function getPassword()
     {
-        return $this->email;
+        return $this->password;
     }
 
     /**
-     * Set isActive
+     * Set cuenta
      *
-     * @param boolean $isActive
+     * @param string $cuenta
      * @return Usuario
      */
-    public function setIsActive($isActive)
+    public function setCuenta($cuenta)
     {
-        $this->isActive = $isActive;
-
+        $this->cuenta = $cuenta;
+    
         return $this;
     }
 
     /**
-     * Get isActive
+     * Get cuenta
      *
-     * @return boolean 
+     * @return string 
      */
-    public function getIsActive()
+    public function getCuenta()
     {
-        return $this->isActive;
+        return $this->cuenta;
     }
 }

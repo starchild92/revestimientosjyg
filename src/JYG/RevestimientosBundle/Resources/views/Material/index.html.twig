@@ -58,7 +58,7 @@
                         <table class="table table-condensed table-bordered table-responsive table-bottom">
                             <tbody>
                                 {% for almacen in entity.almacenes %}<tr>
-                                    <td>{{ almacen.nombrealmacen }} ({{ almacen.cantmaterialdisponible }}{% if entity.tipo == 'Quimicos'  %} Litros{% else %} mts{% endif %})</td>
+                                    <td>{{ almacen.nombrealmacen }} ({{ almacen.cantmaterialdisponible }} unidades)</td>
                                 </tr>{% endfor %}
                             </tbody>
                         </table>
