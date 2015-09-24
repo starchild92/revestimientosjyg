@@ -22,13 +22,16 @@ class ClienteController extends Controller
      */
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $entities = $em->getRepository('JYGRevestimientosBundle:Cliente')->findAll();
-
-        return $this->render('JYGRevestimientosBundle:Cliente:index.html.twig', array(
+        $session = $this->getRequest()->getSession();
+        if ($session->has('login')){
+            $em = $this->getDoctrine()->getManager();
+            $entities = $em->getRepository('JYGRevestimientosBundle:Cliente')->findAll();
+            return $this->render('JYGRevestimientosBundle:Cliente:index.html.twig', array(
             'entities' => $entities,
-        ));
+            ));
+        }else{
+            return $this->redirect($this->generateUrl('_inicio_sesion'));
+        }
     }
     /**
      * Creates a new Cliente entity.
@@ -209,10 +212,11 @@ class ClienteController extends Controller
             }
             /*Entrada en la bitacora*/
             //$this->addLog($this->getUser()->getnombreUsuario(), 'Cliente:'. $entity->getNombre().' Eliminado');
+            $nombre = $entity->getNombre();
             $em->remove($entity);
             $em->flush();
         }
-        $this->get('session')->getFlashBag()->set('cod', 'El Cliente ha sido eliminado de manera correcta');
+        $this->get('session')->getFlashBag()->set('cod', 'El Cliente "'.$nombre.'" ha sido eliminado de manera correcta');
         return $this->redirect($this->generateUrl('cliente'));
     }
 

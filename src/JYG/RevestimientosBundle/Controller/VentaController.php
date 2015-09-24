@@ -27,12 +27,17 @@ class VentaController extends Controller
      */
     public function indexAction()
     {
+        $session = $this->getRequest()->getSession();
+        if ($session->has('login')){
         $em = $this->getDoctrine()->getManager();
         $entities = $em->getRepository('JYGRevestimientosBundle:Venta')->AllOrdenById();
 
         return $this->render('JYGRevestimientosBundle:Venta:index.html.twig', array(
             'entities' => $entities,
         ));
+        }else{
+            return $this->redirect($this->generateUrl('_inicio_sesion'));
+        }
     }
     /**
      * Creates a new Venta entity.

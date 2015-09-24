@@ -12,7 +12,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="JYG\RevestimientosBundle\Entity\UsuarioRepository")
  * @UniqueEntity("correo", message="Esta dirección de correo ya está en uso")
- * @UniqueEntity("login", message="Este login ya existe")
+ * @UniqueEntity("username", message="Este username ya existe")
  */
 class Usuario
 {
@@ -78,9 +78,9 @@ class Usuario
     /**
      * @var string
      *
-     * @ORM\Column(name="login", type="string", length=255)
+     * @ORM\Column(name="username", type="string", length=255)
      */
-    private $login;
+    private $username;
 
      /**
      * @var string
@@ -92,7 +92,7 @@ class Usuario
     /**
      * @var string
      *
-     * @ORM\Column(name="contrasena", type="string", length=255)
+     * @ORM\Column(name="password", type="string", length=255)
      * @Assert\Length(
      *      min = 5,
      *      max = 18,
@@ -100,7 +100,7 @@ class Usuario
      *      maxMessage = "La clave que ha escrito supera el límite de {{ limit }} letras"
      * )
      */
-    private $contrasena;
+    private $password;
 
 
     /**
@@ -206,49 +206,49 @@ class Usuario
     }
 
     /**
-     * Set login
+     * Set username
      *
-     * @param string $login
+     * @param string $username
      * @return Usuario
      */
-    public function setLogin($login)
+    public function setUsername($username)
     {
-        $this->login = $login;
+        $this->username = $username;
 
         return $this;
     }
 
     /**
-     * Get login
+     * Get username
      *
      * @return string 
      */
-    public function getLogin()
+    public function getUsername()
     {
-        return $this->login;
+        return $this->username;
     }
 
     /**
-     * Set contrasena
+     * Set password
      *
-     * @param string $contrasena
+     * @param string $password
      * @return Usuario
      */
-    public function setContrasena($contrasena)
+    public function setPassword($password)
     {
-        $this->contrasena = $contrasena;
+        $this->password = $password;
 
         return $this;
     }
 
     /**
-     * Get contrasena
+     * Get password
      *
      * @return string 
      */
-    public function getContrasena()
+    public function getPassword()
     {
-        return $this->contrasena;
+        return $this->password;
     }
 
     /**

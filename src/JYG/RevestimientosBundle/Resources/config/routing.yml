@@ -36,52 +36,56 @@ JYGRevestimientosBundle_quienessomos:
 #Estas rutas son para el admin :)
 jyg_revestimientos_cliente:
     resource: "@JYGRevestimientosBundle/Resources/config/routing/cliente.yml"
-    prefix:   /cliente
+    prefix:   /admin/cliente
 
 jyg_revestimientos_deposito:
     resource: "@JYGRevestimientosBundle/Resources/config/routing/deposito.yml"
-    prefix:   /deposito
+    prefix:   /admin/deposito
 
 jyg_revestimientos_item:
     resource: "@JYGRevestimientosBundle/Resources/config/routing/item.yml"
-    prefix:   /item
+    prefix:   /admin/item
 
 jyg_revestimientos_bitacora:
     resource: "@JYGRevestimientosBundle/Resources/config/routing/bitacora.yml"
-    prefix:   /bitacora
+    prefix:   /admin/bitacora
 
 jyg_revestimientos_usuario:
     resource: "@JYGRevestimientosBundle/Resources/config/routing/usuario.yml"
-    prefix:   /usuario
+    prefix:   /admin/usuario
 
 _administrar_galeria:
-    path:     /administrargaleria
+    path:     /admin/administrargaleria
     defaults: { _controller: JYGRevestimientosBundle:Galeria:AdministrarGaleria}
 
 _inicio_sesion:
     path:  /iniciosesion
     defaults: { _controller: JYGRevestimientosBundle:Page:inicioSesion }
 
+_cerrar_sesion:
+    path:  /cerrar_sesion
+    defaults: { _controller: JYGRevestimientosBundle:Page:cerrarSesion }
+
 inicio_admin:
-    path:  /sistemainventario
+    path:  /admin/sistemainventario
     defaults: { _controller: JYGRevestimientosBundle:Page:inicioAdmin }
 
 jyg_revestimientos_venta:
     resource: "@JYGRevestimientosBundle/Resources/config/routing/venta.yml"
-    prefix:   /venta
+    prefix:   /admin/venta
 
 _nueva_imagen:
-    path:     /nuevaimagengaleria
+    path:     /admin/nuevaimagengaleria
     defaults: { _controller: JYGRevestimientosBundle:Galeria:NuevaImagen }
 
 _editar_imagen:
-    path:     /imagengaleria/editar/{id}
+    path:     /admin/imagengaleria/editar/{id}
     defaults: { _controller: JYGRevestimientosBundle:Galeria:EditarImagen }
     requirements:
         methods:  GET|POST
 
 _eliminar_imagen:
-    path:     /eliminarimagengaleria/{id}
+    path:     /admin/eliminarimagengaleria/{id}
     defaults: { _controller: JYGRevestimientosBundle:Galeria:EliminarImagen }
     requirements:
         methods: GET
@@ -96,6 +100,6 @@ _productos_tipo:
 
 jyg_revestimientos_material:
     resource: "@JYGRevestimientosBundle/Resources/config/routing/material.yml"
-    prefix:   /material
+    prefix:   /admin/material
 
 

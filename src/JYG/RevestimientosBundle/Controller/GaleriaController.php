@@ -12,11 +12,16 @@ class GaleriaController extends Controller
 {
     public function AdministrarGaleriaAction()
     {
-        $em = $this->getDoctrine()->getManager();
-        $entities = $em->getRepository('JYGRevestimientosBundle:Galeria')->ObtenerporAgregado();
-        return $this->render('JYGRevestimientosBundle:Galeria:AdministrarGaleria.html.twig', array(
-            'entities' => $entities
-        ));
+        $session = $this->getRequest()->getSession();
+        if ($session->has('login')){
+            $em = $this->getDoctrine()->getManager();
+            $entities = $em->getRepository('JYGRevestimientosBundle:Galeria')->ObtenerporAgregado();
+            return $this->render('JYGRevestimientosBundle:Galeria:AdministrarGaleria.html.twig', array(
+                'entities' => $entities
+            ));
+        }else{
+            return $this->redirect($this->generateUrl('_inicio_sesion'));
+        }
     }
 
     public function NuevaImagenAction()

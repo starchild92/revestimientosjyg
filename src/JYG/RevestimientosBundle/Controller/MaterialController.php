@@ -13,6 +13,8 @@ use JYG\RevestimientosBundle\Entity\Deposito;
 use JYG\RevestimientosBundle\Form\DepositoType;
 use JYG\RevestimientosBundle\Entity\Bitacora;
 
+use Symfony\Component\HttpFoundation\Session\Session;
+
 /**
  * Material controller.
  *
@@ -26,13 +28,18 @@ class MaterialController extends Controller
      */
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getManager();
+        $session = $this->getRequest()->getSession();
+        if ($session->has('login')){
+            $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('JYGRevestimientosBundle:Material')->findAll();
+            $entities = $em->getRepository('JYGRevestimientosBundle:Material')->findAll();
 
-        return $this->render('JYGRevestimientosBundle:Material:index.html.twig', array(
-            'entities' => $entities,
-        ));
+            return $this->render('JYGRevestimientosBundle:Material:index.html.twig', array(
+                'entities' => $entities,
+            ));
+        }else{
+            return $this->redirect($this->generateUrl('_inicio_sesion'));
+        }
     }
     /**
      * Creates a new Material entity.
@@ -235,7 +242,7 @@ class MaterialController extends Controller
                         $em->remove($almacen);
                     }
                     
-                    $this->get('session')->getFlashBag()->set('error', 'Se ha modificado exitosamente el producto.');
+                    $this->get('session')->getFlashBag()->set('exito', 'Se ha modificado exitosamente el producto.');
                     $almacen = $entity->getAlmacenes();
                     $entity->setAlmacenes($almacen);
                     $em->persist($entity);

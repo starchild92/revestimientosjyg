@@ -13,8 +13,8 @@ class LoginRepository extends EntityRepository
 		$query = $this->getEntityManager()
 				->createQuery('SELECT u 
 				FROM JYGRevestimientosBundle:Usuario u 
-				WHERE u.login = :login AND u.contrasena = :pass');
-		$query->setParameter('login', $l);
+				WHERE u.username = :username AND u.password = :pass');
+		$query->setParameter('username', $l);
 		$query->setParameter('pass', $p);
 		$user = $query->getResult();
         

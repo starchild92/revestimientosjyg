@@ -20,13 +20,16 @@ class BitacoraController extends Controller
      */
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $entities = $em->getRepository('JYGRevestimientosBundle:Bitacora')->findAll();
-
-        return $this->render('JYGRevestimientosBundle:Bitacora:index.html.twig', array(
-            'entities' => $entities,
-        ));
+        $session = $this->getRequest()->getSession();
+        if ($session->has('login')){
+            $em = $this->getDoctrine()->getManager();
+            $entities = $em->getRepository('JYGRevestimientosBundle:Bitacora')->findAll();
+            return $this->render('JYGRevestimientosBundle:Bitacora:index.html.twig', array(
+                'entities' => $entities,
+            ));
+        }else{
+            return $this->redirect($this->generateUrl('_inicio_sesion'));
+        }
     }
 
     /**

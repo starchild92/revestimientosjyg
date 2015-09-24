@@ -19,11 +19,11 @@ class UsuarioType extends AbstractType
             ->add('apellido', 'text', array('label' => 'Apellido del Usuario'))
             ->add('telefono', 'text', array('label' => 'Télefono del Usuario'))
             ->add('correo', 'text', array('label' => 'Correo Electronico del Usuario'))
-            ->add('login', 'text', array('label' => 'Login del Usuario'))
+            ->add('username', 'text', array('label' => 'Login del Usuario'))
             ->add('cuenta','choice', array(
                     'choices'  => array('Usuario' => 'Usuario', 'Administrador' => 'Administrador'),
                     'label'=>'Tipo de Cuenta'))
-            ->add('contrasena', 'password', array('label' => 'Contraseña'))
+            ->add('password', 'password', array('label' => 'Contraseña'))
         ;
     }
     

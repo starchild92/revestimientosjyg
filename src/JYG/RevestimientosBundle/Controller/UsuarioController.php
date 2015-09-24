@@ -22,13 +22,17 @@ class UsuarioController extends Controller
      */
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $entities = $em->getRepository('JYGRevestimientosBundle:Usuario')->findAll();
-
-        return $this->render('JYGRevestimientosBundle:Usuario:index.html.twig', array(
-            'entities' => $entities,
-        ));
+        $session = $this->getRequest()->getSession();
+        if ($session->has('login')){
+            $em = $this->getDoctrine()->getManager();
+            $entities = $em->getRepository('JYGRevestimientosBundle:Usuario')->findAll();
+            return $this->render('JYGRevestimientosBundle:Usuario:index.html.twig', array(
+                'entities' => $entities,
+            ));
+        }else{
+            return $this->redirect($this->generateUrl('_inicio_sesion'));
+        }
+        
     }
     /**
      * Creates a new Usuario entity.
@@ -42,6 +46,8 @@ class UsuarioController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $plain = md5($entity->getPassword());
+            $entity->setPassword($plain);
             $em->persist($entity);
             /*Entrada en la bitacora*/
             //$this->addLog($this->getUser()->getnombreUsuario(), 'Usuario'. $entity->getLogin().' Registrado');

@@ -12,8 +12,11 @@ use JYG\RevestimientosBundle\Entity\Usuario;
 use JYG\RevestimientosBundle\Form\LoginType;
 use JYG\RevestimientosBundle\Form\ConsultaType;
 
+use Symfony\Component\HttpFoundation\Session\Session;
+
 class PageController extends Controller
 {
+
     /**
      * @Route("/")
      * @Template()
@@ -167,7 +170,8 @@ class PageController extends Controller
             $form->bind($request);
             if ($form->isValid()) {
                 $login = $form->get('login')->getData();
-                $password = $form->get('password')->getData();
+                $password = md5($form->get('password')->getData());
+
                 $em = $this->getDoctrine()->getEntityManager();
                 $user = $em->getRepository('JYGRevestimientosBundle:Login')
                             ->validarCuenta($login, $password);
@@ -177,14 +181,25 @@ class PageController extends Controller
                     'form' => $form->createView()
                     ));
                 }else{
-
-                    return $this->render('JYGRevestimientosBundle:Page:indexAdmin.html.twig'); 
+                    $session = new Session();
+                    $session->set('login', $login);
+                    //throw $this->createNotFoundException($login);
+                    return $this->inicioAdminAction();
                 }
             }
         }
         return $this->render('JYGRevestimientosBundle:Page:sesionini.html.twig', array(
             'form' => $form->createView()
         )); 
+    }
+
+    /**
+     * @Route("/")
+     */
+    public function cerrarSesionAction(){
+        $session = $this->getRequest()->getSession();
+        $session->remove('login');
+        return $this->indexAction();
     }
 
 }
