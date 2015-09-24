@@ -3,7 +3,7 @@
 {% block javascripts %}
 	<script src="{{ asset('bundles/jygrevestimientos/js/jquery.min.js') }}"></script>
 	<script src="{{ asset('bundles/jygrevestimientos/js/forms.js') }}"></script>
-    <script src="{{ asset('bundles/jygrevestimientos/js/campomaterial.js') }}"></script>
+    {#<script src="{{ asset('bundles/jygrevestimientos/js/campomaterial.js') }}"></script>#}
 {% endblock %}
 
 {% block body %}
@@ -22,13 +22,14 @@
         <div class="col-lg-4 col-sm-4 col-xs-12">
             {{ form_row(form.codigo) }}
             {{ form_row(form.tipo) }}
-            {{ form_row(form.tamano) }}
+            {#{{ form_row(form.tamano) }}
+            {{ form_row(form.unidad) }}#}
             {{ form_row(form.formato) }}
-            {{ form_row(form.unidad) }}
+            
         </div>
         <div class="col-lg-4 col-sm-4 col-xs-12">
             {{ form_row(form.color) }}
-            {{ form_row(form.nombre) }}
+            {#{{ form_row(form.nombre) }}#}
             {{ form_row(form.preciocompra) }}
             {{ form_row(form.precioventa) }}
             {{ form_row(form.file) }}

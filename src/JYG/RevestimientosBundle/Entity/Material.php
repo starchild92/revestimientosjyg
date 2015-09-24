@@ -41,23 +41,23 @@ class Material
     /**
      * @var string
      *
-     * @ORM\Column(name="formato", type="string", length=255, nullable=true)
+     * @ORM\Column(name="formato", type="string", length=255)
      */
     private $formato;
 
-    /**
+    /*/**
      * @var string
      *
      * @ORM\Column(name="tamano", type="string", length=255, nullable=true)
      */
-    private $tamano;
+    //private $tamano;*/
 
-    /**
+    /*/**
      * @var string
      *
      * @ORM\Column(name="unidad", type="string", length=255, nullable=true)
      */
-    private $unidad;
+    //private $unidad;
 
     /**
      * @var string
@@ -70,7 +70,6 @@ class Material
      * @var string
      *
      * @ORM\Column(name="nombre", type="string", length=200)
-     * @Assert\NotBlank()
      */
     private $nombre;
 
@@ -533,13 +532,13 @@ class Material
         $this->almacenes->removeElement($almacenes);
     }
 
-    /**
+   /* /**
      * Set unidad
      *
      * @param string $unidad
      * @return Material
      */
-    public function setUnidad($unidad)
+    /*public function setUnidad($unidad)
     {
         $this->unidad = $unidad;
     
@@ -551,18 +550,18 @@ class Material
      *
      * @return string 
      */
-    public function getUnidad()
+    /*public function getUnidad()
     {
         return $this->unidad;
-    }
+    }*/
 
-    /**
+   /* /**
      * Set tamano
      *
      * @param string $tamano
      * @return Material
-     */
-    public function setTamano($tamano)
+     */ 
+    /*public function setTamano($tamano)
     {
         $this->tamano = $tamano;
     
@@ -574,8 +573,8 @@ class Material
      *
      * @return string 
      */
-    public function getTamano()
+   /* public function getTamano()
     {
         return $this->tamano;
-    }
+    }*/
 }

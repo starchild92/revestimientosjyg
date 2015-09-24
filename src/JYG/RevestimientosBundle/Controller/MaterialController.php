@@ -71,6 +71,8 @@ class MaterialController extends Controller
                 }else{
                     $almacen = $material->getAlmacenes();
                     $material->setAlmacenes($almacen);
+                    $nombre = $material->getCodigo().' ('.$material->getTipo().')';
+                    $material->setNombre($nombre);
                     $em = $this->getDoctrine()->getManager();
                     $em->persist($material);
                     $em->flush();
@@ -245,6 +247,8 @@ class MaterialController extends Controller
                     $this->get('session')->getFlashBag()->set('exito', 'Se ha modificado exitosamente el producto.');
                     $almacen = $entity->getAlmacenes();
                     $entity->setAlmacenes($almacen);
+                    $nombre = $entity->getCodigo().' ('.$entity->getTipo().')';
+                    $entity->setNombre($nombre);
                     $em->persist($entity);
                     $em->flush();
                     /*Entrada en la bitacora*/
