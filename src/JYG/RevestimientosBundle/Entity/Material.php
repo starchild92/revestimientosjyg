@@ -328,7 +328,7 @@ class Material
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    protected $path;
+    public $path;
 
     public function getAbsolutePath()
     {

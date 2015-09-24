@@ -52,7 +52,7 @@ class UsuarioController extends Controller
             $session = $this->getRequest()->getSession();
             $login = $session->get('login');
             /*Entrada en la bitacora*/
-            $this->addLog($login, 'Usuario'. $entity->getLogin().' Registrado');
+            $this->addLog($login, 'Usuario'. $entity->getUsername().' Registrado');
             $em->flush();
 
             return $this->redirect($this->generateUrl('usuario_show', array('id' => $entity->getId())));
@@ -184,7 +184,7 @@ class UsuarioController extends Controller
             $session = $this->getRequest()->getSession();
             $login = $session->get('login');
             /*Entrada en la bitacora*/
-            $this->addLog($login, 'Datos del Usuario:'. $entity->getLogin().' Modificados');
+            $this->addLog($login, 'Datos del Usuario:'. $entity->getUsername().' Modificados');
             $em->flush();
             $this->get('session')->getFlashBag()->set('cod', 'Se ha actualizado la información del usuario de manera correcta');
             return $this->redirect($this->generateUrl('usuario_show', array('id' => $id)));
@@ -215,7 +215,7 @@ class UsuarioController extends Controller
             $session = $this->getRequest()->getSession();
             $login = $session->get('login');
             /*Entrada en la bitacora*/
-            $this->addLog($login, 'Usuario'. $entity->getLogin().' Eliminado');
+            $this->addLog($login, 'Usuario'. $entity->getUsername().' Eliminado');
             $em->remove($entity);
             $em->flush();
             $this->get('session')->getFlashBag()->set('cod', 'El usuario ha sido eliminado correctamente');
@@ -247,13 +247,11 @@ class UsuarioController extends Controller
     private function addLog($login, $operacion)
     {
         /* Se obtiene la hora del evento:*/
-        
         $time = new \DateTime();
         /*Se establece la zona horaria correctamente.*/
         $zone = $this->container->getParameter('time_zone');
         $time->setTimezone( new \DateTimeZone($zone));
         
-
         /*Se crea el objeto bitacora para almacenarlo posteriormente*/
         $bitacora = new Bitacora();
         $bitacora->setLogin( $login )

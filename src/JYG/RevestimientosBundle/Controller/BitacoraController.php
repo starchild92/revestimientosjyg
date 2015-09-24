@@ -30,6 +30,7 @@ class BitacoraController extends Controller
         }else{
             return $this->redirect($this->generateUrl('_inicio_sesion'));
         }
+        
     }
 
     /**
