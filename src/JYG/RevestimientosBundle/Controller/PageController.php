@@ -10,6 +10,7 @@ use JYG\RevestimientosBundle\Entity\Consulta;
 use JYG\RevestimientosBundle\Entity\Login;
 use JYG\RevestimientosBundle\Entity\Usuario;
 use JYG\RevestimientosBundle\Form\LoginType;
+use JYG\RevestimientosBundle\Form\UsuarioType;
 use JYG\RevestimientosBundle\Form\ConsultaType;
 
 use Symfony\Component\HttpFoundation\Session\Session;
@@ -154,7 +155,14 @@ class PageController extends Controller
     }
 
     public function inicioAdminAction(){
-
+        $session = $this->getRequest()->getSession();
+        $login = $session->get('login');
+        //$user = new UsuarioType();
+        $em = $this->getDoctrine()->getManager();
+        $user = $em->getRepository('JYGRevestimientosBundle:Usuario')->findByUsername($login);
+        if (sizeof($user) > 0) {
+            $session->set('nombre',$user[0]->getNombre());
+        }
         return $this->render('JYGRevestimientosBundle:Page:indexAdmin.html.twig');
     }
 

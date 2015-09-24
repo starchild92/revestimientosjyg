@@ -48,9 +48,8 @@
 					
 					<h4 class="form-signin-heading"><center>Iniciar Sesión</center></h4>
 					{% for flashMessage in app.session.flashbag.get('errorsesion') %}
-						<div class = "alert alert-danger alert-dismissable">
-							<button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
-							{{ flashMessage }}
+						<div class = "well well-sm">
+							<b>{{ flashMessage }}</b>
 						</div>
 					{% endfor %}
 					{{ form_start(form) }}
@@ -58,9 +57,7 @@
 					{{ form_widget(form.password, {'attr': {'placeholder': 'Clave'} }) }}  
 					{{ form_row(form._token) }}
 					{{ form_rest(form) }}
-							<!--<input type="checkbox" id="remember_me" name="_remember_me" checked />
-							<label for="remember_me">Recordarme</label>-->
-							<button class="btn btn-naranja btn-block" type="submit">Continuar...</button>
+							<button class="btn btn-naranja btn-block" type="submit">Iniciar Sesión</button>
 							{{ form_end(form) }}
 						</div>
 			</form>
