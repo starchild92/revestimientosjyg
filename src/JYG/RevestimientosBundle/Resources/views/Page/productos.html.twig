@@ -24,19 +24,28 @@
 		<!-- Barra de la Izquierda con los Tipos de Productos -->
 		<div class="col-lg-3 col-sm-3 col-xs-12">
 			<ul class="nav  nav-stacked orange">
-				<li role="presentation" class="menu"><a href="{{ path('_productos_tipo', { 'var': 'formateada' })  }}" class="list-group-item">
+				{% set foo = path(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))|split('/') %}
+                {% set bar = foo|last %}
+				<li role="presentation" class="{% if bar == 'formateada'%}active{% endif %}"><a href="{{ path('_productos_tipo', { 'var': 'formateada' })  }}" class="list-group-item">
 			    <h4 class="list-group-item-heading"><span class="glyphicon glyphicon-th-large" aria-hidden="true"></span> Lajas Formateadas</h4>
-			  </a></li>
-				<li role="presentation" class="menu"><a href="{{ path('_productos_tipo', { 'var': 'natural' })  }}" class="list-group-item">
+			  </a></li>        
+				<li role="presentation" class="{% if bar == 'natural'%}active{% endif %}"><a href="{{ path('_productos_tipo', { 'var': 'natural' })  }}" class="list-group-item">
 			    <h4 class="list-group-item-heading"><span class="glyphicon glyphicon-th-large" aria-hidden="true"></span> Lajas Naturales</h4>
 			  </a></li>
-				<li role="presentation" class="menu"><a href="{{ path('_productos_tipo', { 'var': 'otro' })  }}" class="list-group-item">
+				<li role="presentation" class="{% if bar == 'otro'%}active{% endif %}"><a href="{{ path('_productos_tipo', { 'var': 'otro' })  }}" class="list-group-item">
 			    <h4 class="list-group-item-heading"><span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span> Otros Productos</h4>
 			  </a></li>
 			</ul>
 		</div>
 		<!-- Productos -->
 		<div class="col-lg-9 col-sm-9 col-xs-12">
+			<div class="row">
+				{% for flashMessage in app.session.flashbag.get('error') %}
+					<div class = "alert alert-info alert-dismissable">
+						<button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
+						{{ flashMessage }}
+					</div>
+				{% endfor %}
 				<div class="grid">
 				<div class="row">
 		    		{% for entity in pagination %}
@@ -71,14 +80,6 @@
 			</div>
 		</div>
 	</div>
-
-<script type="text/javascript">
-	$('li.menu').click(function(){
-    $('li.menu').removeClass("active");
-    $(this).addClass("active");
-});
-
-</script>
 {% endblock %}
 {% block stylesheets %}
 	<style type="text/css">
@@ -131,4 +132,3 @@
 		}
 	</style>
 {% endblock %}
-
