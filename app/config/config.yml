@@ -82,6 +82,19 @@ swiftmailer:
     password:  "%mailer_password%"
     spool:     { type: memory }
 
+#PDF Bundle
+knp_snappy:
+    temporary_folder: %kernel.cache_dir%/snappy
+
+    pdf:
+        enabled:    true
+        binary:     "%kernel.root_dir%/../src/JYG/RevestimientosBundle/Resources/public/wkhtmltopdf.exe"
+        options:    []
+    image:
+        enabled:    true
+        binary:     "%kernel.root_dir%/../src/JYG/RevestimientosBundle/Resources/public/wkhtmltoimage.exe"
+        options:    []
+
 #paginator
 knp_paginator:
     page_range: 10                      # número de páginas a mostrar

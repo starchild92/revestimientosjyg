@@ -63,7 +63,7 @@ _inicio_sesion:
     defaults: { _controller: JYGRevestimientosBundle:Page:inicioSesion }
 
 _cerrar_sesion:
-    path:  /cerrar_sesion
+    path:  /cerrarsesion
     defaults: { _controller: JYGRevestimientosBundle:Page:cerrarSesion }
 
 inicio_admin:
@@ -101,5 +101,3 @@ _productos_tipo:
 jyg_revestimientos_material:
     resource: "@JYGRevestimientosBundle/Resources/config/routing/material.yml"
     prefix:   /admin/material
-
-

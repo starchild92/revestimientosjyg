@@ -3,16 +3,14 @@
 namespace JYG\RevestimientosBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
 use JYG\RevestimientosBundle\Entity\Venta;
 use JYG\RevestimientosBundle\Form\VentaType;
 use JYG\RevestimientosBundle\Entity\Bitacora;
-# Para poder hacer los forms
 use JYG\RevestimientosBundle\Entity\Item;
 use JYG\RevestimientosBundle\Entity\Cliente;
 use JYG\RevestimientosBundle\Form\ClienteType;
-
 
 /**
  * Venta controller.
@@ -28,16 +26,16 @@ class VentaController extends Controller
     public function indexAction()
     {
         $session = $this->getRequest()->getSession();
-        if ($session->has('login')){
+        if (!$session->has('login')){
+            $this->addFlash('errorsesion','Debe iniciar sesión para acceder a esta sección.');
+            return $this->redirect($this->generateUrl('_inicio_sesion'));
+        }
         $em = $this->getDoctrine()->getManager();
         $entities = $em->getRepository('JYGRevestimientosBundle:Venta')->AllOrdenById();
 
         return $this->render('JYGRevestimientosBundle:Venta:index.html.twig', array(
             'entities' => $entities,
         ));
-        }else{
-            return $this->redirect($this->generateUrl('_inicio_sesion'));
-        }
     }
     /**
      * Creates a new Venta entity.
@@ -454,6 +452,32 @@ class VentaController extends Controller
                 'attr' => array('class'=>'btn btn-danger btn-block')))
             ->getForm()
         ;
+    }
+
+    public function notaAction(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $venta = $em->getRepository('JYGRevestimientosBundle:Venta')->find($id);
+        $items = $em->getRepository('JYGRevestimientosBundle:Item')->findNumVenta($id);
+        $cliente = $em->getRepository('JYGRevestimientosBundle:Cliente')->find($venta->getComprador());
+
+        $html = $this->renderView('JYGRevestimientosBundle:Venta:notadeentrega.html.twig', array(
+            'entity'      => $venta,
+            'cliente'     => $cliente,
+            'items'       => $items,
+            'base_dir' => $this->get('kernel')->getRootDir() . '/../web' . $request->getBasePath()
+        ),
+            $id.'.pdf'
+        );
+
+        return new Response(
+            $this->get('knp_snappy.pdf')->getOutputFromHtml($html),
+            200,
+            array(
+                'Content-Type'          => 'application/pdf',
+                'Content-Disposition'   => 'attachment; filename="file.pdf"'
+            )
+        );
     }
 
     /*Funciones para guardar la bitácora:
