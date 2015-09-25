@@ -13,15 +13,15 @@ class GaleriaController extends Controller
     public function AdministrarGaleriaAction()
     {
         $session = $this->getRequest()->getSession();
-        if ($session->has('login')){
-            $em = $this->getDoctrine()->getManager();
-            $entities = $em->getRepository('JYGRevestimientosBundle:Galeria')->ObtenerporAgregado();
-            return $this->render('JYGRevestimientosBundle:Galeria:AdministrarGaleria.html.twig', array(
-                'entities' => $entities
-            ));
-        }else{
+        if (!$session->has('login')){
+            $this->addFlash('errorsesion','Debe iniciar sesión para acceder a esta sección.');
             return $this->redirect($this->generateUrl('_inicio_sesion'));
         }
+        $em = $this->getDoctrine()->getManager();
+        $entities = $em->getRepository('JYGRevestimientosBundle:Galeria')->ObtenerporAgregado();
+        return $this->render('JYGRevestimientosBundle:Galeria:AdministrarGaleria.html.twig', array(
+            'entities' => $entities
+        ));
     }
 
     public function NuevaImagenAction()

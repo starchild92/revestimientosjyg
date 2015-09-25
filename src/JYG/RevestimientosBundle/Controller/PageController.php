@@ -3,6 +3,7 @@
 namespace JYG\RevestimientosBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
@@ -39,13 +40,10 @@ class PageController extends Controller
     public function productosAction()
     {
         $em = $this->getDoctrine()->getManager();
-
         $entities = $em->getRepository('JYGRevestimientosBundle:Material')->ObtenerporAgregado();
-
         if (!$entities) {
             $this->get('session')->getFlashBag()->set('error', 'No hay productos para mostrar.');
         }
-
         return $this->render('JYGRevestimientosBundle:Page:productos.html.twig', array(
             'entities' => $entities,
         ));
@@ -78,18 +76,14 @@ class PageController extends Controller
      */
     public function galeriaAction()
     {
-       $em = $this->getDoctrine()->getManager();
-
+        $em = $this->getDoctrine()->getManager();
         $entities = $em->getRepository('JYGRevestimientosBundle:Galeria')->ObtenerporAgregado();
-
         if (!$entities) {
             $this->get('session')->getFlashBag()->set('error', 'En estos momentos no hay imágenes en la galería, pero pronto estaremos añadiendo.');
         }
-
         return $this->render('JYGRevestimientosBundle:Page:galeria.html.twig', array(
             'entities' => $entities,
         ));
-
     }
 
     /**
@@ -197,9 +191,6 @@ class PageController extends Controller
         )); 
     }
 
-    /**
-     * @Route("/")
-     */
     public function cerrarSesionAction(){
         $session = $this->getRequest()->getSession();
         $session->remove('login');

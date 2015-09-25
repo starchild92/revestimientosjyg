@@ -21,10 +21,14 @@ class ItemController extends Controller
      */
     public function indexAction()
     {
+        $session = $this->getRequest()->getSession();
+        if (!$session->has('login')){
+            $this->addFlash('errorsesion','Debe iniciar sesión para acceder a esta sección.');
+            return $this->redirect($this->generateUrl('_inicio_sesion'));
+        }
+        
         $em = $this->getDoctrine()->getManager();
-
         $entities = $em->getRepository('JYGRevestimientosBundle:Item')->AllOrdenById();
-
         return $this->render('JYGRevestimientosBundle:Item:index.html.twig', array(
             'entities' => $entities,
         ));

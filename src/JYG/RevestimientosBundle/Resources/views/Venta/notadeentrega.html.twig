@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Revestimientos J&G, Barquisimeto C.A</title>
+    <style type="text/css">
+    .table{
+        width: 100%;
+        font-family: "Arial", sans-serif;
+        border-spacing: 0;
+        border-collapse: collapse;
+        max-width: 100%;
+        margin-bottom: 20px;
+    }
+    .table {
+        border-collapse: collapse !important;
+    }
+    .table td,
+    .table th {
+        background-color: #fff !important;
+    }
+    .table-bordered th,
+    .table-bordered td {
+        border: 1px solid #000 !important;
+    }
+    .table > thead > tr > th,
+    .table > tbody > tr > th,
+    .table > tfoot > tr > th,
+    .table > thead > tr > td,
+    .table > tbody > tr > td,
+    .table > tfoot > tr > td {
+        padding: 8px;
+        line-height: 1.42857143;
+        vertical-align: top;
+    }
+    .table > thead > tr > th {
+        vertical-align: bottom;
+        border-bottom: 2px solid #ddd;
+    }
+    .table > caption + thead > tr:first-child > th,
+    .table > colgroup + thead > tr:first-child > th,
+    .table > thead:first-child > tr:first-child > th,
+    .table > caption + thead > tr:first-child > td,
+    .table > colgroup + thead > tr:first-child > td,
+    .table > thead:first-child > tr:first-child > td {
+        border-top: 0;
+    }
+    .table-bordered {
+        border: 1px solid #000;
+    }
+    .table-bordered > thead > tr > th,
+    .table-bordered > tbody > tr > th,
+    .table-bordered > tfoot > tr > th,
+    .table-bordered > thead > tr > td,
+    .table-bordered > tbody > tr > td,
+    .table-bordered > tfoot > tr > td {
+        border: 1px solid #ddd;
+    }
+    .table-bordered > thead > tr > th,
+    .table-bordered > thead > tr > td {
+        border-bottom-width: 2px;
+    }
+    .table-condensed > thead > tr > th,
+    .table-condensed > tbody > tr > th,
+    .table-condensed > tfoot > tr > th,
+    .table-condensed > thead > tr > td,
+    .table-condensed > tbody > tr > td,
+    .table-condensed > tfoot > tr > td {
+        padding: 4px;
+    }
+    </style>
+</head>
+<body>
+    <table class="table">
+        <tr>
+            <td><img src="{{ base_dir ~ asset('bundles/jygrevestimientos/images/nota_entrega.png') }}" width="400px"></td>
+            <td>
+                <table>
+                    <tr><td><b>Fecha</b><br>{{ entity.fecha|date('m/d/Y') }}</td></tr>
+                    <tr><td><b>Nota de Entrega:</b><br>{{ entity.id }}</td></tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>San Diego Edo Carabobo<br>Teléfono: (0424) 455 57 12</td>
+            <td>
+                <table class="table table-condensed">
+                    <thead><tr><th>Detalles del Comprador</th></tr></thead>
+                    <tbody>
+                        <tr><td><b>A Nombre:</b> {{ cliente.nombre }}<br>
+                        <b>Dirección:</b> {{ cliente.direccion }}<br>
+                        <b>Teléfono de contacto:</b> {{ cliente.telefono }}</td></tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Descripción</th>
+                <th>Cantidad</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in items %}
+            <tr>
+                <td>{% set foo = item.codigomaterial|split(',') %}{{ foo|first }}</td>
+                <td>{{ foo|last }}</td>
+                <td>{{ item.cantidad }} unidades</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <table class="table">
+        <tbody>
+            <tr>
+                <td>Si tiene alguna pregunta relacionada con esta Nota de Entrega, le rogamos se ponga en contacto con:<br>JAQUELIN FAJARDO (0424) 455 57 12</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
+
+

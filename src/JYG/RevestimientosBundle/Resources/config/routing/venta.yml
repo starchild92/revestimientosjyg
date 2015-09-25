@@ -28,3 +28,7 @@ venta_delete:
     path:     /{id}/delete
     defaults: { _controller: "JYGRevestimientosBundle:Venta:delete" }
     methods:  [POST, DELETE]
+
+venta_nota:
+    path:     /{id}/nota
+    defaults: { _controller: "JYGRevestimientosBundle:Venta:nota" }

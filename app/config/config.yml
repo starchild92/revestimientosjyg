@@ -81,3 +81,15 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+
+knp_snappy:
+    temporary_folder: %kernel.cache_dir%/snappy
+
+    pdf:
+        enabled:    true
+        binary:     "%kernel.root_dir%/../src/JYG/RevestimientosBundle/Resources/public/wkhtmltopdf.exe"
+        options:    []
+    image:
+        enabled:    true
+        binary:     "%kernel.root_dir%/../src/JYG/RevestimientosBundle/Resources/public/wkhtmltoimage.exe"
+        options:    []
