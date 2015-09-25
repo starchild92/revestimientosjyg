@@ -4,18 +4,15 @@
     <script src="{{ asset('bundles/jygrevestimientos/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('bundles/jygrevestimientos/js/masonry.js') }}"></script>
     <script type="text/javascript">
-		$(document).ready( function() {
-					// init Masonry
-					var $grid = $('.grid').masonry({
-						itemSelector: '.grid-item',
-						percentPosition: true,
-						columnWidth: '.grid-sizer'
-					});
-					// layout Isotope after each image loads
-					$grid.imagesLoaded().progress( function() {
-						$grid.masonry();
-					}); 
-				});
+		document.addEventListener('DOMContentLoaded', function() {
+		  setTimeout(function(){
+			$('.grid').masonry({
+			    itemSelector: '.grid-item',
+			    columnWidth: 210,
+			    isFitWidth: true
+			  });
+			}, 3000);
+		}, false);
 	</script>
 {% endblock %}
 {% block title %}Revestimientos J&G - Productos{% endblock %}
@@ -62,8 +59,9 @@
 						{{ flashMessage }}
 					</div>
 				{% endfor %}
+
 				<div class="grid">
-				<div class="grid-sizer"></div>
+				<div class="row">
 		    		{% for entity in pagination %}
 						<div class="grid-item">
 							<div class="thumbnail">
@@ -104,7 +102,8 @@
 			margin-top: 0px;
 		}
 		.thumbnail {
-			max-width: 245px;
+			max-width: 210px;
+			margin-bottom: 0px !important;
 		}
 		.thumbnail img{
 			width: 100%;
@@ -123,24 +122,26 @@
 			box-sizing: border-box;
 		}
 
-		/* force scrollbar */
-		html { overflow-y: scroll; }
+		/* ---- grid ---- */
+		.grid {
+		  /* center */
+		  margin: 0 auto;
+		}
 
-		/* clear fix */
+		/* clearfix */
 		.grid:after {
-			content: '';
-			display: block;
-			clear: both;
+		  content: '';
+		  display: block;
+		  clear: both;
 		}
 
-		/* ---- .grid-item ---- */
+		/* ---- grid-item ---- */
 
-		.grid-sizer,
 		.grid-item {
-			width: 260px;
-		}
-		.grid-item {
-			float: left;
+		  width: 210px;
+		  height: auto;
+		  float: right;
+		  display: inline-block;
 		}
 
 		.orange .active a,
