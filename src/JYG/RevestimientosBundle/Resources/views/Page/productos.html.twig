@@ -8,7 +8,7 @@
 		  setTimeout(function(){
 			$('.grid').masonry({
 			    itemSelector: '.grid-item',
-			    columnWidth: 210,
+			    columnWidth: 260,
 			    isFitWidth: true
 			  });
 			}, 3000);
@@ -23,22 +23,7 @@
 	<div class="row">
 		<!-- Barra de la Izquierda con los Tipos de Productos -->
 		<div class="col-lg-3 col-sm-3 col-xs-12">
-			{#<div class="list-group">
-			  <a href="{{ path('_productos_tipo', { 'var': 'formateada' })  }}" class="list-group-item">
-			    <h4 class="list-group-item-heading"><span class="glyphicon glyphicon-th-large" aria-hidden="true"></span> Lajas Formateadas</h4>
-			    <p class="list-group-item-text">Lajas Formateadas.<br><small>Haga click para mostrar todos los productos de este tipo</small></p>
-			  </a>
-			  <a href="{{ path('_productos_tipo', { 'var': 'natural' })  }}" class="list-group-item">
-			    <h4 class="list-group-item-heading"><span class="glyphicon glyphicon-th-large" aria-hidden="true"></span> Lajas Naturales</h4>
-			    <p class="list-group-item-text">Lajas Naturales.<br><small>Haga click para mostrar todos los productos de este tipo</small></p>
-			  </a>
-			  <a href="{{ path('_productos_tipo', { 'var': 'otro' })  }}" class="list-group-item">
-			    <h4 class="list-group-item-heading"><span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span> Otros Productos</h4>
-			    <p class="list-group-item-text">Selladores, Tablillas y Pisos Artesanales, Tacos, entre otros.<br><small>Haga click para mostrar todos los productos</small></p>
-			  </a>
-			</div>#}
-
-			<ul class="nav  nav-stacked orange ">
+			<ul class="nav  nav-stacked orange">
 				<li role="presentation" class="menu"><a href="{{ path('_productos_tipo', { 'var': 'formateada' })  }}" class="list-group-item">
 			    <h4 class="list-group-item-heading"><span class="glyphicon glyphicon-th-large" aria-hidden="true"></span> Lajas Formateadas</h4>
 			  </a></li>
@@ -52,7 +37,6 @@
 		</div>
 		<!-- Productos -->
 		<div class="col-lg-9 col-sm-9 col-xs-12">
-			
 				<div class="grid">
 				<div class="row">
 		    		{% for entity in pagination %}
@@ -64,7 +48,7 @@
 									<table class="table table-condensed">
 											<tr><th>Tipo</th><td>{{ entity.tipo }}</td></tr>
 											{#{% if entity.tipo == 'Laja Natural'  %}#}
-												<tr><th>Color</th><td>{{ entity.color }}</td></tr>
+												{% if entity.color != '' %}<tr><th>Color</th><td>{{ entity.color }}</td></tr>{% endif %}
 												{#<tr><th>Tam.</th><td>{{ entity.tamano }}</td></tr>
 											{% endif %}#}
 											{#{% if entity.tipo == 'Laja Formateada'  %}
@@ -103,7 +87,7 @@
 			margin-top: 0px;
 		}
 		.thumbnail {
-			max-width: 210px;
+			max-width: 255px;
 			margin-bottom: 0px !important;
 		}
 		.thumbnail img{
@@ -123,12 +107,6 @@
 			box-sizing: border-box;
 		}
 
-		/* ---- grid ---- */
-		.grid {
-		  /* center */
-		  margin: 0 auto;
-		}
-
 		/* clearfix */
 		.grid:after {
 		  content: '';
@@ -139,10 +117,11 @@
 		/* ---- grid-item ---- */
 
 		.grid-item {
-		  width: 210px;
+		  width: 255px;
 		  height: auto;
-		  float: right;
+		  float: left;
 		  display: inline-block;
+		  margin-bottom: 5px;
 		}
 
 		.orange .active a,
