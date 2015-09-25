@@ -359,7 +359,7 @@ class Material
         return 'bundles/jygrevestimientos/images/materiales';
     }
 
-    private $temp;
+    public $temp;
 
     /**
      * Sets file.

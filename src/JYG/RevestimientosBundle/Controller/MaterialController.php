@@ -76,8 +76,10 @@ class MaterialController extends Controller
                     $em = $this->getDoctrine()->getManager();
                     $em->persist($material);
                     $em->flush();
+                    
                     $session = $this->getRequest()->getSession();
                     $login = $session->get('login');
+
                     /*Entrada en la bitacora*/
                     $this->addLog($login, 'Agregado Producto: '. $material->getCodigo().''. $material->getNombre().''.$material->getTipo());
                     $this->get('session')->getFlashBag()->set('cod', 'El producto fue agregado con éxito');
