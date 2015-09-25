@@ -65,9 +65,7 @@ class MaterialController extends Controller
                 $repositorio =  $this->getDoctrine()->getRepository('JYGRevestimientosBundle:Material')->findByCodigo($material->getCodigo());
                 if ($repositorio) {
                     $session = $request->getSession();
-                      $this->addFlash(
-                          'cod','Ya existe un material con ese codigo, Por favor modifiquelo y vuelva a seleccionar la imágen'
-                       );
+                    $this->addFlash('cod','Ya existe un material con ese codigo, Por favor modifiquelo y vuelva a seleccionar la imágen');
                 }else{
                     $almacen = $material->getAlmacenes();
                     $material->setAlmacenes($almacen);

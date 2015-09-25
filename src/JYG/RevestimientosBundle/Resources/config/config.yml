@@ -1,3 +1,4 @@
 parameters:
     # dirección de correo electrónico para contacto del Blogger
     JYG_Revestimientos.emails.contact_email: edy992.6@gmail.com
+    time_zone: "America/Caracas"

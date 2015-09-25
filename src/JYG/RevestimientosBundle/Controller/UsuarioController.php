@@ -180,6 +180,9 @@ class UsuarioController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
+            $plain = md5($entity->getPassword());
+            $entity->setPassword($plain);
+            
             $session = $this->getRequest()->getSession();
             $login = $session->get('login');
             /*Entrada en la bitacora*/

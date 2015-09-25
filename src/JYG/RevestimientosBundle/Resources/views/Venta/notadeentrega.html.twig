@@ -15,10 +15,7 @@
     .table {
         border-collapse: collapse !important;
     }
-    .table td,
-    .table th {
-        background-color: #fff !important;
-    }
+    .color{ background-color: #ddd !important; }
     .table-bordered th,
     .table-bordered td {
         border: 1px solid #000 !important;
@@ -98,16 +95,16 @@
     <table class="table table-bordered">
         <thead>
             <tr>
-                <th>Código</th>
-                <th>Descripción</th>
-                <th>Cantidad</th>
+                <th class="color">Código</th>
+                <th class="color">Descripción</th>
+                <th class="color">Cantidad</th>
             </tr>
         </thead>
         <tbody>
             {% for item in items %}
             <tr>
-                <td>{% set foo = item.codigomaterial|split(',') %}{{ foo|first }}</td>
-                <td>{{ foo|last }}</td>
+                <td>{% set foo = item.codigomaterial|split(',') %}{% set rep = foo|first %}{{ foo|first }}</td>
+                <td>{% set bar = foo|last %}{{ bar|replace({ (rep) : '' }) }}</td>
                 <td>{{ item.cantidad }} unidades</td>
             </tr>
             {% endfor %}
