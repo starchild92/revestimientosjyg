@@ -5,7 +5,8 @@
 	<script src="{{ asset('bundles/jygrevestimientos/js/modal.js') }}"></script>
 	<script src="{{ asset('bundles/jygrevestimientos/js/masonry.js') }}"></script>
 	<script type="text/javascript">
-		$(document).ready( function() {
+		document.addEventListener('DOMContentLoaded', function() {
+		  setTimeout(function(){
 					// init Masonry
 					var $grid = $('.grid').masonry({
 						itemSelector: '.grid-item',
@@ -16,7 +17,8 @@
 					$grid.imagesLoaded().progress( function() {
 						$grid.masonry();
 					}); 
-				});
+			}, 3000);
+		}, false);
 	</script>
 {% endblock %}
 {% block body %}
