@@ -40,13 +40,14 @@ class BitacoraController extends Controller
      */
     public function showAction($id)
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('JYGRevestimientosBundle:Bitacora')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Bitacora entity.');
+        $session = $this->getRequest()->getSession();
+        if (!$session->has('login')){
+            $this->addFlash('errorsesion','Debe iniciar sesión para acceder a esta sección.');
+            return $this->redirect($this->generateUrl('_inicio_sesion'));
         }
+        
+        $em = $this->getDoctrine()->getManager();
+        $entity = $em->getRepository('JYGRevestimientosBundle:Bitacora')->find($id);
 
         return $this->render('JYGRevestimientosBundle:Bitacora:show.html.twig', array(
             'entity'      => $entity,

@@ -39,6 +39,11 @@ class UsuarioController extends Controller
      */
     public function createAction(Request $request)
     {
+        $session = $this->getRequest()->getSession();
+        if (!$session->has('login')){
+            $this->addFlash('errorsesion','Debe iniciar sesión para acceder a esta sección.');
+            return $this->redirect($this->generateUrl('_inicio_sesion'));
+        }
         $entity = new Usuario();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
@@ -88,6 +93,11 @@ class UsuarioController extends Controller
      */
     public function newAction()
     {
+        $session = $this->getRequest()->getSession();
+        if (!$session->has('login')){
+            $this->addFlash('errorsesion','Debe iniciar sesión para acceder a esta sección.');
+            return $this->redirect($this->generateUrl('_inicio_sesion'));
+        }
         $entity = new Usuario();
         $form   = $this->createCreateForm($entity);
 
@@ -103,6 +113,11 @@ class UsuarioController extends Controller
      */
     public function showAction($id)
     {
+        $session = $this->getRequest()->getSession();
+        if (!$session->has('login')){
+            $this->addFlash('errorsesion','Debe iniciar sesión para acceder a esta sección.');
+            return $this->redirect($this->generateUrl('_inicio_sesion'));
+        }
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('JYGRevestimientosBundle:Usuario')->find($id);
@@ -125,6 +140,11 @@ class UsuarioController extends Controller
      */
     public function editAction($id)
     {
+        $session = $this->getRequest()->getSession();
+        if (!$session->has('login')){
+            $this->addFlash('errorsesion','Debe iniciar sesión para acceder a esta sección.');
+            return $this->redirect($this->generateUrl('_inicio_sesion'));
+        }
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('JYGRevestimientosBundle:Usuario')->find($id);
@@ -167,6 +187,11 @@ class UsuarioController extends Controller
      */
     public function updateAction(Request $request, $id)
     {
+        $session = $this->getRequest()->getSession();
+        if (!$session->has('login')){
+            $this->addFlash('errorsesion','Debe iniciar sesión para acceder a esta sección.');
+            return $this->redirect($this->generateUrl('_inicio_sesion'));
+        }
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('JYGRevestimientosBundle:Usuario')->find($id);
@@ -204,6 +229,11 @@ class UsuarioController extends Controller
      */
     public function deleteAction(Request $request, $id)
     {
+        $session = $this->getRequest()->getSession();
+        if (!$session->has('login')){
+            $this->addFlash('errorsesion','Debe iniciar sesión para acceder a esta sección.');
+            return $this->redirect($this->generateUrl('_inicio_sesion'));
+        }
         $form = $this->createDeleteForm($id);
         $form->handleRequest($request);
 

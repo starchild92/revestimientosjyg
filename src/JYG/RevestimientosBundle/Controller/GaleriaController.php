@@ -26,6 +26,12 @@ class GaleriaController extends Controller
 
     public function NuevaImagenAction()
     {
+        $session = $this->getRequest()->getSession();
+        if (!$session->has('login')){
+            $this->addFlash('errorsesion','Debe iniciar sesión para acceder a esta sección.');
+            return $this->redirect($this->generateUrl('_inicio_sesion'));
+        }
+
         $galeria = new Galeria();
         $form = $this->createForm(new GaleriaType(), $galeria);   
         $request = $this->getRequest();
@@ -58,6 +64,12 @@ class GaleriaController extends Controller
 
     public function EditarImagenAction(Request $request, $id)
     {
+        $session = $this->getRequest()->getSession();
+        if (!$session->has('login')){
+            $this->addFlash('errorsesion','Debe iniciar sesión para acceder a esta sección.');
+            return $this->redirect($this->generateUrl('_inicio_sesion'));
+        }
+
         $em = $this->getDoctrine()->getManager();
         $entity = $em->getRepository('JYGRevestimientosBundle:Galeria')->find($id);
 
@@ -123,6 +135,11 @@ class GaleriaController extends Controller
 
     public function EliminarImagenAction($id)
     {
+        $session = $this->getRequest()->getSession();
+        if (!$session->has('login')){
+            $this->addFlash('errorsesion','Debe iniciar sesión para acceder a esta sección.');
+            return $this->redirect($this->generateUrl('_inicio_sesion'));
+        }
         $em = $this->getDoctrine()->getManager();
         $foto = $em->getRepository('JYGRevestimientosBundle:Galeria')->find($id);
 
