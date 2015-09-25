@@ -43,11 +43,7 @@
         {% for entity in entities %}
             <tr>
                 <td>{{ entity.id }}</td>
-<<<<<<< HEAD
                 <td>{{ entity.fecha|date('d-m-Y - g:ia')}}</</td>
-=======
-                <td>{{ entity.fecha|date('d-m-Y H:i:s') }}</td>
->>>>>>> 433954aab2b1f984103ed03f2b56f724ccdd0fe1
                 <td><a href="{{ path('venta_show', { 'id': entity.id }) }}">{{ entity.comprador }}</a></td>
                 <td>
                     <div class="dropdown pull-right">
