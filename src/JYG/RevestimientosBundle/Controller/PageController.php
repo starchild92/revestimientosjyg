@@ -55,7 +55,7 @@ class PageController extends Controller
         $paginator  = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
             $query,
-            $this->get('request')->query->get('page', 1)/*page number*/,2/*limit per page*/);
+            $this->get('request')->query->get('page', 1)/*page number*/,9/*limit per page*/);
 
 
         return $this->render('JYGRevestimientosBundle:Page:productos.html.twig', array(
@@ -205,6 +205,7 @@ class PageController extends Controller
                 }else{
                     $session = new Session();
                     $session->set('login', $login);
+                    $session->set('tipo_usuario', $user[0]->getCuenta());
                     //throw $this->createNotFoundException($login);
                     return $this->inicioAdminAction();
                 }
@@ -218,6 +219,8 @@ class PageController extends Controller
     public function cerrarSesionAction(){
         $session = $this->getRequest()->getSession();
         $session->remove('login');
+        $session->remove('tipo_usuario');
+        $session->remove('nombre');
         return $this->indexAction();
     }
 

@@ -47,6 +47,11 @@ class MaterialController extends Controller
      */
     public function createAction(Request $request)
     {
+        $session = $this->getRequest()->getSession();
+        if (!$session->has('login')){
+            $this->addFlash('errorsesion','Debe iniciar sesión para acceder a esta sección.');
+            return $this->redirect($this->generateUrl('_inicio_sesion'));
+        }
         $error ="";
         $material = new Material();
         $deposito = new Deposito();
@@ -120,6 +125,11 @@ class MaterialController extends Controller
      */
     public function newAction()
     {
+        $session = $this->getRequest()->getSession();
+        if (!$session->has('login')){
+            $this->addFlash('errorsesion','Debe iniciar sesión para acceder a esta sección.');
+            return $this->redirect($this->generateUrl('_inicio_sesion'));
+        }
         $material = new Material();
         $form = $this ->createForm(new MaterialType(), $material, array(
             'action' => $this->generateUrl('material_create'),
@@ -144,8 +154,12 @@ class MaterialController extends Controller
      */
     public function showAction($id)
     {
+        $session = $this->getRequest()->getSession();
+        if (!$session->has('login')){
+            $this->addFlash('errorsesion','Debe iniciar sesión para acceder a esta sección.');
+            return $this->redirect($this->generateUrl('_inicio_sesion'));
+        }
         $em = $this->getDoctrine()->getManager();
-
         $entity = $em->getRepository('JYGRevestimientosBundle:Material')->find($id);
 
         if (!$entity) {
@@ -153,7 +167,6 @@ class MaterialController extends Controller
         }
 
         $deleteForm = $this->createDeleteForm($id);
-
         return $this->render('JYGRevestimientosBundle:Material:show.html.twig', array(
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),
@@ -217,6 +230,11 @@ class MaterialController extends Controller
      */
     public function updateAction(Request $request, $id)
     {
+        $session = $this->getRequest()->getSession();
+        if (!$session->has('login')){
+            $this->addFlash('errorsesion','Debe iniciar sesión para acceder a esta sección.');
+            return $this->redirect($this->generateUrl('_inicio_sesion'));
+        }
         $em = $this->getDoctrine()->getManager();
         $entity = $em->getRepository('JYGRevestimientosBundle:Material')->find($id);
         if (!$entity) {
@@ -282,6 +300,11 @@ class MaterialController extends Controller
      */
     public function deleteAction(Request $request, $id)
     {
+        $session = $this->getRequest()->getSession();
+        if (!$session->has('login')){
+            $this->addFlash('errorsesion','Debe iniciar sesión para acceder a esta sección.');
+            return $this->redirect($this->generateUrl('_inicio_sesion'));
+        }
         $form = $this->createDeleteForm($id);
         $form->handleRequest($request);
 
@@ -309,7 +332,6 @@ class MaterialController extends Controller
      * Creates a form to delete a Material entity by id.
      *
      * @param mixed $id The entity id
-     *
      * @return \Symfony\Component\Form\Form The form
      */
     private function createDeleteForm($id)

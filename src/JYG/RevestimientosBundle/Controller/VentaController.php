@@ -19,6 +19,7 @@ use JYG\RevestimientosBundle\Form\ClienteType;
 class VentaController extends Controller
 {
 
+
     /**
      * Lists all Venta entities.
      *
@@ -43,6 +44,11 @@ class VentaController extends Controller
      */
     public function createAction(Request $request)
     {
+        $session = $this->getRequest()->getSession();
+        if (!$session->has('login')){
+            $this->addFlash('errorsesion','Debe iniciar sesión para acceder a esta sección.');
+            return $this->redirect($this->generateUrl('_inicio_sesion'));
+        }
         $session = $request->getSession();
         $entity = new Venta();
         $cliente = new Cliente();
@@ -211,6 +217,11 @@ class VentaController extends Controller
      */
     public function newAction()
     {
+        $session = $this->getRequest()->getSession();
+        if (!$session->has('login')){
+            $this->addFlash('errorsesion','Debe iniciar sesión para acceder a esta sección.');
+            return $this->redirect($this->generateUrl('_inicio_sesion'));
+        }
         $entity = new Venta();
         $form   = $this->createCreateForm($entity);
 
@@ -231,12 +242,16 @@ class VentaController extends Controller
      */
     public function showAction($id)
     {
+        $session = $this->getRequest()->getSession();
+        if (!$session->has('login')){
+            $this->addFlash('errorsesion','Debe iniciar sesión para acceder a esta sección.');
+            return $this->redirect($this->generateUrl('_inicio_sesion'));
+        }
         $em = $this->getDoctrine()->getManager();
 
         $venta = $em->getRepository('JYGRevestimientosBundle:Venta')->find($id);
         $items = $em->getRepository('JYGRevestimientosBundle:Item')->findNumVenta($id);
         $cliente = $em->getRepository('JYGRevestimientosBundle:Cliente')->find($venta->getComprador());
-
 
         if (!$venta) {
             throw $this->createNotFoundException('No existen los datos de la venta.');
@@ -258,8 +273,12 @@ class VentaController extends Controller
      */
     public function editAction($id)
     {
+        $session = $this->getRequest()->getSession();
+        if (!$session->has('login')){
+            $this->addFlash('errorsesion','Debe iniciar sesión para acceder a esta sección.');
+            return $this->redirect($this->generateUrl('_inicio_sesion'));
+        }
         $em = $this->getDoctrine()->getManager();
-
         $entity = $em->getRepository('JYGRevestimientosBundle:Venta')->find($id);
 
         if (!$entity) {
@@ -302,8 +321,12 @@ class VentaController extends Controller
      */
     public function updateAction(Request $request, $id)
     {
+        $session = $this->getRequest()->getSession();
+        if (!$session->has('login')){
+            $this->addFlash('errorsesion','Debe iniciar sesión para acceder a esta sección.');
+            return $this->redirect($this->generateUrl('_inicio_sesion'));
+        }
         $em = $this->getDoctrine()->getManager();
-
         $entity = $em->getRepository('JYGRevestimientosBundle:Venta')->find($id);
 
         if (!$entity) {
@@ -348,6 +371,11 @@ class VentaController extends Controller
      */
     public function deleteAction(Request $request, $id)
     {
+        $session = $this->getRequest()->getSession();
+        if (!$session->has('login')){
+            $this->addFlash('errorsesion','Debe iniciar sesión para acceder a esta sección.');
+            return $this->redirect($this->generateUrl('_inicio_sesion'));
+        }
         $session = $request->getSession();
         $form = $this->createDeleteForm($id);
         $form->handleRequest($request);
@@ -456,6 +484,11 @@ class VentaController extends Controller
 
     public function notaAction(Request $request, $id)
     {
+        $session = $this->getRequest()->getSession();
+        if (!$session->has('login')){
+            $this->addFlash('errorsesion','Debe iniciar sesión para acceder a esta sección.');
+            return $this->redirect($this->generateUrl('_inicio_sesion'));
+        }
         $em = $this->getDoctrine()->getManager();
         $venta = $em->getRepository('JYGRevestimientosBundle:Venta')->find($id);
         $items = $em->getRepository('JYGRevestimientosBundle:Item')->findNumVenta($id);
@@ -491,7 +524,6 @@ class VentaController extends Controller
         $zone = $this->container->getParameter('time_zone');
         $time->setTimezone( new \DateTimeZone($zone));
         
-
         /*Se crea el objeto bitacora para almacenarlo posteriormente*/
         $bitacora = new Bitacora();
         $bitacora->setLogin( $login )

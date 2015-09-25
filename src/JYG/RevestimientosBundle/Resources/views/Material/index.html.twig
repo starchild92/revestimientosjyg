@@ -34,7 +34,7 @@
             <tbody>
             {% for entity in entities %}
                 <tr>
-                    <td><img src="{{ asset('bundles/jygrevestimientos/images/materiales/') }}{{ entity.path }}" width="60px" height="auto"></td>
+                    <td><img src="{{ asset('bundles/jygrevestimientos/images/materiales/') }}{% if entity.path == null %}no_disponible.png{% else %}{{ entity.path }}{% endif %}" width="60px" height="auto"></td>
                     <td>
                         <table>
                             <tr><td>{{ entity.nombre }}</td></tr>
