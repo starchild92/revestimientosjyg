@@ -26,10 +26,11 @@ class BitacoraController extends Controller
             return $this->redirect($this->generateUrl('_inicio_sesion'));
         }
 
-        $em = $this->getDoctrine()->getManager();
-        $entities = $em->getRepository('JYGRevestimientosBundle:Bitacora')->findAll();
+        $em  = $this->getDoctrine()->getManager()->createQuery('SELECT u FROM JYGRevestimientosBundle:Bitacora u 
+                ORDER BY u.id DESC');
+        $result = $em->getResult();
         return $this->render('JYGRevestimientosBundle:Bitacora:index.html.twig', array(
-            'entities' => $entities,
+            'result' => $result,
         ));   
     }
 
