@@ -466,16 +466,15 @@ class VentaController extends Controller
             'cliente'     => $cliente,
             'items'       => $items,
             'base_dir' => $this->get('kernel')->getRootDir() . '/../web' . $request->getBasePath()
-        ),
-            $id.'.pdf'
-        );
+        ));
 
         return new Response(
             $this->get('knp_snappy.pdf')->getOutputFromHtml($html),
             200,
             array(
+                'images' => true,
                 'Content-Type'          => 'application/pdf',
-                'Content-Disposition'   => 'attachment; filename="file.pdf"'
+                'Content-Disposition'   => 'attachment; filename="Nota de Entrega '.$id.'.pdf"'
             )
         );
     }

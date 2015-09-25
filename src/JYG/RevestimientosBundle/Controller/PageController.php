@@ -193,7 +193,7 @@ class PageController extends Controller
             if ($form->isValid()) {
                 $login = $form->get('login')->getData();
                 $password = md5($form->get('password')->getData());
-
+                //throw $this->createNotFoundException($password);
                 $em = $this->getDoctrine()->getEntityManager();
                 $user = $em->getRepository('JYGRevestimientosBundle:Login')
                             ->validarCuenta($login, $password);
