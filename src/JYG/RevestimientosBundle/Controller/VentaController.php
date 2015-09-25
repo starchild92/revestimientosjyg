@@ -128,7 +128,7 @@ class VentaController extends Controller
                         }
                         //////////////////////////////////////////////////////
                         $item[$i]->setDescripcionmaterial($descripcion);
-                        $session->getFlashBag()->add('exito','El producto "'.$item[$i]->getDescripcionmaterial().'" si se puede vender, hay la cantidad suficiente.');
+                        //$session->getFlashBag()->add('exito','El producto "'.$item[$i]->getDescripcionmaterial().'" si se puede vender, hay la cantidad suficiente.');
                     }else{
                         //No se puede vender
                         $se_puede_vender = false;            
