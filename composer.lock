@@ -4,8 +4,13 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
+<<<<<<< HEAD
     "hash": "0747c9a73d1885d870d530c6a7f70fd8",
     "content-hash": "bc260afcb8c262bd6272b02576688a5e",
+=======
+    "hash": "ceb0e82fb46bc998d576a700b78fa055",
+    "content-hash": "f38c9e388255fbf3d831d263f9eea8f9",
+>>>>>>> 433954aab2b1f984103ed03f2b56f724ccdd0fe1
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -805,6 +810,7 @@
             "time": "2014-01-12 16:20:24"
         },
         {
+<<<<<<< HEAD
             "name": "knplabs/knp-snappy",
             "version": "0.4.2",
             "source": {
@@ -829,16 +835,56 @@
                 "h4cc/wkhtmltopdf-amd64": "Provides wkhtmltopdf-amd64 binary for Linux-compatible machines, use version `~0.12` as dependency",
                 "h4cc/wkhtmltopdf-i386": "Provides wkhtmltopdf-i386 binary for Linux-compatible machines, use version `~0.12` as dependency",
                 "wemersonjanuario/wkhtmltopdf-windows": "Provides wkhtmltopdf executable for Windows, use version `~0.12` as dependency"
+=======
+            "name": "knplabs/knp-components",
+            "version": "1.3.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/KnpLabs/knp-components.git",
+                "reference": "4503275e4f1a0e9667aa65b0ebed842ef2d8d8ba"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/KnpLabs/knp-components/zipball/4503275e4f1a0e9667aa65b0ebed842ef2d8d8ba",
+                "reference": "4503275e4f1a0e9667aa65b0ebed842ef2d8d8ba",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2"
+            },
+            "require-dev": {
+                "doctrine/mongodb-odm": "~1.0@beta",
+                "doctrine/orm": "~2.4",
+                "phpunit/phpunit": "~4.2",
+                "ruflin/elastica": "~1.0",
+                "symfony/event-dispatcher": "~2.5"
+            },
+            "suggest": {
+                "doctrine/common": "to allow usage pagination with Doctrine ArrayCollection",
+                "doctrine/mongodb-odm": "to allow usage pagination with Doctrine ODM MongoDB",
+                "doctrine/orm": "to allow usage pagination with Doctrine ORM",
+                "propel/propel1": "to allow usage pagination with Propel ORM",
+                "ruflin/Elastica": "to allow usage pagination with ElasticSearch Client",
+                "solarium/solarium": "to allow usage pagination with Solarium Client"
+>>>>>>> 433954aab2b1f984103ed03f2b56f724ccdd0fe1
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
+<<<<<<< HEAD
                     "dev-master": "0.5.x-dev"
+=======
+                    "dev-master": "1.3.x-dev"
+>>>>>>> 433954aab2b1f984103ed03f2b56f724ccdd0fe1
                 }
             },
             "autoload": {
                 "psr-0": {
+<<<<<<< HEAD
                     "Knp\\Snappy": "src/"
+=======
+                    "Knp\\Component": "src"
+>>>>>>> 433954aab2b1f984103ed03f2b56f724ccdd0fe1
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -852,6 +898,7 @@
                 },
                 {
                     "name": "Symfony Community",
+<<<<<<< HEAD
                     "homepage": "http://github.com/KnpLabs/snappy/contributors"
                 }
             ],
@@ -887,16 +934,62 @@
                 "symfony/finder": ">=2.0.0",
                 "symfony/framework-bundle": ">=2.0.0",
                 "symfony/validator": ">=2.0.0"
+=======
+                    "homepage": "http://github.com/KnpLabs/knp-components/contributors"
+                }
+            ],
+            "description": "Knplabs component library",
+            "homepage": "http://github.com/KnpLabs/knp-components",
+            "keywords": [
+                "components",
+                "knp",
+                "knplabs",
+                "pager",
+                "paginator"
+            ],
+            "time": "2015-09-01 10:54:53"
+        },
+        {
+            "name": "knplabs/knp-paginator-bundle",
+            "version": "2.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/KnpLabs/KnpPaginatorBundle.git",
+                "reference": "4a1daf55560ca7cf9c13b357135d72f4dc13375f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/KnpLabs/KnpPaginatorBundle/zipball/4a1daf55560ca7cf9c13b357135d72f4dc13375f",
+                "reference": "4a1daf55560ca7cf9c13b357135d72f4dc13375f",
+                "shasum": ""
+            },
+            "require": {
+                "knplabs/knp-components": "~1.2",
+                "php": ">=5.3.3",
+                "symfony/framework-bundle": "~2.3",
+                "twig/twig": "~1.12"
+            },
+            "require-dev": {
+                "symfony/expression-language": "~2.4"
+>>>>>>> 433954aab2b1f984103ed03f2b56f724ccdd0fe1
             },
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
+<<<<<<< HEAD
                     "dev-master": "1.2.x-dev"
+=======
+                    "dev-master": "2.4.x-dev"
+>>>>>>> 433954aab2b1f984103ed03f2b56f724ccdd0fe1
                 }
             },
             "autoload": {
                 "psr-4": {
+<<<<<<< HEAD
                     "Knp\\Bundle\\SnappyBundle\\": ""
+=======
+                    "Knp\\Bundle\\PaginatorBundle\\": ""
+>>>>>>> 433954aab2b1f984103ed03f2b56f724ccdd0fe1
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -909,6 +1002,7 @@
                     "homepage": "http://knplabs.com"
                 },
                 {
+<<<<<<< HEAD
                     "name": "Symfony Community",
                     "homepage": "http://github.com/KnpLabs/KnpSnappyBundle/contributors"
                 }
@@ -923,6 +1017,24 @@
                 "snappy"
             ],
             "time": "2015-08-24 21:40:00"
+=======
+                    "name": "Symfony2 Community",
+                    "homepage": "http://github.com/KnpLabs/KnpPaginatorBundle/contributors"
+                }
+            ],
+            "description": "Paginator bundle for Symfony2 to automate pagination and simplify sorting and other features",
+            "homepage": "http://github.com/KnpLabs/KnpPaginatorBundle",
+            "keywords": [
+                "Symfony2",
+                "bundle",
+                "knp",
+                "knplabs",
+                "pager",
+                "pagination",
+                "paginator"
+            ],
+            "time": "2015-09-07 04:31:31"
+>>>>>>> 433954aab2b1f984103ed03f2b56f724ccdd0fe1
         },
         {
             "name": "kriswallsmith/assetic",

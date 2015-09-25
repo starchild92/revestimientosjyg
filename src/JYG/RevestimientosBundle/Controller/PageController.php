@@ -15,6 +15,7 @@ use JYG\RevestimientosBundle\Form\UsuarioType;
 use JYG\RevestimientosBundle\Form\ConsultaType;
 
 use Symfony\Component\HttpFoundation\Session\Session;
+use Doctrine\Common\Collection\ArrayCollection;
 
 class PageController extends Controller
 {
@@ -44,29 +45,52 @@ class PageController extends Controller
         if (!$entities) {
             $this->get('session')->getFlashBag()->set('error', 'No hay productos para mostrar.');
         }
+        $em    = $this->getDoctrine()->getManager();
+        $dql   = "SELECT a FROM JYGRevestimientosBundle:Material a ORDER BY a.id DESC";
+        $query = $em->createQuery($dql);
+        if (!$query) {
+            $this->get('session')->getFlashBag()->set('error', 'No hay productos para mostrar.');
+        }
+
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $query,
+            $this->get('request')->query->get('page', 1)/*page number*/,9/*limit per page*/);
+
+
         return $this->render('JYGRevestimientosBundle:Page:productos.html.twig', array(
-            'entities' => $entities,
+            'pagination' => $pagination,
         ));
     }
 
     public function tipoAction($var)
     {
         $em = $this->getDoctrine()->getManager();
+        $paginator  = $this->get('knp_paginator');
         if($var === 'formateada'){
-            $entities = $em->getRepository('JYGRevestimientosBundle:Material')->ObtenerTipo('Laja Formateada');
+            $query = $em->getRepository('JYGRevestimientosBundle:Material')->ObtenerTipo('Laja Formateada');
+            $pagination = $paginator->paginate(
+                $query,
+                $this->get('request')->query->get('page', 1)/*page number*/,9/*limit per page*/);
         }
         if($var === 'natural'){
-            $entities = $em->getRepository('JYGRevestimientosBundle:Material')->ObtenerTipo('Laja Natural');
+            $query = $em->getRepository('JYGRevestimientosBundle:Material')->ObtenerTipo('Laja Natural');
+            $pagination = $paginator->paginate(
+                $query,
+                $this->get('request')->query->get('page', 1)/*page number*/,9/*limit per page*/);
         }
         if($var === 'otro'){
-            $entities = $em->getRepository('JYGRevestimientosBundle:Material')->ObtenerOtroTipo();
+            $query = $em->getRepository('JYGRevestimientosBundle:Material')->ObtenerOtroTipo();
+            $pagination = $paginator->paginate(
+                $query,
+                $this->get('request')->query->get('page', 1)/*page number*/,9/*limit per page*/);
         }
-        if (!$entities) {
+        if (!$query) {
             $this->get('session')->getFlashBag()->set('error', 'No hay productos para mostrar.');
         }
 
         return $this->render('JYGRevestimientosBundle:Page:productos.html.twig', array(
-            'entities' => $entities,
+            'pagination' => $pagination,
         ));
     }
 
