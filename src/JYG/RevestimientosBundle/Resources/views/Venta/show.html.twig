@@ -12,6 +12,12 @@
 
     <div class="row">
         <div class="col-lg-6 col-sm-12 col-xs-12">
+            {% for flashMessage in app.session.flashbag.get('exito') %}
+                <div class = "alert alert-success alert-dismissable">
+                    <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
+                    {{ flashMessage }}
+                </div>
+            {% endfor %}
             <table class="table table-bordered record_properties">
             <tbody>
                 <tr>

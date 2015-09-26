@@ -165,9 +165,14 @@ class VentaController extends Controller
                         //compro bien            
                         $this->addFlash('exito','La venta se ha realizado con éxito');
 
-                        $entities = $em->getRepository('JYGRevestimientosBundle:Venta')->findAll();
+                        /*$entities = $em->getRepository('JYGRevestimientosBundle:Venta')->findAll();
                         return $this->render('JYGRevestimientosBundle:Venta:index.html.twig', array(
-                            'entities' => $entities));
+                            'entities' => $entities));*/
+                            return $this->render('JYGRevestimientosBundle:Venta:show.html.twig', array(
+                                'entity'      => $entity,
+                                'cliente'     => $cliente,
+                                'items'       => $item,
+                                ));
                     }else{            
                         $this->addFlash('error','Debe elegir un producto para la venta');
                     }
@@ -330,7 +335,7 @@ class VentaController extends Controller
         $entity = $em->getRepository('JYGRevestimientosBundle:Venta')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Venta entity.');
+            throw $this->createNotFoundException('Los datos de la venta no existen.');
         }
 
         $deleteForm = $this->createDeleteForm($id);

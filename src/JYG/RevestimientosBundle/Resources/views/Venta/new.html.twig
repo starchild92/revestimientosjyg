@@ -26,7 +26,7 @@
     </div>
 
     <div class="row well">
-        {% for flashMessage in app.session.flashbag.get('cod') %}
+        {% for flashMessage in app.session.flashbag.get('exito') %}
             <div class = "alert alert-danger alert-dismissable">
                 <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
                 {{ flashMessage }}
@@ -50,7 +50,7 @@
                     <tbody>
                         {% for cliente in clientes %}
                         <tr>
-                            <td onclick="PonerDatos('{{ cliente.id }}','{{ cliente.nombre }}','{{ cliente.rif }}','{{ cliente.direccion }}','{{ cliente.telefono }}');" id="fila_tabla">{{ cliente.nombre }}, {{ cliente.rif }}</td>
+                            <td onclick="PonerDatos('{{ cliente.id }}','{{ cliente.nombre }}','{{ cliente.rif }}','{{ cliente.direccion }}','{{ cliente.telefono }}');" id="fila_tabla">{{ cliente.nombre }}, {{ cliente.rif, {'attr': {'placeholder': 'Usuario'} } }}</td>
                         </tr>
                         {% endfor %}
                     </tbody>
