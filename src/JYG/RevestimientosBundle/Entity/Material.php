@@ -523,8 +523,11 @@ class Material
     public function removeUpload()
     {
         if (isset($this->temp)) {
-            unlink($this->temp);
-        }
+             // file_exists me dice si está, entonces lo puedo borrar.
+             if(file_exists($this->temp)){
+                 unlink($this->temp);
+             }
+         }
     }
 
 

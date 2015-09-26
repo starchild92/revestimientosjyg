@@ -101,3 +101,9 @@ _productos_tipo:
 jyg_revestimientos_material:
     resource: "@JYGRevestimientosBundle/Resources/config/routing/material.yml"
     prefix:   /admin/material
+
+pageNotFound:
+    pattern:  /{path}
+    defaults: { _controller: JYGRevestimientosBundle:Page:pageNotFound, path: '' }
+    requirements:
+        path: .*

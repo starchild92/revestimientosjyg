@@ -221,7 +221,13 @@ class PageController extends Controller
         $session->remove('login');
         $session->remove('tipo_usuario');
         $session->remove('nombre');
-        return $this->indexAction();
+        
+        return $this->redirect($this->generateUrl('JYGRevestimientosBundle_inicio'));
+    }
+
+    public function pageNotFoundAction()
+    {
+        return $this->redirect($this->generateUrl('JYGRevestimientosBundle_inicio'));
     }
 
 }

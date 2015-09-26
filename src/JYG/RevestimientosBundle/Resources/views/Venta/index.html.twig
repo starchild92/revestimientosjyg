@@ -36,6 +36,7 @@
                 <th>Id</th>
                 <th>Fecha</th>
                 <th>Comprador</th>
+                <th>Cant. Prod. Vendidos</th>
                 <th>Opciones</th>
             </tr>
         </thead>
@@ -44,7 +45,8 @@
             <tr>
                 <td>{{ entity.id }}</td>
                 <td>{{ entity.fecha|date('d-m-Y - g:ia')}}</</td>
-                <td><a href="{{ path('venta_show', { 'id': entity.id }) }}">{{ entity.comprador }}</a></td>
+                <td><a href="{{ path('venta_show', { 'id': entity.id }) }}">{{ entity.comprador.nombre }}, {{ entity.comprador.rif }}, {{ entity.comprador.telefono }}</a></td>
+                <td>{{ entity.items|length }}</td>
                 <td>
                     <div class="dropdown pull-right">
                       <button class="btn btn-sm btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Opciones  <span class="caret"></span>
