@@ -27,11 +27,10 @@
 					<span class="icon-bar"></span>
 				</button>
 				<img class="navbar-brand" src="{{ asset('bundles/jygrevestimientos/images/brand.png') }}"><a class="navbar-brand" href="{{ path('JYGRevestimientosBundle_inicio') }}">Revestimientos J&G</a>
-
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav navbar-right">
-					{% set foo = path(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))|split('/') %} 
+					{% set foo = path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params'))|split('/') %} 
 						{% set bar = foo|last %} 
 					<li class="{{ app.request.attributes.get('_route') | replace({'jyg_revestimientos_page_' : ''}) == 'index' ? 'active' }}"><a href="{{ path('JYGRevestimientosBundle_inicio') }}">Inicio</a></li>
 					<li class="{{ app.request.attributes.get('_route') | replace({'jyg_revestimientos_page_' : ''}) == 'quienessomos' ? 'active' }}"><a href="{{ path('JYGRevestimientosBundle_quienessomos') }}">Quiénes Somos</a></li>

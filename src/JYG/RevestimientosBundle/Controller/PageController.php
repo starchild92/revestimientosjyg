@@ -25,10 +25,10 @@ class PageController extends Controller
      * @Template()
      */
     public function indexAction()
-    {
+    {   
         $em = $this->getDoctrine()->getManager();
         $entity = $em->getRepository('JYGRevestimientosBundle:Material')->UltimosTresAgregados();
-
+        
         return $this->render('JYGRevestimientosBundle:Page:index.html.twig', array(
             'entity'    =>  $entity,
         ));
@@ -132,9 +132,7 @@ class PageController extends Controller
                     ->setContentType("text/html")
                     ->setBody($this->renderView('JYGRevestimientosBundle:Page:contactEmail.html.twig', array('consulta' => $consulta)));
                 $this->get('mailer')->send($message);
-     
                $this->addFlash('exito', 'Tu consulta ha sido enviada, Gracias!');
- 
                 return $this->redirect($this->generateUrl('JYGRevestimientosBundle_contacto'));
             }
         }
@@ -154,13 +152,12 @@ class PageController extends Controller
                 // ...
             );    }
 
-
     public function verProductoAction($id){
         $em = $this->getDoctrine()->getManager();
         $entity = $em->getRepository('JYGRevestimientosBundle:Material')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Este producto no se encuentra');
+            return $this->showExceptionAction('El producto que ha solicitado no se encuentra');
         }
 
         return $this->render('JYGRevestimientosBundle:Page:verProducto.html.twig', array(
@@ -206,7 +203,6 @@ class PageController extends Controller
                     $session = new Session();
                     $session->set('login', $login);
                     $session->set('tipo_usuario', $user[0]->getCuenta());
-                    //throw $this->createNotFoundException($login);
                     return $this->inicioAdminAction();
                 }
             }
@@ -228,6 +224,10 @@ class PageController extends Controller
     public function pageNotFoundAction()
     {
         return $this->redirect($this->generateUrl('JYGRevestimientosBundle_inicio'));
+    }
+
+    public function showExceptionAction($mensaje){
+        return $this->render('TwigBundle:Exception:error.html.twig', array('mensaje' => $mensaje));
     }
 
 }
