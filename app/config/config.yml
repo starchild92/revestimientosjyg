@@ -91,11 +91,7 @@ knp_snappy:
     pdf:
         enabled:    true
         binary:     "%kernel.root_dir%/../src/JYG/RevestimientosBundle/Resources/public/wkhtmltopdf.exe"
-        options:    
-            page-size:  Letter
-            dpi:        150
-            image-dpi:  150
-            encoding:   utf-8
+        options:    []
     image:
         enabled:    true
         binary:     "%kernel.root_dir%/../src/JYG/RevestimientosBundle/Resources/public/wkhtmltoimage.exe"
