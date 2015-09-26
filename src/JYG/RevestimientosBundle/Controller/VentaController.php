@@ -49,6 +49,12 @@ class VentaController extends Controller
             $this->addFlash('errorsesion','Debe iniciar sesión para acceder a esta sección.');
             return $this->redirect($this->generateUrl('_inicio_sesion'));
         }
+        /*fecha*/
+        $time = new \DateTime();
+        /*Se establece la zona horaria correctamente.*/
+        $zone = $this->container->getParameter('time_zone');
+        $time->setTimezone( new \DateTimeZone($zone));
+        ////////////
         $session = $request->getSession();
         $entity = new Venta();
         $cliente = new Cliente();
@@ -60,20 +66,9 @@ class VentaController extends Controller
             if ($form->isValid()) {
                 $em = $this->getDoctrine()->getManager();
                 $clienteaux = $em->getRepository('JYGRevestimientosBundle:Venta')->BuscarPorRif($entity->getComprador()->getRif());
-                
                 //Operaciones respecto al cliente
                 if (!$clienteaux){ //no existe el cliente
                     //Obtengo los datos del nuevo cliente
-                    if($entity->getComprador()->getRif() == '' || $entity->getComprador()->getNombre() == '' || $entity->getComprador()->getDireccion() == '' || $entity->getComprador()->getTelefono()){            
-                        $session->getFlashBag()->add('error','Debes elegir un usuario o agregar uno nuevo para poder realizar la venta. Por favor no dejes campos en blanco.');
-                        $em = $this->getDoctrine()->getManager();
-                        $clientes = $em->getRepository('JYGRevestimientosBundle:Cliente')->findAll();
-                        return $this->render('JYGRevestimientosBundle:Venta:new.html.twig', array(
-                            'entity' => $entity,
-                            'form'   => $form->createView(),
-                            'clientes' => $clientes,
-                        ));
-                    }
                     $cliente->setRif($entity->getComprador()->getRif());
                     $cliente->setNombre($entity->getComprador()->getNombre());
                     $cliente->setDireccion($entity->getComprador()->getDireccion());
@@ -154,6 +149,7 @@ class VentaController extends Controller
                 }else{
                     if ($hasta > 0) { //la venta tiene al menos un producto
                         $entity->setItems($item);
+                        $entity->setFecha($time);
                         $em->persist($entity);
                         $em->flush();
 
@@ -164,7 +160,7 @@ class VentaController extends Controller
 
                         //compro bien            
                         $this->addFlash('exito','La venta se ha realizado con éxito');
-
+                        $deleteForm = $this->createDeleteForm($entity->getId());
                         /*$entities = $em->getRepository('JYGRevestimientosBundle:Venta')->findAll();
                         return $this->render('JYGRevestimientosBundle:Venta:index.html.twig', array(
                             'entities' => $entities));*/
@@ -172,6 +168,7 @@ class VentaController extends Controller
                                 'entity'      => $entity,
                                 'cliente'     => $cliente,
                                 'items'       => $item,
+                                'delete_form' => $deleteForm->createView()
                                 ));
                     }else{            
                         $this->addFlash('error','Debe elegir un producto para la venta');
@@ -191,7 +188,7 @@ class VentaController extends Controller
         return $this->render('JYGRevestimientosBundle:Venta:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
-            'clientes' => $clientes,
+            'clientes' => $clientes
         ));
     }
 

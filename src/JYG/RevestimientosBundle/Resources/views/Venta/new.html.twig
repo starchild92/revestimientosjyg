@@ -50,7 +50,7 @@
                     <tbody>
                         {% for cliente in clientes %}
                         <tr>
-                            <td onclick="PonerDatos('{{ cliente.id }}','{{ cliente.nombre }}','{{ cliente.rif }}','{{ cliente.direccion }}','{{ cliente.telefono }}');" id="fila_tabla">{{ cliente.nombre }}, {{ cliente.rif, {'attr': {'placeholder': 'Usuario'} } }}</td>
+                            <td onclick="PonerDatos('{{ cliente.id }}','{{ cliente.nombre }}','{{ cliente.rif }}','{{ cliente.direccion }}','{{ cliente.telefono }}');" id="fila_tabla">{{ cliente.nombre }}, {{cliente.rif}}</td>
                         </tr>
                         {% endfor %}
                     </tbody>
