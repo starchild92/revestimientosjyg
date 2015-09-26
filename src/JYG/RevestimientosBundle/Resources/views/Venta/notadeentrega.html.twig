@@ -68,18 +68,24 @@
     </style>
 </head>
 <body>
-    <table class="table">
+    <img src="{{ base_dir ~ asset('bundles/jygrevestimientos/images/background2.jpg') }}" style="position: absolute; z-index: -999999;" width="100%">
+    <table class="table fondo">
         <tr>
-            <td><img src="{{ base_dir ~ asset('bundles/jygrevestimientos/images/nota_entrega.png') }}" width="400px"></td>
-            <td>
-                <table>
-                    <tr><td><b>Fecha</b><br>{{ entity.fecha|date('m/d/Y') }}</td></tr>
-                    <tr><td><b>Nota de Entrega:</b><br>{{ entity.id }}</td></tr>
-                </table>
-            </td>
+            <td colspan="2"><center><img src="{{ base_dir ~ asset('bundles/jygrevestimientos/images/nota_entrega.png') }}" width="400px"></center></td>
         </tr>
         <tr>
-            <td>San Diego Edo Carabobo<br>Teléfono: (0424) 455 57 12</td>
+            <td style="width: 50%">
+                <table class="table table-condensed">
+                    <thead><tr><th>Detalles de la Venta</th></tr></thead>
+                    <tbody>
+                        <tr><td><b>Fecha:</b> {{ entity.fecha|date('d/m/Y') }}
+                        <br><b>Nota de Entrega:</b> {{ entity.id }}
+                        <br><b>Teléfono:</b> (0424) 455 57 12
+                        <br>San Diego Edo Carabobo</td></tr>
+                    </tbody>
+                </table>
+                
+            </td>
             <td>
                 <table class="table table-condensed">
                     <thead><tr><th>Detalles del Comprador</th></tr></thead>
@@ -113,7 +119,7 @@
     <table class="table">
         <tbody>
             <tr>
-                <td>Si tiene alguna pregunta relacionada con esta Nota de Entrega, le rogamos se ponga en contacto con:<br>JAQUELIN FAJARDO (0424) 455 57 12</td>
+                <td><i>Si tiene alguna pregunta relacionada con esta Nota de Entrega, le rogamos se ponga en contacto con:<br>JAQUELIN FAJARDO al telf (0424) 455 57 12</i></td>
             </tr>
         </tbody>
     </table>

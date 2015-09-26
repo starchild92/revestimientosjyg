@@ -502,14 +502,16 @@ class VentaController extends Controller
         ));
 
         return new Response(
-            $this->get('knp_snappy.pdf')->getOutputFromHtml($html),
+            $this->get('knp_snappy.pdf')->getOutputFromHtml($html, 
+                array(
+                    'images'            => true,
+                    'no-background'     => false,
+                    )),
             200,
             array(
-                'images' => true,
                 'Content-Type'          => 'application/pdf',
                 'Content-Disposition'   => 'attachment; filename="Nota de Entrega '.$id.'.pdf"'
-            )
-        );
+            ));
     }
 
     /*Funciones para guardar la bitácora:
