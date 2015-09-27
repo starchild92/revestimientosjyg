@@ -23,9 +23,10 @@
         <table class="table table-condensed table-bordered table-responsive records_list" id="myTable">
             <thead>
                 <tr class="info">
-                <th>#Compra</th>
-                <th>#Control de Factura</th>
-                <th>Fecha de Compra</th>
+                <th># Compra</th>
+                <th># Factura</th>
+                <th>Fecha</th>
+                <th># Prod. Comprados</th>
                 <th>Subtotal</th>
                 <th>Iva</th>
                 <th>Total</th>
@@ -38,18 +39,19 @@
                 <td><a href="{{ path('compramaterial_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
                 <td>{{ entity.nrocontrolfactura }}</td>
                 <td>{% if entity.fecha %}{{ entity.fecha|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ entity.material|length }}</td>
                 <td>{{ entity.subtotal }}</td>
                 <td>{{ entity.iva }}</td>
                 <td>{{ entity.total }}</td>
                 <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('compramaterial_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('compramaterial_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
+                    <div class="dropdown pull-right">
+                      <button class="btn btn-sm btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Opciones  <span class="caret"></span>
+                      </button>
+                      <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
+                        <li><a href="{{ path('compramaterial_show', { 'id': entity.id }) }}">Ver Detalles de la Compra</a></li>
+                        <li><a href="{{ path('compramaterial_edit', { 'id': entity.id }) }}">Modificar la Compra</a></li>
+                    </ul>
+                </div>
                 </td>
             </tr>
         {% endfor %}

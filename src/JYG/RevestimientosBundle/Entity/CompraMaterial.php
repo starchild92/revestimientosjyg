@@ -229,4 +229,6 @@ class CompraMaterial
     {
         return $this->material;
     }
+
+    
 }
