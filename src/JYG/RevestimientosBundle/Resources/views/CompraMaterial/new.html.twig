@@ -7,7 +7,7 @@
 {% endblock %}
 {% block javascripts %}
 	<script src="{{ asset('bundles/jygrevestimientos/js/jquery.min.js') }}"></script>
-	<script src="{{ asset('bundles/jygrevestimientos/js/forms.js') }}"></script>
+	<script src="{{ asset('bundles/jygrevestimientos/js/formsCompra.js') }}"></script>
 	<!-- JS for datepicker -->
 	<script src="{{ asset('bundles/jygrevestimientos/datepicker/js/bootstrap-datepicker.js') }}" > </script>
 	<script>
@@ -15,22 +15,6 @@
                 $('#jyg_revestimientosbundle_compramaterial_fecha').datepicker({ format: "dd-mm-yyyy" });
             })(jQuery);
         </script>
-    {#<script src="{{ asset('bundles/jygrevestimientos/js/datatable.min.js') }}"></script>
-    <script type="text/javascript">
-        $(document).ready(function(){
-            $('#myTable').DataTable({
-                "bSort" : false,
-                "bPaginate" : false,
-                "bInfo" : false
-            });
-            /*Elimina primer hijo de la tabla de busqueda*/
-            $(document).find('#myTable_wrapper .row :first').remove();
-            $(document).find('#myTable_wrapper .row :first').removeClass();
-            $(document).find('#myTable_wrapper .row :first').addClass('col-lg-12');
-            $(document).find('#myTable_wrapper .row :first input').removeClass();
-            $(document).find('#myTable_wrapper .row :first input').addClass('form-control input-sm');
-        });
-    </script>#}
 {% endblock %}
 
 {% block body -%}
@@ -64,7 +48,7 @@
             {{ form_row(form.iva) }}
 			{{ form_row(form.total) }}
         </div>
-		<div id="lastCol" class="col-lg-4 col-sm-4 col-xs-12">
+		<div class="col-lg-4 col-sm-4 col-xs-12">
 			
 			{{ form_row(form.material) }}
 

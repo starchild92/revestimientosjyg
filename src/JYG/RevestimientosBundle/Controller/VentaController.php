@@ -19,7 +19,6 @@ use JYG\RevestimientosBundle\Form\ClienteType;
 class VentaController extends Controller
 {
 
-
     /**
      * Lists all Venta entities.
      *
