@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="UTF-8" />
-	<title>{% block title %}Revestimientos J&G, Barquisimeto C.A{% endblock %}</title>
+	<title>{% block title %}Revestimiento J&G, Barquisimeto C.A{% endblock %}</title>
 	<link rel="stylesheet" type="text/css" href="{{ asset('bundles/jygrevestimientos/css/bootstrap-theme.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('bundles/jygrevestimientos/css/bootstrap.css') }}">
 	<style type="text/css">
@@ -26,7 +26,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<img class="navbar-brand" src="{{ asset('bundles/jygrevestimientos/images/brand.png') }}"><a class="navbar-brand" href="{{ path('JYGRevestimientosBundle_inicio') }}">Revestimientos J&G</a>
+				<img class="navbar-brand" src="{{ asset('bundles/jygrevestimientos/images/brand.png') }}"><a class="navbar-brand" href="{{ path('JYGRevestimientosBundle_inicio') }}">Revestimiento J&G</a>
 
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
@@ -39,6 +39,8 @@
 					<li class="{% if app.request.attributes.get('_route') == 'material' or app.request.attributes.get('_route') == 'material_show' or app.request.attributes.get('_route') == 'material_new' or app.request.attributes.get('_route') == 'material_edit'  %}active{% endif %}"><a href="{{ path('material') }}">Productos</a></li>
 
 					<li class="{% if app.request.attributes.get('_route') == 'venta' or app.request.attributes.get('_route') == 'venta_show' or app.request.attributes.get('_route') == 'venta_new' or app.request.attributes.get('_route') == 'venta_edit'  %}active{% endif %}"><a href="{{ path('venta') }}">Ventas</a></li>	
+
+					<li class="{% if app.request.attributes.get('_route') == 'compramaterial' or app.request.attributes.get('_route') == 'compramaterial_show' or attributes.get('_route') == 'compramaterial_new' %}active{% endif %}"><a href="{{ path('bitacora') }}">Compras</a></li>
 									
 					<li class="{% if app.request.attributes.get('_route') == 'cliente' or app.request.attributes.get('_route') == 'cliente_show' or app.request.attributes.get('_route') == 'cliente_new' or app.request.attributes.get('_route') == 'cliente_edit'  %}active{% endif %}"><a href="{{ path('cliente') }}">Clientes</a></li>
 
@@ -57,12 +59,12 @@
 	<div class="container">
 		<!-- FOOTER -->
 		<footer class="foooter"><div class="row">
-			<div class="col-lg-4 col-sm-4 col-xs-12"><p class="naranja_logo"><b>Revestimientos J&G Barquisimeto C.A</b><br><small>{{ "now" | date("F jS", "America/Caracas") }} {{ "now" | date("Y") }} | RIF J-404867660</small></p></div>
+			<div class="col-lg-4 col-sm-4 col-xs-12"><p class="naranja_logo"><b>Revestimiento J&G Barquisimeto C.A</b><br><small>{{ "now" | date("F jS", "America/Caracas") }} {{ "now" | date("Y") }} | RIF J-404867660</small></p></div>
 			<div class="col-lg-4 col-sm-4 col-xs-12">
-				<p class="text-center">Está conectado como {{ app.session.get('nombre') }} <br>como: {{ app.session.get('tipo_usuario') }}</p>
+				<p class="text-center">Está conectado como {{ app.session.get('nombre') }} <br>{#como: {{ app.session.get('tipo_usuario') }}#}</p>
 			</div>
 			<div class="col-lg-4 col-sm-4 col-xs-12">
-				<p class="pull-right">Elaborado por: <a href="">Edilianny Sánchez</a> y <a href="">Luis Pérez</a></p>
+				<p class="pull-right">Desarrollado por: <a href="">Edilianny Sánchez</a> y <a href="">Luis Pérez</a></p>
 			</div>
 		</div></footer>
 	</div><!-- /.container -->

@@ -218,7 +218,7 @@ class PageController extends Controller
         $session->remove('tipo_usuario');
         $session->remove('nombre');
         
-        return $this->redirect($this->generateUrl('JYGRevestimientosBundle_inicio'));
+        return $this->redirect($this->generateUrl('_inicio_sesion'));
     }
 
     public function pageNotFoundAction()
@@ -226,7 +226,8 @@ class PageController extends Controller
         return $this->redirect($this->generateUrl('JYGRevestimientosBundle_inicio'));
     }
 
-    public function showExceptionAction($mensaje){
+    public function showExceptionAction($mensaje = ':('){
+
         return $this->render('TwigBundle:Exception:error.html.twig', array('mensaje' => $mensaje));
     }
 

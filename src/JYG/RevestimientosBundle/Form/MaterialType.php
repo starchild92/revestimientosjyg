@@ -38,7 +38,9 @@ class MaterialType extends AbstractType
                 'by_reference'=>'false',
                 'allow_delete' =>'true',
                 'label' => 'Almácenes donde se encuentra el producto'
-            ));
+            ))
+            //->add('compra','hidden')
+            ;
     }
     
     /**
