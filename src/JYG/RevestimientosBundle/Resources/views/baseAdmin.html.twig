@@ -38,15 +38,14 @@
 
 					<li class="{% if app.request.attributes.get('_route') == 'material' or app.request.attributes.get('_route') == 'material_show' or app.request.attributes.get('_route') == 'material_new' or app.request.attributes.get('_route') == 'material_edit'  %}active{% endif %}"><a href="{{ path('material') }}">Productos</a></li>
 
-					<li class="{% if app.request.attributes.get('_route') == 'venta' or app.request.attributes.get('_route') == 'venta_show' or app.request.attributes.get('_route') == 'venta_new' or app.request.attributes.get('_route') == 'venta_edit'  %}active{% endif %}"><a href="{{ path('venta') }}">Ventas</a></li>	
+					<li {#class="{% if app.request.attributes.get('_route') == 'compramaterial' or app.request.attributes.get('_route') == 'compramaterial_show' or attributes.get('_route') == 'compramaterial_new' %}active{% endif %}"#}><a href="{{ path('compramaterial') }}">Compras</a></li>
 
-					<li class="{% if app.request.attributes.get('_route') == 'compramaterial' or app.request.attributes.get('_route') == 'compramaterial_show' or attributes.get('_route') == 'compramaterial_new' %}active{% endif %}"><a href="{{ path('bitacora') }}">Compras</a></li>
-									
+					<li class="{% if app.request.attributes.get('_route') == 'venta' or app.request.attributes.get('_route') == 'venta_show' or app.request.attributes.get('_route') == 'venta_new' or app.request.attributes.get('_route') == 'venta_edit'  %}active{% endif %}"><a href="{{ path('venta') }}">Ventas</a></li>	
 					<li class="{% if app.request.attributes.get('_route') == 'cliente' or app.request.attributes.get('_route') == 'cliente_show' or app.request.attributes.get('_route') == 'cliente_new' or app.request.attributes.get('_route') == 'cliente_edit'  %}active{% endif %}"><a href="{{ path('cliente') }}">Clientes</a></li>
 
 					<li class="{% if app.request.attributes.get('_route') == 'usuario' or app.request.attributes.get('_route') == 'usuario_show' or app.request.attributes.get('_route') == 'usuario_new' or app.request.attributes.get('_route') == 'usuario_edit'  %}active{% endif %}"><a href="{{ path('usuario') }}">Usuarios</a></li>
 
-					<li class="{% if app.request.attributes.get('_route') == '_administrar_galeria' or app.request.attributes.get('_route') == '_nueva_imagen' or app.request.attributes.get('_route') == '_editar_imagen'   %}active{% endif %}"><a href="{{ path('_administrar_galeria') }}">Galería</a></li>
+					<li class="{{ app.request.attributes.get('_route') | replace({'jyg_revestimientos_page_' : ''}) == 'administrargaleria' ? 'active' }}"><a href="{{ path('_administrar_galeria') }}">Galería</a></li>
 
 					<li class="{% if app.request.attributes.get('_route') == 'bitacora' or app.request.attributes.get('_route') == 'bitacora_show'  %}active{% endif %}"><a href="{{ path('bitacora') }}">Bitácora</a></li>
 				</ul>
@@ -61,7 +60,7 @@
 		<footer class="foooter"><div class="row">
 			<div class="col-lg-4 col-sm-4 col-xs-12"><p class="naranja_logo"><b>Revestimiento J&G Barquisimeto C.A</b><br><small>{{ "now" | date("F jS", "America/Caracas") }} {{ "now" | date("Y") }} | RIF J-404867660</small></p></div>
 			<div class="col-lg-4 col-sm-4 col-xs-12">
-				<p class="text-center">Está conectado como {{ app.session.get('nombre') }} <br>{#como: {{ app.session.get('tipo_usuario') }}#}</p>
+				<p class="text-center">Está conectado como {{ app.session.get('nombre') }} <br>como: {{ app.session.get('tipo_usuario') }}</p>
 			</div>
 			<div class="col-lg-4 col-sm-4 col-xs-12">
 				<p class="pull-right">Desarrollado por: <a href="">Edilianny Sánchez</a> y <a href="">Luis Pérez</a></p>

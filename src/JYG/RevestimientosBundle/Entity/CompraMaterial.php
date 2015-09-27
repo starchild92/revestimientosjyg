@@ -57,7 +57,7 @@ class CompraMaterial
     private $total;
 
     /**
-     * @ORM\OneToMany(targetEntity="Material", mappedBy="compra")
+     * @ORM\OneToMany(targetEntity="ItemCompra", mappedBy="codigomaterial")
      */
     private $material;
 

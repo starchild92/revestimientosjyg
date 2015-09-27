@@ -35,6 +35,12 @@ class CompraMaterialController extends Controller
      */
     public function createAction(Request $request)
     {
+        $session = $this->getRequest()->getSession();
+        if (!$session->has('login')){
+            $this->addFlash('errorsesion','Debe iniciar sesión para acceder a esta sección.');
+            return $this->redirect($this->generateUrl('_inicio_sesion'));
+        }
+        
         $entity = new CompraMaterial();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
@@ -67,7 +73,11 @@ class CompraMaterialController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Create'));
+        $form->add('submit', 'submit', array(
+            'label' => 'Añadir Compra Material',
+            'attr' => array('class' => 'btn btn-primary btn-block')
+            ))
+        ;
 
         return $form;
     }
