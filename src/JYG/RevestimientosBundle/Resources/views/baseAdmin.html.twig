@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="UTF-8" />
-	<title>{% block title %}Revestimientos J&G, Barquisimeto C.A{% endblock %}</title>
+	<title>{% block title %}Revestimiento J&G, Barquisimeto C.A{% endblock %}</title>
 	<link rel="stylesheet" type="text/css" href="{{ asset('bundles/jygrevestimientos/css/bootstrap-theme.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('bundles/jygrevestimientos/css/bootstrap.css') }}">
 	<style type="text/css">
@@ -45,6 +45,10 @@
 					{% endif %}
 
 					{% if (app.session.get('tipo_usuario') == 'Administrador' or app.session.get('tipo_usuario') == 'Vendedor') %}		
+					<li {#class="{% if app.request.attributes.get('_route') == 'compramaterial' or app.request.attributes.get('_route') == 'compramaterial_show' or attributes.get('_route') == 'compramaterial_new' %}active{% endif %}"#}><a href="{{ path('compramaterial') }}">Compras</a></li>
+					{% endif %}
+
+					{% if (app.session.get('tipo_usuario') == 'Administrador' or app.session.get('tipo_usuario') == 'Vendedor') %}
 					<li class="{% if app.request.attributes.get('_route') == 'cliente' or app.request.attributes.get('_route') == 'cliente_show' or app.request.attributes.get('_route') == 'cliente_new' or app.request.attributes.get('_route') == 'cliente_edit'  %}active{% endif %}"><a href="{{ path('cliente') }}">Clientes</a></li>
 					{% endif %}
 
@@ -53,7 +57,7 @@
 					{% endif %}
 
 					{% if app.session.get('tipo_usuario') == 'Administrador' %}
-					<li class="{% if app.request.attributes.get('_route') == '_administrar_galeria' or app.request.attributes.get('_route') == '_nueva_imagen' or app.request.attributes.get('_route') == '_editar_imagen'   %}active{% endif %}"><a href="{{ path('_administrar_galeria') }}">Galería</a></li>
+					<li class="{{ app.request.attributes.get('_route') | replace({'jyg_revestimientos_page_' : ''}) == 'administrargaleria' ? 'active' }}"><a href="{{ path('_administrar_galeria') }}">Galería</a></li>
 					{% endif %}
 
 					{% if (app.session.get('tipo_usuario') == 'Administrador' or app.session.get('tipo_usuario') == 'Vendedor') %}
@@ -74,7 +78,7 @@
 				<p class="text-center">Está conectado como {{ app.session.get('nombre') }} <br>como: {{ app.session.get('tipo_usuario') }}</p>
 			</div>
 			<div class="col-lg-4 col-sm-4 col-xs-12">
-				<p class="pull-right">Elaborado por: <a href="">Edilianny Sánchez</a> y <a href="">Luis Pérez</a></p>
+				<p class="pull-right">Desarrollado por: <a href="">Edilianny Sánchez</a> y <a href="">Luis Pérez</a></p>
 			</div>
 		</div></footer>
 	</div><!-- /.container -->

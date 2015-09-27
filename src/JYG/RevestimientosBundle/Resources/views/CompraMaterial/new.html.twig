@@ -1,0 +1,75 @@
+{% extends 'JYGRevestimientosBundle::baseAdmin.html.twig' %}
+
+{% block stylesheets %}
+
+<!-- css for datepicker -->
+        <link href="{{ asset('bundles/jygrevestimientos/datepicker/css/datepicker.css') }}" rel="stylesheet" type="text/css" />
+{% endblock %}
+{% block javascripts %}
+	<script src="{{ asset('bundles/jygrevestimientos/js/jquery.min.js') }}"></script>
+	<script src="{{ asset('bundles/jygrevestimientos/js/forms.js') }}"></script>
+	<!-- JS for datepicker -->
+	<script src="{{ asset('bundles/jygrevestimientos/datepicker/js/bootstrap-datepicker.js') }}" > </script>
+	<script>
+            (function(){
+                $('#jyg_revestimientosbundle_compramaterial_fecha').datepicker({ format: "dd-mm-yyyy" });
+            })(jQuery);
+        </script>
+    {#<script src="{{ asset('bundles/jygrevestimientos/js/datatable.min.js') }}"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#myTable').DataTable({
+                "bSort" : false,
+                "bPaginate" : false,
+                "bInfo" : false
+            });
+            /*Elimina primer hijo de la tabla de busqueda*/
+            $(document).find('#myTable_wrapper .row :first').remove();
+            $(document).find('#myTable_wrapper .row :first').removeClass();
+            $(document).find('#myTable_wrapper .row :first').addClass('col-lg-12');
+            $(document).find('#myTable_wrapper .row :first input').removeClass();
+            $(document).find('#myTable_wrapper .row :first input').addClass('form-control input-sm');
+        });
+    </script>#}
+{% endblock %}
+
+{% block body -%}
+	<div class="row">
+		<div class="col-sm-8"><div class="page-header"><h1>Registrar una Compra</h1></div></div>
+		<div class="col-sm-4"><a id="volver" href="{{ path('venta') }}" class="btn btn-primary pull-right" type="button"><span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>  Regresar a las Compras</a></div>
+	</div>
+	<div class="row well">
+		{% for flashMessage in app.session.flashbag.get('exito') %}
+			<div class = "alert alert-danger alert-dismissable">
+				<button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
+				{{ flashMessage }}
+			</div>
+		{% endfor %}
+		{% for flashMessage in app.session.flashbag.get('error') %}
+			<div class = "alert alert-danger alert-dismissable">
+				<button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
+				{{ flashMessage }}
+			</div>
+		{% endfor %}      
+
+		<div class="col-lg-4 col-sm-4 col-xs-12">
+			{{ form_start(form) }}
+			{{ form_label(form.fecha, 'Fecha de la compra') }}
+			{{ form_widget(form.fecha, {'attr':{'id':'datepicker', 'class':'form-control', 'placeholder':'dia-mes-año','id':'datepicker'}}) }}
+			{{ form_row(form.nrocontrolfactura) }}
+			{{ form_row(form.subtotal) }}
+			
+		</div>
+		<div class="col-lg-4 col-sm-4 col-xs-12">
+            {{ form_row(form.iva) }}
+			{{ form_row(form.total) }}
+        </div>
+		<div id="lastCol" class="col-lg-4 col-sm-4 col-xs-12">
+			
+			{{ form_row(form.material) }}
+
+			{{ form_widget(form.submit) }}
+			{{ form_end(form) }}
+		</div>
+	</div>
+{% endblock %}

@@ -1,0 +1,30 @@
+compramaterial:
+    path:     /
+    defaults: { _controller: "JYGRevestimientosBundle:CompraMaterial:index" }
+
+compramaterial_show:
+    path:     /{id}/show
+    defaults: { _controller: "JYGRevestimientosBundle:CompraMaterial:show" }
+
+compramaterial_new:
+    path:     /new
+    defaults: { _controller: "JYGRevestimientosBundle:CompraMaterial:new" }
+
+compramaterial_create:
+    path:     /create
+    defaults: { _controller: "JYGRevestimientosBundle:CompraMaterial:create" }
+    methods:  POST
+
+compramaterial_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "JYGRevestimientosBundle:CompraMaterial:edit" }
+
+compramaterial_update:
+    path:     /{id}/update
+    defaults: { _controller: "JYGRevestimientosBundle:CompraMaterial:update" }
+    methods:  [POST, PUT]
+
+compramaterial_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "JYGRevestimientosBundle:CompraMaterial:delete" }
+    methods:  [POST, DELETE]

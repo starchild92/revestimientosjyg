@@ -10,9 +10,9 @@ use Symfony\Component\HttpFoundation\Request;
 
 class GaleriaController extends Controller
 {
-    public function AdministrarGaleriaAction()
+    public function AdministrarGaleriaAction(Request $request)
     {
-        $session = $this->getRequest()->getSession();
+        $session = $request->getSession();
         if (!$session->has('login')){
             $this->addFlash('errorsesion','Debe iniciar sesión para acceder a esta sección.');
             return $this->redirect($this->generateUrl('_inicio_sesion'));
@@ -29,9 +29,9 @@ class GaleriaController extends Controller
         ));
     }
 
-    public function NuevaImagenAction()
+    public function NuevaImagenAction(Request $request)
     {
-        $session = $this->getRequest()->getSession();
+        $session = $request->getSession();
         if (!$session->has('login')){
             $this->addFlash('errorsesion','Debe iniciar sesión para acceder a esta sección.');
             return $this->redirect($this->generateUrl('_inicio_sesion'));
@@ -43,7 +43,7 @@ class GaleriaController extends Controller
 
         $galeria = new Galeria();
         $form = $this->createForm(new GaleriaType(), $galeria);   
-        $request = $this->getRequest();
+        $request = $request;
         
         $form->add('guardar','submit', array(
                 'label' => 'Agregar Imagen a la Galería',
@@ -73,7 +73,7 @@ class GaleriaController extends Controller
 
     public function EditarImagenAction(Request $request, $id)
     {
-        $session = $this->getRequest()->getSession();
+        $session = $request->getSession();
         if (!$session->has('login')){
             $this->addFlash('errorsesion','Debe iniciar sesión para acceder a esta sección.');
             return $this->redirect($this->generateUrl('_inicio_sesion'));
@@ -148,7 +148,7 @@ class GaleriaController extends Controller
 
     public function EliminarImagenAction($id)
     {
-        $session = $this->getRequest()->getSession();
+        $session = $request->getSession();
         if (!$session->has('login')){
             $this->addFlash('errorsesion','Debe iniciar sesión para acceder a esta sección.');
             return $this->redirect($this->generateUrl('_inicio_sesion'));
@@ -172,7 +172,7 @@ class GaleriaController extends Controller
         return $this->redirect($this->generateUrl('_administrar_galeria'));
     }
 
-    public function MostrarGaleriaAction()
+    public function MostrarGaleriaAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
         $entities = $em->getRepository('JYGRevestimientosBundle:Galeria')->ObtenerporAgregado();

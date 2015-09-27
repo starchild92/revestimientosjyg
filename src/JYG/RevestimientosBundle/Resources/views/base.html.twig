@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="UTF-8" />
-	<title>{% block title %}Revestimientos J&G, Barquisimeto C.A{% endblock %}</title>
+	<title>{% block title %}Revestimiento J&G, Barquisimeto C.A{% endblock %}</title>
 	<link rel="stylesheet" type="text/css" href="{{ asset('bundles/jygrevestimientos/css/bootstrap-theme.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('bundles/jygrevestimientos/css/bootstrap.css') }}">
 	<style type="text/css">
@@ -32,6 +32,7 @@
 				<ul class="nav navbar-nav navbar-right">
 					{% set foo = path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params'))|split('/') %} 
 						{% set bar = foo|last %} 
+
 					<li class="{{ app.request.attributes.get('_route') | replace({'jyg_revestimientos_page_' : ''}) == 'index' ? 'active' }}"><a href="{{ path('JYGRevestimientosBundle_inicio') }}">Inicio</a></li>
 					<li class="{{ app.request.attributes.get('_route') | replace({'jyg_revestimientos_page_' : ''}) == 'quienessomos' ? 'active' }}"><a href="{{ path('JYGRevestimientosBundle_quienessomos') }}">Quiénes Somos</a></li>
 					<li class="{% if bar == 'productos' or bar == 'formateada' or bar == 'natural' or bar == 'otro' %}active{% endif %}"><a href="{{ path('JYGRevestimientosBundle_productos') }}">Productos</a></li>
