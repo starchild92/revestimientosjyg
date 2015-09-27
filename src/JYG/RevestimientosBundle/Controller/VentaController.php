@@ -252,8 +252,6 @@ class VentaController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $venta = $em->getRepository('JYGRevestimientosBundle:Venta')->find($id);
-        $items = $em->getRepository('JYGRevestimientosBundle:Item')->findNumVenta($id);
-        $cliente = $em->getRepository('JYGRevestimientosBundle:Cliente')->find($venta->getComprador());
 
         if (!$venta) {
             throw $this->createNotFoundException('No existen los datos de la venta.');
@@ -263,8 +261,6 @@ class VentaController extends Controller
 
         return $this->render('JYGRevestimientosBundle:Venta:show.html.twig', array(
             'entity'      => $venta,
-            'cliente'     => $cliente,
-            'items'       => $items,
             'delete_form' => $deleteForm->createView(),
         ));
     }

@@ -163,7 +163,7 @@ class MaterialController extends Controller
         $entity = $em->getRepository('JYGRevestimientosBundle:Material')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Material entity.');
+            return $this->showExceptionAction('El producto que ha solicitado no se encuentra');
         }
 
         $deleteForm = $this->createDeleteForm($id);
@@ -370,5 +370,9 @@ class MaterialController extends Controller
         $em->flush();
 
         return $this;
+    }
+
+    public function showExceptionAction($mensaje){
+        return $this->render('TwigBundle:Exception:error.html.twig', array('mensaje' => $mensaje));
     }
 }
