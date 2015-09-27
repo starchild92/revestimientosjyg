@@ -26,6 +26,10 @@ class ItemController extends Controller
             $this->addFlash('errorsesion','Debe iniciar sesión para acceder a esta sección.');
             return $this->redirect($this->generateUrl('_inicio_sesion'));
         }
+        if($session->get('tipo_usuario') != 'Administrador'){
+            $session->getFlashBag()->add('error','Su cuenta no posee permisos para realizar este tipo de accion.');
+            return $this->render('JYGRevestimientosBundle:Page:indexAdmin.html.twig');
+        }
         
         $em = $this->getDoctrine()->getManager();
         $entities = $em->getRepository('JYGRevestimientosBundle:Item')->AllOrdenById();
@@ -43,6 +47,10 @@ class ItemController extends Controller
         if (!$session->has('login')){
             $this->addFlash('errorsesion','Debe iniciar sesión para acceder a esta sección.');
             return $this->redirect($this->generateUrl('_inicio_sesion'));
+        }
+        if($session->get('tipo_usuario') != 'Administrador'){
+            $session->getFlashBag()->add('error','Su cuenta no posee permisos para realizar este tipo de accion.');
+            return $this->render('JYGRevestimientosBundle:Page:indexAdmin.html.twig');
         }
         $entity = new Item();
         $form = $this->createCreateForm($entity);
@@ -92,6 +100,10 @@ class ItemController extends Controller
             $this->addFlash('errorsesion','Debe iniciar sesión para acceder a esta sección.');
             return $this->redirect($this->generateUrl('_inicio_sesion'));
         }
+        if($session->get('tipo_usuario') != 'Administrador'){
+            $session->getFlashBag()->add('error','Su cuenta no posee permisos para realizar este tipo de accion.');
+            return $this->render('JYGRevestimientosBundle:Page:indexAdmin.html.twig');
+        }
         $entity = new Item();
         $form   = $this->createCreateForm($entity);
 
@@ -111,6 +123,10 @@ class ItemController extends Controller
         if (!$session->has('login')){
             $this->addFlash('errorsesion','Debe iniciar sesión para acceder a esta sección.');
             return $this->redirect($this->generateUrl('_inicio_sesion'));
+        }
+        if($session->get('tipo_usuario') != 'Administrador'){
+            $session->getFlashBag()->add('error','Su cuenta no posee permisos para realizar este tipo de accion.');
+            return $this->render('JYGRevestimientosBundle:Page:indexAdmin.html.twig');
         }
         $em = $this->getDoctrine()->getManager();
 
@@ -138,6 +154,10 @@ class ItemController extends Controller
         if (!$session->has('login')){
             $this->addFlash('errorsesion','Debe iniciar sesión para acceder a esta sección.');
             return $this->redirect($this->generateUrl('_inicio_sesion'));
+        }
+        if($session->get('tipo_usuario') != 'Administrador'){
+            $session->getFlashBag()->add('error','Su cuenta no posee permisos para realizar este tipo de accion.');
+            return $this->render('JYGRevestimientosBundle:Page:indexAdmin.html.twig');
         }
         $em = $this->getDoctrine()->getManager();
 
@@ -186,6 +206,10 @@ class ItemController extends Controller
             $this->addFlash('errorsesion','Debe iniciar sesión para acceder a esta sección.');
             return $this->redirect($this->generateUrl('_inicio_sesion'));
         }
+        if($session->get('tipo_usuario') != 'Administrador'){
+            $session->getFlashBag()->add('error','Su cuenta no posee permisos para realizar este tipo de accion.');
+            return $this->render('JYGRevestimientosBundle:Page:indexAdmin.html.twig');
+        }
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('JYGRevestimientosBundle:Item')->find($id);
@@ -220,6 +244,10 @@ class ItemController extends Controller
         if (!$session->has('login')){
             $this->addFlash('errorsesion','Debe iniciar sesión para acceder a esta sección.');
             return $this->redirect($this->generateUrl('_inicio_sesion'));
+        }
+        if($session->get('tipo_usuario') != 'Administrador'){
+            $session->getFlashBag()->add('error','Su cuenta no posee permisos para realizar este tipo de accion.');
+            return $this->render('JYGRevestimientosBundle:Page:indexAdmin.html.twig');
         }
         $form = $this->createDeleteForm($id);
         $form->handleRequest($request);

@@ -27,6 +27,7 @@ class ClienteController extends Controller
             $this->addFlash('errorsesion','Debe iniciar sesión para acceder a esta sección.');
             return $this->redirect($this->generateUrl('_inicio_sesion'));
         }
+        
         $em = $this->getDoctrine()->getManager();
         $entities = $em->getRepository('JYGRevestimientosBundle:Cliente')->findAll();
         return $this->render('JYGRevestimientosBundle:Cliente:index.html.twig', array(
@@ -44,6 +45,7 @@ class ClienteController extends Controller
             $this->addFlash('errorsesion','Debe iniciar sesión para acceder a esta sección.');
             return $this->redirect($this->generateUrl('_inicio_sesion'));
         }
+        
         $entity = new Cliente();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
@@ -99,6 +101,7 @@ class ClienteController extends Controller
             $this->addFlash('errorsesion','Debe iniciar sesión para acceder a esta sección.');
             return $this->redirect($this->generateUrl('_inicio_sesion'));
         }
+        
         $entity = new Cliente();
         $form   = $this->createCreateForm($entity);
 
@@ -119,6 +122,7 @@ class ClienteController extends Controller
             $this->addFlash('errorsesion','Debe iniciar sesión para acceder a esta sección.');
             return $this->redirect($this->generateUrl('_inicio_sesion'));
         }
+        
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('JYGRevestimientosBundle:Cliente')->find($id);
@@ -146,6 +150,7 @@ class ClienteController extends Controller
             $this->addFlash('errorsesion','Debe iniciar sesión para acceder a esta sección.');
             return $this->redirect($this->generateUrl('_inicio_sesion'));
         }
+        
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('JYGRevestimientosBundle:Cliente')->find($id);
@@ -194,6 +199,7 @@ class ClienteController extends Controller
             $this->addFlash('errorsesion','Debe iniciar sesión para acceder a esta sección.');
             return $this->redirect($this->generateUrl('_inicio_sesion'));
         }
+        
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('JYGRevestimientosBundle:Cliente')->find($id);
@@ -234,6 +240,7 @@ class ClienteController extends Controller
             $this->addFlash('errorsesion','Debe iniciar sesión para acceder a esta sección.');
             return $this->redirect($this->generateUrl('_inicio_sesion'));
         }
+        
         $form = $this->createDeleteForm($id);
         $form->handleRequest($request);
 

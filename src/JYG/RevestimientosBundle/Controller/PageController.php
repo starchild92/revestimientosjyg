@@ -4,6 +4,8 @@ namespace JYG\RevestimientosBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
+
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
@@ -180,18 +182,17 @@ class PageController extends Controller
     /**
      * @Route("/iniciosesion")
      */
-    public function inicioSesionAction(){
+    public function inicioSesionAction(Request $request){
 
         $login = new Login();
         $form = $this->createForm(new LoginType(), $login);
-        $request = $this->getRequest();
         if ($request->getMethod() == 'POST') {
             $form->bind($request);
             if ($form->isValid()) {
                 $login = $form->get('login')->getData();
                 $password = md5($form->get('password')->getData());
                 //throw $this->createNotFoundException($password);
-                $em = $this->getDoctrine()->getEntityManager();
+                $em = $this->getDoctrine()->getManager();
                 $user = $em->getRepository('JYGRevestimientosBundle:Login')
                             ->validarCuenta($login, $password);
                if ($user == null) {
@@ -218,7 +219,7 @@ class PageController extends Controller
         $session->remove('tipo_usuario');
         $session->remove('nombre');
         
-        return $this->redirect($this->generateUrl('JYGRevestimientosBundle_inicio'));
+        return $this->redirect($this->generateUrl('_inicio_sesion'));
     }
 
     public function pageNotFoundAction()

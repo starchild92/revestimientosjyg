@@ -44,7 +44,7 @@
                         <td><a href="{{ path('bitacora_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
                         <td>{{ entity.login }}</td>
                         <td>{{ entity.operacion }}</td>
-                        <td>{{ entity.fecha|date('d-m-Y -- g:ia')}}</td>
+                        <td>{{ entity.fecha|date('d-m-Y g:ia')}}</td>
                     </tr>
                 {% endfor %}
         </tbody>
