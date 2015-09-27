@@ -28,7 +28,6 @@ class CompraMaterialType extends AbstractType
                 'by_reference'=>'false',
                 'allow_delete' =>'true',
                 'data_class' => null,
-                'label' => 'Producto'
                 ))
         ;
     }

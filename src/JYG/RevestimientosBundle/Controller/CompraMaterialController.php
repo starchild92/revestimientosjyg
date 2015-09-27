@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use JYG\RevestimientosBundle\Entity\CompraMaterial;
 use JYG\RevestimientosBundle\Form\CompraMaterialType;
+use JYG\RevestimientosBundle\Entity\ItemCompra;
 
 /**
  * CompraMaterial controller.
@@ -40,12 +41,14 @@ class CompraMaterialController extends Controller
             $this->addFlash('errorsesion','Debe iniciar sesión para acceder a esta sección.');
             return $this->redirect($this->generateUrl('_inicio_sesion'));
         }
-        
+        $itemcompra=new ItemCompra();
         $entity = new CompraMaterial();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
+            $itemcompra = $entity->getMaterial();
+            throw $this->createNotFoundException($itemcompra[1]);
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();

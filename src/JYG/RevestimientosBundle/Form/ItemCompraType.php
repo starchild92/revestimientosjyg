@@ -15,8 +15,8 @@ class ItemCompraType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('codigomaterial',null, array('label' => 'Producto','data_class' => null))
-            ->add('cantidad','text', array('label' => 'Cantidad de Producto'))
+            ->add('codigomaterial',null, array('label' => 'Codigo del Material','data_class' => null))
+            ->add('cantidad','text', array('label' => 'Cantidad de Material'))
             ->add('deposito','choice', array(
                     'choices'  => array('Depósito Tienda' => 'Depósito Tienda', 'Depósito Origen' => 'Depósito Origen'),
                     'label'=>'Nombre del Depósito'))

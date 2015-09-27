@@ -3,7 +3,7 @@
 namespace JYG\RevestimientosBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Validator\Constraints as Assert;
 /**
  * CompraMaterial
  *
@@ -57,7 +57,8 @@ class CompraMaterial
     private $total;
 
     /**
-     * @ORM\OneToMany(targetEntity="ItemCompra", mappedBy="codigomaterial")
+     * @ORM\OneToMany(targetEntity="ItemCompra", mappedBy="codigomaterial", cascade={"persist","remove"})
+     * @Assert\Valid
      */
     private $material;
 
@@ -186,30 +187,6 @@ class CompraMaterial
     {
         return $this->total;
     }
-
-
-    /**
-     * Set material
-     *
-     * @param \JYG\RevestimientosBundle\Entity\Material $material
-     * @return CompraMaterial
-     */
-    public function setMaterial(\JYG\RevestimientosBundle\Entity\Material $material = null)
-    {
-        $this->material = $material;
-
-        return $this;
-    }
-
-    /**
-     * Get material
-     *
-     * @return \JYG\RevestimientosBundle\Entity\Material 
-     */
-    public function getMaterial()
-    {
-        return $this->material;
-    }
     /**
      * Constructor
      */
@@ -218,13 +195,15 @@ class CompraMaterial
         $this->material = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
+    
+
     /**
      * Add material
      *
-     * @param \JYG\RevestimientosBundle\Entity\Material $material
+     * @param \JYG\RevestimientosBundle\Entity\ItemCompra $material
      * @return CompraMaterial
      */
-    public function addMaterial(\JYG\RevestimientosBundle\Entity\Material $material)
+    public function addMaterial(\JYG\RevestimientosBundle\Entity\ItemCompra $material)
     {
         $this->material[] = $material;
 
@@ -234,10 +213,20 @@ class CompraMaterial
     /**
      * Remove material
      *
-     * @param \JYG\RevestimientosBundle\Entity\Material $material
+     * @param \JYG\RevestimientosBundle\Entity\ItemCompra $material
      */
-    public function removeMaterial(\JYG\RevestimientosBundle\Entity\Material $material)
+    public function removeMaterial(\JYG\RevestimientosBundle\Entity\ItemCompra $material)
     {
         $this->material->removeElement($material);
+    }
+
+    /**
+     * Get material
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getMaterial()
+    {
+        return $this->material;
     }
 }
