@@ -1,4 +1,4 @@
-{% extends '::base.html.twig' %}
+{% extends 'JYGRevestimientosBundle::baseAdmin.html.twig' %}
 
 {% block body -%}
     <h1>CompraMaterial</h1>
@@ -28,6 +28,10 @@
             <tr>
                 <th>Total</th>
                 <td>{{ entity.total }}</td>
+            </tr>
+            <tr>
+                <th>Items que usted compró</th>
+                {% for item in entity.material %}<td>{{ item.codigomaterial }}, {{ item.cantidad }}, {{ item.deposito }}</td>{% endfor %}
             </tr>
         </tbody>
     </table>

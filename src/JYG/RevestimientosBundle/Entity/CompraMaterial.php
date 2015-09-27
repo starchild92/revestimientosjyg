@@ -57,11 +57,17 @@ class CompraMaterial
     private $total;
 
     /**
-     * @ORM\OneToMany(targetEntity="ItemCompra", mappedBy="codigomaterial", cascade={"persist","remove"})
+     * @ORM\OneToMany(targetEntity="ItemCompra", mappedBy="compra", cascade={"persist","remove"})
      * @Assert\Valid
      */
     private $material;
-
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->material = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -187,15 +193,6 @@ class CompraMaterial
     {
         return $this->total;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->material = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    
 
     /**
      * Add material

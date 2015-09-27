@@ -6,8 +6,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use JYG\RevestimientosBundle\Entity\CompraMaterial;
+use JYG\RevestimientosBundle\Entity\Deposito;
 use JYG\RevestimientosBundle\Form\CompraMaterialType;
-use JYG\RevestimientosBundle\Entity\ItemCompra;
 
 /**
  * CompraMaterial controller.
@@ -36,21 +36,49 @@ class CompraMaterialController extends Controller
      */
     public function createAction(Request $request)
     {
-        $session = $this->getRequest()->getSession();
-        if (!$session->has('login')){
-            $this->addFlash('errorsesion','Debe iniciar sesión para acceder a esta sección.');
-            return $this->redirect($this->generateUrl('_inicio_sesion'));
-        }
-        $itemcompra=new ItemCompra();
         $entity = new CompraMaterial();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            $itemcompra = $entity->getMaterial();
-            throw $this->createNotFoundException($itemcompra[1]);
             $em = $this->getDoctrine()->getManager();
+            $items = $entity->getMaterial();
+
+            //throw $this->createNotFoundException($cantItems = $items->count());
+
             $em->persist($entity);
+            //el for va aqui
+            $cantItems = $items->count();
+            for ($i=1; $i<=$cantItems; $i++) { 
+                $items[$i]->setCompra($entity); //agrego la id de la compra en el item :)
+
+                $cant_dep_origen = $items[$i]->getCantidad();
+                $nombre_dep_origen = $items[$i]->getDeposito();
+
+                $material = $items[$i]->getCodigomaterial();
+                $depositos_material = $material->getAlmacenes();
+
+                //throw $this->createNotFoundException(array_keys($depositos_material));
+                $lo_creo = true;
+                foreach ($depositos_material as &$depo) {
+                    if ($depo->getNombrealmacen() == $nombre_dep_origen) { $lo_creo = false; }
+                }
+                if(!$lo_creo){
+                    foreach ($depositos_material as &$depo) {
+                        if ($depo->getNombrealmacen() == $nombre_dep_origen) {
+                            $aux = $depo->getCantmaterialdisponible();
+                            $aux = $aux + $cant_dep_origen;
+                            $depo->setCantmaterialdisponible($aux);
+                        }
+                    }
+                }else{
+                    $depo_nuevo = new Deposito();
+                    $depo_nuevo->setNombrealmacen($nombre_dep_origen);
+                    $depo_nuevo->setCantmaterialdisponible($cant_dep_origen);
+                    $depo_nuevo->setMaterial($material);
+                    $material->getAlmacenes()->add($depo_nuevo);
+                }
+            }
             $em->flush();
 
             return $this->redirect($this->generateUrl('compramaterial_show', array('id' => $entity->getId())));
@@ -76,11 +104,7 @@ class CompraMaterialController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array(
-            'label' => 'Añadir Compra Material',
-            'attr' => array('class' => 'btn btn-primary btn-block')
-            ))
-        ;
+        $form->add('submit', 'submit', array('label' => 'Create'));
 
         return $form;
     }
