@@ -373,6 +373,7 @@ class MaterialController extends Controller
     }
 
     public function showExceptionAction($mensaje = ':('){
+
         return $this->render('TwigBundle:Exception:error.html.twig', array('mensaje' => $mensaje));
     }
 }

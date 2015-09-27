@@ -21,9 +21,12 @@ class UsuarioType extends AbstractType
             ->add('correo', 'text', array('label' => 'Correo Electronico del Usuario'))
             ->add('username', 'text', array('label' => 'Login del Usuario'))
             ->add('cuenta','choice', array(
-                    'choices'  => array('Usuario' => 'Usuario', 'Administrador' => 'Administrador'),
+                    'choices'  => array('Vendedor' => 'Vendedor', 'Administrador' => 'Administrador'),
                     'label'=>'Tipo de Cuenta'))
-            ->add('password', 'password', array('label' => 'Contraseña'))
+            ->add('password', 'password', array(
+                'label' => 'Contraseña',
+                'attr' => array(
+                    'required'=>'false')))
         ;
     }
     
