@@ -205,7 +205,7 @@ class PageController extends Controller
                     $session = new Session();
                     $session->set('login', $login);
                     $session->set('tipo_usuario', $user[0]->getCuenta());
-                    return $this->inicioAdminAction();
+                    return $this->inicioAdminAction($request);
                 }
             }
         }
