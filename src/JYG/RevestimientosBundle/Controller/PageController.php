@@ -5,6 +5,9 @@ namespace JYG\RevestimientosBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\Session;
+
+use Doctrine\Common\Collection\ArrayCollection;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -16,8 +19,7 @@ use JYG\RevestimientosBundle\Form\LoginType;
 use JYG\RevestimientosBundle\Form\UsuarioType;
 use JYG\RevestimientosBundle\Form\ConsultaType;
 
-use Symfony\Component\HttpFoundation\Session\Session;
-use Doctrine\Common\Collection\ArrayCollection;
+
 
 class PageController extends Controller
 {
@@ -116,12 +118,11 @@ class PageController extends Controller
      * @Route("/contacto")
      * @Template()
      */
-    public function contactoAction()
+    public function contactoAction(Request $request)
     {
         $consulta = new Consulta();
         $form = $this->createForm(new ConsultaType(), $consulta);
 
-        $request = $this->getRequest();
         if ($request->getMethod() == 'POST') {
             $form->handleRequest($request);
 
@@ -167,8 +168,8 @@ class PageController extends Controller
         ));
     }
 
-    public function inicioAdminAction(){
-        $session = $this->getRequest()->getSession();
+    public function inicioAdminAction(Request $request){
+        $session = $request->getSession();
         $login = $session->get('login');
         //$user = new UsuarioType();
         $em = $this->getDoctrine()->getManager();
