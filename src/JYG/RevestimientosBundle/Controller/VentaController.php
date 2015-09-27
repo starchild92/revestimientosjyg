@@ -18,18 +18,18 @@ use JYG\RevestimientosBundle\Form\ClienteType;
  */
 class VentaController extends Controller
 {
-
     /**
      * Lists all Venta entities.
      *
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
-        $session = $this->getRequest()->getSession();
+        $session = $request->getSession();
         if (!$session->has('login')){
             $this->addFlash('errorsesion','Debe iniciar sesión para acceder a esta sección.');
             return $this->redirect($this->generateUrl('_inicio_sesion'));
         }
+        
         $em = $this->getDoctrine()->getManager();
         $entities = $em->getRepository('JYGRevestimientosBundle:Venta')->AllOrdenById();
 
@@ -43,7 +43,7 @@ class VentaController extends Controller
      */
     public function createAction(Request $request)
     {
-        $session = $this->getRequest()->getSession();
+        $session = $request->getSession();
         if (!$session->has('login')){
             $this->addFlash('errorsesion','Debe iniciar sesión para acceder a esta sección.');
             return $this->redirect($this->generateUrl('_inicio_sesion'));
@@ -153,7 +153,7 @@ class VentaController extends Controller
                         $em->flush();
 
                         /*Entrada en la bitacora*/
-                        $session = $this->getRequest()->getSession();
+                        $session = $request->getSession();
                         $login = $session->get('login');
                         $this->addLog($login, 'Venta realizada a: '. $entity->getComprador()->getNombre());
 
@@ -216,9 +216,9 @@ class VentaController extends Controller
      * Displays a form to create a new Venta entity.
      *
      */
-    public function newAction()
+    public function newAction(Request $request)
     {
-        $session = $this->getRequest()->getSession();
+        $session = $request->getSession();
         if (!$session->has('login')){
             $this->addFlash('errorsesion','Debe iniciar sesión para acceder a esta sección.');
             return $this->redirect($this->generateUrl('_inicio_sesion'));
@@ -241,9 +241,9 @@ class VentaController extends Controller
      * Finds and displays a Venta entity.
      *
      */
-    public function showAction($id)
+    public function showAction(Request $request, $id)
     {
-        $session = $this->getRequest()->getSession();
+        $session = $request->getSession();
         if (!$session->has('login')){
             $this->addFlash('errorsesion','Debe iniciar sesión para acceder a esta sección.');
             return $this->redirect($this->generateUrl('_inicio_sesion'));
@@ -268,9 +268,9 @@ class VentaController extends Controller
      * Displays a form to edit an existing Venta entity.
      *
      */
-    public function editAction($id)
+    public function editAction(Request $request, $id)
     {
-        $session = $this->getRequest()->getSession();
+        $session = $request->getSession();
         if (!$session->has('login')){
             $this->addFlash('errorsesion','Debe iniciar sesión para acceder a esta sección.');
             return $this->redirect($this->generateUrl('_inicio_sesion'));
@@ -318,7 +318,7 @@ class VentaController extends Controller
      */
     public function updateAction(Request $request, $id)
     {
-        $session = $this->getRequest()->getSession();
+        $session = $request->getSession();
         if (!$session->has('login')){
             $this->addFlash('errorsesion','Debe iniciar sesión para acceder a esta sección.');
             return $this->redirect($this->generateUrl('_inicio_sesion'));
@@ -368,7 +368,7 @@ class VentaController extends Controller
      */
     public function deleteAction(Request $request, $id)
     {
-        $session = $this->getRequest()->getSession();
+        $session = $request->getSession();
         if (!$session->has('login')){
             $this->addFlash('errorsesion','Debe iniciar sesión para acceder a esta sección.');
             return $this->redirect($this->generateUrl('_inicio_sesion'));
@@ -449,7 +449,7 @@ class VentaController extends Controller
                 }//End del form de los items
                 $session->getFlashBag()->add('exito','Se ha eliminado la venta y se han restaurado las cantidades en los Depósitos.');
                 $em->remove($entity);
-                $session = $this->getRequest()->getSession();
+                $session = $request->getSession();
                 $login = $session->get('login');
                 /*Entrada en la bitacora*/
                 $this->addLog($login, 'Eliminó Venta de: '. $entity->getComprador()->getNombre());
@@ -481,7 +481,7 @@ class VentaController extends Controller
 
     public function notaAction(Request $request, $id)
     {
-        $session = $this->getRequest()->getSession();
+        $session = $request->getSession();
         if (!$session->has('login')){
             $this->addFlash('errorsesion','Debe iniciar sesión para acceder a esta sección.');
             return $this->redirect($this->generateUrl('_inicio_sesion'));

@@ -107,7 +107,7 @@ jyg_revestimientos_material:
     prefix:   /admin/material
 
 pageNotFound:
-    pattern:  /{path}
+    path:  /{path}
     defaults: { _controller: JYGRevestimientosBundle:Page:pageNotFound, path: '' }
     requirements:
         path: .*

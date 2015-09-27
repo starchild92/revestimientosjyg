@@ -26,12 +26,16 @@ class MaterialController extends Controller
      * @Route("/material")
      * @Template()
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
-        $session = $this->getRequest()->getSession();
+        $session = $request->getSession();
         if (!$session->has('login')){
             $this->addFlash('errorsesion','Debe iniciar sesión para acceder a esta sección.');
             return $this->redirect($this->generateUrl('_inicio_sesion'));
+        }
+        if($session->get('tipo_usuario') != 'Administrador'){
+            $session->getFlashBag()->add('error','Su cuenta no posee permisos para realizar este tipo de accion.');
+            return $this->render('JYGRevestimientosBundle:Page:indexAdmin.html.twig');
         }
 
         $em = $this->getDoctrine()->getManager();
@@ -47,10 +51,14 @@ class MaterialController extends Controller
      */
     public function createAction(Request $request)
     {
-        $session = $this->getRequest()->getSession();
+        $session = $request->getSession();
         if (!$session->has('login')){
             $this->addFlash('errorsesion','Debe iniciar sesión para acceder a esta sección.');
             return $this->redirect($this->generateUrl('_inicio_sesion'));
+        }
+        if($session->get('tipo_usuario') != 'Administrador'){
+            $session->getFlashBag()->add('error','Su cuenta no posee permisos para realizar este tipo de accion.');
+            return $this->render('JYGRevestimientosBundle:Page:indexAdmin.html.twig');
         }
         $error ="";
         $material = new Material();
@@ -59,7 +67,7 @@ class MaterialController extends Controller
         $material->getAlmacenes()->add($deposito);
 
         $form = $this->createCreateForm($material);
-        $request = $this->getRequest();
+        $request = $request;
         
         if ($request->getMethod() == "POST") 
         {
@@ -80,7 +88,7 @@ class MaterialController extends Controller
                     $em->persist($material);
                     $em->flush();
                     
-                    $session = $this->getRequest()->getSession();
+                    $session = $request->getSession();
                     $login = $session->get('login');
 
                     /*Entrada en la bitacora*/
@@ -123,12 +131,16 @@ class MaterialController extends Controller
      * Displays a form to create a new Material entity.
      *
      */
-    public function newAction()
+    public function newAction(Request $request)
     {
-        $session = $this->getRequest()->getSession();
+        $session = $request->getSession();
         if (!$session->has('login')){
             $this->addFlash('errorsesion','Debe iniciar sesión para acceder a esta sección.');
             return $this->redirect($this->generateUrl('_inicio_sesion'));
+        }
+        if($session->get('tipo_usuario') != 'Administrador'){
+            $session->getFlashBag()->add('error','Su cuenta no posee permisos para realizar este tipo de accion.');
+            return $this->render('JYGRevestimientosBundle:Page:indexAdmin.html.twig');
         }
         $material = new Material();
         $form = $this ->createForm(new MaterialType(), $material, array(
@@ -152,12 +164,16 @@ class MaterialController extends Controller
      * Finds and displays a Material entity.
      *
      */
-    public function showAction($id)
+    public function showAction(Request $request, $id)
     {
-        $session = $this->getRequest()->getSession();
+        $session = $request->getSession();
         if (!$session->has('login')){
             $this->addFlash('errorsesion','Debe iniciar sesión para acceder a esta sección.');
             return $this->redirect($this->generateUrl('_inicio_sesion'));
+        }
+        if($session->get('tipo_usuario') != 'Administrador'){
+            $session->getFlashBag()->add('error','Su cuenta no posee permisos para realizar este tipo de accion.');
+            return $this->render('JYGRevestimientosBundle:Page:indexAdmin.html.twig');
         }
         $em = $this->getDoctrine()->getManager();
         $entity = $em->getRepository('JYGRevestimientosBundle:Material')->find($id);
@@ -177,12 +193,16 @@ class MaterialController extends Controller
      * Displays a form to edit an existing Material entity.
      *
      */
-    public function editAction($id)
+    public function editAction(Request $request, $id)
     {
-        $session = $this->getRequest()->getSession();
+        $session = $request->getSession();
         if (!$session->has('login')){
             $this->addFlash('errorsesion','Debe iniciar sesión para acceder a esta sección.');
             return $this->redirect($this->generateUrl('_inicio_sesion'));
+        }
+        if($session->get('tipo_usuario') != 'Administrador'){
+            $session->getFlashBag()->add('error','Su cuenta no posee permisos para realizar este tipo de accion.');
+            return $this->render('JYGRevestimientosBundle:Page:indexAdmin.html.twig');
         }
         
         $em = $this->getDoctrine()->getManager();
@@ -230,10 +250,14 @@ class MaterialController extends Controller
      */
     public function updateAction(Request $request, $id)
     {
-        $session = $this->getRequest()->getSession();
+        $session = $request->getSession();
         if (!$session->has('login')){
             $this->addFlash('errorsesion','Debe iniciar sesión para acceder a esta sección.');
             return $this->redirect($this->generateUrl('_inicio_sesion'));
+        }
+        if($session->get('tipo_usuario') != 'Administrador'){
+            $session->getFlashBag()->add('error','Su cuenta no posee permisos para realizar este tipo de accion.');
+            return $this->render('JYGRevestimientosBundle:Page:indexAdmin.html.twig');
         }
         $em = $this->getDoctrine()->getManager();
         $entity = $em->getRepository('JYGRevestimientosBundle:Material')->find($id);
@@ -276,7 +300,7 @@ class MaterialController extends Controller
                     $entity->setNombre($nombre);
                     $em->persist($entity);
                     $em->flush();
-                    $session = $this->getRequest()->getSession();
+                    $session = $request->getSession();
                     $login = $session->get('login');
                     /*Entrada en la bitacora*/
                     $this->addLog($login, 'Modificado Producto: '. $entity->getCodigo().''. $entity->getNombre().''.$entity->getTipo());
@@ -300,10 +324,14 @@ class MaterialController extends Controller
      */
     public function deleteAction(Request $request, $id)
     {
-        $session = $this->getRequest()->getSession();
+        $session = $request->getSession();
         if (!$session->has('login')){
             $this->addFlash('errorsesion','Debe iniciar sesión para acceder a esta sección.');
             return $this->redirect($this->generateUrl('_inicio_sesion'));
+        }
+        if($session->get('tipo_usuario') != 'Administrador'){
+            $session->getFlashBag()->add('error','Su cuenta no posee permisos para realizar este tipo de accion.');
+            return $this->render('JYGRevestimientosBundle:Page:indexAdmin.html.twig');
         }
         $form = $this->createDeleteForm($id);
         $form->handleRequest($request);
@@ -318,7 +346,7 @@ class MaterialController extends Controller
 
             $em->remove($entity);            
             $em->flush();
-            $session = $this->getRequest()->getSession();
+            $session = $request->getSession();
             $login = $session->get('login');
             /*Entrada en la bitacora*/
             $this->addLog($login, 'Eliminado Producto: '. $entity->getCodigo().''. $entity->getNombre().''.$entity->getTipo());

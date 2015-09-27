@@ -2,7 +2,7 @@
 
 {% block body -%}
     <div class="row">
-        <div class="col-lg-9 col-sm-9 col-xs-12"><div class="page-header"><h1>Usuario #{{ entity.id }}</h1></div></div>
+        <div class="col-lg-9 col-sm-9 col-xs-12"><div class="page-header"><h1>Usuario: {{ entity.nombre }}</h1></div></div>
         <div class="col-lg-3 col-sm-3 col-xs-12"><a id="volver" class="btn btn-block btn-success" href="{{ path('usuario') }}"><span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span> Ver Todos los Usuarios</a></div>
     </div>
     {% for flashMessage in app.session.flashbag.get('cod') %}
@@ -15,7 +15,8 @@
     <div class="well row">
         <div class="col-lg-4 col-sm-4 col-xs-12">
         <table class="table"><thead><tr><th>Nombre y Apellido</th></tr></thead>
-        <tbody><tr><td>{{ entity.apellido }}, {{ entity.nombre }}</td></tr></tbody></table>
+        <tbody><tr><td>{{ entity.apellido }}, {{ entity.nombre }}</td></tr>
+            <tr><td>{{ entity.cuenta }}</td></tr></tbody></table>
         </div>
         <div class="col-lg-4 col-sm-4 col-xs-12">
         <table class="table"><thead><tr><th>Teléfono</th></tr></thead>

@@ -20,13 +20,14 @@ class ClienteController extends Controller
      * Lists all Cliente entities.
      *
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
-        $session = $this->getRequest()->getSession();
+        $session = $request->getSession();
         if (!$session->has('login')){
             $this->addFlash('errorsesion','Debe iniciar sesión para acceder a esta sección.');
             return $this->redirect($this->generateUrl('_inicio_sesion'));
         }
+        
         $em = $this->getDoctrine()->getManager();
         $entities = $em->getRepository('JYGRevestimientosBundle:Cliente')->findAll();
         return $this->render('JYGRevestimientosBundle:Cliente:index.html.twig', array(
@@ -39,11 +40,12 @@ class ClienteController extends Controller
      */
     public function createAction(Request $request)
     {
-        $session = $this->getRequest()->getSession();
+        $session = $request->getSession();
         if (!$session->has('login')){
             $this->addFlash('errorsesion','Debe iniciar sesión para acceder a esta sección.');
             return $this->redirect($this->generateUrl('_inicio_sesion'));
         }
+        
         $entity = new Cliente();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
@@ -51,7 +53,7 @@ class ClienteController extends Controller
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
-            $session = $this->getRequest()->getSession();
+            $session = $request->getSession();
             $login = $session->get('login');
             /*Entrada en la bitacora*/
             $this->addLog($login, 'Cliente: '. $entity->getNombre().' Registrado');
@@ -92,13 +94,14 @@ class ClienteController extends Controller
      * Displays a form to create a new Cliente entity.
      *
      */
-    public function newAction()
+    public function newAction(Request $request)
     {
-        $session = $this->getRequest()->getSession();
+        $session = $request->getSession();
         if (!$session->has('login')){
             $this->addFlash('errorsesion','Debe iniciar sesión para acceder a esta sección.');
             return $this->redirect($this->generateUrl('_inicio_sesion'));
         }
+        
         $entity = new Cliente();
         $form   = $this->createCreateForm($entity);
 
@@ -112,13 +115,14 @@ class ClienteController extends Controller
      * Finds and displays a Cliente entity.
      *
      */
-    public function showAction($id)
+    public function showAction(Request $request, $id)
     {
-        $session = $this->getRequest()->getSession();
+        $session = $request->getSession();
         if (!$session->has('login')){
             $this->addFlash('errorsesion','Debe iniciar sesión para acceder a esta sección.');
             return $this->redirect($this->generateUrl('_inicio_sesion'));
         }
+        
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('JYGRevestimientosBundle:Cliente')->find($id);
@@ -139,13 +143,14 @@ class ClienteController extends Controller
      * Displays a form to edit an existing Cliente entity.
      *
      */
-    public function editAction($id)
+    public function editAction(Request $request, $id)
     {
-        $session = $this->getRequest()->getSession();
+        $session = $request->getSession();
         if (!$session->has('login')){
             $this->addFlash('errorsesion','Debe iniciar sesión para acceder a esta sección.');
             return $this->redirect($this->generateUrl('_inicio_sesion'));
         }
+        
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('JYGRevestimientosBundle:Cliente')->find($id);
@@ -189,11 +194,12 @@ class ClienteController extends Controller
      */
     public function updateAction(Request $request, $id)
     {
-        $session = $this->getRequest()->getSession();
+        $session = $request->getSession();
         if (!$session->has('login')){
             $this->addFlash('errorsesion','Debe iniciar sesión para acceder a esta sección.');
             return $this->redirect($this->generateUrl('_inicio_sesion'));
         }
+        
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('JYGRevestimientosBundle:Cliente')->find($id);
@@ -209,7 +215,7 @@ class ClienteController extends Controller
         if ($editForm->isValid()) {
             $this->get('session')->getFlashBag()->set('cod', 'Se ha actualizado la información del cliente de manera correcta');
             $em->flush();
-            $session = $this->getRequest()->getSession();
+            $session = $request->getSession();
             $login = $session->get('login');
             /*Entrada en la bitacora*/
             $this->addLog($login, 'Datos de: '. $entity->getNombre().' Modificados');
@@ -229,11 +235,12 @@ class ClienteController extends Controller
      */
     public function deleteAction(Request $request, $id)
     {
-        $session = $this->getRequest()->getSession();
+        $session = $request->getSession();
         if (!$session->has('login')){
             $this->addFlash('errorsesion','Debe iniciar sesión para acceder a esta sección.');
             return $this->redirect($this->generateUrl('_inicio_sesion'));
         }
+        
         $form = $this->createDeleteForm($id);
         $form->handleRequest($request);
 
@@ -244,7 +251,7 @@ class ClienteController extends Controller
             if (!$entity) {
                 throw $this->createNotFoundException('No se encuentra el cliente.');
             }
-            $session = $this->getRequest()->getSession();
+            $session = $request->getSession();
             $login = $session->get('login');
             /*Entrada en la bitacora*/
             $this->addLog($login, 'Cliente:'. $entity->getNombre().' Eliminado');

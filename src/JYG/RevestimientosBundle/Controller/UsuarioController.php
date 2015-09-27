@@ -20,12 +20,16 @@ class UsuarioController extends Controller
      * Lists all Usuario entities.
      *
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
-        $session = $this->getRequest()->getSession();
+        $session = $request->getSession();
         if (!$session->has('login')){
             $this->addFlash('errorsesion','Debe iniciar sesión para acceder a esta sección.');
             return $this->redirect($this->generateUrl('_inicio_sesion'));
+        }
+        if($session->get('tipo_usuario') != 'Administrador'){
+            $session->getFlashBag()->add('error','Su cuenta no posee permisos para realizar este tipo de accion.');
+            return $this->render('JYGRevestimientosBundle:Page:indexAdmin.html.twig');
         }
         $em = $this->getDoctrine()->getManager();
         $entities = $em->getRepository('JYGRevestimientosBundle:Usuario')->findAll();
@@ -39,10 +43,14 @@ class UsuarioController extends Controller
      */
     public function createAction(Request $request)
     {
-        $session = $this->getRequest()->getSession();
+        $session = $request->getSession();
         if (!$session->has('login')){
             $this->addFlash('errorsesion','Debe iniciar sesión para acceder a esta sección.');
             return $this->redirect($this->generateUrl('_inicio_sesion'));
+        }
+        if($session->get('tipo_usuario') != 'Administrador'){
+            $session->getFlashBag()->add('error','Su cuenta no posee permisos para realizar este tipo de accion.');
+            return $this->render('JYGRevestimientosBundle:Page:indexAdmin.html.twig');
         }
         $entity = new Usuario();
         $form = $this->createCreateForm($entity);
@@ -53,7 +61,7 @@ class UsuarioController extends Controller
             $plain = md5($entity->getPassword());
             $entity->setPassword($plain);
             $em->persist($entity);
-            $session = $this->getRequest()->getSession();
+            $session = $request->getSession();
             $login = $session->get('login');
             /*Entrada en la bitacora*/
             $this->addLog($login, 'Usuario'. $entity->getUsername().' Registrado');
@@ -91,12 +99,16 @@ class UsuarioController extends Controller
      * Displays a form to create a new Usuario entity.
      *
      */
-    public function newAction()
+    public function newAction(Request $request)
     {
-        $session = $this->getRequest()->getSession();
+        $session = $request->getSession();
         if (!$session->has('login')){
             $this->addFlash('errorsesion','Debe iniciar sesión para acceder a esta sección.');
             return $this->redirect($this->generateUrl('_inicio_sesion'));
+        }
+        if($session->get('tipo_usuario') != 'Administrador'){
+            $session->getFlashBag()->add('error','Su cuenta no posee permisos para realizar este tipo de accion.');
+            return $this->render('JYGRevestimientosBundle:Page:indexAdmin.html.twig');
         }
         $entity = new Usuario();
         $form   = $this->createCreateForm($entity);
@@ -111,12 +123,16 @@ class UsuarioController extends Controller
      * Finds and displays a Usuario entity.
      *
      */
-    public function showAction($id)
+    public function showAction(Request $request, $id)
     {
-        $session = $this->getRequest()->getSession();
+        $session = $request->getSession();
         if (!$session->has('login')){
             $this->addFlash('errorsesion','Debe iniciar sesión para acceder a esta sección.');
             return $this->redirect($this->generateUrl('_inicio_sesion'));
+        }
+        if($session->get('tipo_usuario') != 'Administrador'){
+            $session->getFlashBag()->add('error','Su cuenta no posee permisos para realizar este tipo de accion.');
+            return $this->render('JYGRevestimientosBundle:Page:indexAdmin.html.twig');
         }
         $em = $this->getDoctrine()->getManager();
 
@@ -138,12 +154,16 @@ class UsuarioController extends Controller
      * Displays a form to edit an existing Usuario entity.
      *
      */
-    public function editAction($id)
+    public function editAction(Request $request, $id)
     {
-        $session = $this->getRequest()->getSession();
+        $session = $request->getSession();
         if (!$session->has('login')){
             $this->addFlash('errorsesion','Debe iniciar sesión para acceder a esta sección.');
             return $this->redirect($this->generateUrl('_inicio_sesion'));
+        }
+        if($session->get('tipo_usuario') != 'Administrador'){
+            $session->getFlashBag()->add('error','Su cuenta no posee permisos para realizar este tipo de accion.');
+            return $this->render('JYGRevestimientosBundle:Page:indexAdmin.html.twig');
         }
         $em = $this->getDoctrine()->getManager();
 
@@ -187,10 +207,14 @@ class UsuarioController extends Controller
      */
     public function updateAction(Request $request, $id)
     {
-        $session = $this->getRequest()->getSession();
+        $session = $request->getSession();
         if (!$session->has('login')){
             $this->addFlash('errorsesion','Debe iniciar sesión para acceder a esta sección.');
             return $this->redirect($this->generateUrl('_inicio_sesion'));
+        }
+        if($session->get('tipo_usuario') != 'Administrador'){
+            $session->getFlashBag()->add('error','Su cuenta no posee permisos para realizar este tipo de accion.');
+            return $this->render('JYGRevestimientosBundle:Page:indexAdmin.html.twig');
         }
         $em = $this->getDoctrine()->getManager();
 
@@ -208,7 +232,7 @@ class UsuarioController extends Controller
             $plain = md5($entity->getPassword());
             $entity->setPassword($plain);
             
-            $session = $this->getRequest()->getSession();
+            $session = $request->getSession();
             $login = $session->get('login');
             /*Entrada en la bitacora*/
             $this->addLog($login, 'Datos del Usuario:'. $entity->getUsername().' Modificados');
@@ -229,10 +253,14 @@ class UsuarioController extends Controller
      */
     public function deleteAction(Request $request, $id)
     {
-        $session = $this->getRequest()->getSession();
+        $session = $request->getSession();
         if (!$session->has('login')){
             $this->addFlash('errorsesion','Debe iniciar sesión para acceder a esta sección.');
             return $this->redirect($this->generateUrl('_inicio_sesion'));
+        }
+        if($session->get('tipo_usuario') != 'Administrador'){
+            $session->getFlashBag()->add('error','Su cuenta no posee permisos para realizar este tipo de accion.');
+            return $this->render('JYGRevestimientosBundle:Page:indexAdmin.html.twig');
         }
         $form = $this->createDeleteForm($id);
         $form->handleRequest($request);
@@ -244,7 +272,7 @@ class UsuarioController extends Controller
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find Usuario entity.');
             }
-            $session = $this->getRequest()->getSession();
+            $session = $request->getSession();
             $login = $session->get('login');
             /*Entrada en la bitacora*/
             $this->addLog($login, 'Usuario'. $entity->getUsername().' Eliminado');

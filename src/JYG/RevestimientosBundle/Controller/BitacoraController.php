@@ -2,9 +2,8 @@
 
 namespace JYG\RevestimientosBundle\Controller;
 
-
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
+use Symfony\Component\HttpFoundation\Request;
 use JYG\RevestimientosBundle\Entity\Bitacora;
 
 /**
@@ -18,9 +17,9 @@ class BitacoraController extends Controller
      * Lists all Bitacora entities.
      *
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
-        $session = $this->getRequest()->getSession();
+        $session = $request->getSession();
         if (!$session->has('login')){
             $this->addFlash('errorsesion','Debe iniciar sesión para acceder a esta sección.');
             return $this->redirect($this->generateUrl('_inicio_sesion'));
@@ -38,9 +37,9 @@ class BitacoraController extends Controller
      * Finds and displays a Bitacora entity.
      *
      */
-    public function showAction($id)
+    public function showAction(Request $request, $id)
     {
-        $session = $this->getRequest()->getSession();
+        $session = $request->getSession();
         if (!$session->has('login')){
             $this->addFlash('errorsesion','Debe iniciar sesión para acceder a esta sección.');
             return $this->redirect($this->generateUrl('_inicio_sesion'));
