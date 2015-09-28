@@ -20,12 +20,20 @@ class CompraMaterialController extends Controller
      * Lists all CompraMaterial entities.
      *
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
+        $session = $request->getSession();
+        if (!$session->has('login')){
+            $this->addFlash('errorsesion','Debe iniciar sesión para acceder a esta sección.');
+            return $this->redirect($this->generateUrl('_inicio_sesion'));
+        }
+        if($session->get('tipo_usuario') != 'Administrador'){
+            $session->getFlashBag()->add('error','Su cuenta no posee permisos para realizar este tipo de accion.');
+            return $this->render('JYGRevestimientosBundle:Page:indexAdmin.html.twig');
+        }
+
         $em = $this->getDoctrine()->getManager();
-
         $entities = $em->getRepository('JYGRevestimientosBundle:CompraMaterial')->findAll();
-
         return $this->render('JYGRevestimientosBundle:CompraMaterial:index.html.twig', array(
             'entities' => $entities,
         ));
@@ -36,6 +44,16 @@ class CompraMaterialController extends Controller
      */
     public function createAction(Request $request)
     {
+        $session = $request->getSession();
+        if (!$session->has('login')){
+            $this->addFlash('errorsesion','Debe iniciar sesión para acceder a esta sección.');
+            return $this->redirect($this->generateUrl('_inicio_sesion'));
+        }
+        if($session->get('tipo_usuario') != 'Administrador'){
+            $session->getFlashBag()->add('error','Su cuenta no posee permisos para realizar este tipo de accion.');
+            return $this->render('JYGRevestimientosBundle:Page:indexAdmin.html.twig');
+        }
+
         $entity = new CompraMaterial();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
@@ -128,12 +146,20 @@ class CompraMaterialController extends Controller
      * Finds and displays a CompraMaterial entity.
      *
      */
-    public function showAction($id)
+    public function showAction(Request $request, $id)
     {
+        $session = $request->getSession();
+        if (!$session->has('login')){
+            $this->addFlash('errorsesion','Debe iniciar sesión para acceder a esta sección.');
+            return $this->redirect($this->generateUrl('_inicio_sesion'));
+        }
+        if($session->get('tipo_usuario') != 'Administrador'){
+            $session->getFlashBag()->add('error','Su cuenta no posee permisos para realizar este tipo de accion.');
+            return $this->render('JYGRevestimientosBundle:Page:indexAdmin.html.twig');
+        }
+
         $em = $this->getDoctrine()->getManager();
-
         $entity = $em->getRepository('JYGRevestimientosBundle:CompraMaterial')->find($id);
-
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find CompraMaterial entity.');
         }
@@ -150,8 +176,18 @@ class CompraMaterialController extends Controller
      * Displays a form to edit an existing CompraMaterial entity.
      *
      */
-    public function editAction($id)
+    public function editAction(Request $request, $id)
     {
+        $session = $request->getSession();
+        if (!$session->has('login')){
+            $this->addFlash('errorsesion','Debe iniciar sesión para acceder a esta sección.');
+            return $this->redirect($this->generateUrl('_inicio_sesion'));
+        }
+        if($session->get('tipo_usuario') != 'Administrador'){
+            $session->getFlashBag()->add('error','Su cuenta no posee permisos para realizar este tipo de accion.');
+            return $this->render('JYGRevestimientosBundle:Page:indexAdmin.html.twig');
+        }
+
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('JYGRevestimientosBundle:CompraMaterial')->find($id);
@@ -194,6 +230,16 @@ class CompraMaterialController extends Controller
      */
     public function updateAction(Request $request, $id)
     {
+        $session = $request->getSession();
+        if (!$session->has('login')){
+            $this->addFlash('errorsesion','Debe iniciar sesión para acceder a esta sección.');
+            return $this->redirect($this->generateUrl('_inicio_sesion'));
+        }
+        if($session->get('tipo_usuario') != 'Administrador'){
+            $session->getFlashBag()->add('error','Su cuenta no posee permisos para realizar este tipo de accion.');
+            return $this->render('JYGRevestimientosBundle:Page:indexAdmin.html.twig');
+        }
+
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('JYGRevestimientosBundle:CompraMaterial')->find($id);
@@ -224,6 +270,16 @@ class CompraMaterialController extends Controller
      */
     public function deleteAction(Request $request, $id)
     {
+        $session = $request->getSession();
+        if (!$session->has('login')){
+            $this->addFlash('errorsesion','Debe iniciar sesión para acceder a esta sección.');
+            return $this->redirect($this->generateUrl('_inicio_sesion'));
+        }
+        if($session->get('tipo_usuario') != 'Administrador'){
+            $session->getFlashBag()->add('error','Su cuenta no posee permisos para realizar este tipo de accion.');
+            return $this->render('JYGRevestimientosBundle:Page:indexAdmin.html.twig');
+        }
+        
         $form = $this->createDeleteForm($id);
         $form->handleRequest($request);
 
