@@ -1,4 +1,5 @@
 {% extends 'JYGRevestimientosBundle::baseAdmin.html.twig' %}
+
 {% block javascripts %}
     <script src="{{ asset('bundles/jygrevestimientos/js/datatable.min.js') }}"></script>
     <script type="text/javascript">
@@ -7,12 +8,8 @@
         });
     </script>
 {% endblock %}
-{% block body %}
-    <div class="row">
-        <div class="col-sm-10"><div class="page-header"><h1>Compras</h1></div></div>
-        <div class="col-sm-2"><a id="volver" href="{{ path('compramaterial_new') }}" class="btn btn-success pull-right" type="button"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>  Registrar Compra</a></div>
-    </div>
 
+{% block body -%}
     <div class="panel panel-default">
         {% for flashMessage in app.session.flashbag.get('cod') %}
             <div class = "alert alert-success alert-dismissable">
@@ -30,7 +27,7 @@
                 <th>Subtotal</th>
                 <th>Iva</th>
                 <th>Total</th>
-                <th>Opciones</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -56,13 +53,8 @@
             </tr>
         {% endfor %}
         </tbody>
-    </table>
+    </table>     
 {% endblock %}
 {% block stylesheets %}
     <link rel="stylesheet" type="text/css" href="{{ asset('bundles/jygrevestimientos/css/datatable.min.css') }}">
-    <style type="text/css">
-    .table-bottom{
-        margin-bottom: 0px;
-        }</style>
 {% endblock %}
-

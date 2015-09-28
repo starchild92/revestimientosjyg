@@ -115,12 +115,6 @@ class Material
      */
     private $almacenes;
 
-     /**
-     * @ORM\ManyToOne(targetEntity="CompraMaterial")
-     * @ORM\JoinColumn(name="compramaterial_id", referencedColumnName="id", onDelete="CASCADE")
-     */
-    private $compra;
-
     /**
      * Get id
      *

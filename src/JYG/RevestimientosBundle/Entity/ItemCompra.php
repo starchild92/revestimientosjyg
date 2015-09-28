@@ -40,8 +40,16 @@ class ItemCompra
     /**
      * @ORM\ManyToOne(targetEntity="Material")
      * @ORM\JoinColumn(name="material_id", referencedColumnName="id", onDelete="CASCADE")
-     */
+     * @Assert\Valid
+     **/
     private $codigomaterial;
+
+    /**
+     * @var integer
+     * @ORM\ManyToOne(targetEntity="CompraMaterial", inversedBy="material")
+     * @ORM\JoinColumn(name="compra_id", referencedColumnName="id", onDelete="CASCADE")
+     */
+    private $compra;
 
     /**
      * @var string
@@ -49,7 +57,6 @@ class ItemCompra
      * @ORM\Column(name="deposito", type="string", length=255)
      */
     private $deposito;
-
 
     /**
      * Get id
@@ -83,7 +90,6 @@ class ItemCompra
     {
         return $this->cantidad;
     }
-
 
     /**
      * Set deposito
@@ -129,5 +135,28 @@ class ItemCompra
     public function getCodigomaterial()
     {
         return $this->codigomaterial;
+    }
+
+    /**
+     * Set compra
+     *
+     * @param \JYG\RevestimientosBundle\Entity\CompraMaterial $compra
+     * @return ItemCompra
+     */
+    public function setCompra(\JYG\RevestimientosBundle\Entity\CompraMaterial $compra = null)
+    {
+        $this->compra = $compra;
+
+        return $this;
+    }
+
+    /**
+     * Get compra
+     *
+     * @return \JYG\RevestimientosBundle\Entity\CompraMaterial 
+     */
+    public function getCompra()
+    {
+        return $this->compra;
     }
 }

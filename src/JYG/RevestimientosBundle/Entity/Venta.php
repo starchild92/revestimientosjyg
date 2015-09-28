@@ -91,8 +91,7 @@ class Venta
         $this->items = new \Doctrine\Common\Collections\ArrayCollection();
         $this->fecha = new \DateTime();
     }
-
-
+    
     /* Esta funcion agrega los items */
     public function setItems($items){
         $this->items = $items;

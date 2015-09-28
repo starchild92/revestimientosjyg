@@ -2,6 +2,14 @@ jyg_revestimientos_compramaterial:
     resource: "@JYGRevestimientosBundle/Resources/config/routing/compramaterial.yml"
     prefix:   /compramaterial
 
+jyg_revestimientos_itemcompra:
+    resource: "@JYGRevestimientosBundle/Resources/config/routing/itemcompra.yml"
+    prefix:   /itemcompra
+
+jyg_revestimientos_compramaterial:
+    resource: "@JYGRevestimientosBundle/Resources/config/routing/compramaterial.yml"
+    prefix:   /compramaterial
+
 #rutas de la pagina publicitaria
 page_verProducto:
     path:  /productos/{id}

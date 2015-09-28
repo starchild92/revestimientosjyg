@@ -3,6 +3,7 @@
 namespace JYG\RevestimientosBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * ItemCompra
@@ -25,14 +26,30 @@ class ItemCompra
      * @var float
      *
      * @ORM\Column(name="cantidad", type="float")
+     * @Assert\GreaterThan(
+     *     value = 0,
+     *     message = "Debe ser un valor mayor a 0"
+     * )
+     * @Assert\Type(
+     *     type="numeric",
+     *     message="El valor {{ value }} no válido."
+     * )
      */
     private $cantidad;
 
     /**
      * @ORM\ManyToOne(targetEntity="Material")
      * @ORM\JoinColumn(name="material_id", referencedColumnName="id", onDelete="CASCADE")
-     */
+     * @Assert\Valid
+     **/
     private $codigomaterial;
+
+    /**
+     * @var integer
+     * @ORM\ManyToOne(targetEntity="CompraMaterial", inversedBy="material")
+     * @ORM\JoinColumn(name="compra_id", referencedColumnName="id", onDelete="CASCADE")
+     */
+    private $compra;
 
     /**
      * @var string
@@ -40,62 +57,4 @@ class ItemCompra
      * @ORM\Column(name="deposito", type="string", length=255)
      */
     private $deposito;
-
-
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Set cantidad
-     *
-     * @param float $cantidad
-     * @return ItemCompra
-     */
-    public function setCantidad($cantidad)
-    {
-        $this->cantidad = $cantidad;
-
-        return $this;
-    }
-
-    /**
-     * Get cantidad
-     *
-     * @return float 
-     */
-    public function getCantidad()
-    {
-        return $this->cantidad;
-    }
-
-
-    /**
-     * Set deposito
-     *
-     * @param string $deposito
-     * @return ItemCompra
-     */
-    public function setDeposito($deposito)
-    {
-        $this->deposito = $deposito;
-
-        return $this;
-    }
-
-    /**
-     * Get deposito
-     *
-     * @return string 
-     */
-    public function getDeposito()
-    {
-        return $this->deposito;
-    }
 }

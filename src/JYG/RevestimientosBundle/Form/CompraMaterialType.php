@@ -20,16 +20,17 @@ class CompraMaterialType extends AbstractType
             ->add('subtotal','text',array('label'=>'Sub Total','attr' => array('placeholder' => '125793')))
             ->add('iva','text',array('label'=>'IVA'))
             ->add('total','text',array('label'=>'Monto Total'))
-            ->add('material','collection',array(
-                'type'=> new ItemCompraType(),
-                'cascade_validation' => true,
-                'attr' => array('class' => 'tags'),
-                'allow_add'=>'true',
-                'by_reference'=>'false',
-                'allow_delete' =>'true',
-                'data_class' => null,
-                ))
-        ;
+            ->add('material',
+                    'collection',array(
+                        'type'=> new ItemCompraType(),
+                        'cascade_validation' => true,
+                        'attr' => array('class' => 'tags'),
+                        'allow_add'=>'true',
+                        'by_reference'=>'false',
+                        'allow_delete' =>'true',
+                        'data_class' => null
+                        )
+                );
     }
     
     /**
