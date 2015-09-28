@@ -8,6 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use JYG\RevestimientosBundle\Entity\CompraMaterial;
 use JYG\RevestimientosBundle\Entity\Deposito;
 use JYG\RevestimientosBundle\Form\CompraMaterialType;
+use JYG\RevestimientosBundle\Entity\Bitacora;
 
 /**
  * CompraMaterial controller.
@@ -79,6 +80,11 @@ class CompraMaterialController extends Controller
                     $material->getAlmacenes()->add($depo_nuevo);
                 }
             }
+            $session = $request->getSession();
+            $login = $session->get('login');
+            /*Entrada en la bitacora*/
+            $this->addLog($login, 'Compra: #Factura'. $entity->getNrocontrolfactura());
+            $this->get('session')->getFlashBag()->set('cod', 'Compra Registrada con éxito');
             $em->flush();
 
             return $this->redirect($this->generateUrl('compramaterial_show', array('id' => $entity->getId())));
@@ -104,7 +110,11 @@ class CompraMaterialController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Create'));
+       $form->add('submit', 'submit', array(
+            'label' => 'Registrar Compra',
+            'attr' => array('class' => 'btn btn-primary btn-block')
+            ))
+        ;
 
         return $form;
     }
@@ -184,7 +194,11 @@ class CompraMaterialController extends Controller
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+        $form->add('submit', 'submit', array(
+            'label' => 'Actualizar Datos de la Compra',
+            'attr' => array('class' => 'btn btn-success btn-block')
+            ))
+        ;
 
         return $form;
     }
@@ -207,9 +221,16 @@ class CompraMaterialController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
-            $em->flush();
 
-            return $this->redirect($this->generateUrl('compramaterial_edit', array('id' => $id)));
+
+            $em->flush();
+            $session = $request->getSession();
+            $login = $session->get('login');
+            /*Entrada en la bitacora*/
+            $this->addLog($login, 'Editada compra #:'. $entity->getId());
+            $this->get('session')->getFlashBag()->set('cod', 'Compra Modificada con éxito');
+
+            return $this->redirect($this->generateUrl('compramaterial_show', array('id' => $id)));
         }
 
         return $this->render('JYGRevestimientosBundle:CompraMaterial:edit.html.twig', array(
@@ -236,6 +257,11 @@ class CompraMaterialController extends Controller
             }
 
             $em->remove($entity);
+             $session = $request->getSession();
+            $login = $session->get('login');
+            /*Entrada en la bitacora*/
+            $this->addLog($login, 'Eliminada compra #:'. $entity->getId());
+            $this->get('session')->getFlashBag()->set('cod', 'Compra Eliminada con éxito');
             $em->flush();
         }
 
@@ -257,5 +283,31 @@ class CompraMaterialController extends Controller
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()
         ;
+    }
+
+    /*Funciones para guardar la bitácora:
+    * Esta función agrega una nueva entrada a la tabla bitácora.
+    */
+    private function addLog($login, $operacion )
+    {
+        /* Se obtiene la hora del evento:*/
+        
+        $time = new \DateTime();
+        /*Se establece la zona horaria correctamente.*/
+        $zone = $this->container->getParameter('time_zone');
+        $time->setTimezone( new \DateTimeZone($zone));
+        
+
+        /*Se crea el objeto bitacora para almacenarlo posteriormente*/
+        $bitacora = new Bitacora();
+        $bitacora->setLogin( $login )
+            ->setOperacion($operacion)
+            ->setFecha( $time );
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($bitacora);
+        $em->flush();
+
+        return $this;
     }
 }

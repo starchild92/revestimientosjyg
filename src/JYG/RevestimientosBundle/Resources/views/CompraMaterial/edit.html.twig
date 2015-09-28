@@ -1,16 +1,57 @@
 {% extends 'JYGRevestimientosBundle::baseAdmin.html.twig' %}
 
-{% block body -%}
-    <h1>CompraMaterial edit</h1>
-
-    {{ form(edit_form) }}
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('compramaterial') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+{% block javascripts %}
+	<script src="{{ asset('bundles/jygrevestimientos/js/jquery.min.js') }}"></script>
+	<script src="{{ asset('bundles/jygrevestimientos/js/bootstrap.min.js') }}"></script>
+	<script src="{{ asset('bundles/jygrevestimientos/js/modalDelEdit.js') }}"></script>
+	<script src="{{ asset('bundles/jygrevestimientos/js/formsCompra.js') }}"></script>
+	<script src="{{ asset('bundles/jygrevestimientos/datepicker/js/bootstrap-datepicker.js') }}" > </script>
+	<script>
+		(function(){
+			$('#jyg_revestimientosbundle_compramaterial_fecha').datepicker({ format: "dd-mm-yyyy" });
+		})(jQuery);
+	</script>
 {% endblock %}
+
+{% block body -%}
+	<div class="row">
+		<div class="col-sm-8"><div class="page-header"><h1>Modificar Datos de Compra</h1></div></div>
+		<div class="col-sm-4"><a id="volver" href="{{ path('compramaterial') }}" class="btn btn-success pull-right" type="button"><span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>  Regresar a Compras</a></div>
+	</div>
+<div class="row well">
+	{{ form_start(edit_form) }}
+	<div class="col-lg-4 col-sm-4 col-xs-12 ">
+		{{ form_label(edit_form.fecha, 'Fecha de la Compra') }}
+		{{ form_widget(edit_form.fecha, {'attr':{'id':'datepicker', 'class':'form-control', 'placeholder':'dia-mes-año','id':'datepicker'}}) }}
+		{{ form_row(edit_form.nrocontrolfactura) }}
+		{{ form_row(edit_form.subtotal) }}
+
+	</div>
+	<div class="col-lg-4 col-sm-4 col-xs-12">
+		{{ form_row(edit_form.iva) }}
+		{{ form_row(edit_form.total) }}
+	</div>
+	<div class="col-lg-4 col-sm-4 col-xs-12">
+		{{ form_row(edit_form.material) }}
+	</div>
+</div>
+<div class="row">
+	<div class="col-sm-4">{{ form_widget(edit_form.submit) }}</div>
+	<div class="col-sm-4">{{ form_end(edit_form) }}<a type="button" class="btn btn-danger btn-block" data-toggle="modal" id="Modal" data-target="#EliminarCompra"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span>  Eliminar Producto</a>
+	</div>
+</div>
+
+	<!-- el modal tio -->
+	<div class="modal fade" id="EliminarCompra" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+		<div class="modal-dialog modal-lg" >
+			<div class="modal-content bodies">
+				<center><h3>¿Está seguro que desea eliminar los datos de la Compra?</h3>
+					<p>Tenga en cuenta que al eliminar la Compra ya no podrá recuperar sus datos.</p></center><br>
+					<div class="row">
+						<div class="col-sm-6">{{ form(delete_form) }}</div>
+						<div class="col-sm-6"><button type="button" class="btn btn-primary btn-block" data-dismiss="modal">Cancelar</button></div></div>
+					</div>
+				</div>
+			</div>
+			<!-- el modal tio -->
+		{% endblock %}

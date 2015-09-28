@@ -10,13 +10,24 @@
 {% endblock %}
 
 {% block body -%}
-    <div class="panel panel-default">
+<div class="row">
+    <div class="col-sm-9">
+        <div class="page-header">
+            <h1>Compras</h1></div></div>
+    <div class="col-sm-3">
+        <a id="volver" href="{{ path('compramaterial_new') }}" class="btn btn-success pull-right" type="button"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>  Registrar Nueva Compra</a></div>
+</div>
+    <div class="row">
+        <div class="col-lg-12 col-sm-12 col-xs-12">
         {% for flashMessage in app.session.flashbag.get('cod') %}
             <div class = "alert alert-success alert-dismissable">
                 <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
                 {{ flashMessage }}
             </div>
         {% endfor %}
+        </div>
+    </div>
+    <div class="panel panel-default">
         <table class="table table-condensed table-bordered table-responsive records_list" id="myTable">
             <thead>
                 <tr class="info">
@@ -53,7 +64,8 @@
             </tr>
         {% endfor %}
         </tbody>
-    </table>     
+        </table>   
+    </div>  
 {% endblock %}
 {% block stylesheets %}
     <link rel="stylesheet" type="text/css" href="{{ asset('bundles/jygrevestimientos/css/datatable.min.css') }}">
