@@ -228,9 +228,7 @@ class PageController extends Controller
         return $this->redirect($this->generateUrl('JYGRevestimientosBundle_inicio'));
     }
 
-
     public function showExceptionAction($mensaje = ':('){
-
         return $this->render('TwigBundle:Exception:error.html.twig', array('mensaje' => $mensaje));
     }
 

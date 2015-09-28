@@ -1,14 +1,10 @@
-jyg_revestimientos_compramaterial:
-    resource: "@JYGRevestimientosBundle/Resources/config/routing/compramaterial.yml"
-    prefix:   /compramaterial
-
-jyg_revestimientos_itemcompra:
-    resource: "@JYGRevestimientosBundle/Resources/config/routing/itemcompra.yml"
-    prefix:   /itemcompra
+#jyg_revestimientos_itemcompra:
+#    resource: "@JYGRevestimientosBundle/Resources/config/routing/itemcompra.yml"
+#    prefix:   /itemcompra
 
 jyg_revestimientos_compramaterial:
     resource: "@JYGRevestimientosBundle/Resources/config/routing/compramaterial.yml"
-    prefix:   /compramaterial
+    prefix:   /admin/compramaterial
 
 #rutas de la pagina publicitaria
 page_verProducto:
@@ -54,9 +50,9 @@ jyg_revestimientos_deposito:
     resource: "@JYGRevestimientosBundle/Resources/config/routing/deposito.yml"
     prefix:   /admin/deposito
 
-jyg_revestimientos_item:
-    resource: "@JYGRevestimientosBundle/Resources/config/routing/item.yml"
-    prefix:   /admin/item
+#jyg_revestimientos_item:
+#    resource: "@JYGRevestimientosBundle/Resources/config/routing/item.yml"
+#    prefix:   /admin/item
 
 jyg_revestimientos_bitacora:
     resource: "@JYGRevestimientosBundle/Resources/config/routing/bitacora.yml"

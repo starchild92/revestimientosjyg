@@ -66,7 +66,6 @@ class CompraMaterialController extends Controller
             //throw $this->createNotFoundException($cantItems = $items->count());
 
             $em->persist($entity);
-            //el for va aqui
             $cantItems = $items->count();
             for ($i=1; $i<=$cantItems; $i++) { 
                 $items[$i]->setCompra($entity); //agrego la id de la compra en el item :)
@@ -255,32 +254,51 @@ class CompraMaterialController extends Controller
         }
 
         $em = $this->getDoctrine()->getManager();
+        $compra = $em->getRepository('JYGRevestimientosBundle:CompraMaterial')->find($id);
 
-        $entity = $em->getRepository('JYGRevestimientosBundle:CompraMaterial')->find($id);
+        $items_viejos = array();
+        foreach ($compra->getMaterial() as $item) {
+            $items_viejos[] = $item;
+        }
 
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find CompraMaterial entity.');
+        if (!$compra) {
+            throw $this->createNotFoundException('Unable to find CompraMaterial compra.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
-        $editForm = $this->createEditForm($entity);
+        $editForm = $this->createEditForm($compra);
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
+            foreach ($compra->getMaterial() as $items_actuales) {
+                foreach ($items_viejos as $key => $toDel) {
+                    if ($toDel->getId() === $items_actuales->getId()){
+                        unset($items_viejos[$key]);
+                    }
+                }
+            }
+            foreach ($items_viejos as $item) {
+                $em->persist($item);
+                $em->remove($item);
+            }
+            throw $this->createNotFoundException('Se van a quitar '.sizeof($items_viejos).' para esta compra');
 
+            $items = $compra->getMaterial();
+            $compra->setMaterial($items);
+            $em->persist($compra);
 
             $em->flush();
             $session = $request->getSession();
             $login = $session->get('login');
             /*Entrada en la bitacora*/
-            $this->addLog($login, 'Editada compra #:'. $entity->getId());
+            $this->addLog($login, 'Editada compra #'. $compra->getId());
             $this->get('session')->getFlashBag()->set('cod', 'Compra Modificada con éxito');
 
             return $this->redirect($this->generateUrl('compramaterial_show', array('id' => $id)));
         }
 
         return $this->render('JYGRevestimientosBundle:CompraMaterial:edit.html.twig', array(
-            'entity'      => $entity,
+            'entity'      => $compra,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
@@ -306,18 +324,30 @@ class CompraMaterialController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('JYGRevestimientosBundle:CompraMaterial')->find($id);
+            $compra = $em->getRepository('JYGRevestimientosBundle:CompraMaterial')->find($id);
 
-            if (!$entity) {
-                throw $this->createNotFoundException('Unable to find CompraMaterial entity.');
+            $items = $compra->getMaterial();
+            foreach ($items as $item_compra) {
+                $material = $item_compra->getCodigomaterial();
+                $nombre_depo = $item_compra->getDeposito();
+                $cantidad_depo = $item_compra->getCantidad();
+                $depositos = $material->getAlmacenes();
+                foreach ($depositos as $depo) {
+                    if($depo->getNombrealmacen() == $nombre_depo){
+                        $aux = $depo->getCantmaterialdisponible();
+                        $aux = $aux - $cantidad_depo;
+                        $depo->setCantmaterialdisponible($aux);
+                    }
+                }
+                //throw $this->createNotFoundException($material->getFormato());
             }
+            $em->remove($compra);
 
-            $em->remove($entity);
-             $session = $request->getSession();
+            $session = $request->getSession();
             $login = $session->get('login');
             /*Entrada en la bitacora*/
-            $this->addLog($login, 'Eliminada compra #:'. $entity->getId());
-            $this->get('session')->getFlashBag()->set('cod', 'Compra Eliminada con éxito');
+            $this->addLog($login, 'Eliminada compra #'. $compra->getId());
+            $this->get('session')->getFlashBag()->set('cod', 'Compra Eliminada con éxito, se repusieron las cantidades de los productos de la compra.');
             $em->flush();
         }
 
@@ -336,7 +366,7 @@ class CompraMaterialController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('compramaterial_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
+            ->add('submit', 'submit', array('label' => 'Eliminar Compra', 'attr'=>array('class'=>'btn btn-danger btn-block')))
             ->getForm()
         ;
     }

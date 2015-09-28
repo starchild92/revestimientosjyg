@@ -44,7 +44,7 @@
 					<li class="{% if app.request.attributes.get('_route') == 'venta' or app.request.attributes.get('_route') == 'venta_show' or app.request.attributes.get('_route') == 'venta_new' or app.request.attributes.get('_route') == 'venta_edit'  %}active{% endif %}"><a href="{{ path('venta') }}">Ventas</a></li>	
 					{% endif %}
 
-					{% if (app.session.get('tipo_usuario') == 'Administrador' or app.session.get('tipo_usuario') == 'Vendedor') %}		
+					{% if app.session.get('tipo_usuario') == 'Administrador' %}		
 					<li {#class="{% if app.request.attributes.get('_route') == 'compramaterial' or app.request.attributes.get('_route') == 'compramaterial_show' or attributes.get('_route') == 'compramaterial_new' %}active{% endif %}"#}><a href="{{ path('compramaterial') }}">Compras</a></li>
 					{% endif %}
 

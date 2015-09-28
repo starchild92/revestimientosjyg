@@ -22,7 +22,7 @@
         </div>
     </div>
 <div class="row">
-    <div class="col-lg-6 col-sm-6 col-xs-12">
+    <div class="col-lg-4 col-sm-5 col-xs-12">
             <div class="panel panel-default">
                   <div class="panel-heading">Resumen de la Compra</div>
                     <table class="table table-striped table-bordered record_properties">
@@ -55,7 +55,7 @@
                     </table>
             </div>
     </div>
-    <div class="col-lg-6 col-sm-6 col-xs-12">
+    <div class="col-lg-8 col-sm-7 col-xs-12">
         <table class="table table-bordered record_properties">
             <tbody>
                 <tr>
@@ -72,7 +72,7 @@
                                 </tr>
                                 {% for item in entity.material %}
                                 <tr>
-                                    <td>{{ item.codigomaterial }}</td>
+                                    <td>{{ item.codigomaterial.nombre }}</td>
                                     <td>{{ item.cantidad }} unidades</td>
                                     <td>{{ item.deposito }}</td>
                                 </tr>
@@ -94,8 +94,8 @@
     <div class="modal fade" id="EliminarCompra" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
         <div class="modal-dialog" >
             <div class="modal-content bodies">
-                <center><h3>¿Está seguro que desea eliminar la Compra?</h3><br>
-                <p>Tenga en cuenta que no se podrán recuperar los datos.</p></center>
+                <center><h3>¿Está seguro que desea eliminar la Compra de Productos?</h3><br>
+                <p>Tenga en cuenta que al eliminarla, se repondrán las cantidades disponibles de los Productos.</p></center>
                 <br>
                 <div class="row">
                 <div class="col-sm-6">{{ form(delete_form) }}</div>

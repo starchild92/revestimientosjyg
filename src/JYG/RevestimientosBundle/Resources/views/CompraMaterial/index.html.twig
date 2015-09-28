@@ -4,7 +4,9 @@
     <script src="{{ asset('bundles/jygrevestimientos/js/datatable.min.js') }}"></script>
     <script type="text/javascript">
         $(document).ready(function(){
-            $('#myTable').DataTable({});
+            $('#myTable').DataTable({
+                "order": [[ 0, "desc" ]]
+            });
         });
     </script>
 {% endblock %}
@@ -13,7 +15,7 @@
 <div class="row">
     <div class="col-sm-9">
         <div class="page-header">
-            <h1>Compras</h1></div></div>
+            <h1>Compras de Prodcutos para la Tienda</h1></div></div>
     <div class="col-sm-3">
         <a id="volver" href="{{ path('compramaterial_new') }}" class="btn btn-success pull-right" type="button"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>  Registrar Nueva Compra</a></div>
 </div>

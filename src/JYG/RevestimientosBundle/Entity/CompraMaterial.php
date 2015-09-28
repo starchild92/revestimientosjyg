@@ -207,6 +207,14 @@ class CompraMaterial
         return $this;
     }
 
+    /* Esta funcion agrega los almacenes porque la de arriba no se que coño hace */
+    public function setMaterial($material){
+        $this->material = $material;
+        foreach ($material as $almacen) {
+            $almacen->setCompra($this);
+        }
+    }
+
     /**
      * Remove material
      *
