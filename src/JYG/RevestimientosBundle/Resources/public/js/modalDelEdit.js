@@ -57,3 +57,12 @@ $('#EliminarUsuario').on('show.bs.modal', function (event) {
   modal.find('.modal-content').css({'max-width':'400px','background-color':'white','border': 'dashed 1px red', 'padding': '5px'})
   modal.find('.modal-dialog').css({'max-width':'400px','background-color':'white','padding':'10px','border-radius':'6px'})
 });
+
+/*Modal eliminar Compra*/
+$('#EliminarCompra').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget) // Button that triggered the modal
+  var modal = $(this)
+
+  modal.find('.modal-content').css({'max-width':'400px','background-color':'white','border': 'dashed 1px red', 'padding': '5px'})
+  modal.find('.modal-dialog').css({'max-width':'400px','background-color':'white','padding':'10px','border-radius':'6px'})
+});

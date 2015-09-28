@@ -1,14 +1,40 @@
 {% extends 'JYGRevestimientosBundle::baseAdmin.html.twig' %}
 
-{% block body -%}
-    <h1>CompraMaterial list</h1>
+{% block javascripts %}
+    <script src="{{ asset('bundles/jygrevestimientos/js/datatable.min.js') }}"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#myTable').DataTable({});
+        });
+    </script>
+{% endblock %}
 
-    <table class="records_list">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nrocontrolfactura</th>
+{% block body -%}
+<div class="row">
+    <div class="col-sm-9">
+        <div class="page-header">
+            <h1>Compras</h1></div></div>
+    <div class="col-sm-3">
+        <a id="volver" href="{{ path('compramaterial_new') }}" class="btn btn-success pull-right" type="button"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>  Registrar Nueva Compra</a></div>
+</div>
+    <div class="row">
+        <div class="col-lg-12 col-sm-12 col-xs-12">
+        {% for flashMessage in app.session.flashbag.get('cod') %}
+            <div class = "alert alert-success alert-dismissable">
+                <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
+                {{ flashMessage }}
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <table class="table table-condensed table-bordered table-responsive records_list" id="myTable">
+            <thead>
+                <tr class="info">
+                <th># Compra</th>
+                <th># Factura</th>
                 <th>Fecha</th>
+                <th># Prod. Comprados</th>
                 <th>Subtotal</th>
                 <th>Iva</th>
                 <th>Total</th>
@@ -20,30 +46,27 @@
             <tr>
                 <td><a href="{{ path('compramaterial_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
                 <td>{{ entity.nrocontrolfactura }}</td>
-                <td>{% if entity.fecha %}{{ entity.fecha|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if entity.fecha %}{{ entity.fecha|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ entity.material|length }}</td>
                 <td>{{ entity.subtotal }}</td>
                 <td>{{ entity.iva }}</td>
                 <td>{{ entity.total }}</td>
                 <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('compramaterial_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('compramaterial_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
+                    <div class="dropdown pull-right">
+                      <button class="btn btn-sm btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Opciones  <span class="caret"></span>
+                      </button>
+                      <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
+                        <li><a href="{{ path('compramaterial_show', { 'id': entity.id }) }}">Ver Detalles de la Compra</a></li>
+                        <li><a href="{{ path('compramaterial_edit', { 'id': entity.id }) }}">Modificar la Compra</a></li>
+                    </ul>
+                </div>
                 </td>
             </tr>
         {% endfor %}
         </tbody>
-    </table>
-
-        <ul>
-        <li>
-            <a href="{{ path('compramaterial_new') }}">
-                Create a new entry
-            </a>
-        </li>
-    </ul>
-    {% endblock %}
+        </table>   
+    </div>  
+{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/jygrevestimientos/css/datatable.min.css') }}">
+{% endblock %}

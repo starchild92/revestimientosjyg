@@ -3,17 +3,49 @@
 	<script src="{{ asset('bundles/jygrevestimientos/js/jquery.min.js') }}"></script>
     <script src="{{ asset('bundles/jygrevestimientos/js/bootstrap.min.js') }}"></script>
 	<script src="{{ asset('bundles/jygrevestimientos/js/formsCompra.js') }}"></script>
+    <script src="{{ asset('bundles/jygrevestimientos/datepicker/js/bootstrap-datepicker.js') }}" > </script>
+    <script>
+            (function(){
+                $('#jyg_revestimientosbundle_compramaterial_fecha').datepicker({ format: "dd-mm-yyyy" });
+            })(jQuery);
+        </script>
 {% endblock %}
-{% block body -%}
-    <h1>CompraMaterial creation</h1>
 
-    {{ form(form) }}
+{% block stylesheets %}
+    <link href="{{ asset('bundles/jygrevestimientos/datepicker/css/datepicker.css') }}" rel="stylesheet" type="text/css" />
+{% endblock %}
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('compramaterial') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
+{% block body %}
+    <div class="row">
+        <div class="col-sm-8"><div class="page-header"><h1>Registrar Compra</h1></div></div>
+        <div class="col-sm-4"><a id="volver" href="{{ path('compramaterial') }}" class="btn btn-primary pull-right" type="button"><span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>  Regresar a las Compras</a></div>
+    </div>
+    {{ form_start(form) }}
+    
+    <div class="row well">
+        {% for flashMessage in app.session.flashbag.get('cod') %}
+            <div class = "alert alert-danger alert-dismissable">
+                <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
+                {{ flashMessage }}
+            </div>
+        {% endfor %}
+        <div class="col-lg-4 col-sm-4 col-xs-12">
+            {{ form_label(form.fecha, 'Fecha de la Compra') }}
+            {{ form_widget(form.fecha, {'attr':{'id':'datepicker', 'class':'form-control', 'placeholder':'dia-mes-año','id':'datepicker'}}) }}
+            {{ form_row(form.nrocontrolfactura) }}
+            {{ form_row(form.subtotal) }}
+            
+        </div>
+        <div class="col-lg-4 col-sm-4 col-xs-12">
+            {{ form_row(form.iva) }}
+            {{ form_row(form.total) }}
+        </div>
+        <div class="col-lg-4 col-sm-4 col-xs-12">
+            {{ form_row(form.material) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-8">{{ form_widget(form.submit) }}</div>
+    </div>
+    {{ form_end(form) }}
 {% endblock %}
