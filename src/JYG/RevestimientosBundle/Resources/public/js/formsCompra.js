@@ -1,3 +1,21 @@
+jQuery(document).ready(function (){
+    $('*[id^="jyg_revestimientosbundle_compramaterial_material_"]').attr('readonly','true');
+
+    my_condition = true;
+    var lastSel = $('*[id^="jyg_revestimientosbundle_compramaterial_material_"] option:selected');
+
+    $('*[id^="jyg_revestimientosbundle_compramaterial_material_"]').change(function(){
+      if(my_condition)
+      {
+        lastSel.attr("selected", true);
+      }
+    });
+
+    $('*[id^="jyg_revestimientosbundle_compramaterial_material_"]').click(function(){
+        lastSel = $('*[id^="jyg_revestimientosbundle_compramaterial_material_"] option:selected');
+    });
+});
+
 var $collectionHolder;
 var $cantHijos;
 // setup an "add a tag" link

@@ -16,11 +16,10 @@ class ItemCompraType extends AbstractType
     {
         $builder
             ->add('codigomaterial',null, array('label' => 'Codigo del Material','data_class' => null))
-            ->add('cantidad','text', array('label' => 'Cantidad de Material'))
             ->add('deposito','choice', array(
                     'choices'  => array('Depósito Tienda' => 'Depósito Tienda', 'Depósito Origen' => 'Depósito Origen'),
                     'label'=>'Nombre del Depósito'))
-            
+            ->add('cantidad','text', array('label' => 'Cantidad de Material'))
         ;
     }
     
