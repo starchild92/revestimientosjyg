@@ -28,7 +28,8 @@ class CompraMaterialType extends AbstractType
                         'allow_add'=>'true',
                         'by_reference'=>'false',
                         'allow_delete' =>'true',
-                        'data_class' => null
+                        'data_class' => null,
+                        'label'=>'Producto'
                         )
                 );
     }
