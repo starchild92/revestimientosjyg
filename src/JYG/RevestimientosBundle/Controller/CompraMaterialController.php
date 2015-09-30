@@ -64,19 +64,39 @@ class CompraMaterialController extends Controller
             $items = $entity->getMaterial();
 
             $em->persist($entity);
-            $cantItems = $items->count();
+            $cantItems = sizeof($items);
             //throw $this->createNotFoundException($cantItems);
             if ($cantItems == 0) {
                 $this->get('session')->getFlashBag()->set('cod', 'Al crear una compra debe añadir al menos un producto.');
-
             }else{
-                for ($i=1; $i<=$cantItems; $i++) { 
-                    $items[$i]->setCompra($entity); //agrego la id de la compra en el item :)
 
-                    $cant_dep_origen = $items[$i]->getCantidad();
-                    $nombre_dep_origen = $items[$i]->getDeposito();
+                foreach ($items as $items_old) {
+                    foreach ($items as $item) {
+                        $material_n = $item->getCodigomaterial();
+                        $material_v = $items_old->getCodigomaterial();
+                        if ($material_n->getId() == $material_v->getId()){
+                            $depo_n = $item->getDeposito();
+                            $depo_v = $items_old->getDeposito();
 
-                    $material = $items[$i]->getCodigomaterial();
+                            //throw $this->createNotFoundException($cantItems.$depo_n.$depo_v.$items_old.$item);
+                            if($depo_n == $depo_v and $items_old!==$item){
+                                $this->get('session')->getFlashBag()->add('cod', $material_n->getNombre().' aparece mas de una vez con '.$depo_n.'. Borrelos y agregue uno nuevo sumando las cantidades.');
+                                    return $this->render('JYGRevestimientosBundle:CompraMaterial:new.html.twig', array(
+                                    'entity' => $entity,
+                                    'form'   => $form->createView(),
+                                ));
+                            }
+                        }
+                    }
+                }
+
+                foreach ($items as $it) { 
+                    $it->setCompra($entity); //agrego la id de la compra en el item :)
+
+                    $cant_dep_origen = $it->getCantidad();
+                    $nombre_dep_origen = $it->getDeposito();
+
+                    $material = $it->getCodigomaterial();
                     $depositos_material = $material->getAlmacenes();
 
                     //throw $this->createNotFoundException(array_keys($depositos_material));
@@ -103,8 +123,8 @@ class CompraMaterialController extends Controller
                 $session = $request->getSession();
                 $login = $session->get('login');
                 /*Entrada en la bitacora*/
-                $this->addLog($login, 'Compra: #Factura'. $entity->getNrocontrolfactura());
-                $this->get('session')->getFlashBag()->set('cod', 'Compra Registrada con éxito');
+                $this->addLog($login, 'Compra Nueva: Factura #'. $entity->getNrocontrolfactura());
+                $this->get('session')->getFlashBag()->add('cod', 'Compra Registrada con éxito');
                 $em->flush();
 
                 return $this->redirect($this->generateUrl('compramaterial_show', array('id' => $entity->getId())));
@@ -305,6 +325,26 @@ class CompraMaterialController extends Controller
             $items_finales = $compra->getMaterial();
             //Aqui hago lo de agregar nuevos
 
+            foreach ($items_finales as $items_old) {
+                foreach ($items_finales as $item) {
+                    $material_n = $item->getCodigomaterial(); //material de items finales
+                    $material_v = $items_old->getCodigomaterial();
+                    if ($material_n->getId() == $material_v->getId()){
+                        $depo_n = $item->getDeposito();
+                        $depo_v = $items_old->getDeposito();
+                        if($depo_n == $depo_v and $items_old!=$item){
+                            $this->get('session')->getFlashBag()->add('cod', $material_n->getNombre().' aparece mas de una vez con '.$depo_n.'. Borrelos y agregue uno nuevo sumando las cantidades.');
+                            return $this->render('JYGRevestimientosBundle:CompraMaterial:edit.html.twig', array(
+                                'entity'      => $compra,
+                                'edit_form'   => $editForm->createView(),
+                                'delete_form' => $deleteForm->createView(),
+                            ));
+                        }
+                    }
+                }
+            }
+
+            //throw $this->createNotFoundException(sizeof($items_finales));
             //Si entre los items nuevos hay alguno que no tiene almacenes
             foreach ($items_finales as $item) {
                 $nombre_dep_origen = $item->getDeposito();
@@ -339,26 +379,52 @@ class CompraMaterialController extends Controller
             }
 
             //Caso, no modifico nada porque todo viene igual o algo asi
-            foreach ($items_viejos_copia as $items_old) { //
+            $count = 0;
+            foreach ($items_viejos_copia as $items_old) {
                 foreach ($items_finales as $item) {
                     $material_n = $item->getCodigomaterial(); //material de items finales
                     $material_v = $items_old->getCodigomaterial();
-                    if ($material_n->getId() == $material_v->getId()){
+                    if ($material_n->getId() == $material_v->getId() and $items_old!==$item){
                         $depo_n = $item->getDeposito();
                         $depo_v = $items_old->getDeposito();
-                        if($depo_n == $depo_v){
+                        if($depo_n == $depo_v and $items_old!==$item){
                             $cant_n = $item->getCantidad();
                             $cant_v = $items_old->getCantidad();
-                            if ($cant_n != $cant_v){
+                            if ($cant_n !== $cant_v and $items_old!==$item){
                                 $material = $item->getCodigomaterial(); //tengo el material
                                 $nombre_depo = $item->getDeposito();
                                 $cantidad_depo = $item->getCantidad();
-                                
-                                //throw $this->createNotFoundException($cantidad_depo);
                                 $depositos = $material->getAlmacenes();
                                 foreach ($depositos as $depo) {
                                     if($depo->getNombrealmacen() == $nombre_depo){
-                                        if ($cantidad_depo != $depo->getCantmaterialdisponible()) {
+                                        if ($cantidad_depo !== $depo->getCantmaterialdisponible()) {
+                                            $aux = $depo->getCantmaterialdisponible();
+                                            $aux = $aux + $cantidad_depo;
+                                            $depo->setCantmaterialdisponible($aux);
+                                        }
+                                    }
+                                }
+                            }else{
+                                $count++;
+                                //$this->get('session')->getFlashBag()->add('cod', 'Añadio en producto en el mismo almacen y con la misma cantidad.');
+                            }
+                        }else{
+                            $verdad = true;
+                            //me toca buscar en el array externo si existe un con el depo distinto
+                            foreach ($items_viejos_copia as $value) {
+                                if ($depo_n == $value->getDeposito() and $items_old!==$value) {
+                                    $verdad = false;
+                                    //throw $this->createNotFoundException('No mas duplicados');
+                                }
+                            }
+                            if ($verdad) {
+                                $material = $item->getCodigomaterial(); //tengo el material
+                                $nombre_depo = $item->getDeposito();
+                                $cantidad_depo = $item->getCantidad();
+                                $depositos = $material->getAlmacenes();
+                                foreach ($depositos as $depo) {
+                                    if($depo->getNombrealmacen() == $nombre_depo){
+                                        if ($cantidad_depo !== $depo->getCantmaterialdisponible()) {
                                             $aux = $depo->getCantmaterialdisponible();
                                             $aux = $aux + $cantidad_depo;
                                             $depo->setCantmaterialdisponible($aux);
@@ -373,13 +439,13 @@ class CompraMaterialController extends Controller
 
             $compra->setMaterial($items_finales);
             $em->persist($compra);
-
             $em->flush();
+
             $session = $request->getSession();
             $login = $session->get('login');
             /*Entrada en la bitacora*/
             $this->addLog($login, 'Editada compra #'. $compra->getId());
-            $this->get('session')->getFlashBag()->set('cod', 'Compra Modificada con éxito');
+            //$this->get('session')->getFlashBag()->add('cod', 'Compra Modificada con éxito, '.$count.' productos adquiridos permanecieron igual.');
 
             return $this->redirect($this->generateUrl('compramaterial_show', array('id' => $id)));
         }//end_if

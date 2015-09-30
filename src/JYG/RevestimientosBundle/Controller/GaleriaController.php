@@ -146,7 +146,7 @@ class GaleriaController extends Controller
         ));
     }
 
-    public function EliminarImagenAction($id)
+    public function EliminarImagenAction(Request $request, $id)
     {
         $session = $request->getSession();
         if (!$session->has('login')){

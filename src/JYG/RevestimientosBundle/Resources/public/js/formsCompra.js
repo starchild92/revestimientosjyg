@@ -28,17 +28,21 @@ jQuery(document).ready(function() {
 
     //Para en el editar quitar un almacen
     $collectionHolder.children().append(
-        '<a href="#" class="remove-tag btn btn-danger btn-sm btn-block">Quitar Producto</a>');
+        '<a href="#" class="remove-tag btn btn-danger btn-sm">Quitar Producto</a>');
 
     $remover = $collectionHolder.find('.remove-tag');
     $cantHijos = $remover.length;
 
     //Para quitar el primer label 0 ese ladilloso y el label 1 cuando hay dos almacenes agregados
-    $collectionHolder.find('.control-label').first().remove();
+    //$collectionHolder.find('.control-label').first().remove();
     if ($cantHijos > 1) {
         $hijos = $collectionHolder.find('.control-label');
-        $hijos.get(2).remove();
+        for (var i = 0; $cantHijos>i ; i++) {
+           $hijos.get((4*i)).remove();
+        }; 
     };
+
+    $formgroup = $collectionHolder.find('.form-group');
 
     $remover.click(function(e) {
         e.preventDefault();
@@ -83,7 +87,7 @@ function addTagForm($collectionHolder, $newLinkLi) {
     //$newLinkLi.before($newFormLi);
 
     // also add a remove button, just for this example
-    $newFormLi.append('<a href="#" class="remove-tag btn btn-danger btn-sm btn-block">Quitar Producto</a><hr class="featurette-divider">');
+    $newFormLi.append('<a href="#" class="remove-tag btn btn-danger btn-sm">Quitar Producto</a>');
     
     $newLinkLi.before($newFormLi);
     

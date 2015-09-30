@@ -121,6 +121,7 @@ class Usuario
      */
     public function setNombre($nombre)
     {
+        $nombre = ucwords(strtolower($nombre));
         $this->nombre = $nombre;
 
         return $this;
@@ -144,6 +145,7 @@ class Usuario
      */
     public function setApellido($apellido)
     {
+        $apellido = ucwords(strtolower($formato));
         $this->apellido = $apellido;
 
         return $this;
@@ -213,6 +215,7 @@ class Usuario
      */
     public function setUsername($username)
     {
+        $username = strtolower($username);
         $this->username = $username;
 
         return $this;

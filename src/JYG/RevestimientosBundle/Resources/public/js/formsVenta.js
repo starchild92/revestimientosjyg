@@ -68,7 +68,7 @@ jQuery(document).ready(function() {
 
     //Para en el editar quitar un almacen
     $collectionHolder.children().append(
-        '<a href="#" class="remove-tag btn btn-danger btn-sm btn-block">Quitar Producto</a>');
+        '<a href="#" class="remove-tag btn btn-danger btn-sm">Quitar Producto</a>');
 
     $remover = $collectionHolder.find('.remove-tag');
     $cantHijos = $remover.length;
@@ -123,7 +123,7 @@ function addTagForm($collectionHolder, $newLinkLi) {
     //$newLinkLi.before($newFormLi);
 
     // also add a remove button, just for this example
-    $newFormLi.append('<a href="#" class="remove-tag btn btn-danger btn-sm btn-block">Quitar Producto</a><hr class="featurette-divider">');
+    $newFormLi.append('<a href="#" class="remove-tag btn btn-danger btn-sm">Quitar Producto</a>');
     
     $newLinkLi.before($newFormLi);
     

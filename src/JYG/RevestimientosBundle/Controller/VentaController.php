@@ -72,7 +72,18 @@ class VentaController extends Controller
                     $cliente->setNombre($entity->getComprador()->getNombre());
                     $cliente->setDireccion($entity->getComprador()->getDireccion());
                     $cliente->setTelefono($entity->getComprador()->getTelefono());
-                    
+
+                    if ($entity->getComprador()->getRif() == '' or $entity->getComprador()->getNombre() == '' or $entity->getComprador()->getDireccion() == '' or $entity->getComprador()->getTelefono()) {
+                        $session->getFlashBag()->add('error','Ha dejado un campo de los datos del cliente vacio, por favor, seleccione un cliente o rellene los campos faltantes.');
+                        $em = $this->getDoctrine()->getManager();
+                        $clientes = $em->getRepository('JYGRevestimientosBundle:Cliente')->findAll();
+                        $form = $this->createCreateForm($entity);
+                        return $this->render('JYGRevestimientosBundle:Venta:new.html.twig', array(
+                            'entity' => $entity,
+                            'form'   => $form->createView(),
+                            'clientes' => $clientes,
+                            ));
+                    }
                     //Guardo al nuevo cliente la bd
                     $em = $this->getDoctrine()->getManager();
                     $em->persist($cliente);
@@ -89,13 +100,10 @@ class VentaController extends Controller
                 //throw $this->createNotFoundException($hasta);
                 for ($i=1; $i<=$hasta; $i++) { 
                     $item[$i]->setDescripcionmaterial($item[$i]->getCodigomaterial());     
-
                     $depositos = $item[$i]->getCodigomaterial();//El producto que está comprando
                     $cant_comprada = $item[$i]->getCantidad(); //Cantidad que pide el cliente
-
                     $almacenes = $depositos->getAlmacenes(); //obtiene los depositos en la bd del item i que se está comprando
                     $num_almacenes_disp = $almacenes->count();
-                    
                     $datos = '';//con motivo de imprimir en el throw
                     $aux = $cant_comprada;
                     $cant_disponible = 0;
@@ -128,7 +136,6 @@ class VentaController extends Controller
                         }
                         //////////////////////////////////////////////////////
                         $item[$i]->setDescripcionmaterial($descripcion);
-                        //$session->getFlashBag()->add('exito','El producto "'.$item[$i]->getDescripcionmaterial().'" si se puede vender, hay la cantidad suficiente.');
                     }else{
                         //No se puede vender
                         $se_puede_vender = false;            
@@ -160,21 +167,14 @@ class VentaController extends Controller
                         //compro bien            
                         $this->addFlash('exito','La venta se ha realizado con éxito');
                         $deleteForm = $this->createDeleteForm($entity->getId());
-                        /*$entities = $em->getRepository('JYGRevestimientosBundle:Venta')->findAll();
-                        return $this->render('JYGRevestimientosBundle:Venta:index.html.twig', array(
-                            'entities' => $entities));*/
-                            return $this->render('JYGRevestimientosBundle:Venta:show.html.twig', array(
-                                'entity'      => $entity,
-                                'cliente'     => $cliente,
-                                'items'       => $item,
-                                'delete_form' => $deleteForm->createView()
-                                ));
+                        return $this->render('JYGRevestimientosBundle:Venta:show.html.twig', array(
+                            'entity'      => $entity,
+                            'delete_form' => $deleteForm->createView(),
+                        ));
                     }else{            
                         $this->addFlash('error','Debe elegir un producto para la venta');
                     }
-                    
                 }// fin else se puedo vender
-                    
             }else{    
                 $this->addFlash('error','Ha ocurrido un inconveniente al procesar los datos, por favor, verifique la información.');
             }//if is valid
@@ -448,11 +448,12 @@ class VentaController extends Controller
                     }
                 }//End del form de los items
                 $session->getFlashBag()->add('exito','Se ha eliminado la venta y se han restaurado las cantidades en los Depósitos.');
-                $em->remove($entity);
+                
                 $session = $request->getSession();
                 $login = $session->get('login');
                 /*Entrada en la bitacora*/
-                $this->addLog($login, 'Eliminó Venta de: '. $entity->getComprador()->getNombre());
+                $this->addLog($login, 'Eliminó Venta a: '. $entity->getComprador()->getNombre().' de fecha '.$entity->getFecha()->format('d-m-Y'));
+                $em->remove($entity);
                 $em->flush();
             }
         }

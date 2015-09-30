@@ -102,7 +102,6 @@
             </div>
         </div>
         <div class="col-lg-4 col-sm-4 col-xs-12">
-            <div id="textContacto"><h4>{{ entity.nombre }}</h4><p>{{ entity.formato }}</p></div>
             <div id="imgContacto"></div>
         </div>
     </div>
@@ -123,17 +122,11 @@
     <style type="text/css">
         #imgContacto{
             background-image: url('{{ asset("bundles/jygrevestimientos/images/materiales/") }}{% if entity.path == null %}no_disponible.png{% else %}{{ entity.path }}{% endif %}');
-            background-size: 100% 300px;
+            background-size: 100% auto;
             background-repeat: no-repeat;
             min-height: 400px;
             max-width: 400px;
             border-radius: 5px;
-        }
-        #textContacto{
-            position: absolute;
-            bottom: 0;
-            z-index: 1;
-            padding: 0px 10px 10px 10px;
         }
     </style>
 {% endblock %}

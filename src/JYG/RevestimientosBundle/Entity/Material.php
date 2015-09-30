@@ -157,6 +157,7 @@ class Material
      */
     public function setFormato($formato)
     {
+        $formato = ucwords(strtolower($formato));
         $this->formato = $formato;
     
         return $this;
@@ -180,6 +181,7 @@ class Material
      */
     public function setColor($color)
     {
+        $color = ucwords(strtolower($color));
         $this->color = $color;
     
         return $this;
@@ -203,6 +205,7 @@ class Material
      */
     public function setNombre($nombre)
     {
+        //$nombre = ucwords(strtolower($nombre));
         $this->nombre = $nombre;
     
         return $this;
@@ -227,6 +230,7 @@ class Material
      */
     public function setTipo($tipo)
     {
+        $tipo = ucwords(strtolower($tipo));
         $this->tipo = $tipo;
     
         return $this;

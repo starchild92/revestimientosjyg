@@ -61,6 +61,7 @@ document.addEventListener("change", function(){
     $(document).find('#jyg_revestimientosbundle_material_color').val('')
   }
 });
+  //Para que no escriba otra cosa que no sean numeros en los campos de las cantidades de los depositos
 $('*[id^="jyg_revestimientosbundle_material_almacenes_"]').keyup(function() {
     var $th = $(this);
     $th.val( $th.val().replace(/[^0-9]/g, function(str) {  return ''; } ) );
