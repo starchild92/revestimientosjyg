@@ -10,7 +10,7 @@
         border-spacing: 0;
         border-collapse: collapse;
         max-width: 100%;
-        margin-bottom: 20px;
+        margin-bottom: 10px;
     }
     .table {
         border-collapse: collapse !important;
@@ -26,7 +26,7 @@
     .table > thead > tr > td,
     .table > tbody > tr > td,
     .table > tfoot > tr > td {
-        padding: 8px;
+        padding: 6px;
         line-height: 1.42857143;
         vertical-align: top;
     }
@@ -63,18 +63,17 @@
     .table-condensed > thead > tr > td,
     .table-condensed > tbody > tr > td,
     .table-condensed > tfoot > tr > td {
-        padding: 4px;
+        padding: 2px;
     }
     </style>
 </head>
 <body>
     <img src="{{ base_dir ~ asset('bundles/jygrevestimientos/images/background2.jpg') }}" style="position: absolute; z-index: -999999;" width="100%">
+
     <table class="table fondo">
         <tr>
-            <td colspan="2"><center><img src="{{ base_dir ~ asset('bundles/jygrevestimientos/images/nota_entrega.png') }}" width="400px"></center></td>
-        </tr>
-        <tr>
-            <td style="width: 50%">
+            <td colspan="2" style="width: 33%"><center><img src="{{ base_dir ~ asset('bundles/jygrevestimientos/images/nota_entrega.png') }}" width="300px"></center></td>
+            <td style="width: 33%">
                 <table class="table table-condensed">
                     <thead><tr><th>Detalles de la Venta</th></tr></thead>
                     <tbody>
@@ -84,20 +83,20 @@
                         <br>San Diego Edo Carabobo</td></tr>
                     </tbody>
                 </table>
-                
             </td>
-            <td>
-                <table class="table table-condensed">
+            <td style="width: 33%">
+               <table class="table table-condensed">
                     <thead><tr><th>Detalles del Comprador</th></tr></thead>
                     <tbody>
                         <tr><td><b>A Nombre:</b> {{ cliente.nombre }}<br>
                         <b>Dirección:</b> {{ cliente.direccion }}<br>
                         <b>Teléfono de contacto:</b> {{ cliente.telefono }}</td></tr>
                     </tbody>
-                </table>
+                </table> 
             </td>
         </tr>
     </table>
+
     <table class="table table-bordered">
         <thead>
             <tr>
@@ -116,6 +115,7 @@
             {% endfor %}
         </tbody>
     </table>
+
     <table class="table">
         <tbody>
             <tr>
