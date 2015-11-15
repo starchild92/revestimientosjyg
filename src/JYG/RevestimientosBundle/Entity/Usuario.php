@@ -145,7 +145,7 @@ class Usuario
      */
     public function setApellido($apellido)
     {
-        $apellido = ucwords(strtolower($formato));
+        $apellido = ucwords(strtolower($apellido));
         $this->apellido = $apellido;
 
         return $this;

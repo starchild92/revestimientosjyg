@@ -64,17 +64,22 @@ class VentaController extends Controller
             $form->handleRequest($request);
             if ($form->isValid()) {
                 $em = $this->getDoctrine()->getManager();
+
                 $clienteaux = $em->getRepository('JYGRevestimientosBundle:Venta')->BuscarPorRif($entity->getComprador()->getRif());
+                
                 //Operaciones respecto al cliente
                 if (!$clienteaux){ //no existe el cliente
                     //Obtengo los datos del nuevo cliente
-                    $cliente->setRif($entity->getComprador()->getRif());
-                    $cliente->setNombre($entity->getComprador()->getNombre());
-                    $cliente->setDireccion($entity->getComprador()->getDireccion());
-                    $cliente->setTelefono($entity->getComprador()->getTelefono());
+                    $data = $form->get('comprador')->getData();
 
-                    if ($entity->getComprador()->getRif() == '' or $entity->getComprador()->getNombre() == '' or $entity->getComprador()->getDireccion() == '' or $entity->getComprador()->getTelefono()) {
+                    $cliente->setRif($data->getRif());
+                    $cliente->setNombre($data->getNombre());
+                    $cliente->setDireccion($data->getDireccion());
+                    $cliente->setTelefono($data->getTelefono());
+
+                    if ($data->getRif() == '' or $data->getNombre() == '' or $data->getDireccion() == '' or $data->getTelefono() == '') {
                         $session->getFlashBag()->add('error','Ha dejado un campo de los datos del cliente vacio, por favor, seleccione un cliente o rellene los campos faltantes.');
+                        
                         $em = $this->getDoctrine()->getManager();
                         $clientes = $em->getRepository('JYGRevestimientosBundle:Cliente')->findAll();
                         $form = $this->createCreateForm($entity);
