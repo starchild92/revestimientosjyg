@@ -45,7 +45,7 @@
 					{% endif %}
 
 					{% if app.session.get('tipo_usuario') == 'Administrador' %}		
-					<li {#class="{% if app.request.attributes.get('_route') == 'compramaterial' or app.request.attributes.get('_route') == 'compramaterial_show' or attributes.get('_route') == 'compramaterial_new' %}active{% endif %}"#}><a href="{{ path('compramaterial') }}">Compras</a></li>
+					<li class="{% if app.request.attributes.get('_route') == 'compramaterial' or app.request.attributes.get('_route') == 'compramaterial_show' or app.request.attributes.get('_route') == 'compramaterial_new' %}active{% endif %}"><a href="{{ path('compramaterial') }}">Compras</a></li>
 					{% endif %}
 
 					{% if (app.session.get('tipo_usuario') == 'Administrador' or app.session.get('tipo_usuario') == 'Vendedor') %}
@@ -57,7 +57,7 @@
 					{% endif %}
 
 					{% if app.session.get('tipo_usuario') == 'Administrador' %}
-					<li class="{{ app.request.attributes.get('_route') | replace({'jyg_revestimientos_page_' : ''}) == 'administrargaleria' ? 'active' }}"><a href="{{ path('_administrar_galeria') }}">Galería</a></li>
+					<li class="{% if app.request.attributes.get('_route') == '_administrar_galeria' %}active{% endif %}"><a href="{{ path('_administrar_galeria') }}">Galería</a></li>
 					{% endif %}
 
 					{% if (app.session.get('tipo_usuario') == 'Administrador' or app.session.get('tipo_usuario') == 'Vendedor') %}
