@@ -139,7 +139,7 @@ class UsuarioController extends Controller
         $entity = $em->getRepository('JYGRevestimientosBundle:Usuario')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Usuario entity.');
+            throw $this->createNotFoundException('No se encuenta el usuario.');
         }
 
         $deleteForm = $this->createDeleteForm($id);

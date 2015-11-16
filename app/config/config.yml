@@ -91,11 +91,13 @@ knp_snappy:
 
     pdf:
         enabled:    true
-        binary:     "%kernel.root_dir%/../src/JYG/RevestimientosBundle/Resources/public/wkhtmltopdf.exe"
+        binary:     '"C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe"'
+        #binary:     "%kernel.root_dir%\..\src\JYG\RevestimientosBundle\Resources\public\wkhtmltopdf.exe"
         options:    []
     image:
         enabled:    true
-        binary:     "%kernel.root_dir%/../src/JYG/RevestimientosBundle/Resources/public/wkhtmltoimage.exe"
+        binary:     '"C:\Program Files\wkhtmltopdf\bin\wkhtmltoimage.exe"'
+        #binary:     "%kernel.root_dir%\..\src\JYG\RevestimientosBundle\Resources\public\wkhtmltoimage.exe"
         options:    []
 
 #paginator

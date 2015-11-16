@@ -77,7 +77,7 @@ class VentaController extends Controller
                     $cliente->setDireccion($data->getDireccion());
                     $cliente->setTelefono($data->getTelefono());
 
-                    if ($data->getRif() == '' or $data->getNombre() == '' or $data->getDireccion() == '' or $data->getTelefono() == '') {
+                    if ($cliente->getRif() == '' or $cliente->getNombre() == '' or $cliente->getDireccion() == '' or $cliente->getTelefono() == '') {
                         $session->getFlashBag()->add('error','Ha dejado un campo de los datos del cliente vacio, por favor, seleccione un cliente o rellene los campos faltantes.');
                         
                         $em = $this->getDoctrine()->getManager();
@@ -91,8 +91,8 @@ class VentaController extends Controller
                     }
                     //Guardo al nuevo cliente la bd
                     $em = $this->getDoctrine()->getManager();
-                    $em->persist($cliente);
-                    $em->flush();
+                    //$em->persist($cliente);
+                    //$em->flush();
 
                 }else{
                     //Buscando el cliente que ya existe

@@ -172,6 +172,7 @@ class PageController extends Controller
         $session = $request->getSession();
         $login = $session->get('login');
         //$user = new UsuarioType();
+
         $em = $this->getDoctrine()->getManager();
         $user = $em->getRepository('JYGRevestimientosBundle:Usuario')->findByUsername($login);
         if (sizeof($user) > 0) {
@@ -192,6 +193,7 @@ class PageController extends Controller
             if ($form->isValid()) {
                 $login = $form->get('login')->getData();
                 $password = md5($form->get('password')->getData());
+                
                 //throw $this->createNotFoundException($password);
                 $em = $this->getDoctrine()->getManager();
                 $user = $em->getRepository('JYGRevestimientosBundle:Login')
