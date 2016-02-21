@@ -14,3 +14,7 @@ web/bundles/*
 web/css/*
 web/js/*
 web/uploads/*
+*.htaccess
+php.ini
+bin/security-checker
+app/AppKernel.php
