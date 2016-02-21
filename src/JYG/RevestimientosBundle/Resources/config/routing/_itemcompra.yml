@@ -1,0 +1,30 @@
+itemcompra:
+    path:     /
+    defaults: { _controller: "JYGRevestimientosBundle:ItemCompra:index" }
+
+itemcompra_show:
+    path:     /{id}/show
+    defaults: { _controller: "JYGRevestimientosBundle:ItemCompra:show" }
+
+itemcompra_new:
+    path:     /new
+    defaults: { _controller: "JYGRevestimientosBundle:ItemCompra:new" }
+
+itemcompra_create:
+    path:     /create
+    defaults: { _controller: "JYGRevestimientosBundle:ItemCompra:create" }
+    methods:  POST
+
+itemcompra_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "JYGRevestimientosBundle:ItemCompra:edit" }
+
+itemcompra_update:
+    path:     /{id}/update
+    defaults: { _controller: "JYGRevestimientosBundle:ItemCompra:update" }
+    methods:  [POST, PUT]
+
+itemcompra_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "JYGRevestimientosBundle:ItemCompra:delete" }
+    methods:  [POST, DELETE]

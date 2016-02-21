@@ -21,7 +21,8 @@
         "sensio/framework-extra-bundle": "~3.0,>=3.0.2",
         "incenteev/composer-parameter-handler": "~2.0",
         "knplabs/knp-snappy-bundle": "dev-master",
-        "knplabs/knp-paginator-bundle": "~2.4"
+        "knplabs/knp-paginator-bundle": "~2.4",
+        "h4cc/wkhtmltopdf-amd64": "0.11.0-RC1"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"

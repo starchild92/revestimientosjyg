@@ -1,0 +1,8 @@
+suPHP_ConfigPath /home/revestim/public_html/
+
+<IfModule mod_rewrite.c>
+        RewriteEngine On
+      
+        RewriteBase /
+        RewriteRule ^(.*)$ /web/$1 [QSA,L]
+</IfModule>

@@ -59,7 +59,7 @@ class PageController extends Controller
         $paginator  = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
             $query,
-            $this->get('request')->query->get('page', 1)/*page number*/,9/*limit per page*/);
+            $this->get('request')->query->get('page', 1)/*page number*/,5/*limit per page*/);
 
 
         return $this->render('JYGRevestimientosBundle:Page:productos.html.twig', array(

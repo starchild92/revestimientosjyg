@@ -4,6 +4,9 @@
     <meta charset="UTF-8" />
     <title>Revestimientos J&G, Barquisimeto C.A</title>
     <style type="text/css">
+    body{
+    	font-size: 12px;
+    }
     .table{
         width: 100%;
         font-family: "Arial", sans-serif;
@@ -103,14 +106,17 @@
                 <th class="color">Código</th>
                 <th class="color">Descripción</th>
                 <th class="color">Cantidad</th>
+                <th class="color">Precio</th>
             </tr>
         </thead>
         <tbody>
             {% for item in items %}
             <tr>
                 <td>{% set foo = item.codigomaterial|split(',') %}{% set rep = foo|first %}{{ foo|first }}</td>
-                <td>{% set bar = foo|last %}{{ bar|replace({ (rep) : '' }) }}</td>
-                <td>{{ item.cantidad }} unidades</td>
+                <td>Nombre: {{ item.codigomaterial.nombre }} Formato: {{ item.codigomaterial.formato }}, Color: {{ item.codigomaterial.color }}
+                </td>
+                <td>{% if item.codigomaterial.tipo == "Laja Formateada" or item.codigomaterial.tipo == "Laja Natural" or item.codigomaterial.tipo == "Taco Cortado" %}{{ item.cantidad }}mts2 {% else %} {{ item.cantidad }} unidades{% endif %}</td>
+                <td>{{ item.codigomaterial.precioventa * item.cantidad }} Bsf.</td>
             </tr>
             {% endfor %}
         </tbody>
@@ -125,5 +131,4 @@
     </table>
 </body>
 </html>
-
 
