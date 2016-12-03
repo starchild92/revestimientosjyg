@@ -10,7 +10,7 @@
     },
     "require": {
         "php": ">=5.3.9",
-        "symfony/symfony": "2.7.*",
+        "symfony/symfony": "2.8.*",
         "doctrine/orm": "~2.2,>=2.2.3,<2.5",
         "doctrine/dbal": "<2.5",
         "doctrine/doctrine-bundle": "~1.4",
@@ -25,7 +25,8 @@
         "h4cc/wkhtmltopdf-amd64": "0.11.0-RC1"
     },
     "require-dev": {
-        "sensio/generator-bundle": "~2.3"
+        "sensio/generator-bundle": "~2.3",
+        "symfony/phpunit-bridge": "^3.2"
     },
     "scripts": {
         "post-root-package-install": [
